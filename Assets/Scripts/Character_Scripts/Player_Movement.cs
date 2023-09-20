@@ -1,34 +1,45 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(Character_Stats))]
 [RequireComponent(typeof(Rotate_Character))]
 public class Player_Movement : MonoBehaviour
 {
+    [field: SerializeField] CinemachineFreeLook cam;
+    [field: SerializeField] Camera main;
+
     Character_Stats stats;
     Vector3 movement_direction = new();
     Rigidbody rb;
-
-    void Start()
+    private void Start()
     {
         stats = GetComponent<Character_Stats>();
-        rb = GetComponent<Rigidbody>();
     }
-    private void Update()
+    void Update()
     {
-        float x_move = InputManager.GetCustomAxisRaw("Horizontal");
-        float y_move = InputManager.GetCustomAxisRaw("Vertical");
-        movement_direction = new(x_move, 0, y_move);
-    }
+        float cam_y = cam.transform.rotation.y;
+        Vector3 cameraForward = cam.transform.forward;
+        cameraForward.y = 0f;
 
-    void FixedUpdate()
-    {   
-        Move();
+        float horizontalInput = InputManager.GetCustomAxisRaw("Horizontal");
+        float verticalInput = InputManager.GetCustomAxisRaw("Vertical");
+
+        // Vytvoøení vektoru pro pohyb postavy relativnì ke smìru kamery
+        Vector3 moveDirection = main.transform.forward * -verticalInput + main.transform.right * horizontalInput;
+
+        // Pohyb postavy
+        transform.Translate(moveDirection * stats.movement_speed * Time.deltaTime);
+
+        // Rotace postavy ve smìru kamery
+        //if (moveDirection != Vector3.zero)
+            Rotate(cam_y);
     }
-    private void Move()
+    private void Rotate(float cam_y)
     {
-        rb.velocity = movement_direction * stats.movement_speed;
+        transform.rotation = Quaternion.Euler(0, cam_y, 0);
     }
 }

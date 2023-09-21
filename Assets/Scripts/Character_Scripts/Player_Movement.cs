@@ -4,42 +4,36 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-[RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(Character_Stats))]
-[RequireComponent(typeof(Rotate_Character))]
+[RequireComponent(typeof(CharacterController))]
 public class Player_Movement : MonoBehaviour
 {
-    [field: SerializeField] CinemachineFreeLook cam;
-    [field: SerializeField] Camera main;
+    [field: SerializeField] Transform cam;
+    [field: SerializeField] float turn_smooth_speed;
 
     Character_Stats stats;
-    Vector3 movement_direction = new();
-    Rigidbody rb;
+    CharacterController controller;
+
+    private float turn_smooth_velocity;
     private void Start()
     {
         stats = GetComponent<Character_Stats>();
+        controller = GetComponent<CharacterController>();
     }
     void Update()
     {
-        float cam_y = cam.transform.rotation.y;
-        Vector3 cameraForward = cam.transform.forward;
-        cameraForward.y = 0f;
+        float x = InputManager.GetCustomAxisRaw("Horizontal");
+        float y = InputManager.GetCustomAxisRaw("Vertical");
+        Vector3 direction = new Vector3(x, 0, y).normalized;
 
-        float horizontalInput = InputManager.GetCustomAxisRaw("Horizontal");
-        float verticalInput = InputManager.GetCustomAxisRaw("Vertical");
+        if (direction.magnitude >= 0.1f)
+        {
+            float target_angle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, target_angle, ref turn_smooth_velocity, turn_smooth_speed);
+            transform.rotation = Quaternion.Euler(0f, angle ,0f);
 
-        // Vytvoøení vektoru pro pohyb postavy relativnì ke smìru kamery
-        Vector3 moveDirection = main.transform.forward * -verticalInput + main.transform.right * horizontalInput;
-
-        // Pohyb postavy
-        transform.Translate(moveDirection * stats.movement_speed * Time.deltaTime);
-
-        // Rotace postavy ve smìru kamery
-        //if (moveDirection != Vector3.zero)
-            Rotate(cam_y);
-    }
-    private void Rotate(float cam_y)
-    {
-        transform.rotation = Quaternion.Euler(0, cam_y, 0);
+            Vector3 move_dir = Quaternion.Euler(0, target_angle ,0) * Vector3.forward;
+            controller.Move(move_dir.normalized * stats.movement_speed * Time.deltaTime);
+        }
     }
 }

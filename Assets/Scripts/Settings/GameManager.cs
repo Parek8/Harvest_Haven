@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
         if (game_manager == null)
             game_manager = this;
         LoadSettings();
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
         //Load_Item_Ids();
     }
 

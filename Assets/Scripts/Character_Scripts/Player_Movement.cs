@@ -23,6 +23,7 @@ public class Player_Movement : MonoBehaviour
         stats = GetComponent<Character_Stats>();
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
+        animator.SetFloat("Speed", stats.movement_speed);
     }
     void Update()
     {

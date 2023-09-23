@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Items/Item")]
-public class Item : MonoBehaviour
+public class Item : ScriptableObject
 {
-    [field: SerializeField] int item_id = 0;
-    [field: SerializeField] string item_name = "";
-    [field: SerializeField] Sprite item_icon = null;
-    [field: SerializeField] int count = 0;
-    [field: SerializeField] bool is_eatable = false;
-    [field: SerializeField] bool is_tool = false;
+    [field: SerializeField] public int item_id { get; private set; } = 0;
+    [field: SerializeField] public string item_name { get; private set; } = "";
+    [field: SerializeField] public Sprite item_icon { get; private set; } = null;
+    [field: SerializeField] public int count { get; private set; } = 0;
+    [field: SerializeField] public GameObject item_prefab { get; private set; }
+    [field: SerializeField] public bool is_eatable { get; private set; } = false;
+    [field: SerializeField] public bool is_tool { get; private set; } = false;
 }

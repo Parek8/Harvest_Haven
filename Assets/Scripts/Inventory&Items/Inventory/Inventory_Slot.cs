@@ -6,26 +6,33 @@ using UnityEngine.UI;
 
 public class Inventory_Slot : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    Image item_image;
-    bool is_dragging = false;
     [field: SerializeField] Item item;
+    [field: SerializeField] public int slot_index { get; private set; }
+
+    [field: SerializeField] Image item_image; // I was way too lazy to fix teh thing commented in the Start() method
+    bool is_dragging = false;
     Transform image_parent;
     void Start()
     {
-        image_parent = transform.GetChild(0);
-        item_image = image_parent.GetChild(0).GetComponent<Image>();
+        //Transform childTransform = transform.GetChild(0);
+        //item_image = childTransform.GetComponentInChildren<Image>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (is_dragging)
-            item_image.transform.position = Input.mousePosition;
+            transform.position = Input.mousePosition;
         Update_UI();
     }
     public void OnPointerDown(PointerEventData eventData)
     {
         if (eventData.button == PointerEventData.InputButton.Left)
-            is_dragging = true;
+            if (!this.Is_Empty())
+                is_dragging = true;
+    }
+    public float Return_Distance_From_Mouse()
+    {
+        return (Vector2.Distance(transform.position, Input.mousePosition));
     }
 
     public void OnPointerUp(PointerEventData eventData)
@@ -56,6 +63,10 @@ public class Inventory_Slot : MonoBehaviour, IPointerDownHandler, IPointerUpHand
             item_image.sprite = item.item_icon;
         else
             item_image.sprite = null;
+    }
+    public Item Get_Item()
+    {
+        return (this.item);
     }
 
 }

@@ -34,10 +34,14 @@ public class Player_Movement : MonoBehaviour
         if (direction.magnitude >= 0.1f)
         {
             Move(direction);
-            Animate(true);
+            Animate("Idle", false);
+            Animate("Moving", true);
         }
         else
-            Animate(false);
+        {
+            Animate("Idle", true);
+            Animate("Moving", false);
+        }
     }
     private void Move(Vector3 direction)
     {
@@ -47,11 +51,11 @@ public class Player_Movement : MonoBehaviour
 
         Vector3 move_dir = Quaternion.Euler(0, target_angle, 0) * Vector3.forward;
         controller.Move(move_dir.normalized * stats.movement_speed * Time.deltaTime);
-        Debug.Log("Moved");
+        //Debug.Log("Moved");
     }
 
-    private void Animate(bool animate)
+    private void Animate(string variable, bool animate)
     {
-        animator.SetBool("Moving", animate);
+        animator.SetBool(variable, animate);
     }
 }

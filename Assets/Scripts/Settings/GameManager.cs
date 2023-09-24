@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     //public int mouse_sensitivity { get; private set; } = 50;
     public bool is_game_paused { get; private set; }
     [field: SerializeField] public Transform player_transform { get; private set; }
+    [field: SerializeField] public Inventory player_inventory { get; private set; }
     //[field: SerializeField] public Player_Inventory player_inventory { get; private set; }
     [field: SerializeField] public Main_Menu_Buttons main_menu_buttons { get; private set; }
     [field: SerializeField] public List<Item> all_items { get; private set; }

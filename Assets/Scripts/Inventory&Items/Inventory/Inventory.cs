@@ -38,7 +38,7 @@ public class Inventory : MonoBehaviour
 
         return used_slot;
     }
-    private Inventory_Slot Return_Closest_Slot()
+    public Inventory_Slot Return_Closest_Slot()
     {
         float min_distance = float.MaxValue;
         Inventory_Slot closest_slot = slots[0];

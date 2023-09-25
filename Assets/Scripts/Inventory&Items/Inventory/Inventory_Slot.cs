@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -38,7 +39,23 @@ public class Inventory_Slot : MonoBehaviour, IPointerDownHandler, IPointerUpHand
     public void OnPointerUp(PointerEventData eventData)
     {
         if (eventData.button == PointerEventData.InputButton.Left)
+        {
             is_dragging = false;
+            Swap_Slots();
+        }
+    }
+
+    private void Swap_Slots()
+    {
+        Item current_item = this.item;
+        if (current_item != null)
+        {
+            Inventory_Slot closest_slot = GameManager.game_manager.player_inventory.Return_Closest_Slot();
+            Item swap_item = closest_slot.Get_Item();
+
+            this.Assign_Item(swap_item);
+            closest_slot.Assign_Item(current_item);
+        }
     }
 
     public bool Is_Empty()

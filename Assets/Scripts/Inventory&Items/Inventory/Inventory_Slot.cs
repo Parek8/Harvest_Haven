@@ -12,17 +12,19 @@ public class Inventory_Slot : MonoBehaviour, IPointerDownHandler, IPointerUpHand
 
     [field: SerializeField] Image item_image; // I was way too lazy to fix teh thing commented in the Start() method
     bool is_dragging = false;
+    Vector3 item_image_initial_position;
     Transform image_parent;
     void Start()
     {
         //Transform childTransform = transform.GetChild(0);
         //item_image = childTransform.GetComponentInChildren<Image>();
+        item_image_initial_position = item_image.transform.localPosition;
     }
 
     void FixedUpdate()
     {
         if (is_dragging)
-            transform.position = Input.mousePosition;
+            item_image.transform.position = Input.mousePosition;
         Update_UI();
     }
     public void OnPointerDown(PointerEventData eventData)
@@ -41,20 +43,30 @@ public class Inventory_Slot : MonoBehaviour, IPointerDownHandler, IPointerUpHand
         if (eventData.button == PointerEventData.InputButton.Left)
         {
             is_dragging = false;
+            item_image.transform.localPosition = item_image_initial_position;
             Swap_Slots();
         }
     }
 
     private void Swap_Slots()
     {
+        Inventory_Slot closest_slot = GameManager.game_manager.player_inventory.Return_Closest_Slot();
         Item current_item = this.item;
-        if (current_item != null)
-        {
-            Inventory_Slot closest_slot = GameManager.game_manager.player_inventory.Return_Closest_Slot();
-            Item swap_item = closest_slot.Get_Item();
 
-            this.Assign_Item(swap_item);
+        if(closest_slot.Is_Empty())
+        {
             closest_slot.Assign_Item(current_item);
+            this.Clear_Item();
+        }
+        else if(Is_Current_Slot(closest_slot))
+        {
+            is_dragging = false;
+        }
+        else
+        {
+            this.Assign_Item(closest_slot.item);
+            closest_slot.Assign_Item(this.item);
+            is_dragging = true;
         }
     }
 
@@ -85,5 +97,8 @@ public class Inventory_Slot : MonoBehaviour, IPointerDownHandler, IPointerUpHand
     {
         return (this.item);
     }
-
+    public bool Is_Current_Slot(Inventory_Slot compared_slot)
+    {
+        return (compared_slot == this);
+    }
 }

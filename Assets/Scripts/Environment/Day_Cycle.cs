@@ -14,7 +14,7 @@ public class Day_Cycle : Custom_Update_Subscriber
     [field: SerializeField] AnimationCurve time_curve;
     [field: SerializeField] Color day_color;
     [field: SerializeField] Color night_color;
-    [field: SerializeField] Light2D global_light;
+    [field: SerializeField] Light global_light;
     [field: SerializeField] float starting_seconds = 14400f;
 
     private static float seconds = 0;

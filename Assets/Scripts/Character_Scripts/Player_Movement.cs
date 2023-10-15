@@ -24,11 +24,13 @@ public class Player_Movement : MonoBehaviour
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
         animator.SetFloat("Speed", stats.movement_speed);
+
+        Cursor.lockState = CursorLockMode.Locked;
     }
     void Update()
     {
-        float x = InputManager.GetCustomAxisRaw("Horizontal");
-        float y = InputManager.GetCustomAxisRaw("Vertical");
+        float x = Input_Manager.GetCustomAxisRaw("Horizontal");
+        float y = Input_Manager.GetCustomAxisRaw("Vertical");
         Vector3 direction = new Vector3(x, 0, y).normalized;
 
         if (direction.magnitude >= 0.1f)
@@ -42,6 +44,7 @@ public class Player_Movement : MonoBehaviour
             Animate("Idle", true);
             Animate("Moving", false);
         }
+        Debug.DrawRay(transform.position + Vector3.up, transform.forward*3, Color.red);
     }
     private void Move(Vector3 direction)
     {
@@ -57,5 +60,10 @@ public class Player_Movement : MonoBehaviour
     private void Animate(string variable, bool animate)
     {
         animator.SetBool(variable, animate);
+    }
+
+    public float Get_Distance(Transform dis)
+    {
+        return (Vector3.Distance(transform.position, dis.position));
     }
 }

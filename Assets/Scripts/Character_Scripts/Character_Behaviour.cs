@@ -16,11 +16,11 @@ public class Character_Behaviour : MonoBehaviour
 
     void Update()
     {
-        bool inv = InputManager.GetCustomAxisRawDown("Inventory");
+        bool inv = Input_Manager.GetCustomAxisRawDown("Inventory");
         if(inv)
             inventory_screen.Change_State();
 
-        bool att = InputManager.GetCustomAxisRawDown("Attack");
+        bool att = Input_Manager.GetCustomAxisRawDown("Attack");
         if (att)
             Hit_Destroyable();
     }

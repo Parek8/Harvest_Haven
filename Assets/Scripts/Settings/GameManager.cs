@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     //[field: SerializeField] public Player_Inventory player_inventory { get; private set; }
     [field: SerializeField] public Main_Menu_Buttons main_menu_buttons { get; private set; }
     [field: SerializeField] public List<Item> all_items { get; private set; }
+    [field: SerializeField] public Transform environment_parent { get; private set; }
 
     //private Dictionary<int, Item> item_ids = new();
 
@@ -96,6 +97,7 @@ public class GameManager : MonoBehaviour
     }
     private void LoadSettings()
     {
+        Debug.Log("Set List");
         foreach (KeybindNames key in Enum.GetValues(typeof(KeybindNames)))
         {
             if (!keybinds.ContainsKey(key))
@@ -103,13 +105,13 @@ public class GameManager : MonoBehaviour
                 keybinds.Add(key, Enum.Parse<KeyCode>(PlayerPrefs.GetString(key.ToString())));
             }
         }
-        InputManager.SetKeybindsList(keybinds);
+        Input_Manager.SetKeybindsList(keybinds);
     }
 }
 
 
 // CUSTOM INPUT MANAGER FOR CUSTOM INPUTS FOR EASIER KEYBIND SYSTEM
-public static class InputManager
+public static class Input_Manager
 {
     static Dictionary<KeybindNames, KeyCode> keybinds = new Dictionary<KeybindNames, KeyCode>();
     public static void SetKeybindsList(Dictionary<KeybindNames, KeyCode> keybindsDic)

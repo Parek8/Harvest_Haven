@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class UI_Behaviour : MonoBehaviour
 {
-    bool is_visible = false;
+    public bool is_visible { get; private set; } = false;
     private void Start()
     {
         is_visible = gameObject.activeInHierarchy;

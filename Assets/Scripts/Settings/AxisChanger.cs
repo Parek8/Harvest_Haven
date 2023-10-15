@@ -7,9 +7,9 @@ public class AxisChanger : MonoBehaviour
 {
     void Start()
     {
-        // Získání odkazu na InputManager
-        SerializedObject inputManager = new SerializedObject(AssetDatabase.LoadAllAssetsAtPath("ProjectSettings/InputManager.asset")[0]);
-        SerializedProperty axesProperty = inputManager.FindProperty("m_Axes");
+        // Získání odkazu na Input_Manager
+        SerializedObject Input_Manager = new SerializedObject(AssetDatabase.LoadAllAssetsAtPath("ProjectSettings/Input_Manager.asset")[0]);
+        SerializedProperty axesProperty = Input_Manager.FindProperty("m_Axes");
 
         // Procházení všech os a hledání osy "Horizontal"
         for (int i = 0; i < axesProperty.arraySize; i++)
@@ -28,7 +28,7 @@ public class AxisChanger : MonoBehaviour
             }
         }
 
-        // Uložení zmìn v InputManageru
-        inputManager.ApplyModifiedProperties();
+        // Uložení zmìn v Input_Manageru
+        Input_Manager.ApplyModifiedProperties();
     }
 }

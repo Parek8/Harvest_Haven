@@ -2,17 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class Pick_Up_Item : MonoBehaviour
 {
     [field: SerializeField] Item item;
     Transform player;
     float needed_distance;
     Inventory player_inventory;
+    Rigidbody rb;
     void Start()
     {
         player = GameManager.game_manager.player_transform;
         player_inventory = GameManager.game_manager.player_inventory;
         needed_distance = player.GetComponent<Character_Stats>().pick_up_distance;
+        rb = GetComponent<Rigidbody>();
     }
 
     void Update()
@@ -31,5 +34,12 @@ public class Pick_Up_Item : MonoBehaviour
     private void Move_Towards_Player()
     {
         transform.position = Vector3.MoveTowards(transform.position, player.position, Time.deltaTime * 5);
-    }    
+    }
+
+    public void Push_Item_Upwards()
+    {
+        float jump_force = Random.Range(1.0f, 3.0f);
+
+        rb.AddForce(Vector3.up * jump_force, ForceMode.Impulse);    
+    }
 }

@@ -11,4 +11,5 @@ public class Character_Stats : MonoBehaviour
     [field: SerializeField] public float attack_distance { get; private set; } = 1.2f;
     [field: SerializeField] public LayerMask destroyable_layers { get; private set; }
     [field: SerializeField] public float attack_damage { get; private set; } = 10f;
+    [field: SerializeField] public float food_delay { get; private set; } = 10f;
 }

@@ -66,4 +66,9 @@ public class Player_Movement : MonoBehaviour
     {
         return (Vector3.Distance(transform.position, dis.position));
     }
+
+    public Vector3 Get_Position()
+    {
+        return (Vector3)transform.position;
+    }
 }

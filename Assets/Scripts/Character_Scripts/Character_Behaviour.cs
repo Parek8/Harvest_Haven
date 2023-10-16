@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Character_Stats))]
+[RequireComponent(typeof(Player_Health))]
 public class Character_Behaviour : MonoBehaviour
 {
     [field: SerializeField] UI_Behaviour inventory_screen;

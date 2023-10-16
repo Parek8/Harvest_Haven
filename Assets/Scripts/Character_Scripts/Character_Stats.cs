@@ -30,15 +30,19 @@ public class Character_Stats : MonoBehaviour
     public void Reduce_Health(float reduce_hp)
     {
         current_health_points -= reduce_hp;
-        if(current_food_points <= 0)
+        if(current_health_points <= 0)
         {
+            current_health_points = 0;
             Debug.Log("You've died!");
         }
     }
 
     public void Reduce_Food(float reduce_food)
     {
-        current_food_points -= reduce_food;
+        if (current_food_points > 0)
+            current_food_points -= reduce_food;
+        if (current_food_points <= 0)
+            current_food_points = 0;
         if (current_food_points <= 0)
             StartCoroutine(Damage_On_Hunger());
     }

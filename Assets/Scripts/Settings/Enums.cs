@@ -29,6 +29,7 @@ public enum Tool_Type
     seeds,
     building,
     other,
+    NULL,
 }
 public enum KeybindNames
 {

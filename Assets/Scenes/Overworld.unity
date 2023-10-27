@@ -243,7 +243,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 19376623}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -278.15924, y: -187.03319, z: 571.7176}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3379,8 +3379,14 @@ MonoBehaviour:
   <player_transform>k__BackingField: {fileID: 543450651862457080}
   <player_inventory>k__BackingField: {fileID: 1004553004631907502}
   <main_menu_buttons>k__BackingField: {fileID: 0}
-  <all_items>k__BackingField: []
-  <environment_parent>k__BackingField: {fileID: 0}
+  <all_items>k__BackingField:
+  - {fileID: 11400000, guid: e573acafcb28ab442a46519d0fce24c1, type: 2}
+  - {fileID: 11400000, guid: faddd45e906bd3d40935609393245433, type: 2}
+  - {fileID: 11400000, guid: 3c767dd0a71969a46ba83f04b4b74491, type: 2}
+  - {fileID: 11400000, guid: 90e522afeb9cb3746b2579ee4399f17d, type: 2}
+  <Null_Item>k__BackingField: {fileID: 11400000, guid: e573acafcb28ab442a46519d0fce24c1,
+    type: 2}
+  <environment_parent>k__BackingField: {fileID: 503972168}
 --- !u!4 &384713292 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 521892071198830070, guid: 36948b20cc6f914458b706a01cab5416,
@@ -10187,7 +10193,8 @@ PrefabInstance:
         type: 3}
       propertyPath: item
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: faddd45e906bd3d40935609393245433,
+        type: 2}
     - target: {fileID: 4637552557204112982, guid: bc2a007c8d38a7744977916c52e7edb5,
         type: 3}
       propertyPath: <slot_index>k__BackingField
@@ -14409,8 +14416,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   <attack_damage>k__BackingField: 1
-  <food_delay>k__BackingField: 1
-  <on_hunger_hit_delay>k__BackingField: 1
+  <food_delay>k__BackingField: 10
+  <on_hunger_hit_delay>k__BackingField: 10
   <max_health_points>k__BackingField: 10
   <max_food_points>k__BackingField: 10
 --- !u!114 &1004553004631907495
@@ -14499,7 +14506,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce2b2432b182d28458d1e3ed04eadbf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <slots>k__BackingField: []
 --- !u!114 &1004553004631907503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19641,6 +19647,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1916309521314281738, guid: 54d40e10ea548b9428e75d2d6d7e962b,
+        type: 3}
+      propertyPath: types.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1916309521314281738, guid: 54d40e10ea548b9428e75d2d6d7e962b,
+        type: 3}
+      propertyPath: types.Array.data[0]
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1916309521314281738, guid: 54d40e10ea548b9428e75d2d6d7e962b,
         type: 3}

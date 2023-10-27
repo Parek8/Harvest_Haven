@@ -5,8 +5,11 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    [field: SerializeField] public List<Inventory_Slot> slots { get; private set; }
+    public List<Inventory_Slot> slots { get; private set; } = new();
     Dictionary<int, Inventory_Slot> slot_ids = new();
+
+    Item _equipped_item;
+    public Item Equipped_Item => _equipped_item;
 
     void Start()
     {
@@ -18,6 +21,9 @@ public class Inventory : MonoBehaviour
             slot_ids.Add(slot.slot_index, slot);
         }
         slots.Sort((item1, item2) => item1.slot_index.CompareTo(item2.slot_index));
+
+
+        Clear_Item();
     }
     public void Add(Item item)
     {
@@ -55,4 +61,13 @@ public class Inventory : MonoBehaviour
         }
         return closest_slot;
     }
+    public void Equip(Item item)
+    {
+        _equipped_item = item;
+    }
+
+    public void Clear_Item()
+    {
+        _equipped_item = GameManager.game_manager.Null_Item;
+    }    
 }

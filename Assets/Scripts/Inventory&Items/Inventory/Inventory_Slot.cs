@@ -32,6 +32,8 @@ public class Inventory_Slot : MonoBehaviour, IPointerDownHandler, IPointerUpHand
         if (eventData.button == PointerEventData.InputButton.Left)
             if (!this.Is_Empty())
                 is_dragging = true;
+        if (eventData.button == PointerEventData.InputButton.Right)
+            GameManager.game_manager.player_inventory.Equip(item);
     }
     public float Return_Distance_From_Mouse()
     {

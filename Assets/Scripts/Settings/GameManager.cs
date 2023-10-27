@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     //[field: SerializeField] public Player_Inventory player_inventory { get; private set; }
     [field: SerializeField] public Main_Menu_Buttons main_menu_buttons { get; private set; }
     [field: SerializeField] public List<Item> all_items { get; private set; }
+    [field: SerializeField] public Item Null_Item { get; private set; }
     [field: SerializeField] public Transform environment_parent { get; private set; }
 
     public void Cursor_Needed(CursorLockMode lock_mode)

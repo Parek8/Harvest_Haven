@@ -10,9 +10,11 @@ public class Character_Behaviour : MonoBehaviour
     [field: SerializeField] UI_Behaviour inventory_screen;
 
     Character_Stats stats;
+    Inventory inventory;
     private void Start()
     {
         stats = GetComponent<Character_Stats>();
+        inventory = GetComponent<Inventory>();
     }
 
     void Update()
@@ -35,7 +37,12 @@ public class Character_Behaviour : MonoBehaviour
         if (Physics.Raycast(ray, out info, stats.attack_distance, stats.destroyable_layers))
         {
             Debug.Log($"Hit {info.transform.name}");
-            info.collider.GetComponent<Destroyable>().Damage(stats.attack_damage);
+            Destroyable _hit = info.collider.GetComponent<Destroyable>();
+            Item _eq_item = inventory.Equipped_Item;
+            if (_hit.Compare_Tag(_eq_item.tool_type) && _eq_item.is_tool)
+                _hit.Damage(_eq_item.tool_damage);
+            else
+                Debug.Log("Wrong type");
         }
     }
 }

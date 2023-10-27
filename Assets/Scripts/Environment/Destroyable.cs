@@ -13,6 +13,7 @@ public class Destroyable : MonoBehaviour
     [SerializeField] Image filled_health_bar;
     [SerializeField] UI_Behaviour obj_canvas;
     [SerializeField] List<Item> dropped_items;
+    [SerializeField] List<Tool_Type> types;
 
     float hp = 20;
     Player_Movement pl;
@@ -97,5 +98,10 @@ public class Destroyable : MonoBehaviour
         rot.z = 0;
         rot.x = 0;
         canvas_t.rotation = rot;
+    }
+
+    public bool Compare_Tag(Tool_Type type)
+    {
+        return types.Contains(type);
     }
 }

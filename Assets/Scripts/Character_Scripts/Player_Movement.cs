@@ -44,17 +44,23 @@ public class Player_Movement : MonoBehaviour
             Animate("Idle", true);
             Animate("Moving", false);
         }
+        if (Input_Manager.GetCustomAxisRawDown("Attack"))
+            Rotate(direction);
         Debug.DrawRay(transform.position + Vector3.up, transform.forward*3, Color.red);
     }
     private void Move(Vector3 direction)
     {
+        Vector3 move_dir = Quaternion.Euler(0, Rotate(direction), 0) * Vector3.forward;
+        controller.Move(move_dir.normalized * stats.movement_speed * Time.deltaTime);
+        //Debug.Log("Moved");
+    }
+
+    private float Rotate(Vector3 direction)
+    {
         float target_angle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
         float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, target_angle, ref turn_smooth_velocity, turn_smooth_speed);
         transform.rotation = Quaternion.Euler(0f, angle, 0f);
-
-        Vector3 move_dir = Quaternion.Euler(0, target_angle, 0) * Vector3.forward;
-        controller.Move(move_dir.normalized * stats.movement_speed * Time.deltaTime);
-        //Debug.Log("Moved");
+        return target_angle;
     }
 
     private void Animate(string variable, bool animate)

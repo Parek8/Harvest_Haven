@@ -18,9 +18,6 @@ public class GameManager : MonoBehaviour
         //Cursor.lockState = CursorLockMode.Locked;
         //Load_Item_Ids();
     }
-
-    ////Global variables - Settings
-    //public int mouse_sensitivity { get; private set; } = 50;
     public bool is_game_paused { get; private set; }
     [field: SerializeField] public Transform player_transform { get; private set; }
     [field: SerializeField] public Inventory player_inventory { get; private set; }
@@ -29,6 +26,11 @@ public class GameManager : MonoBehaviour
     [field: SerializeField] public List<Item> all_items { get; private set; }
     [field: SerializeField] public Transform environment_parent { get; private set; }
 
+    public void Cursor_Needed(CursorLockMode lock_mode)
+    {
+        if (Cursor.lockState != lock_mode)
+            Cursor.lockState = lock_mode;
+    }
     //private Dictionary<int, Item> item_ids = new();
 
     //public Action On_Load { get; private set; }

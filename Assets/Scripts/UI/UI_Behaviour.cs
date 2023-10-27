@@ -25,6 +25,7 @@ public class UI_Behaviour : MonoBehaviour
     }
     public bool Change_State()
     {
+        GameManager.game_manager.Cursor_Needed((!is_visible) ? CursorLockMode.None : CursorLockMode.Locked);
         gameObject.SetActive(!is_visible);
         is_visible = !is_visible;
         return is_visible;  

@@ -24,6 +24,9 @@ public class Character_Behaviour : MonoBehaviour
         bool att = Input_Manager.GetCustomAxisRawDown("Attack");
         if (att)
             Hit_Destroyable();
+
+        if (Input.GetKeyDown(KeyCode.Space))
+            stats.Saturate(1f);
     }
     private void Hit_Destroyable()
     {

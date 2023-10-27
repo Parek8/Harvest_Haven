@@ -37,22 +37,25 @@ public class Character_Stats : MonoBehaviour
         }
     }
 
-    public void Reduce_Food(float reduce_food)
+    public void Starve(float starve)
     {
         if (current_food_points > 0)
-            current_food_points -= reduce_food;
+            current_food_points -= starve;
         if (current_food_points <= 0)
             current_food_points = 0;
         if (current_food_points <= 0)
-            StartCoroutine(Damage_On_Hunger());
+            Damage_On_Hunger();
     }
 
-    private IEnumerator Damage_On_Hunger()
+    public void Saturate(float saturate)
     {
-        while(current_food_points <= 0) 
-        {
-            Reduce_Health(1.0f);
-            yield return new WaitForSeconds(on_hunger_hit_delay);
-        }
+        current_food_points += saturate;
+        if (current_food_points > max_food_points)
+            current_food_points = max_food_points;
+    }
+
+    private void Damage_On_Hunger()
+    {
+        Reduce_Health(1.0f);
     }
 }

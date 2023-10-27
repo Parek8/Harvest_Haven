@@ -16,29 +16,48 @@ public class Player_Health : MonoBehaviour
         current_food_delay = stats.food_delay;
         StartCoroutine(Hunger());
     }
+    private void Update()
+    {
+        Update_UI();
+    }
     private IEnumerator Hunger()
     {
         while(true)
         {
-            Reduce_Hunger();
             yield return new WaitForSeconds(current_food_delay);
+            Reduce_Hunger();
         }
     }
 
     private void Reduce_Hunger()
     {
-        stats.Reduce_Food(1.0f);
-        Update_UI();
+        stats.Starve(1.0f);
     }
     public void Hit()
     {
-        Update_UI();
+        // todo
     }
     public void Update_UI()
     {
-        float hp = stats.current_health_points;
-        float hunger = stats.current_food_points;
+        float _hunger = stats.current_food_points;
+        for (int _i = 0; _i < stats.max_health_points; _i++)
+        {
+            hunger_sprites[(int)_i].fillAmount = 1f;
+            hp_sprites[(int)_i].fillAmount = 1f;
 
-        
+        }
+
+        for (float _i = _hunger; _i < stats.max_food_points; _i++) 
+        {
+            hunger_sprites[(int)_i].fillAmount = 0;
+        }
+
+
+        float _hp = stats.current_health_points;
+
+        for (float _i = _hp; _i < stats.max_health_points; _i++)
+        {
+            hp_sprites[(int)_i].fillAmount = 0;
+        }
     }
 }

@@ -8,6 +8,7 @@ using UnityEngine;
 public class Character_Behaviour : MonoBehaviour
 {
     [field: SerializeField] UI_Behaviour inventory_screen;
+    [field: SerializeField] List<Inventory_Slot> hotbar = new();
 
     Character_Stats stats;
     Inventory inventory;
@@ -29,6 +30,12 @@ public class Character_Behaviour : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
             stats.Saturate(1f);
+
+        for (int i = 0; i < hotbar.Count; i++)
+        {
+            if (Input_Manager.GetCustomAxisRawDown($"Slot_{i+1}"))
+                hotbar[i].Equip();
+        }
     }
     private void Hit_Destroyable()
     {

@@ -105,7 +105,14 @@ public class GameManager : MonoBehaviour
         {
             if (!keybinds.ContainsKey(key))
             {
-                keybinds.Add(key, Enum.Parse<KeyCode>(PlayerPrefs.GetString(key.ToString())));
+                try
+                {
+                    keybinds.Add(key, Enum.Parse<KeyCode>(PlayerPrefs.GetString(key.ToString())));
+                }
+                catch (Exception e)
+                {
+                    Debug.LogWarning(e);
+                }
             }
         }
         Input_Manager.SetKeybindsList(keybinds);
@@ -124,122 +131,167 @@ public static class Input_Manager
 
     public static float GetCustomAxisRaw(string axis)
     {
-        if (axis == "Vertical")
+        try
         {
-            if (Input.GetKey(keybinds[KeybindNames.forward]))
-                return 1;
-            else if (Input.GetKey(keybinds[KeybindNames.backward]))
-                return -1;
-        }
-        else if (axis == "Horizontal")
-        {
-            if (Input.GetKey(keybinds[KeybindNames.left_strafe]))
-                return -1;
-            else if (Input.GetKey(keybinds[KeybindNames.right_strafe]))
-                return 1;
-        }
-        else if (axis == "Sprinting")
-        {
-            if (Input.GetKey(keybinds[KeybindNames.sprint]))
-                return 1;
+            if (axis == "Vertical")
+            {
+                if (Input.GetKey(keybinds[KeybindNames.forward]))
+                    return 1;
+                else if (Input.GetKey(keybinds[KeybindNames.backward]))
+                    return -1;
+            }
+            else if (axis == "Horizontal")
+            {
+                if (Input.GetKey(keybinds[KeybindNames.left_strafe]))
+                    return -1;
+                else if (Input.GetKey(keybinds[KeybindNames.right_strafe]))
+                    return 1;
+            }
+            else if (axis == "Sprinting")
+            {
+                if (Input.GetKey(keybinds[KeybindNames.sprint]))
+                    return 1;
+                else
+                    return 0;
+            }
+            else if (axis == "Jumping")
+            {
+                if (Input.GetKey(keybinds[KeybindNames.jump]))
+                    return 1;
+                else
+                    return 0;
+            }
+            else if (axis == "Attack")
+            {
+                if (Input.GetKey(keybinds[KeybindNames.left_attack]))
+                    return 1;
+                else
+                    return 0;
+            }
+            else if (axis == "Interact")
+            {
+                if (Input.GetKey(keybinds[KeybindNames.interact]))
+                    return 1;
+                else
+                    return 0;
+            }
             else
-                return 0;
+                Debug.Log($"No such axis as {axis}");
+            return 0;
         }
-        else if (axis == "Jumping")
+        catch
         {
-            if (Input.GetKey(keybinds[KeybindNames.jump]))
-                return 1;
-            else
-                return 0;
+            SetPlayerPrefs();
+            return -1f;
         }
-        else if (axis == "Attack")
-        {
-            if (Input.GetKey(keybinds[KeybindNames.left_attack]))
-                return 1;
-            else
-                return 0;
-        }
-        else if (axis == "Interact")
-        {
-            if (Input.GetKey(keybinds[KeybindNames.interact]))
-                return 1;
-            else
-                return 0;
-        }
-        else
-            Debug.Log($"No such axis as {axis}");
-        return 0;
     }
     public static bool GetCustomAxisRawDown(string axis)
     {
-        if (axis == "Interact")
+        try
         {
-            if (Input.GetKeyDown(keybinds[KeybindNames.interact]))
-                return true;
+            if (axis == "Interact")
+            {
+                if (Input.GetKeyDown(keybinds[KeybindNames.interact]))
+                    return true;
+                else
+                    return false;
+            }
+            else if (axis == "Attack")
+            {
+                if (Input.GetKeyDown(keybinds[KeybindNames.left_attack]))
+                    return true;
+                else
+                    return false;
+            }
+            else if (axis == "Inventory")
+            {
+                if (Input.GetKeyDown(keybinds[KeybindNames.inventory]))
+                    return true;
+                else
+                    return false;
+            }
+            else if (axis == "Slot_1")
+            {
+                if (Input.GetKeyDown(keybinds[KeybindNames.slot_1]))
+                    return true;
+                else
+                    return false;
+            }
+            else if (axis == "Slot_2")
+            {
+                if (Input.GetKeyDown(keybinds[KeybindNames.slot_2]))
+                    return true;
+                else
+                    return false;
+            }
+            else if (axis == "Slot_3")
+            {
+                if (Input.GetKeyDown(keybinds[KeybindNames.slot_3]))
+                    return true;
+                else
+                    return false;
+            }
+            else if (axis == "Slot_4")
+            {
+                if (Input.GetKeyDown(keybinds[KeybindNames.slot_4]))
+                    return true;
+                else
+                    return false;
+            }
+            else if (axis == "Slot_5")
+            {
+                if (Input.GetKeyDown(keybinds[KeybindNames.slot_5]))
+                    return true;
+                else
+                    return false;
+            }
+            else if (axis == "Slot_6")
+            {
+                if (Input.GetKeyDown(keybinds[KeybindNames.slot_6]))
+                    return true;
+                else
+                    return false;
+            }
+            else if (axis == "Slot_7")
+            {
+                if (Input.GetKeyDown(keybinds[KeybindNames.slot_7]))
+                    return true;
+                else
+                    return false;
+            }
+            else if (axis == "Slot_8")
+            {
+                if (Input.GetKeyDown(keybinds[KeybindNames.slot_8]))
+                    return true;
+                else
+                    return false;
+            }
+            else if (axis == "Slot_9")
+            {
+                if (Input.GetKeyDown(keybinds[KeybindNames.slot_9]))
+                    return true;
+                else
+                    return false;
+            }
             else
-                return false;
+                Debug.Log($"No such axis as {axis}");
+            return false;
         }
-        else if (axis == "Attack")
+        catch
         {
-            if (Input.GetKeyDown(keybinds[KeybindNames.left_attack]))
-                return true;
-            else
-                return false;
+            SetPlayerPrefs();
+            return false;
         }
-        else if (axis == "Inventory")
-        {
-            if (Input.GetKeyDown(keybinds[KeybindNames.inventory]))
-                return true;
-            else
-                return false;
-        }
-        else if (axis == "Slot_1")
-        {
-            if (Input.GetKeyDown(keybinds[KeybindNames.slot_1]))
-                return true;
-            else
-                return false;
-        }
-        else if (axis == "Slot_2")
-        {
-            if (Input.GetKeyDown(keybinds[KeybindNames.slot_2]))
-                return true;
-            else
-                return false;
-        }
-        else if (axis == "Slot_3")
-        {
-            if (Input.GetKeyDown(keybinds[KeybindNames.slot_3]))
-                return true;
-            else
-                return false;
-        }
-        else if (axis == "Slot_4")
-        {
-            if (Input.GetKeyDown(keybinds[KeybindNames.slot_4]))
-                return true;
-            else
-                return false;
-        }
-        else if (axis == "Slot_5")
-        {
-            if (Input.GetKeyDown(keybinds[KeybindNames.slot_5]))
-                return true;
-            else
-                return false;
-        }
-        else
-            Debug.Log($"No such axis as {axis}");
-        return false;
     }
-    public static void Add_TMP_Axis()
+    private static void SetPlayerPrefs()
     {
-        foreach (KeybindNames key in Enum.GetValues(typeof(KeybindNames)))
+        KeybindNames[] keybinds = (KeybindNames[])Enum.GetValues(typeof(KeybindNames));
+
+        for (int i = 0; i < keybinds.Length; i++)
         {
-            PlayerPrefs.SetString(key.ToString(), "L");
-            PlayerPrefs.Save();
-            Debug.Log($"Set {key} to 'L'!");
+            KeybindNames kb = keybinds[i];
+
+            PlayerPrefs.SetString(kb.ToString(), ((KeyCode)kb).ToString());
         }
-        Debug.Log("Done");
     }
 }

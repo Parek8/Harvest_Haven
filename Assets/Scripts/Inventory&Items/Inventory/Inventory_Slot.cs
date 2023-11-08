@@ -11,14 +11,22 @@ public class Inventory_Slot : MonoBehaviour, IPointerDownHandler, IPointerUpHand
     [field: SerializeField] public int slot_index { get; private set; }
 
     [field: SerializeField] Image item_image; // I was way too lazy to fix teh thing commented in the Start() method
+    [field: SerializeField] bool isHotbarSlot = false;
+    [field: SerializeField] Color focusedColor = Color.blue;
+    [field: SerializeField] Color unfocusedColor = Color.black;
+
     bool is_dragging = false;
     Vector3 item_image_initial_position;
     Transform image_parent;
+    Image background;
     void Start()
     {
         //Transform childTransform = transform.GetChild(0);
         //item_image = childTransform.GetComponentInChildren<Image>();
         item_image_initial_position = item_image.transform.localPosition;
+        background = GetComponent<Image>();
+        if (isHotbarSlot)
+            GameManager.game_manager.player_inventory.AddToSlotChangedAction(() => { SetBackground(unfocusedColor); });
     }
 
     void FixedUpdate()
@@ -32,8 +40,8 @@ public class Inventory_Slot : MonoBehaviour, IPointerDownHandler, IPointerUpHand
         if (eventData.button == PointerEventData.InputButton.Left)
             if (!this.Is_Empty())
                 is_dragging = true;
-        if (eventData.button == PointerEventData.InputButton.Right)
-            GameManager.game_manager.player_inventory.Equip(item);
+        if (eventData.button == PointerEventData.InputButton.Right && isHotbarSlot)
+            Equip();
     }
     public float Return_Distance_From_Mouse()
     {
@@ -71,7 +79,15 @@ public class Inventory_Slot : MonoBehaviour, IPointerDownHandler, IPointerUpHand
             is_dragging = true;
         }
     }
-
+    public void Equip()
+    {
+        GameManager.game_manager.player_inventory.Equip(item);
+        SetBackground(focusedColor);
+    }
+    private void SetBackground(Color c)
+    {
+        background.color = c;
+    }
     public bool Is_Empty()
     {
         return (this.item == null);

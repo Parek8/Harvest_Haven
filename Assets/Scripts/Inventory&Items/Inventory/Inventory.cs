@@ -1,15 +1,20 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 public class Inventory : MonoBehaviour
 {
+    [field: SerializeField] Transform weaponPoint;
+
     public List<Inventory_Slot> slots { get; private set; } = new();
     Dictionary<int, Inventory_Slot> slot_ids = new();
 
     Item _equipped_item;
     public Item Equipped_Item => _equipped_item;
+    Action _slotChanged;
 
     void Start()
     {
@@ -64,10 +69,30 @@ public class Inventory : MonoBehaviour
     public void Equip(Item item)
     {
         _equipped_item = item;
+        _slotChanged?.Invoke();
+        InstantiateItem();
+    }
+    private void InstantiateItem()
+    {
+        int childCount = weaponPoint.childCount;
+        for (int i = 0;  i < childCount; i++)
+        {
+            Destroy(weaponPoint.GetChild(i).gameObject);
+        }
+        Instantiate(_equipped_item.item_prefab, weaponPoint);
     }
 
     public void Clear_Item()
     {
         _equipped_item = GameManager.game_manager.Null_Item;
     }    
+
+    public void AddToSlotChangedAction(Action action)
+    {
+        _slotChanged += action;
+    }
+    public void RemoveFromSlotChangedAction()
+    {
+        _slotChanged -= Clear_Item;
+    }
 }

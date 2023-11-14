@@ -12,10 +12,17 @@ public class Character_Behaviour : MonoBehaviour
 
     Character_Stats stats;
     Inventory inventory;
+    Animator animator;
+    Player_Movement movement;
+
+    bool _isAttacking = false;
+    public bool IsAttacking => _isAttacking;
     private void Start()
     {
         stats = GetComponent<Character_Stats>();
         inventory = GetComponent<Inventory>();
+        animator = GetComponent<Animator>();
+        movement = GetComponent<Player_Movement>();
     }
 
     void Update()
@@ -23,10 +30,6 @@ public class Character_Behaviour : MonoBehaviour
         bool inv = Input_Manager.GetCustomAxisRawDown("Inventory");
         if(inv)
             inventory_screen.Change_State();
-
-        bool att = Input_Manager.GetCustomAxisRawDown("Attack");
-        if (att)
-            Hit_Destroyable();
 
         if (Input.GetKeyDown(KeyCode.Space))
             stats.Saturate(1f);
@@ -36,6 +39,26 @@ public class Character_Behaviour : MonoBehaviour
             if (Input_Manager.GetCustomAxisRawDown($"Slot_{i+1}"))
                 hotbar[i].Equip();
         }
+
+        if(!_isAttacking)
+        {
+            bool att = Input_Manager.GetCustomAxisRawDown("Attack");
+            if (att)
+            {
+                animator.SetTrigger("Attack");
+                Hit_Destroyable();
+            }
+
+        }
+    }
+    private void IsMoving(bool move)
+    {
+        movement.enabled = move;
+    }
+    public void ChangeAttacking()
+    {
+        _isAttacking = !_isAttacking;
+        IsMoving(_isAttacking);
     }
     private void Hit_Destroyable()
     {
@@ -47,7 +70,10 @@ public class Character_Behaviour : MonoBehaviour
             Destroyable _hit = info.collider.GetComponent<Destroyable>();
             Item _eq_item = inventory.Equipped_Item;
             if (_hit.Compare_Tag(_eq_item.tool_type) && _eq_item.is_tool)
+            {
                 _hit.Damage(_eq_item.tool_damage);
+
+            }
             else
                 Debug.Log("Wrong type");
         }

@@ -51,6 +51,14 @@ public class Character_Behaviour : MonoBehaviour
 
         }
     }
+    public void StartAttacking()
+    {
+
+    }
+    public void StopAttacking()
+    {
+
+    }
     private void IsMoving(bool move)
     {
         movement.enabled = move;

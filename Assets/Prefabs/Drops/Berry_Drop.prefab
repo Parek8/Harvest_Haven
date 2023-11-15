@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5149741865214582285}
   - component: {fileID: 8322099043819769061}
   - component: {fileID: 1017105284680107823}
+  - component: {fileID: 265753184266415617}
   m_Layer: 0
   m_Name: Berry_Drop
   m_TagString: Untagged
@@ -29,11 +30,11 @@ Transform:
   m_GameObject: {fileID: 2538243982939726748}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4.502099, y: 4.502099, z: 4.502099}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5767119601629867677
 MeshFilter:
@@ -126,3 +127,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 311285adbaef5b64798e64515718a47f, type: 2}
+--- !u!64 &265753184266415617
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2538243982939726748}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7898303678134235034, guid: 76e08b8deed31594680261df0a44075c, type: 3}

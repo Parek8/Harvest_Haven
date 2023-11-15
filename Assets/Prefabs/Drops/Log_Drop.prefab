@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8238308010385200483}
   - component: {fileID: 4111851205503660259}
   - component: {fileID: 3905858033698245271}
+  - component: {fileID: 2880761110068681922}
   m_Layer: 0
   m_Name: Log_Drop
   m_TagString: Untagged
@@ -29,11 +30,11 @@ Transform:
   m_GameObject: {fileID: 2662945482030536375}
   m_LocalRotation: {x: 0.000000021855694, y: 0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0.79540944, z: 0}
-  m_LocalScale: {x: 20.063253, y: 20.063253, z: 56.494186}
+  m_LocalScale: {x: 18, y: 18, z: 40}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4549159178020945889
 MeshFilter:
@@ -125,3 +126,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: e94564a7e73b07c44ab205a162fb6d21, type: 2}
+--- !u!64 &2880761110068681922
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2662945482030536375}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -293502825896984990, guid: 4aa9b2b5ceb1d374982ee59cc7a783b2, type: 3}

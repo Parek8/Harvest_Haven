@@ -57,6 +57,13 @@ public class SaveManager : MonoBehaviour
         }
 
         return _allItems;
+    }
+    private void OnApplicationQuit()
+    {
+        string _path = Directory.GetCurrentDirectory() + _inventorySavePath;
 
+        Debug.Log(_path);
+        SaveInventory();
+        Debug.Log(_path+"asdasdasdasd");
     }
 }

@@ -14,8 +14,8 @@ public class SaveManager : MonoBehaviour
         for (int i = 0; i < _slots.Count; i++)
         {
             Inventory_Slot _slot = _slots[i];
-
-            _savedContent += $"{_slot.slot_index}:{_slot.Get_Item().item_id};";
+            if (!_slot.Is_Empty())
+                _savedContent += $"{_slot.slot_index}:{_slot.Get_Item().item_id};";
         }
 
         string _path = Directory.GetCurrentDirectory() + _inventorySavePath;
@@ -24,10 +24,12 @@ public class SaveManager : MonoBehaviour
             StreamWriter _w = new StreamWriter(_path);
 
             _w.WriteLine(_savedContent);
+            Debug.Log(_savedContent);
+            _w.Close();
         }
         else
         {
-            File.Create(_savedContent);
+            File.Create(_path).Close();
             SaveInventory();
         }
     }
@@ -35,6 +37,7 @@ public class SaveManager : MonoBehaviour
     public IReadOnlyDictionary<int, Item> LoadInventory()
     {
         Dictionary<int, Item> _allItems = GameManager.game_manager._allItems;
+        Dictionary<int, Item> _newItems = new();
 
         string _path = Directory.GetCurrentDirectory() + _inventorySavePath;
         if (File.Exists(_path))
@@ -44,7 +47,7 @@ public class SaveManager : MonoBehaviour
             string _content = _r.ReadLine();
             string[] _slots = _content.Split(';');
 
-            for (int i = 0; i < _slots.Length; i++)
+            for (int i = 0; i < _slots.Length-1; i++)
             {
                 string _slot = _slots[i];
 
@@ -52,11 +55,12 @@ public class SaveManager : MonoBehaviour
                 int _slotId = Convert.ToInt32(_slotPair[0]);
                 int _itemId = Convert.ToInt32(_slotPair[1]);
 
-
+                _newItems[_slotId] = _allItems[_itemId];
             }
+            _r.Close();
         }
 
-        return _allItems;
+        return _newItems;
     }
     private void OnApplicationQuit()
     {

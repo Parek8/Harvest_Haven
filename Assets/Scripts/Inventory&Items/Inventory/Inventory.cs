@@ -25,9 +25,10 @@ public class Inventory : MonoBehaviour
             slots.Add(slot);
             slot_ids.Add(slot.slot_index, slot);
         }
+
         slots.Sort((item1, item2) => item1.slot_index.CompareTo(item2.slot_index));
 
-
+        LoadInventory();
         Clear_Item();
     }
     public void Add(Item item)
@@ -94,5 +95,14 @@ public class Inventory : MonoBehaviour
     public void RemoveFromSlotChangedAction()
     {
         _slotChanged -= Clear_Item;
+    }
+    private void LoadInventory()
+    {
+        Dictionary<int, Item> _inv = (Dictionary<int, Item>)GameManager.game_manager.saveManager.LoadInventory();
+
+        foreach(var _index in _inv.Keys)
+        {
+            slots[_index].Assign_Item(_inv[_index]);
+        }
     }
 }

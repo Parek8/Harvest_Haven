@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
         for (int i = 0;  i < all_items.Count; i++)
         {
             Item _item = all_items[i];
-            _allItems[_item.item_id] = _item; 
+            _allItems[_item.item_id] = _item;
         }
         //Cursor.lockState = CursorLockMode.Locked;
         //Load_Item_Ids();
@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
     [field: SerializeField] public Item Null_Item { get; private set; }
     [field: SerializeField] public Transform environment_parent { get; private set; }
     [field: SerializeField] public Dictionary<int, Item> _allItems = new Dictionary<int, Item>();
+    [field: SerializeField] public SaveManager saveManager { get; private set; }
 
     public void Cursor_Needed(CursorLockMode lock_mode)
     {

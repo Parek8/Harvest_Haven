@@ -48,8 +48,10 @@ public class Character_Behaviour : MonoBehaviour
                 animator.SetTrigger("Attack");
                 Hit_Destroyable();
             }
-
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+            GameManager.game_manager.saveManager.SaveInventory();
     }
     public void StartAttacking()
     {

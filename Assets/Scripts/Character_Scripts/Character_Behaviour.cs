@@ -1,6 +1,8 @@
+using Cinemachine;
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SceneTemplate;
 using UnityEngine;
 
 [RequireComponent(typeof(Character_Stats))]
@@ -9,11 +11,14 @@ public class Character_Behaviour : MonoBehaviour
 {
     [field: SerializeField] UI_Behaviour inventory_screen;
     [field: SerializeField] List<Inventory_Slot> hotbar = new();
+    [field: SerializeField] Camera _normalCam;
+    [field: SerializeField] Camera _seedingCam;
 
     Character_Stats stats;
     Inventory inventory;
     Animator animator;
     Player_Movement movement;
+    PlayerState _state;
 
     bool _isAttacking = false;
     public bool IsAttacking => _isAttacking;
@@ -23,6 +28,8 @@ public class Character_Behaviour : MonoBehaviour
         inventory = GetComponent<Inventory>();
         animator = GetComponent<Animator>();
         movement = GetComponent<Player_Movement>();
+
+        stats.AddPlayerStateListener(Change_Camera_Angle);
     }
 
     void Update()
@@ -30,7 +37,7 @@ public class Character_Behaviour : MonoBehaviour
         bool inv = Input_Manager.GetCustomAxisRawDown("Inventory");
         if(inv)
             inventory_screen.Change_State();
-
+        
         if (Input.GetKeyDown(KeyCode.Space))
             stats.Saturate(1f);
 
@@ -52,6 +59,9 @@ public class Character_Behaviour : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
             GameManager.game_manager.saveManager.SaveInventory();
+
+        if (_state == PlayerState.seeding)
+            Seed();
     }
     public void StartAttacking()
     {
@@ -88,6 +98,30 @@ public class Character_Behaviour : MonoBehaviour
             }
             else
                 Debug.Log("Wrong type");
+        }
+    }
+    private void Seed()
+    {
+        RaycastHit _hitInfo;
+        Ray _ray = new Ray(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector3.down * 100);
+
+        if (Physics.Raycast(_ray, out _hitInfo, 100, stats.plot_layers))
+        {
+
+        }
+    }
+    private void Change_Camera_Angle(PlayerState _state)
+    {
+        this._state = _state;
+        if (_state == PlayerState.normal)
+        {
+            _seedingCam.gameObject.SetActive(false);
+            _normalCam.gameObject.SetActive(true);
+        }
+        else if (_state == PlayerState.seeding)
+        {
+            _seedingCam.gameObject.SetActive(true);
+            _normalCam.gameObject.SetActive(false);
         }
     }
 }

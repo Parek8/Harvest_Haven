@@ -11,6 +11,7 @@ public class Character_Stats : MonoBehaviour
     [field: SerializeField] public float pick_up_distance { get; private set; } = 1.2f;
     [field: SerializeField] public float attack_distance { get; private set; } = 1.2f;
     [field: SerializeField] public LayerMask destroyable_layers { get; private set; }
+    [field: SerializeField] public LayerMask plot_layers { get; private set; }
     [field: SerializeField] public float attack_damage { get; private set; } = 10f;
 
     [field: Header("Player Health Variables: ")]
@@ -20,6 +21,9 @@ public class Character_Stats : MonoBehaviour
     [field: SerializeField] public float max_food_points { get; private set; } = 10f;
     public float current_health_points { get; private set; } = 10f;
     public float current_food_points { get; private set; } = 10f;
+
+    private PlayerState _state = PlayerState.normal;
+    private Action<PlayerState> OnPlayerStateChange;
 
     private void Start()
     {
@@ -58,4 +62,12 @@ public class Character_Stats : MonoBehaviour
     {
         Reduce_Health(1.0f);
     }
+
+    public void Change_State()
+    {
+        _state = (_state == PlayerState.normal) ? PlayerState.seeding : PlayerState.normal;
+        OnPlayerStateChange?.Invoke(_state);
+    }
+    public void AddPlayerStateListener(Action<PlayerState> _listener) => this.OnPlayerStateChange += _listener;
+    public void RemovePlayerStateListener(Action<PlayerState> _listener) => this.OnPlayerStateChange -= _listener;
 }

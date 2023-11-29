@@ -57,3 +57,10 @@ public enum KeybindNames
     slot_8 = 56,
     slot_9 = 57,
 }
+
+public enum PlayerState
+{
+    seeding,
+    normal,
+    
+}

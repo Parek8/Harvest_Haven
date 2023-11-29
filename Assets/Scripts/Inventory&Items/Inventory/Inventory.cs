@@ -15,7 +15,7 @@ public class Inventory : MonoBehaviour
     Item _equipped_item;
     public Item Equipped_Item => _equipped_item;
     Action _slotChanged;
-
+    Character_Stats _stats;
     void Start()
     {
         Inventory_Slot[] tmp_array = FindObjectsByType<Inventory_Slot>(FindObjectsInactive.Include, FindObjectsSortMode.InstanceID);
@@ -28,6 +28,7 @@ public class Inventory : MonoBehaviour
 
         slots.Sort((item1, item2) => item1.slot_index.CompareTo(item2.slot_index));
 
+        _stats = GetComponent<Character_Stats>();
         LoadInventory();
         Clear_Item();
     }
@@ -72,6 +73,13 @@ public class Inventory : MonoBehaviour
         _equipped_item = item;
         _slotChanged?.Invoke();
         InstantiateItem();
+        if (item != null)
+        {
+            if (item.tool_type == Tool_Type.seeds)
+                _stats.Change_State(true);
+            else
+                _stats.Change_State(false);
+        }
     }
     private void InstantiateItem()
     {
@@ -80,7 +88,8 @@ public class Inventory : MonoBehaviour
         {
             Destroy(weaponPoint.GetChild(i).gameObject);
         }
-        Instantiate(_equipped_item.item_prefab, weaponPoint);
+        if(_equipped_item.item_prefab != null)
+            Instantiate(_equipped_item.item_prefab, weaponPoint);
     }
 
     public void Clear_Item()
@@ -104,5 +113,10 @@ public class Inventory : MonoBehaviour
         {
             slots[_index].Assign_Item(_inv[_index]);
         }
+    }
+
+    public bool IsEquippedItemTool()
+    {
+        return (_equipped_item.is_tool);
     }
 }

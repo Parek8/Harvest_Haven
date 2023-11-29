@@ -24,7 +24,6 @@ public class SaveManager : MonoBehaviour
             StreamWriter _w = new StreamWriter(_path);
 
             _w.WriteLine(_savedContent);
-            Debug.Log(_savedContent);
             _w.Close();
         }
         else
@@ -66,8 +65,6 @@ public class SaveManager : MonoBehaviour
     {
         string _path = Directory.GetCurrentDirectory() + _inventorySavePath;
 
-        Debug.Log(_path);
         SaveInventory();
-        Debug.Log(_path+"asdasdasdasd");
     }
 }

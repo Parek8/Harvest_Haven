@@ -109,7 +109,6 @@ public class GameManager : MonoBehaviour
     }
     private void LoadSettings()
     {
-        Debug.Log("Set List");
         foreach (KeybindNames key in Enum.GetValues(typeof(KeybindNames)))
         {
             if (!keybinds.ContainsKey(key))

@@ -25,7 +25,7 @@ public class Player_Movement : MonoBehaviour
         animator = GetComponent<Animator>();
         animator.SetFloat("Speed", stats.movement_speed);
 
-        Cursor.lockState = CursorLockMode.Locked;
+        GameManager.game_manager.Cursor_Needed(CursorLockMode.Locked);
     }
     void Update()
     {
@@ -44,15 +44,13 @@ public class Player_Movement : MonoBehaviour
             Animate("Idle", true);
             Animate("Moving", false);
         }
-        if (Input_Manager.GetCustomAxisRawDown("Attack"))
+        if (Input_Manager.GetCustomAxisRaw("Attack") != 0)
             Rotate(direction);
-        Debug.DrawRay(transform.position + Vector3.up, transform.forward*3, Color.red);
     }
     private void Move(Vector3 direction)
     {
         Vector3 move_dir = Quaternion.Euler(0, Rotate(direction), 0) * Vector3.forward;
         controller.Move(move_dir.normalized * stats.movement_speed * Time.deltaTime);
-        //Debug.Log("Moved");
     }
 
     private float Rotate(Vector3 direction)

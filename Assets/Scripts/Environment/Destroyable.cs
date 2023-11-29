@@ -33,14 +33,12 @@ public class Destroyable : MonoBehaviour
         this.hp -= damage;
         if (this.hp <= 0 )
         {
-            Debug.Log($"Destroyed {name}");
             Destroy(gameObject);
             Drop_Items();
         }
     }
     private IEnumerator Cycle()
     {
-        Debug.Log("start");
         while(true)
         {
             float dis = pl.Get_Distance(transform);

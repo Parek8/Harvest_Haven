@@ -12,13 +12,12 @@ public class Character_Behaviour : MonoBehaviour
     [field: SerializeField] UI_Behaviour inventory_screen;
     [field: SerializeField] List<Inventory_Slot> hotbar = new();
     [field: SerializeField] Camera _normalCam;
-    [field: SerializeField] Camera _seedingCam;
 
     Character_Stats stats;
     Inventory inventory;
     Animator animator;
     Player_Movement movement;
-    PlayerState _state;
+    PlayerState _state = PlayerState.normal;
 
     bool _isAttacking = false;
     public bool IsAttacking => _isAttacking;
@@ -50,7 +49,7 @@ public class Character_Behaviour : MonoBehaviour
         if(!_isAttacking)
         {
             bool att = Input_Manager.GetCustomAxisRawDown("Attack");
-            if (att)
+            if (att && inventory.IsEquippedItemTool())
             {
                 animator.SetTrigger("Attack");
                 Hit_Destroyable();
@@ -88,7 +87,6 @@ public class Character_Behaviour : MonoBehaviour
         Ray ray = new Ray(transform.position, transform.forward * stats.attack_distance);
         if (Physics.Raycast(ray, out info, stats.attack_distance, stats.destroyable_layers))
         {
-            Debug.Log($"Hit {info.transform.name}");
             Destroyable _hit = info.collider.GetComponent<Destroyable>();
             Item _eq_item = inventory.Equipped_Item;
             if (_hit.Compare_Tag(_eq_item.tool_type) && _eq_item.is_tool)
@@ -103,25 +101,32 @@ public class Character_Behaviour : MonoBehaviour
     private void Seed()
     {
         RaycastHit _hitInfo;
-        Ray _ray = new Ray(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector3.down * 100);
+        Vector3 _mousePos = Input.mousePosition;
+        //_mousePos.y = 100;
+        Ray _ray = Camera.main.ScreenPointToRay(_mousePos);
+        Debug.DrawRay(_mousePos, Vector3.down * 100, Color.cyan);
 
         if (Physics.Raycast(_ray, out _hitInfo, 100, stats.plot_layers))
         {
-
+            _hitInfo.collider.gameObject.GetComponent<MeshRenderer>().materials[0].color = Color.red;
         }
     }
     private void Change_Camera_Angle(PlayerState _state)
     {
         this._state = _state;
-        if (_state == PlayerState.normal)
+        if (_state == PlayerState.seeding)
         {
-            _seedingCam.gameObject.SetActive(false);
-            _normalCam.gameObject.SetActive(true);
+            _normalCam.transform.rotation = Quaternion.Euler(90, 0, 10);
+            _normalCam.transform.localPosition = new Vector3(10, 70, 10);
+            _normalCam.GetComponent<CinemachineBrain>().enabled = false;
+            transform.GetComponent<Player_Movement>().enabled = false;
+            GameManager.game_manager.Cursor_Needed(CursorLockMode.None);
         }
-        else if (_state == PlayerState.seeding)
+        else if (_state == PlayerState.normal)
         {
-            _seedingCam.gameObject.SetActive(true);
-            _normalCam.gameObject.SetActive(false);
+            _normalCam.GetComponent<CinemachineBrain>().enabled = true;
+            transform.GetComponent<Player_Movement>().enabled = true;
+            GameManager.game_manager.Cursor_Needed(CursorLockMode.Locked);
         }
     }
 }

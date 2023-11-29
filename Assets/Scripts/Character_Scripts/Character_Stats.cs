@@ -63,9 +63,9 @@ public class Character_Stats : MonoBehaviour
         Reduce_Health(1.0f);
     }
 
-    public void Change_State()
+    public void Change_State(bool isSeeding)
     {
-        _state = (_state == PlayerState.normal) ? PlayerState.seeding : PlayerState.normal;
+        _state = (isSeeding) ? PlayerState.seeding : PlayerState.normal;
         OnPlayerStateChange?.Invoke(_state);
     }
     public void AddPlayerStateListener(Action<PlayerState> _listener) => this.OnPlayerStateChange += _listener;

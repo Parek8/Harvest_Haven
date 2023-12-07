@@ -18,6 +18,7 @@ public class Character_Behaviour : MonoBehaviour
     Animator animator;
     Player_Movement movement;
     PlayerState _state = PlayerState.normal;
+    Plot _lastPlot;
 
     bool _isAttacking = false;
     public bool IsAttacking => _isAttacking;
@@ -104,12 +105,25 @@ public class Character_Behaviour : MonoBehaviour
         Vector3 _mousePos = Input.mousePosition;
         //_mousePos.y = 100;
         Ray _ray = Camera.main.ScreenPointToRay(_mousePos);
-        Debug.DrawRay(_mousePos, Vector3.down * 100, Color.cyan);
+
+        if (_lastPlot != null)
+            _lastPlot.Lowlight();
 
         if (Physics.Raycast(_ray, out _hitInfo, 100, stats.plot_layers))
         {
-            _hitInfo.collider.gameObject.GetComponent<MeshRenderer>().materials[0].color = Color.red;
+            Plot _plot = _hitInfo.collider.GetComponent<Plot>();
+            if (_plot != null)
+            {
+                _lastPlot = _plot;
+                _plot.Highlight();
+
+                if (Input_Manager.GetCustomAxisRawDown("Interact"))
+                {
+                    _plot.Plant(inventory.Equipped_Item.plantable_object);
+                }
+            }
         }
+            
     }
     private void Change_Camera_Angle(PlayerState _state)
     {

@@ -5,27 +5,49 @@ using System.Threading;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(MeshCollider))]
+[RequireComponent(typeof(MeshRenderer))]
 public class Destroyable : MonoBehaviour
 {
-
     [SerializeField] float max_hp = 20;
+    [SerializeField] List<Item> dropped_items;
+    [SerializeField] List<Tool_Type> types;
+
     [SerializeField] Gradient health_colors;
     [SerializeField] Image filled_health_bar;
     [SerializeField] UI_Behaviour obj_canvas;
-    [SerializeField] List<Item> dropped_items;
-    [SerializeField] List<Tool_Type> types;
+    [field: SerializeField] GameObject CanvasPrefab;
 
     float hp = 20;
     Player_Movement pl;
     Transform environment_parent;
-    Transform canvas_t;
+
+    static GameObject _canvasPrefab;
+    static Gradient _gradient;
+    static Image _barPrefab;
+    private void Awake()
+    {
+        if (_canvasPrefab == null && CanvasPrefab != null)
+            _canvasPrefab = CanvasPrefab;
+
+        if (obj_canvas == null)
+        {
+            obj_canvas = ((GameObject)Instantiate(_canvasPrefab, transform)).GetComponent<UI_Behaviour>();
+            obj_canvas.GetComponent<Canvas>().worldCamera = Camera.main;
+        }
+
+        if (_gradient == null && health_colors != null)
+            _gradient = health_colors;
+
+        if (_barPrefab == null && filled_health_bar != null)
+            _barPrefab = filled_health_bar;
+    }
     private void Start()
     {
         hp = max_hp;
         pl = GameManager.game_manager.player_transform.GetComponent<Player_Movement>();
-        StartCoroutine("Cycle");
+        StartCoroutine("Cycle");        
         environment_parent = GameManager.game_manager.environment_parent;
-        canvas_t = obj_canvas.transform;
     }
 
     public void Damage(float damage)
@@ -66,7 +88,7 @@ public class Destroyable : MonoBehaviour
     }
     private Color Get_Color(float percentage)
     {
-        return health_colors.Evaluate(percentage);
+        return _gradient.Evaluate(percentage);
     }
 
     private void Drop_Items()
@@ -95,11 +117,37 @@ public class Destroyable : MonoBehaviour
         Quaternion rot = Quaternion.LookRotation(transform.position-pl.Get_Position());
         rot.z = 0;
         rot.x = 0;
-        canvas_t.rotation = rot;
+        obj_canvas.transform.rotation = rot;
     }
 
     public bool Compare_Tag(Tool_Type type)
     {
         return types.Contains(type);
+    }
+
+    public void SetupObject(List<Item> dropped_items, List<Tool_Type> types, float max_hp = 20)
+    {
+        this.dropped_items = dropped_items;
+        this.types = types;
+        this.max_hp = max_hp;
+        this.hp = max_hp;
+
+        filled_health_bar = FindFilled(transform, "Filled").GetComponent<Image>();
+    }
+    Transform FindFilled(Transform parent, string name)
+    {
+        Transform result = parent.Find(name);
+
+        if (result != null)
+            return result;
+
+        foreach (Transform child in parent)
+        {
+            result = FindFilled(child, name);
+            if (result != null)
+                return result;
+        }
+
+        return null;
     }
 }

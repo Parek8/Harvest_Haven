@@ -62,4 +62,5 @@ public enum PlayerState
 {
     seeding,
     normal,
+    watering,
 }

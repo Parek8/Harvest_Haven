@@ -61,7 +61,14 @@ public class Character_Behaviour : MonoBehaviour
             GameManager.game_manager.saveManager.SaveInventory();
 
         if (_state == PlayerState.seeding)
-            Seed();
+            SeedOrWater();
+        else if (_state == PlayerState.watering)
+            SeedOrWater();
+
+        if (Input.GetKeyDown(KeyCode.Space))
+            Day_Cycle.Next_Day();
+
+        Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * stats.attack_distance, Color.red);
     }
     public void StartAttacking()
     {
@@ -85,7 +92,8 @@ public class Character_Behaviour : MonoBehaviour
     private void Hit_Destroyable()
     {
         RaycastHit info;
-        Ray ray = new Ray(transform.position, transform.forward * stats.attack_distance);
+        Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward * stats.attack_distance);
+
         if (Physics.Raycast(ray, out info, stats.attack_distance, stats.destroyable_layers))
         {
             Destroyable _hit = info.collider.GetComponent<Destroyable>();
@@ -99,7 +107,7 @@ public class Character_Behaviour : MonoBehaviour
                 Debug.Log("Wrong type");
         }
     }
-    private void Seed()
+    private void SeedOrWater()
     {
         RaycastHit _hitInfo;
         Vector3 _mousePos = Input.mousePosition;
@@ -119,7 +127,10 @@ public class Character_Behaviour : MonoBehaviour
 
                 if (Input_Manager.GetCustomAxisRawDown("Interact"))
                 {
-                    _plot.Plant(inventory.Equipped_Item.plantable_object);
+                    if (_state == PlayerState.seeding)
+                        _plot.Plant(inventory.Equipped_Item.plantable_object);
+                    else if (_state == PlayerState.watering)
+                        _plot.Water(true);
                 }
             }
         }
@@ -128,7 +139,7 @@ public class Character_Behaviour : MonoBehaviour
     private void Change_Camera_Angle(PlayerState _state)
     {
         this._state = _state;
-        if (_state == PlayerState.seeding)
+        if (_state == PlayerState.seeding || _state == PlayerState.watering)
         {
             _normalCam.transform.rotation = Quaternion.Euler(90, 0, 10);
             _normalCam.transform.localPosition = new Vector3(10, 70, 10);

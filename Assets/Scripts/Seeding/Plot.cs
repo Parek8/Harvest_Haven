@@ -80,7 +80,7 @@ public class Plot : MonoBehaviour
         stages.RemoveAt(0);
 
         if (stages.Count <= 0 && times.Count <= 0)
-            _stage.AddComponent<Destroyable>().SetupObject((List<Item>)plantedPlant.DroppedItems, new List<Tool_Type> { Tool_Type.pickaxe }, 1);
+            _stage.AddComponent<Harvestable>().Setup((List<Item>)plantedPlant.DroppedItems);
     }
     private Vector3 GetGameObjectOffset()
     {

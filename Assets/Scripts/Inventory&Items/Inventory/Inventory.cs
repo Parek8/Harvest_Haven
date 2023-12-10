@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using TMPro;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
 
@@ -36,15 +37,37 @@ public class Inventory : MonoBehaviour
     {
         if (item != null)
         {
+            item.AddCount();
             Inventory_Slot slot = Find_First_Slot(item);
             slot.Assign_Item(item);
         }
         else
             Debug.LogError("Picked up null!");
     }
+
+    public bool Remove(Item item)
+    {
+        if (item != null && ContainsItem(item))
+        {
+            slots.Find(slot => slot.Get_Item() == item).DropItem();
+            return true;
+        }
+        return false;
+    }
+    
+    public bool ContainsItem(Item item)
+    {
+        Inventory_Slot _occupiedSlot = slots.Find(slot => slot.Get_Item() == item);
+
+        return (_occupiedSlot != null);
+    }
     private Inventory_Slot Find_First_Slot(Item item)
     {
-        Inventory_Slot used_slot = slots.Find(slot => slot.Get_Item() == item);
+        Inventory_Slot used_slot;
+        if (item.is_stackable)
+            used_slot = slots.Find(slot => slot.Get_Item() == item);
+        else
+            used_slot = slots.Find(slot => slot.Get_Item() == null);
 
         if (used_slot == null)
             used_slot = slots.Find(slot => slot.Get_Item() == null);
@@ -72,14 +95,16 @@ public class Inventory : MonoBehaviour
     {
         _equipped_item = item;
         _slotChanged?.Invoke();
-        InstantiateItem();
         if (item != null)
         {
+            InstantiateItem();
+
             if (item.tool_type == Tool_Type.seeds)
                 _stats.Change_State(true);
-            else
-                _stats.Change_State(false);
         }
+        else
+            _stats.Change_State(false);
+
     }
     private void InstantiateItem()
     {

@@ -17,7 +17,6 @@ public class Inventory_Slot : MonoBehaviour, IPointerDownHandler, IPointerUpHand
 
     bool is_dragging = false;
     Vector3 item_image_initial_position;
-    Transform image_parent;
     Image background;
     void Start()
     {
@@ -33,6 +32,9 @@ public class Inventory_Slot : MonoBehaviour, IPointerDownHandler, IPointerUpHand
     {
         if (is_dragging)
             item_image.transform.position = Input.mousePosition;
+        if (item != null)
+            if (item.count <= 0)
+                Clear_Item();
         Update_UI();
     }
     public void OnPointerDown(PointerEventData eventData)
@@ -103,7 +105,10 @@ public class Inventory_Slot : MonoBehaviour, IPointerDownHandler, IPointerUpHand
     {
         this.item = null;
     }
-
+    public void DropItem()
+    {
+        item.RemoveCount();
+    }
     public void Update_UI()
     {
         if(this.item != null)

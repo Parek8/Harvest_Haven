@@ -2,6 +2,7 @@ using Cinemachine;
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor.SceneTemplate;
 using UnityEngine;
 
@@ -22,6 +23,8 @@ public class Character_Behaviour : MonoBehaviour
 
     bool _isAttacking = false;
     public bool IsAttacking => _isAttacking;
+
+    private List<Interactable> interactables = new();
     private void Start()
     {
         stats = GetComponent<Character_Stats>();
@@ -60,15 +63,17 @@ public class Character_Behaviour : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
             GameManager.game_manager.saveManager.SaveInventory();
 
-        if (_state == PlayerState.seeding)
-            SeedOrWater();
-        else if (_state == PlayerState.watering)
+        if (_state == PlayerState.seeding || _state == PlayerState.watering)
             SeedOrWater();
 
         if (Input.GetKeyDown(KeyCode.Space))
             Day_Cycle.Next_Day();
 
-        Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * stats.attack_distance, Color.red);
+        SortInteractablesList();
+
+        if (_state == PlayerState.normal && Input_Manager.GetCustomAxisRawDown("Interact") && interactables.Count > 0)
+            interactables[0].Interact();
+
     }
     public void StartAttacking()
     {
@@ -152,6 +157,29 @@ public class Character_Behaviour : MonoBehaviour
             _normalCam.GetComponent<CinemachineBrain>().enabled = true;
             transform.GetComponent<Player_Movement>().enabled = true;
             GameManager.game_manager.Cursor_Needed(CursorLockMode.Locked);
+        }
+    }
+
+    public void AddToInteractableList(Interactable _interactable)
+    {
+        if (!interactables.Contains(_interactable))
+            interactables.Add(_interactable);
+    }
+    public void RemoveFromInteractableList(Interactable _interactable)
+    {
+        if (interactables.Contains(_interactable))
+            interactables.Remove(_interactable);
+    }
+
+    private void SortInteractablesList()
+    {
+        float _dis = float.MaxValue;
+        Interactable _closest = null;
+        for (int i = 0; i < interactables.Count; i++)
+        {
+            Interactable _h = interactables[i];
+            if (Vector3.Distance(transform.position, _h.transform.position) < _dis)
+                _closest = _h;
         }
     }
 }

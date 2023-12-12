@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -34,9 +35,11 @@ public class GameManager : MonoBehaviour
     [field: SerializeField] public Transform environment_parent { get; private set; }
     [field: SerializeField] public Dictionary<int, Item> _allItems = new Dictionary<int, Item>();
     [field: SerializeField] public SaveManager saveManager { get; private set; }
+    [field: SerializeField] public Button ButtonPrefab { get; private set; }
 
     public void Cursor_Needed(CursorLockMode lock_mode)
     {
+        Debug.Log(lock_mode);
         if (Cursor.lockState != lock_mode)
             Cursor.lockState = lock_mode;
     }

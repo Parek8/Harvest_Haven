@@ -34,12 +34,10 @@ public class UI_Behaviour : MonoBehaviour
     {
         gameObject.SetActive(false);
         is_visible = false;
-        GameManager.game_manager.Cursor_Needed(CursorLockMode.Locked);
     }
     public void _Show()
     {
         gameObject.SetActive(true);
         is_visible = true;
-        GameManager.game_manager.Cursor_Needed(CursorLockMode.None);
     }
 }

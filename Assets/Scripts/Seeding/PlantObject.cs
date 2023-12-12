@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "/Plants/Plant")]
+[CreateAssetMenu(fileName = "Plants/PlantObject")]
 public class PlantObject : ScriptableObject
 {
     [field: SerializeField] List<uint> times = new List<uint>();

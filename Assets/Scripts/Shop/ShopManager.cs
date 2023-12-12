@@ -11,8 +11,9 @@ public class ShopManager : Talkable
     [field: SerializeField] GameObject SellWindow;
     [field: SerializeField] GameObject ShopButton;
 
-    private void Start()
+    private new void Start()
     {
+        base.Start();
         foreach (Item buy in BuyableItems)
             Instantiate(ShopButton, BuyWindow.transform).GetComponent<ShopButton>().SetupButton(global::ShopButton.ShopButtonAction.buy, buy);
 

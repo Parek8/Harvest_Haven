@@ -40,4 +40,15 @@ public class UI_Behaviour : MonoBehaviour
         gameObject.SetActive(true);
         is_visible = true;
     }
+
+    public void _CursorNeededNone()
+    {
+        GameManager.game_manager.Cursor_Needed(CursorLockMode.None);
+    }
+    public void _CursorNeededLocked()
+    {
+        GameManager.game_manager.Cursor_Needed(CursorLockMode.Locked);
+    }
+
+
 }

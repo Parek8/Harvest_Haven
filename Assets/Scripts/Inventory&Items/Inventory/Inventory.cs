@@ -142,6 +142,7 @@ public class Inventory : MonoBehaviour
 
     public bool IsEquippedItemTool()
     {
+        if (_equipped_item == null) return false;
         return (_equipped_item.is_tool);
     }
 }

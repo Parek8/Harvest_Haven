@@ -1,0 +1,1463 @@
+Using pre-set license
+Built from '2022.3/staging' branch; Version is '2022.3.2f1 (d74737c6db50) revision 14108471'; Using compiler version '192829333'; Build Type 'Release'
+OS: 'Windows 10  (10.0.19045) 64bit Professional' Language: 'cs' Physical Memory: 16307 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\2022.3.2f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker2
+-projectPath
+C:/Users/Office/Projects/Unity/_Harvest_Haven
+-logFile
+Logs/AssetImportWorker2.log
+-srvPort
+55960
+Successfully changed project path to: C:/Users/Office/Projects/Unity/_Harvest_Haven
+C:/Users/Office/Projects/Unity/_Harvest_Haven
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Player connection [23176] Host "[IP] 192.168.1.14 [Port] 0 [Flags] 2 [Guid] 3850924518 [EditorId] 3850924518 [Version] 1048832 [Id] WindowsEditor(7,Zabiják) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+
+Player connection [23176] Host "[IP] 192.168.1.14 [Port] 0 [Flags] 2 [Guid] 3850924518 [EditorId] 3850924518 [Version] 1048832 [Id] WindowsEditor(7,Zabiják) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+
+Refreshing native plugins compatible for Editor in 13.03 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2022.3.2f1 (d74737c6db50)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2022.3.2f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/Office/Projects/Unity/_Harvest_Haven/Assets
+GfxDevice: creating device client; threaded=0; jobified=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 3070 (ID=0x2484)
+    Vendor:   NVIDIA
+    VRAM:     8032 MB
+    Driver:   31.0.15.4617
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2022.3.2f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2022.3.2f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/2022.3.2f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56728
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2022.3.2f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2022.3.2f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.013458 seconds.
+- Loaded All Assemblies, in  0.321 seconds
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.222 seconds
+Domain Reload Profiling: 541ms
+	BeginReloadAssembly (85ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (0ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (1ms)
+	RebuildCommonClasses (32ms)
+	RebuildNativeTypeToScriptingClass (11ms)
+	initialDomainReloadingComplete (63ms)
+	LoadAllAssembliesAndSetupDomain (128ms)
+		LoadAssemblies (82ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (120ms)
+			TypeCache.Refresh (120ms)
+				TypeCache.ScanAssembly (109ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (0ms)
+	FinalizeReload (223ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (173ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (11ms)
+			SetLoadedEditorAssemblies (4ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (2ms)
+			ProcessInitializeOnLoadAttributes (115ms)
+			ProcessInitializeOnLoadMethodAttributes (41ms)
+			AfterProcessingInitializeOnLoad (0ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (0ms)
+========================================================================
+Worker process is ready to serve import requests
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\Office\Projects\Unity\_Harvest_Haven\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image C:\Users\Office\Projects\Unity\_Harvest_Haven\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+- Loaded All Assemblies, in  0.736 seconds
+Refreshing native plugins compatible for Editor in 4.91 ms, found 3 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.541 seconds
+Domain Reload Profiling: 1272ms
+	BeginReloadAssembly (122ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (5ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (20ms)
+	RebuildCommonClasses (31ms)
+	RebuildNativeTypeToScriptingClass (11ms)
+	initialDomainReloadingComplete (43ms)
+	LoadAllAssembliesAndSetupDomain (524ms)
+		LoadAssemblies (298ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (281ms)
+			TypeCache.Refresh (253ms)
+				TypeCache.ScanAssembly (242ms)
+			ScanForSourceGeneratedMonoScriptInfo (18ms)
+			ResolveRequiredComponents (9ms)
+	FinalizeReload (541ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (403ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (8ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (75ms)
+			ProcessInitializeOnLoadAttributes (251ms)
+			ProcessInitializeOnLoadMethodAttributes (55ms)
+			AfterProcessingInitializeOnLoad (11ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (7ms)
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
+Refreshing native plugins compatible for Editor in 6.78 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 5249 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 97 unused Assets / (2.0 MB). Loaded Objects now: 5690.
+Memory consumption went from 221.0 MB to 219.0 MB.
+Total: 4.089900 ms (FindLiveObjects: 0.495800 ms CreateObjectMapping: 0.148100 ms MarkObjects: 2.778800 ms  DeleteObjects: 0.666200 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 30295.484723 seconds.
+  path: Assets/Materials/Models/Textures/Maps/Carrot/CarrotGreenTextureNormal.png
+  artifactKey: Guid(70012f4472403f045802a587fd682b02) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Models/Textures/Maps/Carrot/CarrotGreenTextureNormal.png using Guid(70012f4472403f045802a587fd682b02) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8d168e00c7b8af8728b80e31e40c05a8') in 0.017848 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 3.327340 seconds.
+  path: Assets/Materials/Models/Textures/Maps/Carrot/CarrotOrangeTextureNormal.png
+  artifactKey: Guid(83bf93a95acadb24d900b104c05ca81e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Models/Textures/Maps/Carrot/CarrotOrangeTextureNormal.png using Guid(83bf93a95acadb24d900b104c05ca81e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bc6a628d7b749ff606a664743c6791b2') in 0.005113 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 75.507766 seconds.
+  path: Assets/Materials/Models/Textures/Maps/Potato/PotatoTexture.png
+  artifactKey: Guid(ff81db75f658e2b48b02611503321849) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Models/Textures/Maps/Potato/PotatoTexture.png using Guid(ff81db75f658e2b48b02611503321849) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fd85beeb36b60107c108012630b0b416') in 0.002589 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 5.463151 seconds.
+  path: Assets/Materials/Models/Textures/Maps/Potato/PotatoTextureNormal.png
+  artifactKey: Guid(762e09be84461894d9ee38fe6f34f798) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Models/Textures/Maps/Potato/PotatoTextureNormal.png using Guid(762e09be84461894d9ee38fe6f34f798) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '832a64d46a749368a14ac9c8557e80c9') in 0.001778 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 18.632948 seconds.
+  path: Assets/PlayerPrefsEditor/Editor Resources/watching.png
+  artifactKey: Guid(ed8c91adb8fc54f41aaff0986b083281) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PlayerPrefsEditor/Editor Resources/watching.png using Guid(ed8c91adb8fc54f41aaff0986b083281) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '798f5a4df81a0351c0fb1946639a1e04') in 0.001610 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 92.837626 seconds.
+  path: Assets/Materials/Models/Textures/Maps/Potato/PotatoTexture.png
+  artifactKey: Guid(ff81db75f658e2b48b02611503321849) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Models/Textures/Maps/Potato/PotatoTexture.png using Guid(ff81db75f658e2b48b02611503321849) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f1b1f6cb8c2b643a626551f8d18004de') in 0.001823 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 2.340847 seconds.
+  path: Assets/Materials/Models/Textures/Maps/Potato/PotatoTexture.png
+  artifactKey: Guid(ff81db75f658e2b48b02611503321849) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Models/Textures/Maps/Potato/PotatoTexture.png using Guid(ff81db75f658e2b48b02611503321849) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f9dad0e98951812d7851a750eed33396') in 0.001656 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 1.609793 seconds.
+  path: Assets/Materials/Models/Textures/Maps/Potato/PotatoTexture.png
+  artifactKey: Guid(ff81db75f658e2b48b02611503321849) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Models/Textures/Maps/Potato/PotatoTexture.png using Guid(ff81db75f658e2b48b02611503321849) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b6a617ce8eb4758ddde2a8e4e5823238') in 0.001693 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 2.235188 seconds.
+  path: Assets/Materials/Models/Textures/Maps/Potato/PotatoTexture.png
+  artifactKey: Guid(ff81db75f658e2b48b02611503321849) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Models/Textures/Maps/Potato/PotatoTexture.png using Guid(ff81db75f658e2b48b02611503321849) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '626d630c60291f4cfd7bcbccde501e30') in 0.001860 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 2.261517 seconds.
+  path: Assets/Materials/Models/Textures/Maps/Potato/PotatoTexture.png
+  artifactKey: Guid(ff81db75f658e2b48b02611503321849) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Models/Textures/Maps/Potato/PotatoTexture.png using Guid(ff81db75f658e2b48b02611503321849) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a2f62c60fa44520b8d8464399afea1a8') in 0.002752 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 2.556818 seconds.
+  path: Assets/Materials/Models/Textures/Maps/Potato/PotatoTexture.png
+  artifactKey: Guid(ff81db75f658e2b48b02611503321849) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Models/Textures/Maps/Potato/PotatoTexture.png using Guid(ff81db75f658e2b48b02611503321849) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7c8e8973901ae3f2bb5b4b10aa8ed7da') in 0.001419 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 2.223071 seconds.
+  path: Assets/Materials/Models/Textures/Maps/Potato/PotatoTexture.png
+  artifactKey: Guid(ff81db75f658e2b48b02611503321849) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Models/Textures/Maps/Potato/PotatoTexture.png using Guid(ff81db75f658e2b48b02611503321849) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '93bf89833b959ffbc90239cd108f11bb') in 0.002073 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 1.995765 seconds.
+  path: Assets/Materials/Models/Textures/Maps/Potato/PotatoTexture.png
+  artifactKey: Guid(ff81db75f658e2b48b02611503321849) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Models/Textures/Maps/Potato/PotatoTexture.png using Guid(ff81db75f658e2b48b02611503321849) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ad5570b5881378c3c62e05638ea048c1') in 0.001874 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 2.116693 seconds.
+  path: Assets/Materials/Models/Textures/Maps/Potato/PotatoTexture.png
+  artifactKey: Guid(ff81db75f658e2b48b02611503321849) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Models/Textures/Maps/Potato/PotatoTexture.png using Guid(ff81db75f658e2b48b02611503321849) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '39eed82cd2d21c4b8eaadf59f396860e') in 0.003823 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 2.601352 seconds.
+  path: Assets/Materials/Models/Textures/Maps/Potato/PotatoTexture.png
+  artifactKey: Guid(ff81db75f658e2b48b02611503321849) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Models/Textures/Maps/Potato/PotatoTexture.png using Guid(ff81db75f658e2b48b02611503321849) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c800f38e9a94c5496402d41e580a355b') in 0.001381 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 4.142132 seconds.
+  path: Assets/Materials/Models/Textures/Maps/Potato/PotatoTexture.png
+  artifactKey: Guid(ff81db75f658e2b48b02611503321849) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Models/Textures/Maps/Potato/PotatoTexture.png using Guid(ff81db75f658e2b48b02611503321849) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b6e9caa351ba6a2276bfe29cd09610f2') in 0.002051 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 1.843946 seconds.
+  path: Assets/Materials/Models/Textures/Maps/Potato/PotatoTexture.png
+  artifactKey: Guid(ff81db75f658e2b48b02611503321849) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Models/Textures/Maps/Potato/PotatoTexture.png using Guid(ff81db75f658e2b48b02611503321849) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1ca9a8ed254fd9cf904199b55e1e29fa') in 0.001592 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 194.385047 seconds.
+  path: Assets/TutorialInfo/Icons/URP.png
+  artifactKey: Guid(727a75301c3d24613a3ebcec4a24c2c8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TutorialInfo/Icons/URP.png using Guid(727a75301c3d24613a3ebcec4a24c2c8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '55cfefed6eae5251b3b935f07dd41c65') in 0.002871 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 8.849521 seconds.
+  path: Assets/Materials/Models/Materials/CarrotGreenMaterial.mat
+  artifactKey: Guid(3ef31b24477aad845bc6e3be0c29c147) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Models/Materials/CarrotGreenMaterial.mat using Guid(3ef31b24477aad845bc6e3be0c29c147) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ee4ddb303b35a0475fc57585be3a1db0') in 0.001391 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.005431 seconds.
+  path: Assets/Materials/Models/Materials/PotatoMaterial.mat
+  artifactKey: Guid(74142d433b4fa2a46a6f10ec8ff203e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Models/Materials/PotatoMaterial.mat using Guid(74142d433b4fa2a46a6f10ec8ff203e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd252aac3601fe838e6cfc411d2c0f736') in 0.002581 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 7440.893717 seconds.
+  path: Assets/Materials/Models/Textures/Maps/Potato/PotatoTexture.png
+  artifactKey: Guid(ff81db75f658e2b48b02611503321849) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Models/Textures/Maps/Potato/PotatoTexture.png using Guid(ff81db75f658e2b48b02611503321849) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '036b4a127c298a74c9a03aa87f4378cf') in 0.018552 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 36.995155 seconds.
+  path: Assets/Materials/Models/Textures/Maps/Potato/PotatoTexture.png
+  artifactKey: Guid(ff81db75f658e2b48b02611503321849) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Models/Textures/Maps/Potato/PotatoTexture.png using Guid(ff81db75f658e2b48b02611503321849) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2d9375934442cb6d1c6f03a78fb5ec18') in 0.007549 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 2.844233 seconds.
+  path: Assets/Materials/Models/Textures/Maps/Potato/PotatoTexture.png
+  artifactKey: Guid(ff81db75f658e2b48b02611503321849) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Models/Textures/Maps/Potato/PotatoTexture.png using Guid(ff81db75f658e2b48b02611503321849) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd23c680a453a7f85c9666a4ecac7acc3') in 0.002065 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 4.586027 seconds.
+  path: Assets/Materials/Models/Textures/Maps/Potato/PotatoTexture.png
+  artifactKey: Guid(ff81db75f658e2b48b02611503321849) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Models/Textures/Maps/Potato/PotatoTexture.png using Guid(ff81db75f658e2b48b02611503321849) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0a94df5243ec8049b2c3a9e28378a5b3') in 0.006091 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 2.222984 seconds.
+  path: Assets/Materials/Models/Textures/Maps/Potato/PotatoTexture.png
+  artifactKey: Guid(ff81db75f658e2b48b02611503321849) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Models/Textures/Maps/Potato/PotatoTexture.png using Guid(ff81db75f658e2b48b02611503321849) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6b97df7843788cc1d1b4dfe4f167aacd') in 0.013114 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 3.675601 seconds.
+  path: Assets/Materials/Models/Textures/Maps/Potato/PotatoTexture.png
+  artifactKey: Guid(ff81db75f658e2b48b02611503321849) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Models/Textures/Maps/Potato/PotatoTexture.png using Guid(ff81db75f658e2b48b02611503321849) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a982d8da3057d792e8a433db956071cf') in 0.002491 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 73.891886 seconds.
+  path: Assets/Prefabs/Seeding/Carrot/Stages/CarrotStage1.prefab
+  artifactKey: Guid(dc623ea01efe1e448b62380d6bcd8f20) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Seeding/Carrot/Stages/CarrotStage1.prefab using Guid(dc623ea01efe1e448b62380d6bcd8f20) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5f2f09f48f856509a9e0dda5c81b2186') in 0.010000 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 6
+========================================================================
+Received Import Request.
+  Time since last request: 1.827993 seconds.
+  path: Assets/Prefabs/Seeding/Carrot/Stages/CarrotStage2.prefab
+  artifactKey: Guid(0df507f4eb1e3be4298efe27857ea91c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Seeding/Carrot/Stages/CarrotStage2.prefab using Guid(0df507f4eb1e3be4298efe27857ea91c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2ecc07086871ff3c94a0ddbc254c1cb2') in 0.002400 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 6
+========================================================================
+Received Import Request.
+  Time since last request: 2.086148 seconds.
+  path: Assets/Prefabs/Seeding/Carrot/Stages/CarrotStage3.prefab
+  artifactKey: Guid(77e20fb38fb9c0a4faecb5793ce4d269) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Seeding/Carrot/Stages/CarrotStage3.prefab using Guid(77e20fb38fb9c0a4faecb5793ce4d269) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '36e239a425cea7ecbb32cd43fb67bda9') in 0.002519 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 6
+========================================================================
+Received Import Request.
+  Time since last request: 4.917510 seconds.
+  path: Assets/Prefabs/Seeding/Carrot/Stages/Carrot.prefab
+  artifactKey: Guid(d62909e13af5e6a4199775bedf4246e0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Seeding/Carrot/Stages/Carrot.prefab using Guid(d62909e13af5e6a4199775bedf4246e0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b623cfcf94866ff5acd4c41c67e287f3') in 0.002449 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 6
+========================================================================
+Received Import Request.
+  Time since last request: 20.520028 seconds.
+  path: Assets/Scripts/Inventory&Items/Items/Carrot.asset
+  artifactKey: Guid(0b036f61d08115d4a9207bad68625937) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Inventory&Items/Items/Carrot.asset using Guid(0b036f61d08115d4a9207bad68625937) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9d82df1462bf29022980b5de8f9eab80') in 0.010977 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 44.186804 seconds.
+  path: Assets/Scripts/Inventory&Items/Items/Carrot.asset
+  artifactKey: Guid(0b036f61d08115d4a9207bad68625937) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Inventory&Items/Items/Carrot.asset using Guid(0b036f61d08115d4a9207bad68625937) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '050197744d9b385de4401964b4d0c0e4') in 0.032130 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 13
+========================================================================
+Received Import Request.
+  Time since last request: 0.262036 seconds.
+  path: Assets/Prefabs/Seeding/Carrot/Carrot.asset
+  artifactKey: Guid(f96884cc6f71c514f8624f2c095d2b37) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Seeding/Carrot/Carrot.asset using Guid(f96884cc6f71c514f8624f2c095d2b37) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7f0780b4e142c4d85fda78ea3f178941') in 0.002973 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 12
+========================================================================
+Received Import Request.
+  Time since last request: 3.774347 seconds.
+  path: Assets/Prefabs/Seeding/Carrot/Carrot.asset
+  artifactKey: Guid(f96884cc6f71c514f8624f2c095d2b37) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Seeding/Carrot/Carrot.asset using Guid(f96884cc6f71c514f8624f2c095d2b37) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '59ed5a9ab6ff9d18b28334dd9e434c4b') in 0.001852 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 23.331037 seconds.
+  path: Assets/Prefabs/Seeding/Carrot/Carrot.asset
+  artifactKey: Guid(f96884cc6f71c514f8624f2c095d2b37) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Seeding/Carrot/Carrot.asset using Guid(f96884cc6f71c514f8624f2c095d2b37) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '831fb7166db2490adcee74b226f71367') in 0.003965 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 20
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\Office\Projects\Unity\_Harvest_Haven\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image C:\Users\Office\Projects\Unity\_Harvest_Haven\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+- Loaded All Assemblies, in  3.024 seconds
+Refreshing native plugins compatible for Editor in 6.39 ms, found 3 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in 11.664 seconds
+Domain Reload Profiling: 14683ms
+	BeginReloadAssembly (401ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (19ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (190ms)
+	RebuildCommonClasses (127ms)
+	RebuildNativeTypeToScriptingClass (12ms)
+	initialDomainReloadingComplete (40ms)
+	LoadAllAssembliesAndSetupDomain (2438ms)
+		LoadAssemblies (2088ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (463ms)
+			TypeCache.Refresh (444ms)
+				TypeCache.ScanAssembly (418ms)
+			ScanForSourceGeneratedMonoScriptInfo (6ms)
+			ResolveRequiredComponents (13ms)
+	FinalizeReload (11664ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (425ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (10ms)
+			SetLoadedEditorAssemblies (4ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (87ms)
+			ProcessInitializeOnLoadAttributes (253ms)
+			ProcessInitializeOnLoadMethodAttributes (60ms)
+			AfterProcessingInitializeOnLoad (11ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (11ms)
+Refreshing native plugins compatible for Editor in 6.25 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 5064 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 61 unused Assets / (2.0 MB). Loaded Objects now: 5708.
+Memory consumption went from 187.6 MB to 185.6 MB.
+Total: 5.290800 ms (FindLiveObjects: 0.753300 ms CreateObjectMapping: 0.190400 ms MarkObjects: 3.687700 ms  DeleteObjects: 0.657600 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 88.404297 seconds.
+  path: Assets/Prefabs/Drops/Log_Drop.prefab
+  artifactKey: Guid(d38cc5ad875b4694e84a02075b39dd54) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Drops/Log_Drop.prefab using Guid(d38cc5ad875b4694e84a02075b39dd54) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bcfaa15cc7fec8076d98a9dba2bdef49') in 0.064336 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 11
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Scripts/Inventory&Items/Items/Berry.asset
+  artifactKey: Guid(311285adbaef5b64798e64515718a47f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Inventory&Items/Items/Berry.asset using Guid(311285adbaef5b64798e64515718a47f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '63d55d0cc7580ae8c528a327febfaabd') in 0.003026 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 11
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Scripts/Inventory&Items/Items/Potato.asset
+  artifactKey: Guid(098ba32f8c7cee342a4c12cc89920e1a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Inventory&Items/Items/Potato.asset using Guid(098ba32f8c7cee342a4c12cc89920e1a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '46ebd996a6570b150ddb01b20dbdf4e2') in 0.001767 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Prefabs/Drops/Berry_Drop.prefab
+  artifactKey: Guid(571d12937cf04744e8530be508d1fbd2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Drops/Berry_Drop.prefab using Guid(571d12937cf04744e8530be508d1fbd2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a1a9279eef9cd0d9e370e72a2f5b552c') in 0.003073 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 11
+========================================================================
+Received Import Request.
+  Time since last request: 6.285364 seconds.
+  path: Assets/Scripts/Inventory&Items/Items/Potato.asset
+  artifactKey: Guid(098ba32f8c7cee342a4c12cc89920e1a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Inventory&Items/Items/Potato.asset using Guid(098ba32f8c7cee342a4c12cc89920e1a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f986d6ea8a5c81dd2fc57100a854b95b') in 0.001334 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 5.146290 seconds.
+  path: Assets/Scripts/Inventory&Items/Items/Tomato.asset
+  artifactKey: Guid(c80732dc9fb7fcc4e855f179193bd9fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Inventory&Items/Items/Tomato.asset using Guid(c80732dc9fb7fcc4e855f179193bd9fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '884f0ee8a35bde69a018b56e4c483adf') in 0.001215 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 6.222687 seconds.
+  path: Assets/Scripts/Inventory&Items/Items/Tomato.asset
+  artifactKey: Guid(c80732dc9fb7fcc4e855f179193bd9fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Inventory&Items/Items/Tomato.asset using Guid(c80732dc9fb7fcc4e855f179193bd9fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0d0f429cfa541c57f996ec5b0fea4c03') in 0.006930 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 5.057266 seconds.
+  path: Assets/Scripts/Inventory&Items/Items/Tomato.asset
+  artifactKey: Guid(c80732dc9fb7fcc4e855f179193bd9fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Inventory&Items/Items/Tomato.asset using Guid(c80732dc9fb7fcc4e855f179193bd9fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5d353aee45d6362c4d3ef717221c8a5c') in 0.001522 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 3.292105 seconds.
+  path: Assets/Scripts/Inventory&Items/Items/Tomato.asset
+  artifactKey: Guid(c80732dc9fb7fcc4e855f179193bd9fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Inventory&Items/Items/Tomato.asset using Guid(c80732dc9fb7fcc4e855f179193bd9fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c034550ce1b2ae5dee07de928baa5776') in 0.001471 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 23.838172 seconds.
+  path: Assets/Scripts/Inventory&Items/Items/Berry.asset
+  artifactKey: Guid(311285adbaef5b64798e64515718a47f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Inventory&Items/Items/Berry.asset using Guid(311285adbaef5b64798e64515718a47f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c219d6a24c07773b8a4aa57697ada676') in 0.002422 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 11
+========================================================================
+Received Import Request.
+  Time since last request: 17.641133 seconds.
+  path: Assets/Scripts/Inventory&Items/Items/Log.asset
+  artifactKey: Guid(e94564a7e73b07c44ab205a162fb6d21) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Inventory&Items/Items/Log.asset using Guid(e94564a7e73b07c44ab205a162fb6d21) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7e4a46523ea73a9faa8c952db1fcfd4c') in 0.002456 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 11
+========================================================================
+Received Import Request.
+  Time since last request: 14.520919 seconds.
+  path: Assets/Prefabs/Seeding/Potato
+  artifactKey: Guid(59e0ce09044469c4ab8b5447e14bcc87) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Seeding/Potato using Guid(59e0ce09044469c4ab8b5447e14bcc87) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '72460b8f4fd4f06f41d6827946fdc02f') in 0.000657 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 8.866825 seconds.
+  path: Assets/Prefabs/Seeding/Potato/Stages
+  artifactKey: Guid(80dc1d8d1d02ed742a4e56c606fb37eb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Seeding/Potato/Stages using Guid(80dc1d8d1d02ed742a4e56c606fb37eb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6937bfca4d2b2e8dd8db072f8b910ab8') in 0.000548 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 3.678774 seconds.
+  path: Assets/Prefabs/Seeding/Potato/Stages/PotatoStage1.prefab
+  artifactKey: Guid(941c6fd9b353d914e834bfc957152087) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Seeding/Potato/Stages/PotatoStage1.prefab using Guid(941c6fd9b353d914e834bfc957152087) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e351baf4c103c03aac1b367e41043fb7') in 0.002141 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 6
+========================================================================
+Received Import Request.
+  Time since last request: 1.540134 seconds.
+  path: Assets/Prefabs/Seeding/Potato/Stages/PotatoStage2.prefab
+  artifactKey: Guid(42e35926081710c42a7ca0379e99c0f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Seeding/Potato/Stages/PotatoStage2.prefab using Guid(42e35926081710c42a7ca0379e99c0f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c7383637baf0b5a71fd7e0a862dcab5b') in 0.002923 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 6
+========================================================================
+Received Import Request.
+  Time since last request: 1.357675 seconds.
+  path: Assets/Prefabs/Seeding/Potato/Stages/PotatoStage3.prefab
+  artifactKey: Guid(a9e1da19b08eea848ad675d051cbd9d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Seeding/Potato/Stages/PotatoStage3.prefab using Guid(a9e1da19b08eea848ad675d051cbd9d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c8b5b6c1f69186581b1843796bf07c5b') in 0.002720 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 11
+========================================================================
+Received Import Request.
+  Time since last request: 1.487508 seconds.
+  path: Assets/Prefabs/Seeding/Potato/Stages/Potato.prefab
+  artifactKey: Guid(e5c9fa3ed70d96640ab47854fe89097a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Seeding/Potato/Stages/Potato.prefab using Guid(e5c9fa3ed70d96640ab47854fe89097a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dabd9ba75422189cfbb01491374b057f') in 0.001677 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 6
+========================================================================
+Received Import Request.
+  Time since last request: 7.602000 seconds.
+  path: Assets/Prefabs/Seeding/Tomato
+  artifactKey: Guid(b9cfd722010d7a34491293ee0dcb90a7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Seeding/Tomato using Guid(b9cfd722010d7a34491293ee0dcb90a7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cfad83eab46450d63a053cec1ab572ab') in 0.000949 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 5.073468 seconds.
+  path: Assets/Prefabs/Seeding/Tomato/Stages
+  artifactKey: Guid(c032e473765baa94c9ab291543b5553f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Seeding/Tomato/Stages using Guid(c032e473765baa94c9ab291543b5553f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ac5857c4c3a0f99e585f410d4b29da7c') in 0.000639 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 2.124087 seconds.
+  path: Assets/Prefabs/Seeding/Tomato/Stages/TomatoStage1.prefab
+  artifactKey: Guid(70ec4dfaf0ed6434cb7a1a00096b5186) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Seeding/Tomato/Stages/TomatoStage1.prefab using Guid(70ec4dfaf0ed6434cb7a1a00096b5186) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2b507b6b76116c2624d63d7c4b462d29') in 0.002269 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 6
+========================================================================
+Received Import Request.
+  Time since last request: 1.353185 seconds.
+  path: Assets/Prefabs/Seeding/Tomato/Stages/TomatoStage2.prefab
+  artifactKey: Guid(3c2f82de942f6d44a8994cbe918def7b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Seeding/Tomato/Stages/TomatoStage2.prefab using Guid(3c2f82de942f6d44a8994cbe918def7b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd1b5b2125aa1d3741c464dc254245484') in 0.002939 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 6
+========================================================================
+Received Import Request.
+  Time since last request: 8.339240 seconds.
+  path: Assets/Prefabs/Seeding/Tomato/TomatoObject.asset
+  artifactKey: Guid(f1c22734695b8414b87292e25461b6bd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Seeding/Tomato/TomatoObject.asset using Guid(f1c22734695b8414b87292e25461b6bd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f1d004561ebd0b1b373f19e1786f15a0') in 0.001728 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 11.726576 seconds.
+  path: Assets/Prefabs/Seeding/Carrot/CarrotObject.asset
+  artifactKey: Guid(f96884cc6f71c514f8624f2c095d2b37) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Seeding/Carrot/CarrotObject.asset using Guid(f96884cc6f71c514f8624f2c095d2b37) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c807f6327889c9c319709561aa50c1d8') in 0.004277 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 20
+========================================================================
+Received Import Request.
+  Time since last request: 6.637894 seconds.
+  path: Assets/Prefabs/Seeding/Potato/PotatoObject.asset
+  artifactKey: Guid(947aaae63157c374087c1059c272d2c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Seeding/Potato/PotatoObject.asset using Guid(947aaae63157c374087c1059c272d2c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6442e2e0416e84ba09d4a430517f25f4') in 0.001182 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 8.608655 seconds.
+  path: Assets/Prefabs/Seeding/Carrot/CarrotObject.asset
+  artifactKey: Guid(f96884cc6f71c514f8624f2c095d2b37) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Seeding/Carrot/CarrotObject.asset using Guid(f96884cc6f71c514f8624f2c095d2b37) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5ec27b923e20eba0edd50d85bea11d11') in 0.003613 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 20
+========================================================================
+Received Import Request.
+  Time since last request: 83.017150 seconds.
+  path: Assets/Prefabs/Seeding/Potato/PotatoObject.asset
+  artifactKey: Guid(947aaae63157c374087c1059c272d2c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Seeding/Potato/PotatoObject.asset using Guid(947aaae63157c374087c1059c272d2c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '631299ba1490e0562961d88a16e11a23') in 0.003574 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 25
+========================================================================
+Received Import Request.
+  Time since last request: 4.711705 seconds.
+  path: Assets/Prefabs/Seeding/Potato/PotatoObject.asset
+  artifactKey: Guid(947aaae63157c374087c1059c272d2c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Seeding/Potato/PotatoObject.asset using Guid(947aaae63157c374087c1059c272d2c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cae8a4c6042c6c4cc07f292326ffe50d') in 0.003263 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 25
+========================================================================
+Received Import Request.
+  Time since last request: 23.006455 seconds.
+  path: Assets/Prefabs/Seeding/Tomato/TomatoObject.asset
+  artifactKey: Guid(f1c22734695b8414b87292e25461b6bd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Seeding/Tomato/TomatoObject.asset using Guid(f1c22734695b8414b87292e25461b6bd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '98b691dab9989cb84fd6a2f146f7d3e1') in 0.002739 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 13
+========================================================================
+Received Import Request.
+  Time since last request: 93.311232 seconds.
+  path: Assets/Prefabs/Drops/Carrot.prefab
+  artifactKey: Guid(f3f9b354df726374685c1406119ae189) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Drops/Carrot.prefab using Guid(f3f9b354df726374685c1406119ae189) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c6550b5b81b19c10bf75c4f3c40b4069') in 0.003608 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 29
+========================================================================
+Received Import Request.
+  Time since last request: 1.457423 seconds.
+  path: Assets/Prefabs/Drops/Potato.prefab
+  artifactKey: Guid(fc442b5e3a3c06c468ccefbf5e732394) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Drops/Potato.prefab using Guid(fc442b5e3a3c06c468ccefbf5e732394) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dc8b6504cefa62209695d03e56ad6e0e') in 0.002284 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 10
+========================================================================
+Received Import Request.
+  Time since last request: 5.660578 seconds.
+  path: Assets/Prefabs/Drops/PotatoDrop.prefab
+  artifactKey: Guid(fc442b5e3a3c06c468ccefbf5e732394) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Drops/PotatoDrop.prefab using Guid(fc442b5e3a3c06c468ccefbf5e732394) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '080606cfe8befac6c3b5b8bb311fe154') in 0.001941 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 10
+========================================================================
+Received Import Request.
+  Time since last request: 2.389467 seconds.
+  path: Assets/Prefabs/Drops/CarrotDrop.prefab
+  artifactKey: Guid(f3f9b354df726374685c1406119ae189) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Drops/CarrotDrop.prefab using Guid(f3f9b354df726374685c1406119ae189) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'db145c4127570d58a96c4027938140cf') in 0.004151 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 29
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\Office\Projects\Unity\_Harvest_Haven\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image C:\Users\Office\Projects\Unity\_Harvest_Haven\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+- Loaded All Assemblies, in  0.736 seconds
+Refreshing native plugins compatible for Editor in 6.23 ms, found 3 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.213 seconds
+Domain Reload Profiling: 1942ms
+	BeginReloadAssembly (148ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (5ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (39ms)
+	RebuildCommonClasses (33ms)
+	RebuildNativeTypeToScriptingClass (12ms)
+	initialDomainReloadingComplete (35ms)
+	LoadAllAssembliesAndSetupDomain (501ms)
+		LoadAssemblies (292ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (269ms)
+			TypeCache.Refresh (258ms)
+				TypeCache.ScanAssembly (247ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (10ms)
+	FinalizeReload (1213ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (406ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (9ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (79ms)
+			ProcessInitializeOnLoadAttributes (247ms)
+			ProcessInitializeOnLoadMethodAttributes (56ms)
+			AfterProcessingInitializeOnLoad (12ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (11ms)
+Refreshing native plugins compatible for Editor in 5.24 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 5064 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 62 unused Assets / (2.0 MB). Loaded Objects now: 5724.
+Memory consumption went from 187.8 MB to 185.8 MB.
+Total: 3.739900 ms (FindLiveObjects: 0.478300 ms CreateObjectMapping: 0.130800 ms MarkObjects: 2.538200 ms  DeleteObjects: 0.591400 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\Office\Projects\Unity\_Harvest_Haven\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image C:\Users\Office\Projects\Unity\_Harvest_Haven\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+- Loaded All Assemblies, in  0.762 seconds
+Refreshing native plugins compatible for Editor in 6.38 ms, found 3 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.223 seconds
+Domain Reload Profiling: 1980ms
+	BeginReloadAssembly (156ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (5ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (40ms)
+	RebuildCommonClasses (39ms)
+	RebuildNativeTypeToScriptingClass (14ms)
+	initialDomainReloadingComplete (39ms)
+	LoadAllAssembliesAndSetupDomain (507ms)
+		LoadAssemblies (303ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (269ms)
+			TypeCache.Refresh (255ms)
+				TypeCache.ScanAssembly (244ms)
+			ScanForSourceGeneratedMonoScriptInfo (5ms)
+			ResolveRequiredComponents (10ms)
+	FinalizeReload (1224ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (411ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (10ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (86ms)
+			ProcessInitializeOnLoadAttributes (245ms)
+			ProcessInitializeOnLoadMethodAttributes (55ms)
+			AfterProcessingInitializeOnLoad (12ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (13ms)
+Refreshing native plugins compatible for Editor in 5.06 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 5064 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 60 unused Assets / (2.0 MB). Loaded Objects now: 5740.
+Memory consumption went from 187.8 MB to 185.8 MB.
+Total: 3.711000 ms (FindLiveObjects: 0.483200 ms CreateObjectMapping: 0.133600 ms MarkObjects: 2.456000 ms  DeleteObjects: 0.637100 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\Office\Projects\Unity\_Harvest_Haven\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image C:\Users\Office\Projects\Unity\_Harvest_Haven\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+- Loaded All Assemblies, in  0.764 seconds
+Refreshing native plugins compatible for Editor in 5.04 ms, found 3 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.212 seconds
+Domain Reload Profiling: 1971ms
+	BeginReloadAssembly (144ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (5ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (39ms)
+	RebuildCommonClasses (38ms)
+	RebuildNativeTypeToScriptingClass (16ms)
+	initialDomainReloadingComplete (34ms)
+	LoadAllAssembliesAndSetupDomain (528ms)
+		LoadAssemblies (301ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (281ms)
+			TypeCache.Refresh (267ms)
+				TypeCache.ScanAssembly (254ms)
+			ScanForSourceGeneratedMonoScriptInfo (4ms)
+			ResolveRequiredComponents (10ms)
+	FinalizeReload (1212ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (400ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (9ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (76ms)
+			ProcessInitializeOnLoadAttributes (247ms)
+			ProcessInitializeOnLoadMethodAttributes (54ms)
+			AfterProcessingInitializeOnLoad (11ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (11ms)
+Refreshing native plugins compatible for Editor in 6.26 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 5064 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 60 unused Assets / (2.0 MB). Loaded Objects now: 5756.
+Memory consumption went from 187.8 MB to 185.8 MB.
+Total: 5.143900 ms (FindLiveObjects: 0.526600 ms CreateObjectMapping: 0.212800 ms MarkObjects: 3.575200 ms  DeleteObjects: 0.827800 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\Office\Projects\Unity\_Harvest_Haven\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image C:\Users\Office\Projects\Unity\_Harvest_Haven\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+- Loaded All Assemblies, in  0.726 seconds
+Refreshing native plugins compatible for Editor in 5.79 ms, found 3 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.170 seconds
+Domain Reload Profiling: 1890ms
+	BeginReloadAssembly (146ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (5ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (38ms)
+	RebuildCommonClasses (35ms)
+	RebuildNativeTypeToScriptingClass (11ms)
+	initialDomainReloadingComplete (37ms)
+	LoadAllAssembliesAndSetupDomain (490ms)
+		LoadAssemblies (284ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (267ms)
+			TypeCache.Refresh (256ms)
+				TypeCache.ScanAssembly (246ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (10ms)
+	FinalizeReload (1170ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (400ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (9ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (79ms)
+			ProcessInitializeOnLoadAttributes (241ms)
+			ProcessInitializeOnLoadMethodAttributes (55ms)
+			AfterProcessingInitializeOnLoad (12ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (10ms)
+Refreshing native plugins compatible for Editor in 5.93 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 5064 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 60 unused Assets / (2.0 MB). Loaded Objects now: 5772.
+Memory consumption went from 187.9 MB to 185.9 MB.
+Total: 3.668000 ms (FindLiveObjects: 0.521300 ms CreateObjectMapping: 0.136700 ms MarkObjects: 2.425800 ms  DeleteObjects: 0.582900 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\Office\Projects\Unity\_Harvest_Haven\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image C:\Users\Office\Projects\Unity\_Harvest_Haven\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+- Loaded All Assemblies, in  0.759 seconds
+Refreshing native plugins compatible for Editor in 4.98 ms, found 3 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.195 seconds
+Domain Reload Profiling: 1947ms
+	BeginReloadAssembly (151ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (5ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (43ms)
+	RebuildCommonClasses (37ms)
+	RebuildNativeTypeToScriptingClass (14ms)
+	initialDomainReloadingComplete (36ms)
+	LoadAllAssembliesAndSetupDomain (514ms)
+		LoadAssemblies (301ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (274ms)
+			TypeCache.Refresh (264ms)
+				TypeCache.ScanAssembly (252ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (10ms)
+	FinalizeReload (1195ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (427ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (10ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (86ms)
+			ProcessInitializeOnLoadAttributes (259ms)
+			ProcessInitializeOnLoadMethodAttributes (56ms)
+			AfterProcessingInitializeOnLoad (13ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (11ms)
+Refreshing native plugins compatible for Editor in 5.92 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 5064 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 60 unused Assets / (2.0 MB). Loaded Objects now: 5788.
+Memory consumption went from 188.0 MB to 186.0 MB.
+Total: 4.237700 ms (FindLiveObjects: 0.525800 ms CreateObjectMapping: 0.135700 ms MarkObjects: 2.817800 ms  DeleteObjects: 0.757500 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\Office\Projects\Unity\_Harvest_Haven\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image C:\Users\Office\Projects\Unity\_Harvest_Haven\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+- Loaded All Assemblies, in  0.742 seconds
+Refreshing native plugins compatible for Editor in 5.54 ms, found 3 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.186 seconds
+Domain Reload Profiling: 1922ms
+	BeginReloadAssembly (146ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (5ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (37ms)
+	RebuildCommonClasses (34ms)
+	RebuildNativeTypeToScriptingClass (12ms)
+	initialDomainReloadingComplete (35ms)
+	LoadAllAssembliesAndSetupDomain (510ms)
+		LoadAssemblies (291ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (279ms)
+			TypeCache.Refresh (265ms)
+				TypeCache.ScanAssembly (254ms)
+			ScanForSourceGeneratedMonoScriptInfo (4ms)
+			ResolveRequiredComponents (10ms)
+	FinalizeReload (1186ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (385ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (9ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (80ms)
+			ProcessInitializeOnLoadAttributes (228ms)
+			ProcessInitializeOnLoadMethodAttributes (54ms)
+			AfterProcessingInitializeOnLoad (13ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (12ms)
+Refreshing native plugins compatible for Editor in 6.41 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 5064 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 60 unused Assets / (2.0 MB). Loaded Objects now: 5804.
+Memory consumption went from 188.0 MB to 186.0 MB.
+Total: 3.751000 ms (FindLiveObjects: 0.526300 ms CreateObjectMapping: 0.136800 ms MarkObjects: 2.444700 ms  DeleteObjects: 0.641900 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\Office\Projects\Unity\_Harvest_Haven\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image C:\Users\Office\Projects\Unity\_Harvest_Haven\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+- Loaded All Assemblies, in  0.722 seconds
+Refreshing native plugins compatible for Editor in 5.11 ms, found 3 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.226 seconds
+Domain Reload Profiling: 1943ms
+	BeginReloadAssembly (145ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (6ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (37ms)
+	RebuildCommonClasses (32ms)
+	RebuildNativeTypeToScriptingClass (12ms)
+	initialDomainReloadingComplete (39ms)
+	LoadAllAssembliesAndSetupDomain (489ms)
+		LoadAssemblies (286ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (262ms)
+			TypeCache.Refresh (252ms)
+				TypeCache.ScanAssembly (242ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (9ms)
+	FinalizeReload (1226ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (433ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (9ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (79ms)
+			ProcessInitializeOnLoadAttributes (267ms)
+			ProcessInitializeOnLoadMethodAttributes (64ms)
+			AfterProcessingInitializeOnLoad (11ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (11ms)
+Refreshing native plugins compatible for Editor in 6.09 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 5064 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 60 unused Assets / (2.0 MB). Loaded Objects now: 5820.
+Memory consumption went from 188.0 MB to 186.0 MB.
+Total: 4.344000 ms (FindLiveObjects: 0.613900 ms CreateObjectMapping: 0.167300 ms MarkObjects: 2.912300 ms  DeleteObjects: 0.649300 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\Office\Projects\Unity\_Harvest_Haven\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image C:\Users\Office\Projects\Unity\_Harvest_Haven\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+- Loaded All Assemblies, in  0.732 seconds
+Refreshing native plugins compatible for Editor in 5.05 ms, found 3 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.225 seconds
+Domain Reload Profiling: 1951ms
+	BeginReloadAssembly (157ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (5ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (38ms)
+	RebuildCommonClasses (32ms)
+	RebuildNativeTypeToScriptingClass (11ms)
+	initialDomainReloadingComplete (34ms)
+	LoadAllAssembliesAndSetupDomain (491ms)
+		LoadAssemblies (290ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (269ms)
+			TypeCache.Refresh (259ms)
+				TypeCache.ScanAssembly (248ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (9ms)
+	FinalizeReload (1225ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (413ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (9ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (82ms)
+			ProcessInitializeOnLoadAttributes (249ms)
+			ProcessInitializeOnLoadMethodAttributes (56ms)
+			AfterProcessingInitializeOnLoad (14ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (11ms)
+Refreshing native plugins compatible for Editor in 5.50 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 5064 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 60 unused Assets / (2.0 MB). Loaded Objects now: 5836.
+Memory consumption went from 188.0 MB to 186.0 MB.
+Total: 3.711700 ms (FindLiveObjects: 0.504400 ms CreateObjectMapping: 0.132600 ms MarkObjects: 2.466700 ms  DeleteObjects: 0.606900 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\Office\Projects\Unity\_Harvest_Haven\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image C:\Users\Office\Projects\Unity\_Harvest_Haven\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+- Loaded All Assemblies, in  0.735 seconds
+Refreshing native plugins compatible for Editor in 5.16 ms, found 3 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.217 seconds
+Domain Reload Profiling: 1947ms
+	BeginReloadAssembly (146ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (5ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (36ms)
+	RebuildCommonClasses (40ms)
+	RebuildNativeTypeToScriptingClass (15ms)
+	initialDomainReloadingComplete (35ms)
+	LoadAllAssembliesAndSetupDomain (494ms)
+		LoadAssemblies (290ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (265ms)
+			TypeCache.Refresh (254ms)
+				TypeCache.ScanAssembly (244ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (10ms)
+	FinalizeReload (1217ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (397ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (9ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (78ms)
+			ProcessInitializeOnLoadAttributes (238ms)
+			ProcessInitializeOnLoadMethodAttributes (57ms)
+			AfterProcessingInitializeOnLoad (13ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (11ms)
+Refreshing native plugins compatible for Editor in 5.83 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 5064 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 60 unused Assets / (2.0 MB). Loaded Objects now: 5852.
+Memory consumption went from 188.0 MB to 186.0 MB.
+Total: 4.232000 ms (FindLiveObjects: 0.515400 ms CreateObjectMapping: 0.134300 ms MarkObjects: 2.827700 ms  DeleteObjects: 0.753700 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 390.809773 seconds.
+  path: Assets/Scripts/Inventory&Items/Items/Berry.asset
+  artifactKey: Guid(311285adbaef5b64798e64515718a47f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Inventory&Items/Items/Berry.asset using Guid(311285adbaef5b64798e64515718a47f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '46a07a72b84875649bd60d4a9100fee7') in 0.015378 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 11
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Scripts/Inventory&Items/Items/Null.asset
+  artifactKey: Guid(e573acafcb28ab442a46519d0fce24c1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Inventory&Items/Items/Null.asset using Guid(e573acafcb28ab442a46519d0fce24c1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '685639cf900e3c2b4c4bcf77fc106726') in 0.001190 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 27.428850 seconds.
+  path: Assets/Scripts/Inventory&Items/Items/Seeds.asset
+  artifactKey: Guid(f1d90d1260947584e862766c214ee2df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Inventory&Items/Items/Seeds.asset using Guid(f1d90d1260947584e862766c214ee2df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fb9cdf391a6582aecb9b4a8d1071f9ca') in 0.004380 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 21
+========================================================================
+Received Import Request.
+  Time since last request: 16.158454 seconds.
+  path: Assets/Scripts/Inventory&Items/Items/CarrotSeeds.asset
+  artifactKey: Guid(f1d90d1260947584e862766c214ee2df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Inventory&Items/Items/CarrotSeeds.asset using Guid(f1d90d1260947584e862766c214ee2df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd17b5c3acee5e2c38e9f91b093fc0471') in 0.003586 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 21
+========================================================================
+Received Import Request.
+  Time since last request: 1.499206 seconds.
+  path: Assets/Scripts/Inventory&Items/Items/Pick_Up_Item.cs
+  artifactKey: Guid(2bd21e126764091449fc6a0873c2047c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Inventory&Items/Items/Pick_Up_Item.cs using Guid(2bd21e126764091449fc6a0873c2047c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fea8043c132ad182a4282e10a57890a3') in 0.000679 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 3.396509 seconds.
+  path: Assets/Scripts/Inventory&Items/Items/Item.cs
+  artifactKey: Guid(48a8cc15b37e4f14d83120208f4eea5c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Inventory&Items/Items/Item.cs using Guid(48a8cc15b37e4f14d83120208f4eea5c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '97f84b903bf52bf18916e36048a712fd') in 0.000652 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 11.429546 seconds.
+  path: Assets/Scripts/Inventory&Items/Items/Items
+  artifactKey: Guid(79ab32f70befe7743a23e1fe858af531) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Inventory&Items/Items/Items using Guid(79ab32f70befe7743a23e1fe858af531) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b56391d950ddd156b7a2029e8df76959') in 0.000643 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\Office\Projects\Unity\_Harvest_Haven\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image C:\Users\Office\Projects\Unity\_Harvest_Haven\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+- Loaded All Assemblies, in  0.739 seconds
+Refreshing native plugins compatible for Editor in 5.38 ms, found 3 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.228 seconds
+Domain Reload Profiling: 1959ms
+	BeginReloadAssembly (148ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (5ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (41ms)
+	RebuildCommonClasses (37ms)
+	RebuildNativeTypeToScriptingClass (12ms)
+	initialDomainReloadingComplete (34ms)
+	LoadAllAssembliesAndSetupDomain (500ms)
+		LoadAssemblies (286ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (273ms)
+			TypeCache.Refresh (261ms)
+				TypeCache.ScanAssembly (248ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (12ms)
+	FinalizeReload (1228ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (409ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (11ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (81ms)
+			ProcessInitializeOnLoadAttributes (243ms)
+			ProcessInitializeOnLoadMethodAttributes (59ms)
+			AfterProcessingInitializeOnLoad (11ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (11ms)
+Refreshing native plugins compatible for Editor in 6.11 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 5064 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 62 unused Assets / (2.0 MB). Loaded Objects now: 5868.
+Memory consumption went from 188.0 MB to 186.1 MB.
+Total: 3.705000 ms (FindLiveObjects: 0.526500 ms CreateObjectMapping: 0.145700 ms MarkObjects: 2.452300 ms  DeleteObjects: 0.579600 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 

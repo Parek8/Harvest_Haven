@@ -2700,7 +2700,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
+  m_ScrollSensitivity: 15
   m_Viewport: {fileID: 2136159871}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 0}
@@ -3466,7 +3466,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
-  m_LocalRotation: {x: 0.26766285, y: -0.69765353, z: 0.3208752, w: 0.58195823}
+  m_LocalRotation: {x: 0.2676628, y: -0.6976536, z: 0.3208753, w: 0.58195806}
   m_LocalPosition: {x: 59.02698, y: 70, z: 10.761766}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_ConstrainProportionsScale: 0
@@ -4475,12 +4475,21 @@ MonoBehaviour:
   _dialog: {fileID: 0}
   BuyableItems:
   - {fileID: 11400000, guid: faddd45e906bd3d40935609393245433, type: 2}
-  - {fileID: 11400000, guid: 3c767dd0a71969a46ba83f04b4b74491, type: 2}
+  - {fileID: 11400000, guid: fa4741d9b4472e84ebbcd11b4ec5c844, type: 2}
   - {fileID: 11400000, guid: 311285adbaef5b64798e64515718a47f, type: 2}
+  - {fileID: 11400000, guid: 0b036f61d08115d4a9207bad68625937, type: 2}
+  - {fileID: 11400000, guid: 098ba32f8c7cee342a4c12cc89920e1a, type: 2}
+  - {fileID: 11400000, guid: c80732dc9fb7fcc4e855f179193bd9fa, type: 2}
+  - {fileID: 11400000, guid: 3c767dd0a71969a46ba83f04b4b74491, type: 2}
+  - {fileID: 11400000, guid: e94564a7e73b07c44ab205a162fb6d21, type: 2}
+  - {fileID: 11400000, guid: f1d90d1260947584e862766c214ee2df, type: 2}
+  - {fileID: 11400000, guid: 1e0638a32c2c4b4428ca7d6fed540247, type: 2}
+  - {fileID: 11400000, guid: 600f24c6562419a4c8fad115c970014c, type: 2}
   SoldableItems:
   - {fileID: 11400000, guid: fa4741d9b4472e84ebbcd11b4ec5c844, type: 2}
-  - {fileID: 11400000, guid: 3c767dd0a71969a46ba83f04b4b74491, type: 2}
   - {fileID: 11400000, guid: faddd45e906bd3d40935609393245433, type: 2}
+  - {fileID: 11400000, guid: 3c767dd0a71969a46ba83f04b4b74491, type: 2}
+  - {fileID: 11400000, guid: 098ba32f8c7cee342a4c12cc89920e1a, type: 2}
   BuyWindow: {fileID: 1095331811}
   SellWindow: {fileID: 469182610}
   ShopButton: {fileID: 7290509414516902382, guid: 37cb118740af5364b9000e85e6ef5fa9,
@@ -9100,7 +9109,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1078552757}
-  m_LocalRotation: {x: 0.26766285, y: -0.69765353, z: 0.3208752, w: 0.5819581}
+  m_LocalRotation: {x: 0.26766285, y: -0.69765353, z: 0.32087517, w: 0.5819581}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -9272,7 +9281,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 300}
+  m_SizeDelta: {x: 0, y: 201.18}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1095331813
 MonoBehaviour:
@@ -12336,6 +12345,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1473146781}
     m_Modifications:
+    - target: {fileID: 423817441428220112, guid: bc2a007c8d38a7744977916c52e7edb5,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 423817441428220112, guid: bc2a007c8d38a7744977916c52e7edb5,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 423817441428220112, guid: bc2a007c8d38a7744977916c52e7edb5,
         type: 3}
       propertyPath: m_Color.b

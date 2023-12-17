@@ -51,11 +51,13 @@ public class Character_Stats : MonoBehaviour
             Damage_On_Hunger();
     }
 
-    public void Saturate(float saturate)
+    public void Saturate(Item food)
     {
+        float saturate = food.tool_damage;
         current_food_points += saturate;
         if (current_food_points > max_food_points)
             current_food_points = max_food_points;
+        food.RemoveCount();
     }
 
     private void Damage_On_Hunger()
@@ -63,9 +65,15 @@ public class Character_Stats : MonoBehaviour
         Reduce_Health(1.0f);
     }
 
-    public void Change_State(bool isSeeding)
+    public void Change_State(Tool_Type _type)
     {
-        _state = (isSeeding) ? PlayerState.seeding : PlayerState.normal;
+        if (_type == Tool_Type.seeds)
+            _state = PlayerState.seeding;
+        else if (_type == Tool_Type.watering_can)
+            _state = PlayerState.watering;
+        else
+            _state = PlayerState.normal;
+
         OnPlayerStateChange?.Invoke(_state);
     }
     public void AddPlayerStateListener(Action<PlayerState> _listener) => this.OnPlayerStateChange += _listener;

@@ -98,13 +98,10 @@ public class Inventory : MonoBehaviour
         if (item != null)
         {
             InstantiateItem();
-
-            if (item.tool_type == Tool_Type.seeds)
-                _stats.Change_State(true);
+            _stats.Change_State(item.tool_type);
         }
         else
-            _stats.Change_State(false);
-
+            _stats.Change_State(Tool_Type.NULL);
     }
     private void InstantiateItem()
     {
@@ -144,5 +141,11 @@ public class Inventory : MonoBehaviour
     {
         if (_equipped_item == null) return false;
         return (_equipped_item.is_tool);
+    }
+
+    public bool IsEquippedFood()
+    {
+        if (_equipped_item == null) return false;
+        return (_equipped_item.is_eatable);
     }
 }

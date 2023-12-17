@@ -18,6 +18,7 @@ public class Inventory_Slot : MonoBehaviour, IPointerDownHandler, IPointerUpHand
     bool is_dragging = false;
     Vector3 item_image_initial_position;
     Image background;
+    Inventory player_inventory;
     void Start()
     {
         //Transform childTransform = transform.GetChild(0);
@@ -26,6 +27,8 @@ public class Inventory_Slot : MonoBehaviour, IPointerDownHandler, IPointerUpHand
         background = GetComponent<Image>();
         if (isHotbarSlot)
             GameManager.game_manager.player_inventory.AddToSlotChangedAction(() => { SetBackground(unfocusedColor); });
+
+        player_inventory = GameManager.game_manager.player_inventory;
     }
 
     void FixedUpdate()
@@ -33,7 +36,7 @@ public class Inventory_Slot : MonoBehaviour, IPointerDownHandler, IPointerUpHand
         if (is_dragging)
             item_image.transform.position = Input.mousePosition;
         if (item != null)
-            if (item.count <= 0)
+            if (item.count <= 0 || !item.is_stackable && player_inventory.slots.FindAll(slot => slot.Get_Item() == this.item).Count > this.item.count)
                 Clear_Item();
         Update_UI();
     }
@@ -112,12 +115,20 @@ public class Inventory_Slot : MonoBehaviour, IPointerDownHandler, IPointerUpHand
     public void Update_UI()
     {
         if(this.item != null)
+        {
             item_image.sprite = item.item_icon;
+            item_image.color = new Color(255, 255, 255, 255);
+        }
         else
+        {
             item_image.sprite = null;
+            item_image.color = new Color(0, 0, 0, 0);
+        }
     }
     public Item Get_Item()
     {
+        if (this.item == null)
+            return null;
         return (this.item);
     }
     public bool Is_Current_Slot(Inventory_Slot compared_slot)

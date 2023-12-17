@@ -40,9 +40,6 @@ public class Character_Behaviour : MonoBehaviour
         bool inv = Input_Manager.GetCustomAxisRawDown("Inventory");
         if(inv)
             inventory_screen.Change_State();
-        
-        if (Input.GetKeyDown(KeyCode.Space))
-            stats.Saturate(1f);
 
         for (int i = 0; i < hotbar.Count; i++)
         {
@@ -57,6 +54,10 @@ public class Character_Behaviour : MonoBehaviour
             {
                 animator.SetTrigger("Attack");
                 Hit_Destroyable();
+            }
+            else if (att && inventory.IsEquippedFood())
+            {
+                stats.Saturate(inventory.Equipped_Item);
             }
         }
 

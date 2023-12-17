@@ -44,17 +44,20 @@ public class SaveManager : MonoBehaviour
             StreamReader _r = new StreamReader(_path);
 
             string _content = _r.ReadLine();
-            string[] _slots = _content.Split(';');
-
-            for (int i = 0; i < _slots.Length-1; i++)
+            if (_content != null)
             {
-                string _slot = _slots[i];
+                string[] _slots = _content.Split(';');
 
-                string[] _slotPair = _slot.Split(":");
-                int _slotId = Convert.ToInt32(_slotPair[0]);
-                int _itemId = Convert.ToInt32(_slotPair[1]);
+                for (int i = 0; i < _slots.Length - 1; i++)
+                {
+                    string _slot = _slots[i];
 
-                _newItems[_slotId] = _allItems[_itemId];
+                    string[] _slotPair = _slot.Split(":");
+                    int _slotId = Convert.ToInt32(_slotPair[0]);
+                    int _itemId = Convert.ToInt32(_slotPair[1]);
+
+                    _newItems[_slotId] = _allItems[_itemId];
+                }
             }
             _r.Close();
         }

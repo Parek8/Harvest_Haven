@@ -70,6 +70,7 @@ public class Plot : MonoBehaviour
         if (_renderer.materials[0].color == Color.white)
             _renderer.material.color = Color.grey;
     }
+
     private void SpawnNewStage()
     {
         DestroyPlant();
@@ -82,14 +83,16 @@ public class Plot : MonoBehaviour
         if (stages.Count <= 0 && times.Count <= 0)
             _stage.AddComponent<Harvestable>().Setup((List<Item>)plantedPlant.DroppedItems);
     }
+
     private Vector3 GetGameObjectOffset()
     {
-        float _xOffset = stages[0].GetComponent<MeshRenderer>().bounds.size.x / 2;
+        //float _xOffset = stages[0].GetComponent<MeshRenderer>().bounds.size.x / 2;
         float _yOffset = 0.5f;
-        float _zOffset = stages[0].GetComponent<MeshRenderer>().bounds.size.z / 2;
+        //float _zOffset = stages[0].GetComponent<MeshRenderer>().bounds.size.z / 2;
 
         return new Vector3(0, _yOffset, 0);
     }
+
     private void DestroyPlant()
     {
         if (transform.childCount > 0)

@@ -26,10 +26,16 @@ public class TestDialog : MonoBehaviour, IDialog
     {
         _lines.Add(new DialogLine("Welcome to my store!", new List<DialogButton>() {
             new DialogButton(() => {
+                DialogManager.DialogManagerInstance.UpdateDialog(NextIndex());
+            }, "Next!"),
+        }));
+
+        _lines.Add(new DialogLine("This is a test dialog! Please, don't hate me!", new List<DialogButton>() {
+            new DialogButton(() => {
                 DialogManager.DialogManagerInstance.Hide();
                 GameManager.game_manager.Cursor_Needed(CursorLockMode.None);
                 _shop.Show();
-            }, "Shop!"),
+            }, "Go to shop!"),
         }));
     }
 }

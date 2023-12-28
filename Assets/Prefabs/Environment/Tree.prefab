@@ -206,6 +206,7 @@ GameObject:
   - component: {fileID: 1199583878425266461}
   - component: {fileID: 2317577454377771413}
   - component: {fileID: 5313731813023485668}
+  - component: {fileID: -3997249526742932353}
   m_Layer: 6
   m_Name: Tree
   m_TagString: Untagged
@@ -292,6 +293,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   max_hp: 100
+  dropped_items:
+  - {fileID: 11400000, guid: e94564a7e73b07c44ab205a162fb6d21, type: 2}
+  - {fileID: 11400000, guid: e94564a7e73b07c44ab205a162fb6d21, type: 2}
+  types: 01000000
   health_colors:
     serializedVersion: 2
     key0: {r: 1, g: 0, b: 0, a: 1}
@@ -324,10 +329,7 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   filled_health_bar: {fileID: 7622587497013238047}
   obj_canvas: {fileID: 5573994704480647998}
-  dropped_items:
-  - {fileID: 11400000, guid: e94564a7e73b07c44ab205a162fb6d21, type: 2}
-  - {fileID: 11400000, guid: e94564a7e73b07c44ab205a162fb6d21, type: 2}
-  types: 01000000
+  CanvasPrefab: {fileID: 0}
 --- !u!64 &5313731813023485668
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -350,6 +352,22 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 2534964839176971238, guid: 7ec767631d11f5b4a84fb34c48b3f1ca, type: 3}
+--- !u!114 &-3997249526742932353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4027417541842324890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efcae32e6808fa348a2a392873efd9db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _itemMessage: Tree
+  Interactable: 0
+  Destroyable: 1
+  Attackable: 0
 --- !u!1 &6649329381143791002
 GameObject:
   m_ObjectHideFlags: 0

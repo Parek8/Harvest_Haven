@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8322099043819769061}
   - component: {fileID: 1017105284680107823}
   - component: {fileID: 265753184266415617}
+  - component: {fileID: 6397941924854886521}
   m_Layer: 8
   m_Name: Berry_Drop
   m_TagString: Untagged
@@ -149,3 +150,19 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 7898303678134235034, guid: 76e08b8deed31594680261df0a44075c, type: 3}
+--- !u!114 &6397941924854886521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2538243982939726748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efcae32e6808fa348a2a392873efd9db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _itemMessage: Berry
+  Interactable: 0
+  Destroyable: 0
+  Attackable: 0

@@ -1,9 +1,6 @@
 using Cinemachine;
-using JetBrains.Annotations;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using UnityEditor.SceneTemplate;
+using TMPro;
 using UnityEngine;
 
 [RequireComponent(typeof(Character_Stats))]
@@ -13,6 +10,8 @@ public class Character_Behaviour : MonoBehaviour
     [field: SerializeField] UI_Behaviour inventory_screen;
     [field: SerializeField] List<Inventory_Slot> hotbar = new();
     [field: SerializeField] Camera _normalCam;
+    [field: SerializeField] Transform _aimStart;
+    [field: SerializeField] TMP_Text _itemText;
 
     Character_Stats stats;
     Inventory inventory;
@@ -37,6 +36,14 @@ public class Character_Behaviour : MonoBehaviour
 
     void Update()
     {
+        // __DEBUG__
+        if (Input.GetKeyDown(KeyCode.Escape))
+            GameManager.game_manager.saveManager.SaveInventory();
+
+        if (Input.GetKeyDown(KeyCode.Space))
+            Day_Cycle.Next_Day();
+
+        // __NON_DEBUG__
         bool inv = Input_Manager.GetCustomAxisRawDown("Inventory");
         if(inv)
             inventory_screen.Change_State();
@@ -61,20 +68,26 @@ public class Character_Behaviour : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
-            GameManager.game_manager.saveManager.SaveInventory();
-
         if (_state == PlayerState.seeding || _state == PlayerState.watering)
             SeedOrWater();
 
-        if (Input.GetKeyDown(KeyCode.Space))
-            Day_Cycle.Next_Day();
-
+     
         SortInteractablesList();
 
+        // First Interactable Has Bouncing Interact Key Above
         if (_state == PlayerState.normal && Input_Manager.GetCustomAxisRawDown("Interact") && interactables.Count > 0)
             interactables[0].Interact();
 
+        RaycastHit _hitInfo;
+        _aimStart.rotation = _normalCam.transform.rotation;
+        if (Physics.Raycast(_aimStart.position, _aimStart.forward * stats.pick_up_distance * 3, out _hitInfo, stats.pick_up_distance*3, stats.highlightable_layers))
+        {
+            Highlightable _object;
+            if (_hitInfo.collider.TryGetComponent(out _object))
+                _itemText.text = _object.GetMessage();
+        }
+        else
+            _itemText.text = "";
     }
     public void StartAttacking()
     {

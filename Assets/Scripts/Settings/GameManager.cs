@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEditor;
@@ -304,4 +305,5 @@ public static class Input_Manager
             PlayerPrefs.SetString(kb.ToString(), ((KeyCode)kb).ToString());
         }
     }
+    public static string GetKeyByName(KeybindNames _name) => keybinds[_name].ToString();
 }

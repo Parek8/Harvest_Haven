@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4111851205503660259}
   - component: {fileID: 3905858033698245271}
   - component: {fileID: 2880761110068681922}
+  - component: {fileID: -5842983482484323221}
   m_Layer: 8
   m_Name: Log_Drop
   m_TagString: Untagged
@@ -148,3 +149,19 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -293502825896984990, guid: 4aa9b2b5ceb1d374982ee59cc7a783b2, type: 3}
+--- !u!114 &-5842983482484323221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2662945482030536375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efcae32e6808fa348a2a392873efd9db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _itemMessage: Oak Log
+  Interactable: 0
+  Destroyable: 0
+  Attackable: 0

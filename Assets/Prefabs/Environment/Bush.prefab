@@ -282,6 +282,7 @@ GameObject:
   - component: {fileID: 1631530618365118251}
   - component: {fileID: 2615318488044653193}
   - component: {fileID: 2747690785880346452}
+  - component: {fileID: 454880009102417963}
   m_Layer: 6
   m_Name: Bush
   m_TagString: Untagged
@@ -392,6 +393,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   max_hp: 20
+  dropped_items:
+  - {fileID: 11400000, guid: 311285adbaef5b64798e64515718a47f, type: 2}
+  - {fileID: 11400000, guid: 311285adbaef5b64798e64515718a47f, type: 2}
+  types: 01000000
   health_colors:
     serializedVersion: 2
     key0: {r: 1, g: 1, b: 1, a: 1}
@@ -424,7 +429,20 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   filled_health_bar: {fileID: 0}
   obj_canvas: {fileID: 8699941142506732810}
-  dropped_items:
-  - {fileID: 11400000, guid: 311285adbaef5b64798e64515718a47f, type: 2}
-  - {fileID: 11400000, guid: 311285adbaef5b64798e64515718a47f, type: 2}
-  types: 01000000
+  CanvasPrefab: {fileID: 0}
+--- !u!114 &454880009102417963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9060386794214057348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efcae32e6808fa348a2a392873efd9db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _itemMessage: Bush
+  Interactable: 0
+  Destroyable: 1
+  Attackable: 0

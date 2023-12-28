@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7010324782581855045}
   - component: {fileID: 1603955196446287403}
   - component: {fileID: 3601024302291101421}
+  - component: {fileID: 948053665416174720}
   m_Layer: 0
   m_Name: PotatoDrop
   m_TagString: Untagged
@@ -148,3 +149,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 098ba32f8c7cee342a4c12cc89920e1a, type: 2}
+--- !u!114 &948053665416174720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5880599891549898114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efcae32e6808fa348a2a392873efd9db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _itemMessage: Potato
+  Interactable: 0
+  Destroyable: 0
+  Attackable: 0

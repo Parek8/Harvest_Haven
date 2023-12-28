@@ -7,6 +7,7 @@ public class EnvironmentInitializer : MonoBehaviour
     [field: SerializeField, Range(0.00f, 1.00f)] float GrassDensity = 0.5f;
     [field: SerializeField] int Width = 128;
     [field: SerializeField] int Depth = 128;
+    [field: SerializeField] float Scale = 0.5f;
     [field: SerializeField] TerrainData TerrainData;
     [field: SerializeField] Terrain Terrain;
     [field: SerializeField] GameObject TreePrefab;
@@ -16,8 +17,10 @@ public class EnvironmentInitializer : MonoBehaviour
 
     private void Start()
     {
+        TerrainData.heightmapResolution = Width + 1;
         TerrainData.size = new Vector3(Width, 2, Depth);
         Terrain.transform.position = new Vector3(-transform.position.x - Width/2, 0, -transform.position.y - Depth /2);
+        SetHeights();
         FillEnvironment();
     }
 
@@ -58,5 +61,20 @@ public class EnvironmentInitializer : MonoBehaviour
         _randomPos = hitInfo.point + _currentPos;
         _randomPos += new Vector3(Terrain.transform.position.x, 0.7f, Terrain.transform.position.z);
         return _randomPos;
+    }
+
+    private void SetHeights()
+    {
+        float[,] _heights = new float[Width, Depth];
+
+        for (int _x = 0; _x < Width; _x++)
+        {
+            for (int _z = 0; _z < Depth; _z++)
+            {
+                _heights[_x, _z] = Mathf.PerlinNoise((float)(_x * Scale) / Width, (float)(_z * Scale) / Depth);
+            }
+        }
+
+        TerrainData.SetHeights(0, 0, _heights);
     }
 }

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7464437251485202660}
   - component: {fileID: 3511157945924920543}
   - component: {fileID: 3166448611371497589}
+  - component: {fileID: -6798193140294548602}
   m_Layer: 0
   m_Name: CarrotDrop
   m_TagString: Untagged
@@ -149,3 +150,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 0b036f61d08115d4a9207bad68625937, type: 2}
+--- !u!114 &-6798193140294548602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8026161202428887098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efcae32e6808fa348a2a392873efd9db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _itemMessage: Carrot
+  Interactable: 0
+  Destroyable: 0
+  Attackable: 0

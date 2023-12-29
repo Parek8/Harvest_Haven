@@ -112,14 +112,19 @@ public class Inventory_Slot : MonoBehaviour, IPointerDownHandler, IPointerUpHand
     
     public void Assign_Item(Item item, int count = 1)
     {
-        if (/*this.Is_Empty()*/ item != null)
+        if (item != null)
         {
-            this.item = item;
-            this._itemCount = count;
-            item.AssignedSlot = this;
+            if (this.item == null)
+            {
+                this.item = item;
+                this._itemCount = count;
+                item.AssignedSlot = this;
+            }
+            else if (this.item == item)
+                this._itemCount += count;
+            else
+                Debug.Log("ja nevim");
         }
-        //else if (this.item == item && item.is_stackable)
-        //    _itemCount++;
     }
     public void DecreaseCount(int _count = 1)
     {

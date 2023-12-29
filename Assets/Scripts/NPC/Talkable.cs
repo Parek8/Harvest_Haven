@@ -23,6 +23,7 @@ public class ShopTalkable : Interactable
     }
     protected void OutDistance()
     {
+        DialogManager.DialogManagerInstance.Hide();
         talking = false;
     }
 }

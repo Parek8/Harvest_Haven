@@ -23,7 +23,6 @@ public class Character_Behaviour : MonoBehaviour
     bool _isAttacking = false;
     public bool IsAttacking => _isAttacking;
 
-    private List<Interactable> interactables = new();
     private void Start()
     {
         stats = GetComponent<Character_Stats>();
@@ -31,7 +30,7 @@ public class Character_Behaviour : MonoBehaviour
         animator = GetComponent<Animator>();
         movement = GetComponent<Player_Movement>();
 
-        stats.AddPlayerStateListener(Change_Camera_Angle);
+        stats.AddPlayerStateListener(delegate (PlayerState _newState) { this._state = _newState; });
     }
 
     void Update()
@@ -84,11 +83,17 @@ public class Character_Behaviour : MonoBehaviour
         {
             Interactable _object;
             Plot _plot;
-            Debug.Log(_inteInfo.collider.name);
             if (_inteInfo.collider.TryGetComponent(out _object) && Input_Manager.GetCustomAxisRawDown("Interact") && _state == PlayerState.normal)
                 _object.Interact();
-            else if (_inteInfo.collider.TryGetComponent(out _plot) && _state is PlayerState.seeding or PlayerState.watering)
-                SeedOrWater(_plot);
+            else if (_inteInfo.collider.TryGetComponent(out _plot))
+            {
+                if (_lastPlot != null)
+                    _lastPlot.Lowlight();
+                _plot.Highlight();
+                _lastPlot = _plot;
+                if (Input_Manager.GetCustomAxisRawDown("Interact"))
+                    SeedOrWater(_plot);
+            }
         }
         else
             _itemText.text = "";
@@ -132,30 +137,11 @@ public class Character_Behaviour : MonoBehaviour
     }
     private void SeedOrWater(Plot _plot)
     {
-        if (_lastPlot != null)
-            _lastPlot.Lowlight();
-
         if (_state == PlayerState.seeding)
             _plot.Plant(inventory.Equipped_Item.plantable_object);
         else if (_state == PlayerState.watering)
             _plot.Water(true);
-    }
-    private void Change_Camera_Angle(PlayerState _state)
-    {
-        this._state = _state;
-        if (_state == PlayerState.seeding || _state == PlayerState.watering)
-        {
-            _normalCam.transform.rotation = Quaternion.Euler(90, 0, 10);
-            _normalCam.transform.localPosition = new Vector3(10, 70, 10);
-            _normalCam.GetComponent<CinemachineBrain>().enabled = false;
-            transform.GetComponent<Player_Movement>().enabled = false;
-            GameManager.game_manager.Cursor_Needed(CursorLockMode.None);
-        }
-        else if (_state == PlayerState.normal)
-        {
-            _normalCam.GetComponent<CinemachineBrain>().enabled = true;
-            transform.GetComponent<Player_Movement>().enabled = true;
-            GameManager.game_manager.Cursor_Needed(CursorLockMode.Locked);
-        }
+        else
+            Debug.Log("There was an Error!");
     }
 }

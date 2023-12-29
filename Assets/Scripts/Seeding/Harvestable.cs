@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Harvestable : Interactable
 {
-    List<Item> items;
+    [field: SerializeField] List<Item> items = new();
     public override void Interact()
     {
         foreach (Item item in items)

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 9145695298405048196}
   - component: {fileID: 2958487082509167332}
   - component: {fileID: 3918135169555175923}
+  - component: {fileID: 4445895697320628484}
   m_Layer: 0
   m_Name: PotatoStage1
   m_TagString: Untagged
@@ -100,3 +101,25 @@ MonoBehaviour:
   Interactable: 0
   Destroyable: 0
   Attackable: 0
+--- !u!64 &4445895697320628484
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2946107435294519633}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8748995523230416671, guid: f77b02eb710eb1b4da68240bc63521e1, type: 3}

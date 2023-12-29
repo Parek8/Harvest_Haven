@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1533319639432892649}
   - component: {fileID: 6204615654150487090}
   - component: {fileID: -4140379401460521397}
+  - component: {fileID: -6384748929806602561}
   m_Layer: 0
   m_Name: CarrotStage2
   m_TagString: Untagged
@@ -101,3 +102,25 @@ MonoBehaviour:
   Interactable: 0
   Destroyable: 0
   Attackable: 0
+--- !u!64 &-6384748929806602561
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7644314335863337526}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -219130813288042301, guid: f77b02eb710eb1b4da68240bc63521e1, type: 3}

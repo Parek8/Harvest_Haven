@@ -15,7 +15,7 @@ public class SaveManager : MonoBehaviour
         {
             Inventory_Slot _slot = _slots[i];
             if (!_slot.Is_Empty())
-                _savedContent += $"{_slot.slot_index}:{_slot.Get_Item().item_id};";
+                _savedContent += $"{_slot.slot_index}:{_slot.Get_Item().item_id}:{_slot.ItemCount};";
         }
 
         string _path = Directory.GetCurrentDirectory() + _inventorySavePath;
@@ -33,10 +33,10 @@ public class SaveManager : MonoBehaviour
         }
     }
 
-    public IReadOnlyDictionary<int, Item> LoadInventory()
+    public IReadOnlyCollection<InventoryEntry> LoadInventory()
     {
         Dictionary<int, Item> _allItems = GameManager.game_manager._allItems;
-        Dictionary<int, Item> _newItems = new();
+        List<InventoryEntry> _newItems = new();
 
         string _path = Directory.GetCurrentDirectory() + _inventorySavePath;
         if (File.Exists(_path))
@@ -55,8 +55,9 @@ public class SaveManager : MonoBehaviour
                     string[] _slotPair = _slot.Split(":");
                     int _slotId = Convert.ToInt32(_slotPair[0]);
                     int _itemId = Convert.ToInt32(_slotPair[1]);
+                    int _itemCount = Convert.ToInt32(_slotPair[2]);
 
-                    _newItems[_slotId] = _allItems[_itemId];
+                    _newItems.Add(new InventoryEntry(_itemCount, _slotId, _allItems[_itemId]));
                 }
             }
             _r.Close();
@@ -69,5 +70,22 @@ public class SaveManager : MonoBehaviour
         string _path = Directory.GetCurrentDirectory() + _inventorySavePath;
 
         SaveInventory();
+    }
+}
+public struct InventoryEntry
+{
+    private int _slotId;
+    private int _itemCount;
+    private Item _item;
+
+    public int SlotID => _slotId;
+    public int ItemCount => _itemCount;
+    public Item Item => _item;
+
+    public InventoryEntry(int _count, int _slotId, Item _item)
+    {
+        this._slotId = _slotId;
+        this._itemCount = _count;
+        this._item = _item;
     }
 }

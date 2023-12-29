@@ -37,7 +37,6 @@ public class Inventory : MonoBehaviour
     {
         if (item != null)
         {
-            item.AddCount();
             Inventory_Slot slot = Find_First_Slot(item);
             slot.Assign_Item(item);
         }
@@ -64,13 +63,14 @@ public class Inventory : MonoBehaviour
     private Inventory_Slot Find_First_Slot(Item item)
     {
         Inventory_Slot used_slot;
+
         if (item.is_stackable)
-            used_slot = slots.Find(slot => slot.Get_Item() == item);
+            used_slot = slots.Find(slot => slot.Get_Item() == item && slot.IsAvailable);
         else
-            used_slot = slots.Find(slot => slot.Get_Item() == null);
+            used_slot = slots.Find(slot => slot.Get_Item() == null && slot.IsAvailable);
 
         if (used_slot == null)
-            used_slot = slots.Find(slot => slot.Get_Item() == null);
+            used_slot = slots.Find(slot => slot.Get_Item() == null && slot.IsAvailable);
 
         return used_slot;
     }
@@ -129,23 +129,25 @@ public class Inventory : MonoBehaviour
     }
     private void LoadInventory()
     {
-        Dictionary<int, Item> _inv = (Dictionary<int, Item>)GameManager.game_manager.saveManager.LoadInventory();
+        List<InventoryEntry> _inv = (List<InventoryEntry>)GameManager.game_manager.saveManager.LoadInventory();
 
-        foreach(var _index in _inv.Keys)
+        foreach(InventoryEntry _entry in _inv)
         {
-            slots[_index].Assign_Item(_inv[_index]);
+            slots[_entry.SlotID].Assign_Item(_entry.Item, _entry.ItemCount);
         }
     }
 
     public bool IsEquippedItemTool()
     {
         if (_equipped_item == null) return false;
+
         return (_equipped_item.is_tool);
     }
 
     public bool IsEquippedFood()
     {
         if (_equipped_item == null) return false;
+
         return (_equipped_item.is_eatable);
     }
 }

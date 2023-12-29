@@ -64,6 +64,7 @@ public class Character_Behaviour : MonoBehaviour
             }
             else if (att && inventory.IsEquippedFood())
             {
+                inventory.Equipped_Item.AssignedSlot.DecreaseCount();
                 stats.Saturate(inventory.Equipped_Item);
             }
         }

@@ -58,7 +58,6 @@ public class Character_Stats : MonoBehaviour
         current_food_points += saturate;
         if (current_food_points > max_food_points)
             current_food_points = max_food_points;
-        food.RemoveCount();
     }
 
     private void Damage_On_Hunger()

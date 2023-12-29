@@ -13,27 +13,6 @@ public class Interactable : MonoBehaviour
         _player = GameManager.game_manager.player_transform;
     }
 
-    protected void Update()
-    {
-        if (Vector3.Distance(transform.position, _player.position) <= _distance)
-            InDistance();
-        else
-            OutDistance();
-    }
-    private void OnDestroy()
-    {
-        _behaviour.RemoveFromInteractableList(this);
-    }
-    protected virtual void InDistance()
-    {
-        _behaviour.AddToInteractableList(this);
-
-    }
-    protected virtual void OutDistance()
-    {
-        _behaviour.RemoveFromInteractableList(this);
-
-    }
     public virtual void Interact()
     {
         throw new System.NotImplementedException();

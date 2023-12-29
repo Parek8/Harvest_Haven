@@ -40,7 +40,6 @@ public class GameManager : MonoBehaviour
 
     public void Cursor_Needed(CursorLockMode lock_mode)
     {
-        Debug.Log(lock_mode);
         if (Cursor.lockState != lock_mode)
             Cursor.lockState = lock_mode;
     }

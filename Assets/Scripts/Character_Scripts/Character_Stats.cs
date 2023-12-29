@@ -11,8 +11,8 @@ public class Character_Stats : MonoBehaviour
     [field: SerializeField] public float pick_up_distance { get; private set; } = 1.2f;
     [field: SerializeField] public float attack_distance { get; private set; } = 1.2f;
     [field: SerializeField] public LayerMask destroyable_layers { get; private set; }
-    [field: SerializeField] public LayerMask plot_layers { get; private set; }
     [field: SerializeField] public LayerMask highlightable_layers { get; private set; }
+    [field: SerializeField] public LayerMask interactable_layers { get; private set; }
     [field: SerializeField] public float attack_damage { get; private set; } = 10f;
 
     [field: Header("Player Health Variables: ")]

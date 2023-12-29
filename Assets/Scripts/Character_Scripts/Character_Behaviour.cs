@@ -68,24 +68,27 @@ public class Character_Behaviour : MonoBehaviour
                 stats.Saturate(inventory.Equipped_Item);
             }
         }
-
-        if (_state == PlayerState.seeding || _state == PlayerState.watering)
-            SeedOrWater();
-
      
-        SortInteractablesList();
-
         // First Interactable Has Bouncing Interact Key Above
-        if (_state == PlayerState.normal && Input_Manager.GetCustomAxisRawDown("Interact") && interactables.Count > 0)
-            interactables[0].Interact();
 
-        RaycastHit _hitInfo;
+        RaycastHit _highInfo;
+        RaycastHit _inteInfo;
         _aimStart.rotation = _normalCam.transform.rotation;
-        if (Physics.Raycast(_aimStart.position, _aimStart.forward * stats.pick_up_distance * 3, out _hitInfo, stats.pick_up_distance*3, stats.highlightable_layers))
+        if (Physics.Raycast(_aimStart.position, _aimStart.forward * stats.pick_up_distance * 3, out _highInfo, stats.pick_up_distance*3, stats.highlightable_layers))
         {
             Highlightable _object;
-            if (_hitInfo.collider.TryGetComponent(out _object))
+            if (_highInfo.collider.TryGetComponent(out _object))
                 _itemText.text = _object.GetMessage();
+        }
+        if (Physics.Raycast(_aimStart.position, _aimStart.forward * stats.pick_up_distance * 3, out _inteInfo, stats.pick_up_distance * 3, stats.interactable_layers))
+        {
+            Interactable _object;
+            Plot _plot;
+            Debug.Log(_inteInfo.collider.name);
+            if (_inteInfo.collider.TryGetComponent(out _object) && Input_Manager.GetCustomAxisRawDown("Interact") && _state == PlayerState.normal)
+                _object.Interact();
+            else if (_inteInfo.collider.TryGetComponent(out _plot) && _state is PlayerState.seeding or PlayerState.watering)
+                SeedOrWater(_plot);
         }
         else
             _itemText.text = "";
@@ -127,34 +130,15 @@ public class Character_Behaviour : MonoBehaviour
                 Debug.Log("Wrong type");
         }
     }
-    private void SeedOrWater()
+    private void SeedOrWater(Plot _plot)
     {
-        RaycastHit _hitInfo;
-        Vector3 _mousePos = Input.mousePosition;
-        //_mousePos.y = 100;
-        Ray _ray = Camera.main.ScreenPointToRay(_mousePos);
-
         if (_lastPlot != null)
             _lastPlot.Lowlight();
 
-        if (Physics.Raycast(_ray, out _hitInfo, 100, stats.plot_layers))
-        {
-            Plot _plot = _hitInfo.collider.GetComponent<Plot>();
-            if (_plot != null)
-            {
-                _lastPlot = _plot;
-                _plot.Highlight();
-
-                if (Input_Manager.GetCustomAxisRawDown("Interact"))
-                {
-                    if (_state == PlayerState.seeding)
-                        _plot.Plant(inventory.Equipped_Item.plantable_object);
-                    else if (_state == PlayerState.watering)
-                        _plot.Water(true);
-                }
-            }
-        }
-            
+        if (_state == PlayerState.seeding)
+            _plot.Plant(inventory.Equipped_Item.plantable_object);
+        else if (_state == PlayerState.watering)
+            _plot.Water(true);
     }
     private void Change_Camera_Angle(PlayerState _state)
     {
@@ -172,29 +156,6 @@ public class Character_Behaviour : MonoBehaviour
             _normalCam.GetComponent<CinemachineBrain>().enabled = true;
             transform.GetComponent<Player_Movement>().enabled = true;
             GameManager.game_manager.Cursor_Needed(CursorLockMode.Locked);
-        }
-    }
-
-    public void AddToInteractableList(Interactable _interactable)
-    {
-        if (!interactables.Contains(_interactable))
-            interactables.Add(_interactable);
-    }
-    public void RemoveFromInteractableList(Interactable _interactable)
-    {
-        if (interactables.Contains(_interactable))
-            interactables.Remove(_interactable);
-    }
-
-    private void SortInteractablesList()
-    {
-        float _dis = float.MaxValue;
-        Interactable _closest = null;
-        for (int i = 0; i < interactables.Count; i++)
-        {
-            Interactable _h = interactables[i];
-            if (Vector3.Distance(transform.position, _h.transform.position) < _dis)
-                _closest = _h;
         }
     }
 }

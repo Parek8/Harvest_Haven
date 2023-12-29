@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShopManager : Talkable
+public class ShopManager : ShopTalkable
 {
     [field: SerializeField] List<Item> BuyableItems;
     [field: SerializeField] List<Item> SoldableItems;

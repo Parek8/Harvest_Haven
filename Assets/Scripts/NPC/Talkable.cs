@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Talkable : Interactable
+public class ShopTalkable : Interactable
 {
     [field: SerializeField] TestDialog _dialog;
     bool talking = false;
@@ -16,9 +16,13 @@ public class Talkable : Interactable
         DialogManager.DialogManagerInstance.Show();
         DialogManager.DialogManagerInstance.UpdateDialog(_dialog.NextIndex());
     }
-    protected override void OutDistance()
+    private void Update()
     {
-        base.OutDistance();
+        if (Vector3.Distance(_player.position, transform.position) > _distance)
+            OutDistance();
+    }
+    protected void OutDistance()
+    {
         talking = false;
     }
 }

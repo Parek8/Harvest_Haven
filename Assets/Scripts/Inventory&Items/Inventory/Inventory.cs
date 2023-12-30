@@ -150,4 +150,15 @@ public class Inventory : MonoBehaviour
 
         return (_equipped_item.is_eatable);
     }
+
+    public IReadOnlyCollection<Item> GetAllItems()
+    {
+        List<Item> _items = new List<Item>();
+
+        foreach (Inventory_Slot _slot in slots)
+            if (_slot.Get_Item() != null)
+                _items.Add(_slot.Get_Item());
+
+        return _items;
+    }
 }

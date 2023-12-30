@@ -23,8 +23,6 @@ public class GameManager : MonoBehaviour
             Item _item = all_items[i];
             _allItems[_item.item_id] = _item;
         }
-        //Cursor.lockState = CursorLockMode.Locked;
-        //Load_Item_Ids();
     }
 
     public bool is_game_paused { get; private set; }
@@ -43,52 +41,6 @@ public class GameManager : MonoBehaviour
         if (Cursor.lockState != lock_mode)
             Cursor.lockState = lock_mode;
     }
-    //private Dictionary<int, Item> item_ids = new();
-
-    //public Action On_Load { get; private set; }
-    //private void Start()
-    //{
-    //    //player_transform = GameObject.Find("MainCharacter").transform;
-    //    On_Load?.Invoke();
-    //    StartGame(); //JUST FOR NOW
-    //}
-
-    //private void Load_Item_Ids()
-    //{
-    //    foreach(Item item in all_items)
-    //    {
-    //        item_ids.Add(item.id, item);
-    //    }
-    //}
-
-    //public Item Get_Item_Info_By_Index(int item_index)
-    //{
-    //    return all_items.Find(ind => ind.id == item_index);
-    //}
-    //public void Save_All_Items()
-    //{
-
-    //}
-    //public bool Check_Items_Ids()
-    //{
-    //    List<int> ids = new();
-    //    List<Item> wrong_items = new();
-    //    foreach (Item item in all_items)
-    //    {
-    //        if (!ids.Contains(item.id))
-    //            ids.Add(item.id);
-    //        else
-    //            wrong_items.Add(item);
-    //    }
-    //    if (wrong_items.Count > 0)
-    //        Debug.LogError($"Error with item ids {wrong_items}");
-
-    //    return (wrong_items.Count <= 0);
-    //}
-    //public Item Get_Item_By_Id(int id)
-    //{
-    //    return item_ids[id];
-    //}
     public Dictionary<KeybindNames, KeyCode> keybinds { get; private set; } = new Dictionary<KeybindNames, KeyCode>();
     public bool IsKeybindSaved(KeybindNames keybind)
     {

@@ -12,13 +12,13 @@ public class UI_Behaviour : MonoBehaviour
     {
         is_visible = gameObject.activeInHierarchy;
     }
-    public bool Show()
+    public virtual bool Show()
     {
         _Show();
         return is_visible;
     }
 
-    public bool Hide()
+    public virtual bool Hide()
     {
         _Hide();
         return is_visible;
@@ -30,25 +30,18 @@ public class UI_Behaviour : MonoBehaviour
         is_visible = !is_visible;
         return is_visible;  
     }
-    public void _Hide()
+    public virtual void _Hide()
     {
         gameObject.SetActive(false);
         is_visible = false;
     }
-    public void _Show()
+    public virtual void _Show()
     {
         gameObject.SetActive(true);
         is_visible = true;
     }
 
-    public void _CursorNeededNone()
-    {
-        GameManager.game_manager.Cursor_Needed(CursorLockMode.None);
-    }
-    public void _CursorNeededLocked()
-    {
-        GameManager.game_manager.Cursor_Needed(CursorLockMode.Locked);
-    }
+    public void CursorNone() => GameManager.game_manager.Cursor_Needed(CursorLockMode.None);
 
-
+    public void CursorLocked() => GameManager.game_manager.Cursor_Needed(CursorLockMode.Locked);
 }

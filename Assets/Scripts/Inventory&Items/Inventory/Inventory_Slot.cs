@@ -47,8 +47,9 @@ public class Inventory_Slot : MonoBehaviour, IPointerDownHandler, IPointerUpHand
             item_image.transform.position = Input.mousePosition;
             item_count.transform.position = Input.mousePosition + new Vector3(-19, 2.2f, 0);
         }
+
         if (item != null)
-            if (_itemCount <= 0 || !item.is_stackable /*&& player_inventory.slots.FindAll(slot => slot.Get_Item() == this.item).Count > this.item.count*/)
+            if (_itemCount <= 0)
                 Clear_Item();
         Update_UI();
     }
@@ -123,8 +124,10 @@ public class Inventory_Slot : MonoBehaviour, IPointerDownHandler, IPointerUpHand
             else if (this.item == item)
                 this._itemCount += count;
             else
-                Debug.Log("ja nevim");
+                Debug.Log($"{this.item.name} | {item.name}");
         }
+        else
+            Debug.LogError("Item is null!");
     }
     public void DecreaseCount(int _count = 1)
     {
@@ -134,7 +137,8 @@ public class Inventory_Slot : MonoBehaviour, IPointerDownHandler, IPointerUpHand
     }
     public void Clear_Item()
     {
-        item.AssignedSlot = null;
+        if (item != null)
+            item.AssignedSlot = null;
         this.item = null;
         _itemCount = 0;
     }

@@ -36,7 +36,7 @@ public class Character_Behaviour : MonoBehaviour
     void Update()
     {
         // __DEBUG__
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.P))
             GameManager.game_manager.saveManager.SaveInventory();
 
         if (Input.GetKeyDown(KeyCode.Space))

@@ -13,7 +13,6 @@ public class ShopButton : MonoBehaviour
     public void Buy()
     {
         GameManager.game_manager.player_inventory.Add(_item);
-        Debug.Log("test");
     }
     public void Sell()
     {

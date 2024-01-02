@@ -161,4 +161,18 @@ public class Inventory : MonoBehaviour
 
         return _items;
     }
+
+    public int GetItemCountInInventory(Item _item)
+    {
+        List<Inventory_Slot> _slots = slots.FindAll(_slot => _slot.Get_Item() == _item);
+        int _count = 0;
+        foreach (Inventory_Slot _slot in _slots)
+            _count += _slot.ItemCount;
+        return _count;
+    }
+
+    public void DecreaseItemCount(Item _item)
+    {
+        Find_First_Slot(_item).DecreaseCount();
+    }
 }

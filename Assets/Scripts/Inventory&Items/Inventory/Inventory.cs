@@ -162,6 +162,28 @@ public class Inventory : MonoBehaviour
         return _items;
     }
 
+    public IReadOnlyCollection<Item> GetAllSmeltableItems()
+    {
+        List<Item> _items = new List<Item>();
+
+        foreach (Inventory_Slot _slot in slots)
+            if (_slot.Get_Item() != null && _slot.Get_Item().is_smeltable)
+                _items.Add(_slot.Get_Item());
+
+        return _items;
+    }
+
+    public IReadOnlyCollection<Item> GetAllSmeltingFuel()
+    {
+        List<Item> _items = new List<Item>();
+
+        foreach (Inventory_Slot _slot in slots)
+            if (_slot.Get_Item() != null && _slot.Get_Item().is_fuel)
+                _items.Add(_slot.Get_Item());
+
+        return _items;
+    }
+
     public int GetItemCountInInventory(Item _item)
     {
         List<Inventory_Slot> _slots = slots.FindAll(_slot => _slot.Get_Item() == _item);

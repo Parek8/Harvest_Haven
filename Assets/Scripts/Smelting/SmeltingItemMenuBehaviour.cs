@@ -1,11 +1,11 @@
 using UnityEngine;
 
-public class ItemMenuBehaviour : UI_Behaviour
+public class SmeltingItemMenuBehaviour : UI_Behaviour
 {
     [field: SerializeField] UI_Behaviour ResultScreen;
-    CraftingSlot _assignedSlot;
+    SmeltItemSlot _assignedSlot;
 
-    public void AssignSlot(CraftingSlot _slot)
+    public void AssignSlot(SmeltItemSlot _slot)
     {
         if (_slot != null)
             _assignedSlot = _slot;

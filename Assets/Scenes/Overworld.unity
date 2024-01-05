@@ -3596,7 +3596,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
-  m_LocalRotation: {x: -0.17314366, y: 0.47369736, z: 0.095570005, w: 0.85819495}
+  m_LocalRotation: {x: -0.17314366, y: 0.4736973, z: 0.09556998, w: 0.85819495}
   m_LocalPosition: {x: -50.76863, y: 0, z: -31.977272}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_ConstrainProportionsScale: 0
@@ -4971,8 +4971,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02eccc12809b6f74eaa576a179882ae1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TreeDensity: 0.065
-  RockDensity: 0.011
+  TreeDensity: 0.045
+  RockDensity: 0
   GrassDensity: 0
   Width: 128
   Depth: 128
@@ -7538,7 +7538,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 738260416}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6507a9d59263d5c449322cbc00dc5fea, type: 3}
+  m_Script: {fileID: 11500000, guid: 67bcd77a594a6d1489d46c0ffd723dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ResultScreen: {fileID: 838385292}
@@ -10419,7 +10419,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1078552757}
-  m_LocalRotation: {x: -0.14185548, y: 0.4768562, z: 0.07829987, w: 0.863918}
+  m_LocalRotation: {x: -0.1418555, y: 0.47685623, z: 0.07829987, w: 0.863918}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -12425,7 +12425,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1344593998}
-  m_LocalRotation: {x: -0.17314364, y: 0.4736973, z: 0.09556999, w: 0.85819495}
+  m_LocalRotation: {x: -0.17314366, y: 0.47369727, z: 0.095569976, w: 0.85819495}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -14341,7 +14341,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 738260421}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SmeltingFuelItemBehaviour, Assembly-CSharp
         m_MethodName: _Hide
         m_Mode: 1
@@ -18675,7 +18675,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Slot: {fileID: 0}
-  FuelSlot: {fileID: 0}
 --- !u!1 &2067749011
 GameObject:
   m_ObjectHideFlags: 0
@@ -19367,6 +19366,7 @@ GameObject:
   - component: {fileID: 2112980335}
   - component: {fileID: 2112980338}
   - component: {fileID: 2112980337}
+  - component: {fileID: 2112980339}
   m_Layer: 5
   m_Name: NullItemMenuSlot
   m_TagString: Untagged
@@ -19434,6 +19434,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2112980334}
   m_CullTransparentMesh: 1
+--- !u!114 &2112980339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2112980334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a5771accb1d14a49a6d17d88f7025e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <SlotIndex>k__BackingField: 0
+  ItemMenu: {fileID: 0}
+  item: {fileID: 0}
+  item_image: {fileID: 0}
 --- !u!1 &2136159870
 GameObject:
   m_ObjectHideFlags: 0
@@ -22130,7 +22146,6 @@ GameObject:
   - component: {fileID: 5314659651576030356}
   - component: {fileID: 5132358753188938049}
   - component: {fileID: 6827568278662578383}
-  - component: {fileID: 6827568278662578384}
   m_Layer: 5
   m_Name: SmeltingFuelSlot
   m_TagString: Untagged
@@ -25619,21 +25634,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &6827568278662578384
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2715486532626336845}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c47cbd16c88ab947b629a5069cd8dab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AssignedItem: {fileID: 0}
-  _itemImage: {fileID: 0}
-  _itemCount: {fileID: 0}
 --- !u!1 &6833335102138700558
 GameObject:
   m_ObjectHideFlags: 0

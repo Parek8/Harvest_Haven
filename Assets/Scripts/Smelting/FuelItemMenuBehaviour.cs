@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SmeltingFuelItemBehaviour : UI_Behaviour
+public class FuelItemMenuBehaviour : UI_Behaviour
 {
     [field: SerializeField] UI_Behaviour ResultScreen;
-    SmeltFuelItemMenu _assignedSlot;
+    SmeltItemSlot _assignedSlot;
 
-    public void AssignSlot(SmeltFuelItemMenu _slot)
+    public void AssignSlot(SmeltItemSlot _slot)
     {
         if (_slot != null)
             _assignedSlot = _slot;

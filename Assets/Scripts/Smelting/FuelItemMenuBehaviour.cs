@@ -5,9 +5,9 @@ using UnityEngine;
 public class FuelItemMenuBehaviour : UI_Behaviour
 {
     [field: SerializeField] UI_Behaviour ResultScreen;
-    SmeltItemSlot _assignedSlot;
+    FuelItemSlot _assignedSlot;
 
-    public void AssignSlot(SmeltItemSlot _slot)
+    public void AssignSlot(FuelItemSlot _slot)
     {
         if (_slot != null)
             _assignedSlot = _slot;

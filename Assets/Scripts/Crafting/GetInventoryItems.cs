@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GetInventoryItems : MonoBehaviour
 {
-    [field: SerializeField] ItemMenuSlot Slot;
+    [field: SerializeField] private ItemMenuSlot Slot;
     private void OnEnable() => GetItems();
 
     public void DestroyButtons()

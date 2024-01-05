@@ -3596,7 +3596,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
+<<<<<<< HEAD
   m_LocalRotation: {x: -0.17314366, y: 0.47369736, z: 0.095570005, w: 0.85819495}
+=======
+  m_LocalRotation: {x: -0.17314366, y: 0.4736973, z: 0.09556998, w: 0.85819495}
+>>>>>>> 54bfcb086c15d34197f71ce1fb3faaf5c5adec3f
   m_LocalPosition: {x: -50.76863, y: 0, z: -31.977272}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_ConstrainProportionsScale: 0
@@ -7461,7 +7465,11 @@ GameObject:
   - component: {fileID: 738260417}
   - component: {fileID: 738260420}
   - component: {fileID: 738260419}
+<<<<<<< HEAD
   - component: {fileID: 738260421}
+=======
+  - component: {fileID: 738260418}
+>>>>>>> 54bfcb086c15d34197f71ce1fb3faaf5c5adec3f
   m_Layer: 5
   m_Name: FuelItemMenu
   m_TagString: Untagged
@@ -7491,6 +7499,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0.000061035156, y: 0}
   m_SizeDelta: {x: 387.5, y: 300}
   m_Pivot: {x: 1, y: 0.5}
+<<<<<<< HEAD
+=======
+--- !u!114 &738260418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 738260416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abf2bb3bef5af6e49a9745cad0f0e6b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ResultScreen: {fileID: 838385292}
+>>>>>>> 54bfcb086c15d34197f71ce1fb3faaf5c5adec3f
 --- !u!114 &738260419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7529,6 +7553,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 738260416}
   m_CullTransparentMesh: 1
+<<<<<<< HEAD
 --- !u!114 &738260421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7542,6 +7567,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ResultScreen: {fileID: 838385292}
+=======
+>>>>>>> 54bfcb086c15d34197f71ce1fb3faaf5c5adec3f
 --- !u!1 &750804872
 GameObject:
   m_ObjectHideFlags: 0
@@ -12425,7 +12452,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1344593998}
+<<<<<<< HEAD
   m_LocalRotation: {x: -0.17314364, y: 0.4736973, z: 0.09556999, w: 0.85819495}
+=======
+  m_LocalRotation: {x: -0.17314366, y: 0.47369727, z: 0.095569976, w: 0.85819495}
+>>>>>>> 54bfcb086c15d34197f71ce1fb3faaf5c5adec3f
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -14341,8 +14372,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+<<<<<<< HEAD
       - m_Target: {fileID: 738260421}
         m_TargetAssemblyTypeName: SmeltingFuelItemBehaviour, Assembly-CSharp
+=======
+      - m_Target: {fileID: 738260418}
+        m_TargetAssemblyTypeName: SmeltingItemMenuBehaviour, Assembly-CSharp
+>>>>>>> 54bfcb086c15d34197f71ce1fb3faaf5c5adec3f
         m_MethodName: _Hide
         m_Mode: 1
         m_Arguments:
@@ -18609,7 +18645,11 @@ GameObject:
   m_Component:
   - component: {fileID: 2058140622}
   - component: {fileID: 2058140624}
+<<<<<<< HEAD
   - component: {fileID: 2058140625}
+=======
+  - component: {fileID: 2058140623}
+>>>>>>> 54bfcb086c15d34197f71ce1fb3faaf5c5adec3f
   m_Layer: 5
   m_Name: Slots
   m_TagString: Untagged
@@ -18638,6 +18678,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+<<<<<<< HEAD
+=======
+--- !u!114 &2058140623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2058140621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18d84d45ec94a744da58244849786a4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Slot: {fileID: 0}
+  SmeltingSlot: {fileID: 2112980336}
+>>>>>>> 54bfcb086c15d34197f71ce1fb3faaf5c5adec3f
 --- !u!114 &2058140624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18662,6 +18719,7 @@ MonoBehaviour:
   m_Spacing: {x: 25, y: 25}
   m_Constraint: 0
   m_ConstraintCount: 2
+<<<<<<< HEAD
 --- !u!114 &2058140625
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18676,6 +18734,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slot: {fileID: 0}
   FuelSlot: {fileID: 0}
+=======
+>>>>>>> 54bfcb086c15d34197f71ce1fb3faaf5c5adec3f
 --- !u!1 &2067749011
 GameObject:
   m_ObjectHideFlags: 0
@@ -19367,6 +19427,10 @@ GameObject:
   - component: {fileID: 2112980335}
   - component: {fileID: 2112980338}
   - component: {fileID: 2112980337}
+<<<<<<< HEAD
+=======
+  - component: {fileID: 2112980336}
+>>>>>>> 54bfcb086c15d34197f71ce1fb3faaf5c5adec3f
   m_Layer: 5
   m_Name: NullItemMenuSlot
   m_TagString: Untagged
@@ -19396,6 +19460,24 @@ RectTransform:
   m_AnchoredPosition: {x: 37.5, y: -37.5}
   m_SizeDelta: {x: 75, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
+<<<<<<< HEAD
+=======
+--- !u!114 &2112980336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2112980334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1d811b3f256d6840913d13d16ca2add, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AssignedItem: {fileID: 0}
+  _itemImage: {fileID: 750804874}
+  _itemCount: {fileID: 2076066900}
+>>>>>>> 54bfcb086c15d34197f71ce1fb3faaf5c5adec3f
 --- !u!114 &2112980337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25628,12 +25710,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 2715486532626336845}
   m_Enabled: 1
   m_EditorHideFlags: 0
+<<<<<<< HEAD
   m_Script: {fileID: 11500000, guid: 5c47cbd16c88ab947b629a5069cd8dab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   AssignedItem: {fileID: 0}
   _itemImage: {fileID: 0}
   _itemCount: {fileID: 0}
+=======
+  m_Script: {fileID: 11500000, guid: b097c124e28e5724f933385ccf195c3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <SlotIndex>k__BackingField: 0
+  ItemMenu: {fileID: 738260418}
+  item: {fileID: 11400000, guid: e573acafcb28ab442a46519d0fce24c1, type: 2}
+>>>>>>> 54bfcb086c15d34197f71ce1fb3faaf5c5adec3f
 --- !u!1 &6833335102138700558
 GameObject:
   m_ObjectHideFlags: 0

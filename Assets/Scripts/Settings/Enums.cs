@@ -1,42 +1,13 @@
 using System;
 
-[Serializable]
-public enum Rarities
-{
-    common,
-    uncommon,
-    rare,
-    epic,
-    legendary
-}
-[Serializable]
-
-public enum Scenes
+internal enum Scenes
 {
     Loading,
     Overworld,
     Main_Menu,
 }
-[Serializable]
 
-public enum Tool_Type
-{
-    sword,
-    axe,
-    pickaxe,
-    hoe,
-    fishing_rod,
-    watering_can,
-    building_hammer,
-    bare_hands,
-    food,
-    seeds,
-    building,
-    other,
-    NULL,
-}
-[Serializable]
-public enum KeybindNames
+internal enum KeybindNames
 {
     forward = 119,
     backward = 115,
@@ -58,7 +29,7 @@ public enum KeybindNames
     slot_9 = 57,
 }
 
-public enum PlayerState
+internal enum PlayerState
 {
     seeding,
     normal,

@@ -7,7 +7,7 @@ using UnityEditor;
 namespace BgTools.Extensions
 {
 
-    public static class Extensions
+    internal static class Extensions
     {
         private static Type[] GetAllDerivedTypes(this AppDomain aAppDomain, Type aType)
         {
@@ -26,18 +26,18 @@ namespace BgTools.Extensions
             return result.ToArray();
         }
 
-        public static Rect GetEditorMainWindowPos(EditorWindow relatedWin = null)
+        internal static Rect GetEditorMainWindowPos(EditorWindow relatedWin = null)
         {
             var containerWinType = AppDomain.CurrentDomain.GetAllDerivedTypes(typeof(ScriptableObject)).Where(t => t.Name == "ContainerWindow").FirstOrDefault();
 
             if (containerWinType == null)
-                throw new MissingMemberException("Can't find internal type ContainerWindow. Maybe something has changed inside Unity");
+                throw new MissingMemberException("Can't find public type ContainerWindow. Maybe something has changed inside Unity");
 
             var showModeField = containerWinType.GetField("m_ShowMode", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
             var positionProperty = containerWinType.GetProperty("position", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
 
             if (showModeField == null || positionProperty == null)
-                throw new MissingFieldException("Can't find internal fields 'm_ShowMode' or 'position'. Maybe something has changed inside Unity");
+                throw new MissingFieldException("Can't find public fields 'm_ShowMode' or 'position'. Maybe something has changed inside Unity");
 
             var windows = Resources.FindObjectsOfTypeAll(containerWinType);
             foreach (var win in windows)
@@ -58,14 +58,14 @@ namespace BgTools.Extensions
                     return pos;
                 }
             }
-            throw new NotSupportedException("Can't find internal main window. Maybe something has changed inside Unity");
+            throw new NotSupportedException("Can't find public main window. Maybe something has changed inside Unity");
         }
 
         /// <summary>
         /// Center the EditorWindow in front of the MainUnityWindow (support multi screens).
         /// Kept the currend window sizes.
         /// </summary>
-        public static void CenterOnMainWindow(this EditorWindow window)
+        internal static void CenterOnMainWindow(this EditorWindow window)
         {
             CenterOnWindow(window, null);
         }
@@ -75,7 +75,7 @@ namespace BgTools.Extensions
         /// Kept the currend window sizes.
         /// </summary>
         /// <param name="relatedWin">Referance window for the positioning.</param>
-        public static void CenterOnWindow(this EditorWindow window, EditorWindow relatedWin)
+        internal static void CenterOnWindow(this EditorWindow window, EditorWindow relatedWin)
         {
             var main = GetEditorMainWindowPos(relatedWin);
 

@@ -6,15 +6,15 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
 
-public class Inventory : MonoBehaviour
+internal class Inventory : MonoBehaviour
 {
     [field: SerializeField] Transform weaponPoint;
 
-    public List<Inventory_Slot> slots { get; private set; } = new();
+    internal List<Inventory_Slot> slots { get; private set; } = new();
     Dictionary<int, Inventory_Slot> slot_ids = new();
 
     Item _equipped_item;
-    public Item Equipped_Item => _equipped_item;
+    internal Item Equipped_Item => _equipped_item;
     Action _slotChanged;
     Character_Stats _stats;
     void Start()
@@ -33,7 +33,7 @@ public class Inventory : MonoBehaviour
         LoadInventory();
         Clear_Item();
     }
-    public void Add(Item item)
+    internal void Add(Item item)
     {
         if (item != null)
         {
@@ -44,7 +44,7 @@ public class Inventory : MonoBehaviour
             Debug.LogError("Picked up null!");
     }
 
-    public bool Remove(Item item)
+    internal bool Remove(Item item)
     {
         if (item != null && ContainsItem(item))
         {
@@ -54,7 +54,7 @@ public class Inventory : MonoBehaviour
         return false;
     }
     
-    public bool ContainsItem(Item item)
+    internal bool ContainsItem(Item item)
     {
         Inventory_Slot _occupiedSlot = slots.Find(slot => slot.Get_Item() == item);
 
@@ -64,7 +64,7 @@ public class Inventory : MonoBehaviour
     {
         Inventory_Slot used_slot;
 
-        if (item.is_stackable)
+        if (item.IsStackable)
             used_slot = slots.Find(slot => slot.Get_Item() == item && slot.IsAvailable);
         else
             used_slot = slots.Find(slot => slot.Get_Item() == null && slot.IsAvailable);
@@ -74,7 +74,7 @@ public class Inventory : MonoBehaviour
 
         return used_slot;
     }
-    public Inventory_Slot Return_Closest_Slot()
+    internal Inventory_Slot Return_Closest_Slot()
     {
         float min_distance = float.MaxValue;
         Inventory_Slot closest_slot = slots[0];
@@ -91,17 +91,17 @@ public class Inventory : MonoBehaviour
         }
         return closest_slot;
     }
-    public void Equip(Item item)
+    internal void Equip(Item item)
     {
         _equipped_item = item;
         _slotChanged?.Invoke();
         if (item != null)
         {
             InstantiateItem();
-            _stats.Change_State(item.tool_type);
+            _stats.Change_State(item.ToolType);
         }
         else
-            _stats.Change_State(Tool_Type.NULL);
+            _stats.Change_State(Item.ToolTypes.NULL);
     }
     private void InstantiateItem()
     {
@@ -110,20 +110,20 @@ public class Inventory : MonoBehaviour
         {
             Destroy(weaponPoint.GetChild(i).gameObject);
         }
-        if(_equipped_item.item_prefab != null)
-            Instantiate(_equipped_item.item_prefab, weaponPoint);
+        if(_equipped_item.ItemPrefab != null)
+            Instantiate(_equipped_item.ItemPrefab, weaponPoint);
     }
 
-    public void Clear_Item()
+    internal void Clear_Item()
     {
         _equipped_item = GameManager.game_manager.Null_Item;
     }    
 
-    public void AddToSlotChangedAction(Action action)
+    internal void AddToSlotChangedAction(Action action)
     {
         _slotChanged += action;
     }
-    public void RemoveFromSlotChangedAction()
+    internal void RemoveFromSlotChangedAction()
     {
         _slotChanged -= Clear_Item;
     }
@@ -137,21 +137,21 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public bool IsEquippedItemTool()
+    internal bool IsEquippedItemTool()
     {
         if (_equipped_item == null) return false;
 
-        return (_equipped_item.is_tool);
+        return (_equipped_item.IsTool);
     }
 
-    public bool IsEquippedFood()
+    internal bool IsEquippedFood()
     {
         if (_equipped_item == null) return false;
 
-        return (_equipped_item.is_eatable);
+        return (_equipped_item.IsEatable);
     }
 
-    public IReadOnlyCollection<Item> GetAllItems()
+    internal IReadOnlyCollection<Item> GetAllItems()
     {
         List<Item> _items = new List<Item>();
 
@@ -162,29 +162,29 @@ public class Inventory : MonoBehaviour
         return _items;
     }
 
-    public IReadOnlyCollection<Item> GetAllSmeltableItems()
+    internal IReadOnlyCollection<Item> GetAllSmeltableItems()
     {
         List<Item> _items = new List<Item>();
 
         foreach (Inventory_Slot _slot in slots)
-            if (_slot.Get_Item() != null && _slot.Get_Item().is_smeltable)
+            if (_slot.Get_Item() != null && _slot.Get_Item().IsSmeltable)
                 _items.Add(_slot.Get_Item());
 
         return _items;
     }
 
-    public IReadOnlyCollection<Item> GetAllSmeltingFuel()
+    internal IReadOnlyCollection<Item> GetAllSmeltingFuel()
     {
         List<Item> _items = new List<Item>();
 
         foreach (Inventory_Slot _slot in slots)
-            if (_slot.Get_Item() != null && _slot.Get_Item().is_fuel)
+            if (_slot.Get_Item() != null && _slot.Get_Item().IsFuel)
                 _items.Add(_slot.Get_Item());
 
         return _items;
     }
 
-    public int GetItemCountInInventory(Item _item)
+    internal int GetItemCountInInventory(Item _item)
     {
         List<Inventory_Slot> _slots = slots.FindAll(_slot => _slot.Get_Item() == _item);
         int _count = 0;
@@ -193,7 +193,7 @@ public class Inventory : MonoBehaviour
         return _count;
     }
 
-    public void DecreaseItemCount(Item _item)
+    internal void DecreaseItemCount(Item _item)
     {
         Find_First_Slot(_item).DecreaseCount();
     }

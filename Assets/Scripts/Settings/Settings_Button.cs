@@ -3,12 +3,12 @@ using TMPro;
 using System;
 using UnityEngine.UI;
 
-public class Settings_Button : MonoBehaviour
+internal class Settings_Button : MonoBehaviour
 {
     [SerializeField] KeybindNames keybind_name;
     [SerializeField] KeyCode default_keycode;
 
-    public KeyCode keycode { get; private set; }
+    internal KeyCode keycode { get; private set; }
     private bool isAwaitingInput = false;
 
     // For rendering some text, so user isn't so confused
@@ -35,7 +35,7 @@ public class Settings_Button : MonoBehaviour
             SetValue();
 
     }
-    public void RevertToDefault()
+    internal void RevertToDefault()
     {
         this.keycode = default_keycode;
     }
@@ -62,7 +62,7 @@ public class Settings_Button : MonoBehaviour
             }
         }
     }
-    public void ChangeKeyCode()
+    internal void ChangeKeyCode()
     {
         btn_text.text = "Awaiting new keybind...";
         isAwaitingInput = true;

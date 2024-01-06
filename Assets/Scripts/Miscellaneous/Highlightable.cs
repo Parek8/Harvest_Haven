@@ -1,12 +1,12 @@
 using UnityEngine;
 
-public class Highlightable : MonoBehaviour
+internal class Highlightable : MonoBehaviour
 {
     [field: SerializeField] string _itemMessage;
     [field: SerializeField] bool Interactable;
     [field: SerializeField] bool Destroyable;
     [field: SerializeField] bool Attackable;
-    public string GetMessage()
+    internal string GetMessage()
     {
         if (_itemMessage == null)
             Debug.Log("No message!");

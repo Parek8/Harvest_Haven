@@ -6,7 +6,7 @@ using System.Linq;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
-public class Save_Manager : MonoBehaviour
+internal class Save_Manager : MonoBehaviour
 {
     //[field: SerializeField] string inventory_path = "./Saved/pl_inv.json";
     //List<Inventory_Slot> slots = new();
@@ -30,7 +30,7 @@ public class Save_Manager : MonoBehaviour
     //        slot_ids.Add(slot.slot_index, slot);
     //    }
     //}
-    //public void Save_Inventory()
+    //internal void Save_Inventory()
     //{
     //    Get_Slots();
     //    if (GameManager.game_manager.Check_Items_Ids())
@@ -62,7 +62,7 @@ public class Save_Manager : MonoBehaviour
     //        Debug.Log("Saved");
     //    }
     //}
-    //public void Load_Inventory()
+    //internal void Load_Inventory()
     //{
     //    Get_Slots();
     //    Debug.Log(File.Exists(inventory_path));

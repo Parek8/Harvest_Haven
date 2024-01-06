@@ -2,16 +2,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Recipe")]
-public class CraftingRecipe : ScriptableObject
+internal class CraftingRecipe : ScriptableObject
 {
     [field: Tooltip("Items are ordered like numpad: 9 8 7 | 6 5 4 | 3 2 1")]
     [field: SerializeField] Item[] Items = new Item[9];
     [field: SerializeField] Item ResultItem;
 
-    public IReadOnlyCollection<Item> GetItems => Items;
-    public Item GetResultItem => ResultItem;
+    internal IReadOnlyCollection<Item> GetItems => Items;
+    internal Item GetResultItem => ResultItem;
 
-    public bool CompareRecipes(Item[] _compared)
+    internal bool CompareRecipes(Item[] _compared)
     {
 
         if (_compared[0] != Items[0])

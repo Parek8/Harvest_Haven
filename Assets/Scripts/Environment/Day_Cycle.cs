@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.Rendering.LookDev;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
-public class Day_Cycle : Custom_Update_Subscriber
+internal class Day_Cycle : Custom_Update_Subscriber
 {
     [field: SerializeField] TMP_Text time_text;
     [field: SerializeField] Image clock;
@@ -31,7 +31,7 @@ public class Day_Cycle : Custom_Update_Subscriber
         Update_Time_HUD();
         Update_Light();
     }
-    public override void Custom_Update()
+    internal override void Custom_Update()
     {
         countdown -= My_Update.ingame_seconds;
         seconds += My_Update.ingame_seconds;
@@ -54,15 +54,15 @@ public class Day_Cycle : Custom_Update_Subscriber
         Color c = Color.Lerp(day_color, night_color, v);
         global_light.color = c;
     }
-    public static int Return_Hours()
+    internal static int Return_Hours()
     {
         return (int)Mathf.Floor(seconds / 3600);
     }
-    public static int Return_Minutes()
+    internal static int Return_Minutes()
     {
         return (int)Mathf.Floor((seconds - (Return_Hours() * 3600)) / 60);
     }
-    public static void Next_Day()
+    internal static void Next_Day()
     {
         days++;
         countdown = seconds_in_a_day;
@@ -70,15 +70,15 @@ public class Day_Cycle : Custom_Update_Subscriber
         Debug.Log("New day " + days);
     }
 
-    public static void On_New_Day_Subscribe(Action action)
+    internal static void On_New_Day_Subscribe(Action action)
     {
         On_New_Day += action;
     }
-    public static void On_New_Day_Unsubscribe(Action action)
+    internal static void On_New_Day_Unsubscribe(Action action)
     {
         On_New_Day -= action;
     }
-    public static void Sleep()
+    internal static void Sleep()
     {
         Debug.Log("You slept well");
         Next_Day();

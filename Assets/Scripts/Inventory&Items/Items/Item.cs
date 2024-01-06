@@ -4,23 +4,67 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Items/Item")]
-public class Item : ScriptableObject
+internal class Item : ScriptableObject
 {
-    [field: SerializeField] public int item_id { get; private set; } = 0;
-    [field: SerializeField] public string item_name { get; private set; } = "";
-    [field: SerializeField] public Sprite item_icon { get; private set; } = null;
-    [field: Range(0.0f, 1.0f)] public float spawn_rate;
-    //[field: SerializeField] public int count { get; private set; } = 0;
-    [field: SerializeField] public GameObject item_prefab { get; private set; }
-    [field: SerializeField] public bool is_eatable { get; private set; } = false;
-    [field: SerializeField] public bool is_tool { get; private set; } = false;
-    [field: SerializeField] public bool is_stackable { get; private set; } = false;
-    [field: SerializeField] public bool is_fuel { get; private set; } = false;
-    [field: SerializeField] public bool is_smeltable { get; private set; } = false;
-    [field: SerializeField] public Item smelt_item { get; private set; }
-    [field: SerializeField] public Tool_Type tool_type { get; private set; }
-    [field: SerializeField] public float tool_damage { get; private set; }
-    [field: SerializeField] public PlantObject plantable_object { get; private set; }
+    // ---NEW---
+    [field: Header("Global Item Info")]
+    [field: SerializeField] public int ItemID { get; private set; } = 0;
+    [field: SerializeField] public string ItemName { get; private set; } = "";
+    [field: SerializeField] public string ItemDescription { get; private set; } = "";
+    [field: SerializeField] public List<ItemTags> ItemDescriptionTags { get; private set; } = new();
+    [field: SerializeField] public Sprite ItemIcon { get; private set; }
+    [field: Range(0.0f, 1.0f)] public float SpawnRate;
+    [field: SerializeField] public GameObject ItemPrefab { get; private set; }
 
-    public Inventory_Slot AssignedSlot = null;
+    [field: Header("Item Functionalities")]
+    public bool IsEatable = false;
+    public bool IsTool = false;
+    public bool IsStackable = false;
+    public bool IsFuel = false;
+    public bool IsSmeltable = false;
+    public bool IsPlantable = false;
+
+    [field: Header("Item Specific Variables")]
+    [field: SerializeField, SerializeFieldOnCondition("IsSmeltable", true, ComparisonType.Equals)] public Item SmeltItem { get; private set; }
+    [field: SerializeField, SerializeFieldOnCondition("IsTool", true, ComparisonType.Equals)] public ToolTypes ToolType { get; private set; }
+    [field: SerializeField, SerializeFieldOnCondition("IsTool", true, ComparisonType.Equals)] public float ToolDamage { get; private set; }
+    [field: SerializeField, SerializeFieldOnCondition("IsPlantable", true, ComparisonType.Equals)] public PlantObject PlantableObject { get; private set; }
+    [field: SerializeField, SerializeFieldOnCondition("IsEatable", true, ComparisonType.Equals)] public float FoodRegen { get; private set; }
+
+    internal Inventory_Slot AssignedSlot = null;
+    internal enum ToolTypes
+    {
+        sword,
+        axe,
+        pickaxe,
+        hoe,
+        fishing_rod,
+        watering_can,
+        building_hammer,
+        bare_hands,
+        food,
+        seeds,
+        building,
+        other,
+        NULL,
+    }
+    internal enum Rarities
+    {
+        common,
+        uncommon,
+        rare,
+        epic,
+        legendary
+    }
+    internal enum ItemTags
+    {
+        Crafting,
+        Cooking,
+        Smelting,
+        Fuel,
+        Food,
+        Tool,
+        Seeds,
+        EasterEgg,
+    }
 }

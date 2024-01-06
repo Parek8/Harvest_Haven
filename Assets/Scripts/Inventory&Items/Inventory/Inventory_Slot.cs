@@ -2,14 +2,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Inventory_Slot : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+internal class Inventory_Slot : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     [field: SerializeField] Item item;
-    [field: SerializeField] public int slot_index { get; private set; }
+    [field: SerializeField] internal int slot_index { get; private set; }
 
     [field: SerializeField] Image item_image; // I was way too lazy to fix teh thing commented in the Start() method
     [field: SerializeField] TMP_Text item_count;
@@ -24,8 +25,8 @@ public class Inventory_Slot : MonoBehaviour, IPointerDownHandler, IPointerUpHand
     Image background;
     Inventory player_inventory;
     int _itemCount = 0;
-    public int ItemCount => _itemCount;
-    public bool IsAvailable => (this.item == null || this.ItemCount < 10);
+    internal int ItemCount => _itemCount;
+    internal bool IsAvailable => (this.item == null || this.ItemCount < 10);
 
     void Start()
     {
@@ -61,7 +62,7 @@ public class Inventory_Slot : MonoBehaviour, IPointerDownHandler, IPointerUpHand
         if (eventData.button == PointerEventData.InputButton.Right && isHotbarSlot)
             Equip();
     }
-    public float Return_Distance_From_Mouse()
+    internal float Return_Distance_From_Mouse()
     {
         return (Vector2.Distance(transform.position, Input.mousePosition));
     }
@@ -97,7 +98,7 @@ public class Inventory_Slot : MonoBehaviour, IPointerDownHandler, IPointerUpHand
             is_dragging = false;
         }
     }
-    public void Equip()
+    internal void Equip()
     {
         GameManager.game_manager.player_inventory.Equip(item);
         SetBackground(focusedColor);
@@ -106,12 +107,12 @@ public class Inventory_Slot : MonoBehaviour, IPointerDownHandler, IPointerUpHand
     {
         background.color = c;
     }
-    public bool Is_Empty()
+    internal bool Is_Empty()
     {
         return (this.item == null);
     }
     
-    public void Assign_Item(Item item, int count = 1)
+    internal void Assign_Item(Item item, int count = 1)
     {
         if (item != null)
         {
@@ -129,34 +130,34 @@ public class Inventory_Slot : MonoBehaviour, IPointerDownHandler, IPointerUpHand
         else
             Debug.LogError("Item is null!");
     }
-    public void DecreaseCount(int _count = 1)
+    internal void DecreaseCount(int _count = 1)
     {
         _itemCount -= _count;
         if (_itemCount <= 0)
             Clear_Item();
     }
-    public void Clear_Item()
+    internal void Clear_Item()
     {
         if (item != null)
             item.AssignedSlot = null;
         this.item = null;
         _itemCount = 0;
     }
-    public void DropItem()
+    internal void DropItem()
     {
         DecreaseCount();
        
     }
-    public void Update_UI()
+    internal void Update_UI()
     {
         if(this.item != null)
         {
-            if (!item_count.gameObject.activeInHierarchy && item.is_stackable)
+            if (!item_count.gameObject.activeInHierarchy && item.IsStackable)
                 item_count.gameObject.SetActive(true);
-            else if (item_count.gameObject.activeInHierarchy && !item.is_stackable)
+            else if (item_count.gameObject.activeInHierarchy && !item.IsStackable)
                 item_count.gameObject.SetActive(false);
 
-            item_image.sprite = item.item_icon;
+            item_image.sprite = item.ItemIcon;
             item_count.text = $"{_itemCount}";
             item_image.color = new Color(255, 255, 255, 255);
         }
@@ -167,13 +168,13 @@ public class Inventory_Slot : MonoBehaviour, IPointerDownHandler, IPointerUpHand
             item_image.color = new Color(0, 0, 0, 0);
         }
     }
-    public Item Get_Item()
+    internal Item Get_Item()
     {
         if (this.item == null)
             return null;
         return (this.item);
     }
-    public bool Is_Current_Slot(Inventory_Slot compared_slot)
+    internal bool Is_Current_Slot(Inventory_Slot compared_slot)
     {
         return (compared_slot == this);
     }

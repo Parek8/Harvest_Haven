@@ -1,24 +1,24 @@
 ﻿namespace BgTools.PlayerPrefsEditor
 {
     [System.Serializable]
-    public class PreferenceEntry
+    internal class PreferenceEntry
     {
-        public enum PrefTypes
+        internal enum PrefTypes
         {
             String = 0,
             Int = 1,
             Float = 2
         }
 
-        public PrefTypes m_typeSelection;
-        public string m_key;
+        internal PrefTypes m_typeSelection;
+        internal string m_key;
 
         // Need diffrend ones for auto type selection of serilizedProerty
-        public string m_strValue;
-        public int m_intValue;
-        public float m_floatValue;
+        internal string m_strValue;
+        internal int m_intValue;
+        internal float m_floatValue;
 
-        public string ValueAsString()
+        internal string ValueAsString()
         {
             switch(m_typeSelection)
             {

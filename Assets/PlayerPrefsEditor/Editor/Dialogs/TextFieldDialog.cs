@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace BgTools.Dialogs
 {
-    public class TextFieldDialog : EditorWindow
+    internal class TextFieldDialog : EditorWindow
     {
         [NonSerialized]
         private string resultString = string.Empty;
@@ -24,7 +24,7 @@ namespace BgTools.Dialogs
         [NonSerialized]
         private TextValidator errorValidator = null;
 
-        public static void OpenDialog(string title, string description, List<TextValidator> validatorList, Action<string> callback, EditorWindow targetWin = null)
+        internal static void OpenDialog(string title, string description, List<TextValidator> validatorList, Action<string> callback, EditorWindow targetWin = null)
         {
             TextFieldDialog window = ScriptableObject.CreateInstance<TextFieldDialog>();
 

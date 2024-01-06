@@ -9,9 +9,9 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
 
-public class GameManager : MonoBehaviour
+internal class GameManager : MonoBehaviour
 {
-    public static GameManager game_manager { get; private set; }
+    internal static GameManager game_manager { get; private set; }
     void Awake()
     {
         if (game_manager == null)
@@ -21,32 +21,32 @@ public class GameManager : MonoBehaviour
         for (int i = 0;  i < all_items.Count; i++)
         {
             Item _item = all_items[i];
-            _allItems[_item.item_id] = _item;
+            _allItems[_item.ItemID] = _item;
         }
     }
 
-    public bool is_game_paused { get; private set; }
-    [field: SerializeField] public Transform player_transform { get; private set; }
-    [field: SerializeField] public Inventory player_inventory { get; private set; }
-    [field: SerializeField] public Main_Menu_Buttons main_menu_buttons { get; private set; }
-    [field: SerializeField] public List<Item> all_items { get; private set; }
-    [field: SerializeField] public Item Null_Item { get; private set; }
-    [field: SerializeField] public Transform environment_parent { get; private set; }
-    [field: SerializeField] public Dictionary<int, Item> _allItems = new Dictionary<int, Item>();
-    [field: SerializeField] public SaveManager saveManager { get; private set; }
-    [field: SerializeField] public Button ButtonPrefab { get; private set; }
+    internal bool is_game_paused { get; private set; }
+    [field: SerializeField] internal Transform player_transform { get; private set; }
+    [field: SerializeField] internal Inventory player_inventory { get; private set; }
+    [field: SerializeField] internal Main_Menu_Buttons main_menu_buttons { get; private set; }
+    [field: SerializeField] internal List<Item> all_items { get; private set; }
+    [field: SerializeField] internal Item Null_Item { get; private set; }
+    [field: SerializeField] internal Transform environment_parent { get; private set; }
+    [field: SerializeField] internal Dictionary<int, Item> _allItems = new Dictionary<int, Item>();
+    [field: SerializeField] internal SaveManager saveManager { get; private set; }
+    [field: SerializeField] internal Button ButtonPrefab { get; private set; }
 
-    public void Cursor_Needed(CursorLockMode lock_mode)
+    internal void Cursor_Needed(CursorLockMode lock_mode)
     {
         if (Cursor.lockState != lock_mode)
             Cursor.lockState = lock_mode;
     }
-    public Dictionary<KeybindNames, KeyCode> keybinds { get; private set; } = new Dictionary<KeybindNames, KeyCode>();
-    public bool IsKeybindSaved(KeybindNames keybind)
+    internal Dictionary<KeybindNames, KeyCode> keybinds { get; private set; } = new Dictionary<KeybindNames, KeyCode>();
+    internal bool IsKeybindSaved(KeybindNames keybind)
     {
         return (PlayerPrefs.GetString(keybind.ToString()) != "" && PlayerPrefs.GetString(keybind.ToString()) != null);
     }
-    public void SetKeybind(KeybindNames name, KeyCode input)
+    internal void SetKeybind(KeybindNames name, KeyCode input)
     {
         if(!keybinds.ContainsKey(name))
             keybinds.Add(name, input);
@@ -83,15 +83,15 @@ public class GameManager : MonoBehaviour
 
 
 // CUSTOM INPUT MANAGER FOR CUSTOM INPUTS FOR EASIER KEYBIND SYSTEM
-public static class Input_Manager
+internal static class Input_Manager
 {
     static Dictionary<KeybindNames, KeyCode> keybinds = new Dictionary<KeybindNames, KeyCode>();
-    public static void SetKeybindsList(Dictionary<KeybindNames, KeyCode> keybindsDic)
+    internal static void SetKeybindsList(Dictionary<KeybindNames, KeyCode> keybindsDic)
     {
         keybinds = keybindsDic;
     }
 
-    public static float GetCustomAxisRaw(string axis)
+    internal static float GetCustomAxisRaw(string axis)
     {
         try
         {
@@ -147,7 +147,7 @@ public static class Input_Manager
             return -1f;
         }
     }
-    public static bool GetCustomAxisRawDown(string axis)
+    internal static bool GetCustomAxisRawDown(string axis)
     {
         try
         {
@@ -256,5 +256,5 @@ public static class Input_Manager
             PlayerPrefs.SetString(kb.ToString(), ((KeyCode)kb).ToString());
         }
     }
-    public static string GetKeyByName(KeybindNames _name) => keybinds[_name].ToString();
+    internal static string GetKeyByName(KeybindNames _name) => keybinds[_name].ToString();
 }

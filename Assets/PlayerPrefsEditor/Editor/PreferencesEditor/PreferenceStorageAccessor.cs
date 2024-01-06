@@ -16,7 +16,7 @@ using System.Xml.Linq;
 
 namespace BgTools.PlayerPrefsEditor
 {
-    public abstract class PreferanceStorageAccessor
+    internal abstract class PreferanceStorageAccessor
     {
         protected string prefPath;
         protected string[] cachedData = new string[0];
@@ -28,7 +28,7 @@ namespace BgTools.PlayerPrefsEditor
             prefPath = pathToPrefs;
         }
 
-        public string[] GetKeys(bool reloadData = true)
+        internal string[] GetKeys(bool reloadData = true)
         {
             if (reloadData || cachedData.Length == 0)
             {
@@ -38,10 +38,10 @@ namespace BgTools.PlayerPrefsEditor
             return cachedData;
         }
 
-        public Action PrefEntryChangedDelegate;
+        internal Action PrefEntryChangedDelegate;
         protected bool ignoreNextChange = false;
 
-        public void IgnoreNextChange()
+        internal void IgnoreNextChange()
         {
             ignoreNextChange = true;
         }
@@ -57,21 +57,21 @@ namespace BgTools.PlayerPrefsEditor
             PrefEntryChangedDelegate();
         }
 
-        public Action StartLoadingDelegate;
-        public Action StopLoadingDelegate;
+        internal Action StartLoadingDelegate;
+        internal Action StopLoadingDelegate;
 
-        public abstract void StartMonitoring();
-        public abstract void StopMonitoring();
-        public abstract bool IsMonitoring();
+        internal abstract void StartMonitoring();
+        internal abstract void StopMonitoring();
+        internal abstract bool IsMonitoring();
     }
 
 #if UNITY_EDITOR_WIN
 
-    public class WindowsPrefStorage : PreferanceStorageAccessor
+    internal class WindowsPrefStorage : PreferanceStorageAccessor
     {
         RegistryMonitor monitor;
 
-        public WindowsPrefStorage(string pathToPrefs) : base(pathToPrefs)
+        internal WindowsPrefStorage(string pathToPrefs) : base(pathToPrefs)
         {
             monitor = new RegistryMonitor(RegistryHive.CurrentUser, prefPath);
             monitor.RegChanged += new EventHandler(OnRegChanged);
@@ -101,17 +101,17 @@ namespace BgTools.PlayerPrefsEditor
             EncodeAnsiInPlace();
         }
 
-        public override void StartMonitoring()
+        internal override void StartMonitoring()
         {
             monitor.Start();
         }
 
-        public override void StopMonitoring()
+        internal override void StopMonitoring()
         {
             monitor.Stop();
         }
 
-        public override bool IsMonitoring()
+        internal override bool IsMonitoring()
         {
             return monitor.IsMonitoring;
         }
@@ -130,11 +130,11 @@ namespace BgTools.PlayerPrefsEditor
 
 #elif UNITY_EDITOR_LINUX
 
-    public class LinuxPrefStorage : PreferanceStorageAccessor
+    internal class LinuxPrefStorage : PreferanceStorageAccessor
     {
         FileSystemWatcher fileWatcher;
 
-        public LinuxPrefStorage(string pathToPrefs) : base(Path.Combine(Environment.GetEnvironmentVariable("HOME"), pathToPrefs))
+        internal LinuxPrefStorage(string pathToPrefs) : base(Path.Combine(Environment.GetEnvironmentVariable("HOME"), pathToPrefs))
         {
             fileWatcher = new FileSystemWatcher();
             fileWatcher.Path = Path.GetDirectoryName(prefPath);
@@ -159,17 +159,17 @@ namespace BgTools.PlayerPrefsEditor
             }
         }
 
-        public override void StartMonitoring()
+        internal override void StartMonitoring()
         {
             fileWatcher.EnableRaisingEvents = true;
         }
 
-        public override void StopMonitoring()
+        internal override void StopMonitoring()
         {
             fileWatcher.EnableRaisingEvents = false;
         }
 
-        public override bool IsMonitoring()
+        internal override bool IsMonitoring()
         {
             return fileWatcher.EnableRaisingEvents;
         }
@@ -182,13 +182,13 @@ namespace BgTools.PlayerPrefsEditor
 
 #elif UNITY_EDITOR_OSX
 
-    public class MacPrefStorage : PreferanceStorageAccessor
+    internal class MacPrefStorage : PreferanceStorageAccessor
     {
         private FileSystemWatcher fileWatcher;
         private DirectoryInfo prefsDirInfo;
         private String prefsFileNameWithoutExtension;
 
-        public MacPrefStorage(string pathToPrefs) : base(Path.Combine(Environment.GetEnvironmentVariable("HOME"), pathToPrefs))
+        internal MacPrefStorage(string pathToPrefs) : base(Path.Combine(Environment.GetEnvironmentVariable("HOME"), pathToPrefs))
         {
             prefsDirInfo = new DirectoryInfo(Path.GetDirectoryName(prefPath));
             prefsFileNameWithoutExtension = Path.GetFileNameWithoutExtension(prefPath);
@@ -247,17 +247,17 @@ namespace BgTools.PlayerPrefsEditor
             }
         }
 
-        public override void StartMonitoring()
+        internal override void StartMonitoring()
         {
             fileWatcher.EnableRaisingEvents = true;
         }
 
-        public override void StopMonitoring()
+        internal override void StopMonitoring()
         {
             fileWatcher.EnableRaisingEvents = false;
         }
 
-        public override bool IsMonitoring()
+        internal override bool IsMonitoring()
         {
             return fileWatcher.EnableRaisingEvents;
         }

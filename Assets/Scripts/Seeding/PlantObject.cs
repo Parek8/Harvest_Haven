@@ -2,12 +2,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Plants/PlantObject")]
-public class PlantObject : ScriptableObject
+internal class PlantObject : ScriptableObject
 {
     [field: SerializeField] List<uint> times = new List<uint>();
     [field: SerializeField] List<GameObject> stages = new List<GameObject>();
     [field: SerializeField] List<Item> droppedItems = new List<Item>();
-    public IReadOnlyCollection<uint> Times => times;
-    public IReadOnlyCollection<GameObject> Stages => stages;
-    public IReadOnlyCollection<Item> DroppedItems => droppedItems;
+    internal IReadOnlyCollection<uint> Times => times;
+    internal IReadOnlyCollection<GameObject> Stages => stages;
+    internal IReadOnlyCollection<Item> DroppedItems => droppedItems;
 }

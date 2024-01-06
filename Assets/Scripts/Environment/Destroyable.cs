@@ -7,11 +7,11 @@ using UnityEngine.UI;
 
 [RequireComponent(typeof(MeshCollider))]
 [RequireComponent(typeof(MeshRenderer))]
-public class Destroyable : MonoBehaviour
+internal class Destroyable : MonoBehaviour
 {
     [SerializeField] float max_hp = 20;
     [SerializeField] List<Item> dropped_items;
-    [SerializeField] List<Tool_Type> types;
+    [SerializeField] List<Item.ToolTypes> types;
 
     [SerializeField] Gradient health_colors;
     [SerializeField] Image filled_health_bar;
@@ -50,7 +50,7 @@ public class Destroyable : MonoBehaviour
         environment_parent = GameManager.game_manager.environment_parent;
     }
 
-    public void Damage(float damage)
+    internal void Damage(float damage)
     {
         this.hp -= damage;
         if (this.hp <= 0 )
@@ -95,9 +95,9 @@ public class Destroyable : MonoBehaviour
     {
         foreach(Item it in dropped_items)
         {
-            if (Random.Range(0.0f, 1.0f) <= it.spawn_rate)
+            if (Random.Range(0.0f, 1.0f) <= it.SpawnRate)
             {
-                Pick_Up_Item drop_rb = Instantiate(it.item_prefab, Get_Drop_Range(), Quaternion.identity,environment_parent).GetComponent<Pick_Up_Item>();
+                Pick_Up_Item drop_rb = Instantiate(it.ItemPrefab, Get_Drop_Range(), Quaternion.identity,environment_parent).GetComponent<Pick_Up_Item>();
                 //drop_rb.Push_Item_Upwards();
             }
         }
@@ -120,12 +120,12 @@ public class Destroyable : MonoBehaviour
         obj_canvas.transform.rotation = rot;
     }
 
-    public bool Compare_Tag(Tool_Type type)
+    internal bool Compare_Tag(Item.ToolTypes type)
     {
         return types.Contains(type);
     }
 
-    public void SetupObject(List<Item> dropped_items, List<Tool_Type> types, float max_hp = 20)
+    internal void SetupObject(List<Item> dropped_items, List<Item.ToolTypes> types, float max_hp = 20)
     {
         this.dropped_items = dropped_items;
         this.types = types;

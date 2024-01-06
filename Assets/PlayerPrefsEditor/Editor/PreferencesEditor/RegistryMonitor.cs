@@ -15,7 +15,7 @@ using Microsoft.Win32;
 
 namespace BgTools.PlayerPrefsEditor
 {
-    public class RegistryMonitor : IDisposable
+    internal class RegistryMonitor : IDisposable
     {
         #region P/Invoke
 
@@ -47,7 +47,7 @@ namespace BgTools.PlayerPrefsEditor
         /// <summary>
         /// Occurs when the specified registry key has changed.
         /// </summary>
-        public event EventHandler RegChanged;
+        internal event EventHandler RegChanged;
 
         /// <summary>
         /// Raises the <see cref="RegChanged"/> event.
@@ -71,7 +71,7 @@ namespace BgTools.PlayerPrefsEditor
         /// <summary>
         /// Occurs when the access to the registry fails.
         /// </summary>
-        public event ErrorEventHandler Error;
+        internal event ErrorEventHandler Error;
 
         /// <summary>
         /// Raises the <see cref="Error"/> event.
@@ -347,7 +347,7 @@ namespace BgTools.PlayerPrefsEditor
     /// Filter for notifications reported by <see cref="RegistryMonitor"/>.
     /// </summary>
     [Flags]
-    public enum RegChangeNotifyFilter
+    internal enum RegChangeNotifyFilter
     {
         /// <summary>Notify the caller if a subkey is added or deleted.</summary>
         Key = 1,

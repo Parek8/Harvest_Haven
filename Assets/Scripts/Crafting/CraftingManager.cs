@@ -2,9 +2,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class CraftingManager : MonoBehaviour
+internal class CraftingManager : MonoBehaviour
 {
-    public static CraftingManager craftingManager;
+    internal static CraftingManager craftingManager;
     [field: SerializeField] List<CraftingRecipe> _recipes = new();
 
     private void Awake()
@@ -13,7 +13,7 @@ public class CraftingManager : MonoBehaviour
             craftingManager = this;
     }
 
-    public Item FindRecipeResult(Item[] _recipe)
+    internal Item FindRecipeResult(Item[] _recipe)
     {
         for (int i = 0; i < _recipes.Count; i++)
         {

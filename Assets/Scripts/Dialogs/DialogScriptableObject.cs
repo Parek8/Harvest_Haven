@@ -4,39 +4,39 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public interface IDialog
+internal interface IDialog
 {
     DialogLine NextIndex();
 }
-public class DialogLine
+internal class DialogLine
 {
     string _line;
-    public List<DialogButton> Buttons => _buttons;
+    internal List<DialogButton> Buttons => _buttons;
 
     List<DialogButton> _buttons;
-    public string Line => _line;
+    internal string Line => _line;
 
-    public DialogLine(string line, List<DialogButton> _buttons) 
+    internal DialogLine(string line, List<DialogButton> _buttons) 
     {
         this._line = line;
         this._buttons = _buttons;
     }
 }
-public class DialogButton
+internal class DialogButton
 {
     string _name;
     UnityAction _event;
 
-    public string Name => _name;
-    public UnityAction Event => _event;
+    internal string Name => _name;
+    internal UnityAction Event => _event;
 
-    public DialogButton(UnityAction _event, string _name)
+    internal DialogButton(UnityAction _event, string _name)
     { 
         this._event = _event;
         this._name = _name;
     }
 
-    public Button GetButton(Transform _parent)
+    internal Button GetButton(Transform _parent)
     {
 
         Button btn = MonoBehaviour.Instantiate(GameManager.game_manager.ButtonPrefab, _parent);

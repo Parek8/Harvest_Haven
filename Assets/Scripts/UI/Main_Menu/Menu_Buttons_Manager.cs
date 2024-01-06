@@ -4,15 +4,15 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Menu_Buttons_Manager : MonoBehaviour
+internal class Menu_Buttons_Manager : MonoBehaviour
 {
-    public void Play()
+    internal void Play()
     {
         // load world mechanics yet to be implemented
         SceneManager.LoadScene(Scenes.Overworld.ToString());
     }
 
-    public void Exit()
+    internal void Exit()
     {
         Application.Quit();
         //Exit the editor playmode -> checking, if you're using UNITY_EDITOR

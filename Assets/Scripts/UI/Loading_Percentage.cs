@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Loading_Percentage : MonoBehaviour
+internal class Loading_Percentage : MonoBehaviour
 {
     [SerializeField] Image fill;
     [SerializeField] TMP_Text percentage;
@@ -14,7 +14,7 @@ public class Loading_Percentage : MonoBehaviour
     {
         anim.SetBool("Play", true);   
     }
-    public void Fill(float amount)
+    internal void Fill(float amount)
     {
         if (amount is >= 0 and <= 1)
         {

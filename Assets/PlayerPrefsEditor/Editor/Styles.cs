@@ -4,22 +4,22 @@ using UnityEngine;
 
 namespace BgTools.Utils
 {
-    public class Styles
+    internal class Styles
     {
         #region Colors
-        public class Colors {
-            public static Color DarkGray =  new Color(0.09f, 0.09f, 0.09f);
-            public static Color LightGray = new Color(0.65f, 0.65f, 0.65f);
-            public static Color Red =       new Color(1.00f, 0.00f, 0.00f);
-            public static Color Yellow =    new Color(1.00f, 1.00f, 0.00f);
-            public static Color Blue =      new Color(0.00f, 0.63f, 0.99f);
+        internal class Colors {
+            internal static Color DarkGray =  new Color(0.09f, 0.09f, 0.09f);
+            internal static Color LightGray = new Color(0.65f, 0.65f, 0.65f);
+            internal static Color Red =       new Color(1.00f, 0.00f, 0.00f);
+            internal static Color Yellow =    new Color(1.00f, 1.00f, 0.00f);
+            internal static Color Blue =      new Color(0.00f, 0.63f, 0.99f);
         }
         #endregion // Colors
 
         #region Texture manager
         static Dictionary<long, Texture2D> mTextures = new Dictionary<long, Texture2D>();
 
-        public static Texture2D GetTexture(long pColorRGBA)
+        internal static Texture2D GetTexture(long pColorRGBA)
         {
             if (mTextures.ContainsKey(pColorRGBA) && mTextures[pColorRGBA] != null)
                 return mTextures[pColorRGBA];
@@ -68,13 +68,13 @@ namespace BgTools.Utils
             }
         }
 
-        public static void HorizontalSeparator()
+        internal static void HorizontalSeparator()
         {
             GUILayout.Label("", hSeparator);
         }
 
         static GUIStyle Icon;
-        public static GUIStyle icon
+        internal static GUIStyle icon
         {
             get
             {
@@ -90,7 +90,7 @@ namespace BgTools.Utils
         }
 
         static GUIStyle MiniButton;
-        public static GUIStyle miniButton
+        internal static GUIStyle miniButton
         {
             get
             {

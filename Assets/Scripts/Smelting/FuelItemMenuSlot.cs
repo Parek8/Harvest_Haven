@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class FuelItemMenuSlot : MonoBehaviour, IPointerClickHandler
+internal class FuelItemMenuSlot : MonoBehaviour, IPointerClickHandler
 {
     [field: SerializeField] Item AssignedItem;
     [field: SerializeField] Image _itemImage;
@@ -22,12 +22,12 @@ public class FuelItemMenuSlot : MonoBehaviour, IPointerClickHandler
             _parent.AssignItem(AssignedItem);
     }
 
-    public void Init(Item _item)
+    internal void Init(Item _item)
     {
         if (_item != null)
         {
             AssignedItem = _item;
-            _itemImage.sprite = _item.item_icon;
+            _itemImage.sprite = _item.ItemIcon;
             _itemCount.text = $"x{GameManager.game_manager.player_inventory.GetItemCountInInventory(AssignedItem)}";
         }
     }

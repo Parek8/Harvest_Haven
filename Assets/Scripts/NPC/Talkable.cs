@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShopTalkable : Interactable
+internal class ShopTalkable : Interactable
 {
     [field: SerializeField] TestDialog _dialog;
     bool talking = false;
-    public override void Interact()
+    internal override void Interact()
     {
         if (_dialog == null)
             _dialog = GetComponent<TestDialog>();

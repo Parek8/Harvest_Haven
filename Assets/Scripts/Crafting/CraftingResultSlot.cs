@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class CraftingResultSlot : MonoBehaviour, IPointerClickHandler
+internal class CraftingResultSlot : MonoBehaviour, IPointerClickHandler
 {
     [field: SerializeField] List<CraftingSlot> _slots;
     [field: SerializeField] Image _resultImage;
@@ -82,7 +82,7 @@ public class CraftingResultSlot : MonoBehaviour, IPointerClickHandler
                 _playerInventory.DecreaseItemCount(_material);
         }
     }
-    public void FindRecipe()
+    internal void FindRecipe()
     {
         Item[] _items = GetRecipe();
 
@@ -107,7 +107,7 @@ public class CraftingResultSlot : MonoBehaviour, IPointerClickHandler
 
     private void ShowResult(Item _result)
     {
-        this._resultImage.sprite = _result.item_icon;
+        this._resultImage.sprite = _result.ItemIcon;
     }
 
     private void ClearResult()

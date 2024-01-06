@@ -3,25 +3,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Character_Stats : MonoBehaviour
+internal class Character_Stats : MonoBehaviour
 {
     [field: Header("Player Movement Variables: ")]
-    [field: SerializeField] public float movement_speed { get; private set; } = 15f; 
-    [field: SerializeField] public float jump_force { get; private set; } = 100f;
-    [field: SerializeField] public float pick_up_distance { get; private set; } = 1.2f;
-    [field: SerializeField] public float attack_distance { get; private set; } = 1.2f;
-    [field: SerializeField] public LayerMask destroyable_layers { get; private set; }
-    [field: SerializeField] public LayerMask highlightable_layers { get; private set; }
-    [field: SerializeField] public LayerMask interactable_layers { get; private set; }
-    [field: SerializeField] public float attack_damage { get; private set; } = 10f;
+    [field: SerializeField] internal float movement_speed { get; private set; } = 15f; 
+    [field: SerializeField] internal float jump_force { get; private set; } = 100f;
+    [field: SerializeField] internal float pick_up_distance { get; private set; } = 1.2f;
+    [field: SerializeField] internal float attack_distance { get; private set; } = 1.2f;
+    [field: SerializeField] internal LayerMask destroyable_layers { get; private set; }
+    [field: SerializeField] internal LayerMask highlightable_layers { get; private set; }
+    [field: SerializeField] internal LayerMask interactable_layers { get; private set; }
+    [field: SerializeField] internal float attack_damage { get; private set; } = 10f;
 
     [field: Header("Player Health Variables: ")]
-    [field: SerializeField] public float food_delay { get; private set; } = 10f;
-    [field: SerializeField] public float on_hunger_hit_delay { get; private set; } = 10f;
-    [field: SerializeField] public float max_health_points { get; private set; } = 10f;
-    [field: SerializeField] public float max_food_points { get; private set; } = 10f;
-    public float current_health_points { get; private set; } = 10f;
-    public float current_food_points { get; private set; } = 10f;
+    [field: SerializeField] internal float food_delay { get; private set; } = 10f;
+    [field: SerializeField] internal float on_hunger_hit_delay { get; private set; } = 10f;
+    [field: SerializeField] internal float max_health_points { get; private set; } = 10f;
+    [field: SerializeField] internal float max_food_points { get; private set; } = 10f;
+    internal float current_health_points { get; private set; } = 10f;
+    internal float current_food_points { get; private set; } = 10f;
 
     private PlayerState _state = PlayerState.normal;
     private Action<PlayerState> OnPlayerStateChange;
@@ -32,7 +32,7 @@ public class Character_Stats : MonoBehaviour
         current_food_points = max_food_points;
     }
 
-    public void Reduce_Health(float reduce_hp)
+    internal void Reduce_Health(float reduce_hp)
     {
         current_health_points -= reduce_hp;
         if(current_health_points <= 0)
@@ -42,7 +42,7 @@ public class Character_Stats : MonoBehaviour
         }
     }
 
-    public void Starve(float starve)
+    internal void Starve(float starve)
     {
         if (current_food_points > 0)
             current_food_points -= starve;
@@ -52,9 +52,9 @@ public class Character_Stats : MonoBehaviour
             Damage_On_Hunger();
     }
 
-    public void Saturate(Item food)
+    internal void Saturate(Item food)
     {
-        float saturate = food.tool_damage;
+        float saturate = food.FoodRegen;
         current_food_points += saturate;
         if (current_food_points > max_food_points)
             current_food_points = max_food_points;
@@ -65,17 +65,17 @@ public class Character_Stats : MonoBehaviour
         Reduce_Health(1.0f);
     }
 
-    public void Change_State(Tool_Type _type)
+    internal void Change_State(Item.ToolTypes _type)
     {
-        if (_type == Tool_Type.seeds)
+        if (_type == Item.ToolTypes.seeds)
             _state = PlayerState.seeding;
-        else if (_type == Tool_Type.watering_can)
+        else if (_type == Item.ToolTypes.watering_can)
             _state = PlayerState.watering;
         else
             _state = PlayerState.normal;
 
         OnPlayerStateChange?.Invoke(_state);
     }
-    public void AddPlayerStateListener(Action<PlayerState> _listener) => this.OnPlayerStateChange += _listener;
-    public void RemovePlayerStateListener(Action<PlayerState> _listener) => this.OnPlayerStateChange -= _listener;
+    internal void AddPlayerStateListener(Action<PlayerState> _listener) => this.OnPlayerStateChange += _listener;
+    internal void RemovePlayerStateListener(Action<PlayerState> _listener) => this.OnPlayerStateChange -= _listener;
 }

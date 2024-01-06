@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnvironmentInitializer : MonoBehaviour
+internal class EnvironmentInitializer : MonoBehaviour
 {
     [field: SerializeField, Range(0.00f, 1.00f)] float TreeDensity = 0.5f;
     [field: SerializeField, Range(0.00f, 1.00f)] float RockDensity = 0.5f;

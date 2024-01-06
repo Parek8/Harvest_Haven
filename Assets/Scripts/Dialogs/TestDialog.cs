@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestDialog : MonoBehaviour, IDialog
+internal class TestDialog : MonoBehaviour, IDialog
 {
     [field: SerializeField] UI_Behaviour _shop;
     List<DialogLine> _lines = new();

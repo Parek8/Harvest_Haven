@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-public class SaveManager : MonoBehaviour
+internal class SaveManager : MonoBehaviour
 {
     [SerializeField] string _inventorySavePath = "/saves/playerInventory.cfg";
-    public void SaveInventory()
+    internal void SaveInventory()
     {
         string _savedContent = "";
         List<Inventory_Slot> _slots = GameManager.game_manager.player_inventory.slots;
@@ -15,7 +15,7 @@ public class SaveManager : MonoBehaviour
         {
             Inventory_Slot _slot = _slots[i];
             if (!_slot.Is_Empty())
-                _savedContent += $"{_slot.slot_index}:{_slot.Get_Item().item_id}:{_slot.ItemCount};";
+                _savedContent += $"{_slot.slot_index}:{_slot.Get_Item().ItemID}:{_slot.ItemCount};";
         }
 
         string _path = Directory.GetCurrentDirectory() + _inventorySavePath;
@@ -33,7 +33,7 @@ public class SaveManager : MonoBehaviour
         }
     }
 
-    public IReadOnlyCollection<InventoryEntry> LoadInventory()
+    internal IReadOnlyCollection<InventoryEntry> LoadInventory()
     {
         Dictionary<int, Item> _allItems = GameManager.game_manager._allItems;
         List<InventoryEntry> _newItems = new();
@@ -72,17 +72,17 @@ public class SaveManager : MonoBehaviour
         SaveInventory();
     }
 }
-public struct InventoryEntry
+internal struct InventoryEntry
 {
     private int _slotId;
     private int _itemCount;
     private Item _item;
 
-    public int SlotID => _slotId;
-    public int ItemCount => _itemCount;
-    public Item Item => _item;
+    internal int SlotID => _slotId;
+    internal int ItemCount => _itemCount;
+    internal Item Item => _item;
 
-    public InventoryEntry(int _count, int _slotId, Item _item)
+    internal InventoryEntry(int _count, int _slotId, Item _item)
     {
         this._slotId = _slotId;
         this._itemCount = _count;

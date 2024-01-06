@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Settings : MonoBehaviour
+internal class Settings : MonoBehaviour
 {
     //[SerializeField] private Settings_Button forward_button;
     //[SerializeField] private Settings_Button backward_button;
@@ -14,7 +14,7 @@ public class Settings : MonoBehaviour
     [SerializeField] List<Settings_Button> Keybinds; 
 
     //int mouse_sensitivity { get { return mouse_sensitivity.sensitivity; } }
-    public void RevertToDefault()
+    internal void RevertToDefault()
     {
         //DON'T FORGET TO IMPLEMENT!
     }

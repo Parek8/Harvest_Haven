@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Plot : MonoBehaviour
+internal class Plot : MonoBehaviour
 {
-    public bool isWatered { get; private set; } = true;
-    public PlantObject plantedPlant { get; private set; }
+    internal bool isWatered { get; private set; } = true;
+    internal PlantObject plantedPlant { get; private set; }
 
     private MeshRenderer _renderer;
 
@@ -17,7 +17,7 @@ public class Plot : MonoBehaviour
         _renderer = GetComponent<MeshRenderer>();
     }
 
-    public void Plant(PlantObject plant)
+    internal void Plant(PlantObject plant)
     {
         if (plant != null)
         {
@@ -28,17 +28,17 @@ public class Plot : MonoBehaviour
         }
     }
 
-    public void Harvest()
+    internal void Harvest()
     {
         plantedPlant = null;
     }
 
-    public void Water(bool watered)
+    internal void Water(bool watered)
     {
         isWatered = watered;
     }
 
-    public void OnDayChange()
+    internal void OnDayChange()
     {
         if (isWatered && plantedPlant != null)
         {
@@ -59,13 +59,13 @@ public class Plot : MonoBehaviour
         Water(true);
     }
 
-    public void Highlight()
+    internal void Highlight()
     {
         if (_renderer.materials[0].color != Color.white)
             _renderer.material.color = Color.white;
     }
 
-    public void Lowlight()
+    internal void Lowlight()
     {
         if (_renderer.materials[0].color == Color.white)
             _renderer.material.color = Color.grey;

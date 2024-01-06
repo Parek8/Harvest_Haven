@@ -4,9 +4,9 @@ using System.Collections;
 using UnityEditor.Build.Reporting;
 using UnityEngine.Rendering.UI;
 
-public class Scene_Loader : MonoBehaviour
+internal class Scene_Loader : MonoBehaviour
 {
-    public static Scene_Loader scene_loader;
+    internal static Scene_Loader scene_loader;
 
     static float cooldown = 5f;
     [SerializeField] UI_Behaviour current_loading_screen;
@@ -77,7 +77,7 @@ public class Scene_Loader : MonoBehaviour
             yield return new WaitForSecondsRealtime(delay);
         }
     }
-    public void Load_Scene(Scenes scene, LoadSceneMode mode = LoadSceneMode.Single)
+    internal void Load_Scene(Scenes scene, LoadSceneMode mode = LoadSceneMode.Single)
     {
         StartCoroutine(Load_Scenes(scene, mode));
     }

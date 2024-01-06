@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Interactable : MonoBehaviour
+internal class Interactable : MonoBehaviour
 {
     protected float _distance = 1.5f;
     protected Transform _player;
@@ -13,7 +13,7 @@ public class Interactable : MonoBehaviour
         _player = GameManager.game_manager.player_transform;
     }
 
-    public virtual void Interact()
+    internal virtual void Interact()
     {
         throw new System.NotImplementedException();
     }

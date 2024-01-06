@@ -4,10 +4,10 @@ using UnityEngine;
 namespace BgTools.PlayerPrefsEditor
 {
     [System.Serializable]
-    public class PreferenceEntryHolder : ScriptableObject
+    internal class PreferenceEntryHolder : ScriptableObject
     {
-        public List<PreferenceEntry> userDefList;
-        public List<PreferenceEntry> unityDefList;
+        internal List<PreferenceEntry> userDefList;
+        internal List<PreferenceEntry> unityDefList;
 
         private void OnEnable()
         {
@@ -18,7 +18,7 @@ namespace BgTools.PlayerPrefsEditor
                 unityDefList = new List<PreferenceEntry>();
         }
 
-        public void ClearLists()
+        internal void ClearLists()
         {
             if (userDefList != null)
                 userDefList.Clear();

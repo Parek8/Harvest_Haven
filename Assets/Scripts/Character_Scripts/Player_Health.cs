@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Character_Stats))]
-public class Player_Health : MonoBehaviour
+internal class Player_Health : MonoBehaviour
 {
     [field: SerializeField] List<Image> hp_sprites = new List<Image>();
     [field: SerializeField] List<Image> hunger_sprites = new List<Image>();
@@ -33,11 +33,11 @@ public class Player_Health : MonoBehaviour
     {
         stats.Starve(1.0f);
     }
-    public void Hit()
+    internal void Hit()
     {
         // todo
     }
-    public void Update_UI()
+    internal void Update_UI()
     {
         float _hunger = stats.current_food_points;
         for (int _i = 0; _i < stats.max_health_points; _i++)

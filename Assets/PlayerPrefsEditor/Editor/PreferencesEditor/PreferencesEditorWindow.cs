@@ -16,7 +16,7 @@ using System.Globalization;
 
 namespace BgTools.PlayerPrefsEditor
 {
-    public class PreferencesEditorWindow : EditorWindow
+    internal class PreferencesEditorWindow : EditorWindow
     {
 #region ErrorValues
         private readonly int ERROR_VALUE_INT = int.MinValue;
@@ -639,15 +639,15 @@ namespace BgTools.PlayerPrefsEditor
     }
 }
 
-public class MySearchField : SearchField
+internal class MySearchField : SearchField
 {
-    public enum SearchModePreferencesEditorWindow { Key, Value }
+    internal enum SearchModePreferencesEditorWindow { Key, Value }
 
-    public SearchModePreferencesEditorWindow SearchMode { get; private set; }
+    internal SearchModePreferencesEditorWindow SearchMode { get; private set; }
 
-    public Action DropdownSelectionDelegate;
+    internal Action DropdownSelectionDelegate;
 
-    public new string OnGUI(
+    internal new string OnGUI(
         Rect rect,
         string text,
         GUIStyle style,
@@ -695,6 +695,6 @@ public class MySearchField : SearchField
         return result;
     }
 
-    public new string OnToolbarGUI(string text, params GUILayoutOption[] options) => this.OnToolbarGUI(GUILayoutUtility.GetRect(29f, 200f, 18f, 18f, EditorStyles.toolbarSearchField, options), text);
-    public new string OnToolbarGUI(Rect rect, string text) => this.OnGUI(rect, text, EditorStyles.toolbarSearchField, EditorStyles.toolbarButton, EditorStyles.toolbarButton);
+    internal new string OnToolbarGUI(string text, params GUILayoutOption[] options) => this.OnToolbarGUI(GUILayoutUtility.GetRect(29f, 200f, 18f, 18f, EditorStyles.toolbarSearchField, options), text);
+    internal new string OnToolbarGUI(Rect rect, string text) => this.OnGUI(rect, text, EditorStyles.toolbarSearchField, EditorStyles.toolbarButton, EditorStyles.toolbarButton);
 }

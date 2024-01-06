@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Custom_Update_Subscriber : MonoBehaviour
+internal abstract class Custom_Update_Subscriber : MonoBehaviour
 {
-    public abstract void Custom_Update();
-    public void OnUnsubscribe()
+    internal abstract void Custom_Update();
+    internal void OnUnsubscribe()
     {
         My_Update.instance.Unsubscribe(this);
     }
-    public void OnDestroy()
+    internal void OnDestroy()
     {
         this.OnUnsubscribe();
     }

@@ -5,7 +5,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(Character_Stats))]
 [RequireComponent(typeof(Player_Health))]
-public class Character_Behaviour : MonoBehaviour
+internal class Character_Behaviour : MonoBehaviour
 {
     [field: SerializeField] UI_Behaviour inventory_screen;
     [field: SerializeField] List<Inventory_Slot> hotbar = new();
@@ -21,7 +21,7 @@ public class Character_Behaviour : MonoBehaviour
     Plot _lastPlot;
 
     bool _isAttacking = false;
-    public bool IsAttacking => _isAttacking;
+    internal bool IsAttacking => _isAttacking;
 
     private void Start()
     {
@@ -98,12 +98,12 @@ public class Character_Behaviour : MonoBehaviour
         else
             _itemText.text = "";
     }
-    public void StartAttacking()
+    internal void StartAttacking()
     {
         _isAttacking = true;
         movement.enabled = false;
     }
-    public void StopAttacking()
+    internal void StopAttacking()
     {
         _isAttacking = false;
         movement.enabled = true;
@@ -112,7 +112,7 @@ public class Character_Behaviour : MonoBehaviour
     {
         movement.enabled = move;
     }
-    public void ChangeAttacking()
+    internal void ChangeAttacking()
     {
         _isAttacking = !_isAttacking;
         IsMoving(_isAttacking);
@@ -126,9 +126,9 @@ public class Character_Behaviour : MonoBehaviour
         {
             Destroyable _hit = info.collider.GetComponent<Destroyable>();
             Item _eq_item = inventory.Equipped_Item;
-            if (_hit.Compare_Tag(_eq_item.tool_type) && _eq_item.is_tool)
+            if (_hit.Compare_Tag(_eq_item.ToolType) && _eq_item.IsTool)
             {
-                _hit.Damage(_eq_item.tool_damage);
+                _hit.Damage(_eq_item.ToolDamage);
 
             }
             else
@@ -138,7 +138,7 @@ public class Character_Behaviour : MonoBehaviour
     private void SeedOrWater(Plot _plot)
     {
         if (_state == PlayerState.seeding)
-            _plot.Plant(inventory.Equipped_Item.plantable_object);
+            _plot.Plant(inventory.Equipped_Item.PlantableObject);
         else if (_state == PlayerState.watering)
             _plot.Water(true);
         else

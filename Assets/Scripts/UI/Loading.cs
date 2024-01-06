@@ -6,7 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Loading : MonoBehaviour
+internal class Loading : MonoBehaviour
 {
     [field: SerializeField] TMP_Text loading_text;
     [field: SerializeField] float update_text_delay = 0.5f;

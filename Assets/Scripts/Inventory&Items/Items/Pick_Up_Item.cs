@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class Pick_Up_Item : MonoBehaviour
+internal class Pick_Up_Item : MonoBehaviour
 {
     [field: SerializeField] Item item;
     Transform player;
@@ -36,7 +36,7 @@ public class Pick_Up_Item : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, player.position, Time.deltaTime * 5);
     }
 
-    public void Push_Item_Upwards()
+    internal void Push_Item_Upwards()
     {
         float jump_force = Random.Range(1.0f, 3.0f);
 

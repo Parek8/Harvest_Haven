@@ -2,9 +2,9 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class FuelItemSlot : MonoBehaviour, IPointerClickHandler
+internal class FuelItemSlot : MonoBehaviour, IPointerClickHandler
 {
-    [field: SerializeField] public int SlotIndex { get; private set; }
+    [field: SerializeField] internal int SlotIndex { get; private set; }
     [field: SerializeField] FuelItemMenuBehaviour ItemMenu;
     [field: SerializeField] Item item;
 
@@ -28,21 +28,21 @@ public class FuelItemSlot : MonoBehaviour, IPointerClickHandler
         ItemMenu.AssignSlot(this);
     }
 
-    public void Clear_Item() => this.item = null;
-    public void Update_UI()
+    internal void Clear_Item() => this.item = null;
+    internal void Update_UI()
     {
         if (this.item != null)
-            item_image.sprite = item.item_icon;
+            item_image.sprite = item.ItemIcon;
         else
             item_image.sprite = null;
     }
-    public Item Get_Item()
+    internal Item Get_Item()
     {
         if (this.item == null)
             return null;
         return (this.item);
     }
-    public void AssignItem(Item _item)
+    internal void AssignItem(Item _item)
     {
         this.item = _item;
     }

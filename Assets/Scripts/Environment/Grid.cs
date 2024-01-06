@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Grid : MonoBehaviour
+internal class Grid : MonoBehaviour
 {
     [field: SerializeField] int x_count = 16;
     [field: SerializeField] int y_count = 16;

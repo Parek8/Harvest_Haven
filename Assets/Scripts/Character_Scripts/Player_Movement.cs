@@ -8,7 +8,7 @@ using UnityEngine.EventSystems;
 [RequireComponent(typeof(Character_Stats))]
 [RequireComponent(typeof(CharacterController))]
 [RequireComponent(typeof(Animator))]
-public class Player_Movement : MonoBehaviour
+internal class Player_Movement : MonoBehaviour
 {
     [field: SerializeField] Transform cam;
     [field: SerializeField] float turn_smooth_speed;
@@ -66,12 +66,12 @@ public class Player_Movement : MonoBehaviour
         animator.SetBool(variable, animate);
     }
 
-    public float Get_Distance(Transform dis)
+    internal float Get_Distance(Transform dis)
     {
         return (Vector3.Distance(transform.position, dis.position));
     }
 
-    public Vector3 Get_Position()
+    internal Vector3 Get_Position()
     {
         return (Vector3)transform.position;
     }

@@ -4,17 +4,17 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ShopButton : MonoBehaviour
+internal class ShopButton : MonoBehaviour
 {
     [field: SerializeField] Image ItemIcon;
     [field: SerializeField] TMP_Text ItemName;
     [field: SerializeField] Button ItemAction;
     Item _item;
-    public void Buy()
+    internal void Buy()
     {
         GameManager.game_manager.player_inventory.Add(_item);
     }
-    public void Sell()
+    internal void Sell()
     {
         if (GameManager.game_manager.player_inventory.Remove(_item))
         {
@@ -24,16 +24,16 @@ public class ShopButton : MonoBehaviour
             Debug.Log("Something went wrong while trading!");
     }
 
-    public void SetupButton(ShopButtonAction _buttonAction, Item _item)
+    internal void SetupButton(ShopButtonAction _buttonAction, Item _item)
     {
         this._item = _item;
-        this.ItemIcon.sprite = _item.item_icon;
+        this.ItemIcon.sprite = _item.ItemIcon;
         this.ItemName.text = _item.name;
         ItemAction.transform.GetChild(0).GetComponent<TMP_Text>().text = (_buttonAction == ShopButtonAction.buy) ? "Buy" : "Sell";
         ItemAction.onClick.AddListener((_buttonAction == ShopButtonAction.buy) ? Buy : Sell);
     }
 
-    public enum ShopButtonAction
+    internal enum ShopButtonAction
     {
         buy,
         sell,

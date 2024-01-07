@@ -82,4 +82,9 @@ internal class Plot : Interactable
         if (transform.childCount > 0)
             Destroy(transform.GetChild(0).gameObject);
     }
+
+    internal override void Interact()
+    {
+        
+    }
 }

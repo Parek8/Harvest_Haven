@@ -147,9 +147,9 @@ TextureImporter:
       name: PlayButton
       rect:
         serializedVersion: 2
-        x: 46
-        y: 163
-        width: 162
+        x: 45
+        y: 224
+        width: 163
         height: 34
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -168,9 +168,9 @@ TextureImporter:
       name: SettingsButton
       rect:
         serializedVersion: 2
-        x: 46
-        y: 119
-        width: 161
+        x: 45
+        y: 180
+        width: 162
         height: 35
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -189,9 +189,9 @@ TextureImporter:
       name: ExitButton
       rect:
         serializedVersion: 2
-        x: 47
-        y: 72
-        width: 162
+        x: 45
+        y: 133
+        width: 163
         height: 35
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -210,9 +210,135 @@ TextureImporter:
       name: ResumeButton
       rect:
         serializedVersion: 2
-        x: 48
-        y: 26
-        width: 162
+        x: 45
+        y: 87
+        width: 164
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f15f57ecfe9ba049bec741497f4c422
+      internalID: -1005562839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VideoButton
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 43
+        width: 164
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ba91a95059b2234183ce573068e4ede
+      internalID: -2119835876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AudioButton
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 4
+        width: 164
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: acee7c61645abfc4ba100b546da3fae8
+      internalID: -296914619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FOV
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 479
+        width: 21
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6269228d638ef5c449d452f1f13a449f
+      internalID: 1388502371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RESOLUTION
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 464
+        width: 67
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2367ca32c600e224cbd0e39f9549c920
+      internalID: 669668787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FPS
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 447
+        width: 17
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94e6ca9c3b3797644a0097e923600209
+      internalID: 2145205584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackButton
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 224
+        width: 164
         height: 35
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -221,8 +347,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5f15f57ecfe9ba049bec741497f4c422
-      internalID: -1005562839
+      spriteID: 60f90d09066409f4c9d790fe0da564ec
+      internalID: 362305426
       vertices: []
       indices: 
       edges: []
@@ -238,11 +364,17 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      AudioButton: -296914619
+      BackButton: 362305426
       ButtonsBackground: -504667039
       ExitButton: -797871827
+      FOV: 1388502371
+      FPS: 2145205584
       PlayButton: -2098590958
+      RESOLUTION: 669668787
       ResumeButton: -1005562839
       SettingsButton: 1004340605
+      VideoButton: -2119835876
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

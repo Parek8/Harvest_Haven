@@ -6,13 +6,13 @@ using UnityEngine.SceneManagement;
 
 internal class Menu_Buttons_Manager : MonoBehaviour
 {
-    internal void Play()
+    public void Play()
     {
         // load world mechanics yet to be implemented
         SceneManager.LoadScene(Scenes.Overworld.ToString());
     }
 
-    internal void Exit()
+    public void Exit()
     {
         Application.Quit();
         //Exit the editor playmode -> checking, if you're using UNITY_EDITOR

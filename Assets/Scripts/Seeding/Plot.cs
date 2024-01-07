@@ -1,20 +1,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-internal class Plot : MonoBehaviour
+internal class Plot : Interactable
 {
     internal bool isWatered { get; private set; } = true;
     internal PlantObject plantedPlant { get; private set; }
 
-    private MeshRenderer _renderer;
-
     List<uint> times = new List<uint>();
     List<GameObject> stages = new List<GameObject>();
 
-    private void Start()
+    private new void Start()
     {
+        base.Start();
         Day_Cycle.On_New_Day_Subscribe(OnDayChange);
-        _renderer = GetComponent<MeshRenderer>();
     }
 
     internal void Plant(PlantObject plant)
@@ -59,18 +57,6 @@ internal class Plot : MonoBehaviour
         Water(true);
     }
 
-    internal void Highlight()
-    {
-        if (_renderer.materials[0].color != Color.white)
-            _renderer.material.color = Color.white;
-    }
-
-    internal void Lowlight()
-    {
-        if (_renderer.materials[0].color == Color.white)
-            _renderer.material.color = Color.grey;
-    }
-
     private void SpawnNewStage()
     {
         DestroyPlant();
@@ -86,9 +72,7 @@ internal class Plot : MonoBehaviour
 
     private Vector3 GetGameObjectOffset()
     {
-        //float _xOffset = stages[0].GetComponent<MeshRenderer>().bounds.size.x / 2;
         float _yOffset = 0.5f;
-        //float _zOffset = stages[0].GetComponent<MeshRenderer>().bounds.size.z / 2;
 
         return new Vector3(0, _yOffset, 0);
     }

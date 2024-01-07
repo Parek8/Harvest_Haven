@@ -1,12 +1,6 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.InteropServices.WindowsRuntime;
-using TMPro;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 internal class GameManager : MonoBehaviour
@@ -35,6 +29,7 @@ internal class GameManager : MonoBehaviour
     [field: SerializeField] internal Dictionary<int, Item> _allItems = new Dictionary<int, Item>();
     [field: SerializeField] internal SaveManager saveManager { get; private set; }
     [field: SerializeField] internal Button ButtonPrefab { get; private set; }
+    [field: SerializeField] internal Canvas HighLightCanvas { get; private set; }
 
     internal void Cursor_Needed(CursorLockMode lock_mode)
     {

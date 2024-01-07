@@ -18,7 +18,7 @@ internal class Character_Behaviour : MonoBehaviour
     Animator animator;
     Player_Movement movement;
     PlayerState _state = PlayerState.normal;
-    Plot _lastPlot;
+    Highlightable _lastHighlighted;
 
     bool _isAttacking = false;
     internal bool IsAttacking => _isAttacking;
@@ -67,17 +67,21 @@ internal class Character_Behaviour : MonoBehaviour
                 stats.Saturate(inventory.Equipped_Item);
             }
         }
-     
-        // First Interactable Has Bouncing Interact Key Above
 
         RaycastHit _highInfo;
         RaycastHit _inteInfo;
         _aimStart.rotation = _normalCam.transform.rotation;
+        if (_lastHighlighted != null)
+            _lastHighlighted.Lowlight();
         if (Physics.Raycast(_aimStart.position, _aimStart.forward * stats.pick_up_distance * 3, out _highInfo, stats.pick_up_distance*3, stats.highlightable_layers))
         {
             Highlightable _object;
             if (_highInfo.collider.TryGetComponent(out _object))
+            {
                 _itemText.text = _object.GetMessage();
+                _lastHighlighted = _object;
+                _object.Highlight();
+            }
         }
         if (Physics.Raycast(_aimStart.position, _aimStart.forward * stats.pick_up_distance * 3, out _inteInfo, stats.pick_up_distance * 3, stats.interactable_layers))
         {
@@ -86,14 +90,8 @@ internal class Character_Behaviour : MonoBehaviour
             if (_inteInfo.collider.TryGetComponent(out _object) && Input_Manager.GetCustomAxisRawDown("Interact") && _state == PlayerState.normal)
                 _object.Interact();
             else if (_inteInfo.collider.TryGetComponent(out _plot))
-            {
-                if (_lastPlot != null)
-                    _lastPlot.Lowlight();
-                _plot.Highlight();
-                _lastPlot = _plot;
                 if (Input_Manager.GetCustomAxisRawDown("Interact"))
                     SeedOrWater(_plot);
-            }
         }
         else
             _itemText.text = "";

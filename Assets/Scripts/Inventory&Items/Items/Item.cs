@@ -25,11 +25,12 @@ internal class Item : ScriptableObject
     public bool IsPlantable = false;
 
     [field: Header("Item Specific Variables")]
-    [field: SerializeField, SerializeFieldOnCondition("IsSmeltable", true, ComparisonType.Equals)] public Item SmeltItem { get; private set; }
-    [field: SerializeField, SerializeFieldOnCondition("IsTool", true, ComparisonType.Equals)] public ToolTypes ToolType { get; private set; }
-    [field: SerializeField, SerializeFieldOnCondition("IsTool", true, ComparisonType.Equals)] public float ToolDamage { get; private set; }
-    [field: SerializeField, SerializeFieldOnCondition("IsPlantable", true, ComparisonType.Equals)] public PlantObject PlantableObject { get; private set; }
     [field: SerializeField, SerializeFieldOnCondition("IsEatable", true, ComparisonType.Equals)] public float FoodRegen { get; private set; }
+    [field: SerializeField, SerializeFieldOnCondition("IsTool", true, ComparisonType.Equals)] public float ToolDamage { get; private set; }
+    [field: SerializeField, SerializeFieldOnCondition("IsTool", true, ComparisonType.Equals)] public ToolTypes ToolType { get; private set; }
+    [field: SerializeField, SerializeFieldOnCondition("IsFuel", true, ComparisonType.Equals)] public int FuelCapability { get; private set; }
+    [field: SerializeField, SerializeFieldOnCondition("IsSmeltable", true, ComparisonType.Equals)] public Item SmeltItem { get; private set; }
+    [field: SerializeField, SerializeFieldOnCondition("IsPlantable", true, ComparisonType.Equals)] public PlantObject PlantableObject { get; private set; }
 
     internal Inventory_Slot AssignedSlot = null;
     internal enum ToolTypes

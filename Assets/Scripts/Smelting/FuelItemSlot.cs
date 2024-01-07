@@ -7,6 +7,7 @@ internal class FuelItemSlot : MonoBehaviour, IPointerClickHandler
     [field: SerializeField] internal int SlotIndex { get; private set; }
     [field: SerializeField] FuelItemMenuBehaviour ItemMenu;
     [field: SerializeField] Item item;
+    internal int count { get; private set; }
 
     Image item_image;
     private void Start()
@@ -28,9 +29,16 @@ internal class FuelItemSlot : MonoBehaviour, IPointerClickHandler
         ItemMenu.AssignSlot(this);
     }
 
-    internal void Clear_Item() => this.item = null;
+    internal void Clear_Item()
+    {
+        this.item = null;
+        this.count = 0;
+    }
     internal void Update_UI()
     {
+        if (this.count <= 0)
+            Clear_Item();
+
         if (this.item != null)
             item_image.sprite = item.ItemIcon;
         else
@@ -42,8 +50,16 @@ internal class FuelItemSlot : MonoBehaviour, IPointerClickHandler
             return null;
         return (this.item);
     }
+    internal void DecreaseCount() => this.count--;
     internal void AssignItem(Item _item)
     {
+        if (this.item != null)
+            for (int i = 0; i < count; i++)
+                GameManager.game_manager.player_inventory.Add(this.item);
+
         this.item = _item;
+        this.count = GameManager.game_manager.player_inventory.GetItemCountInInventory(this.item);
+        for (int i = 0; i < count; i++)
+            GameManager.game_manager.player_inventory.DecreaseItemCount(this.item);
     }
 }

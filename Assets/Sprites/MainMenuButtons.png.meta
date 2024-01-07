@@ -341,7 +341,7 @@ TextureImporter:
         width: 164
         height: 35
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -349,6 +349,48 @@ TextureImporter:
       bones: []
       spriteID: 60f90d09066409f4c9d790fe0da564ec
       internalID: 362305426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ApplyButton
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 183
+        width: 164
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbbc6fa63d6df90469e8dd3398aee6c7
+      internalID: -1357700617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullScreen
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 432
+        width: 65
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5899350a4856ff74eb8b16a34f183d1f
+      internalID: -1303769785
       vertices: []
       indices: 
       edges: []
@@ -364,12 +406,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      ApplyButton: -1357700617
       AudioButton: -296914619
       BackButton: 362305426
       ButtonsBackground: -504667039
       ExitButton: -797871827
       FOV: 1388502371
       FPS: 2145205584
+      FullScreen: -1303769785
       PlayButton: -2098590958
       RESOLUTION: 669668787
       ResumeButton: -1005562839

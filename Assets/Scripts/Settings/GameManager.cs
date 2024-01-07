@@ -7,6 +7,8 @@ using UnityEngine.UI;
 internal class GameManager : MonoBehaviour
 {
     internal static GameManager game_manager { get; private set; }
+    [field: SerializeField] private PlayerSettings PlayerSettings;
+
     void Awake()
     {
         if (game_manager == null)
@@ -18,6 +20,7 @@ internal class GameManager : MonoBehaviour
             Item _item = all_items[i];
             _allItems[_item.ItemID] = _item;
         }
+        Screen.SetResolution(PlayerSettings.RESX, PlayerSettings.RESY, (PlayerSettings.FULLSCREEN) ? FullScreenMode.FullScreenWindow : FullScreenMode.ExclusiveFullScreen, new RefreshRate() { numerator = PlayerSettings.FPS, denominator = 1});
     }
 
     internal bool is_game_paused { get; private set; }

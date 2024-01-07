@@ -20,7 +20,10 @@ internal class GameManager : MonoBehaviour
             Item _item = all_items[i];
             _allItems[_item.ItemID] = _item;
         }
-        Screen.SetResolution(PlayerSettings.RESX, PlayerSettings.RESY, (PlayerSettings.FULLSCREEN) ? FullScreenMode.FullScreenWindow : FullScreenMode.ExclusiveFullScreen, new RefreshRate() { numerator = PlayerSettings.FPS, denominator = 1});
+        Screen.SetResolution(PlayerSettings.RESX, PlayerSettings.RESY, PlayerSettings.FULLSCREEN);
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = (int)PlayerSettings.FPS;
+        Camera.main.fieldOfView = PlayerSettings.FOV;
     }
 
     internal bool is_game_paused { get; private set; }

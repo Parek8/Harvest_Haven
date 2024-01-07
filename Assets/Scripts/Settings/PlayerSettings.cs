@@ -17,4 +17,9 @@ public class PlayerSettings : ScriptableObject
         this.RESY = resy;
         this.FULLSCREEN = full;
     }
+
+    public string GetInfo()
+    {
+        return $"FOV: {FOV} | FPS: {FPS} | RES: {RESX}x{RESY} | FULLSCREEN: {FULLSCREEN}";
+    }
 }

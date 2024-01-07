@@ -10,8 +10,8 @@ internal class Main_Menu_Buttons : UI_Behaviour
     [field: SerializeField] private UI_Behaviour mainMenu;
     [field: SerializeField] private UI_Behaviour audio;
     [field: SerializeField] private UI_Behaviour video;
-    [field: SerializeField] private TMP_Text fov;
-    [field: SerializeField] private TMP_Text fps;
+    [field: SerializeField] private TMP_InputField fov;
+    [field: SerializeField] private TMP_InputField fps;
     [field: SerializeField] private TMP_Dropdown res;
     [field: SerializeField] private Toggle fullscreen;
     [field: SerializeField] private PlayerSettings playerSettings;
@@ -99,7 +99,8 @@ internal class Main_Menu_Buttons : UI_Behaviour
                 break;
         }
 
-        playerSettings.SetValues(fovv, fpsv, resXv, resYv, full);
+        //Debug.Log($"FOV: {fovv} | FPS: {fpsv} | RES: {resXv}x{resYv} | FULLSCREEN: {full}");
+        playerSettings.SetValues(400, fpsv, resXv, resYv, full);
     }
     internal void Exit()
     {

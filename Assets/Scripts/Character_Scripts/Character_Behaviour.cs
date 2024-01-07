@@ -43,9 +43,13 @@ internal class Character_Behaviour : MonoBehaviour
             Day_Cycle.Next_Day();
 
         // __NON_DEBUG__
-        bool inv = Input_Manager.GetCustomAxisRawDown("Inventory");
-        if(inv)
+        if (Input_Manager.GetCustomAxisRawDown("Inventory"))
             inventory_screen.Change_State();
+
+        if (Input.GetKeyDown(KeyCode.Escape) && !GameManager.game_manager.is_game_paused)
+            GameManager.game_manager.PauseGame();
+        else if (Input.GetKeyDown(KeyCode.Escape) && GameManager.game_manager.is_game_paused)
+            GameManager.game_manager.ResumeGame();
 
         for (int i = 0; i < hotbar.Count; i++)
         {

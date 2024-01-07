@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 internal class GameManager : MonoBehaviour
@@ -22,19 +23,41 @@ internal class GameManager : MonoBehaviour
     internal bool is_game_paused { get; private set; }
     [field: SerializeField] internal Transform player_transform { get; private set; }
     [field: SerializeField] internal Inventory player_inventory { get; private set; }
-    [field: SerializeField] internal Main_Menu_Buttons main_menu_buttons { get; private set; }
     [field: SerializeField] internal List<Item> all_items { get; private set; }
     [field: SerializeField] internal Item Null_Item { get; private set; }
     [field: SerializeField] internal Transform environment_parent { get; private set; }
     [field: SerializeField] internal Dictionary<int, Item> _allItems = new Dictionary<int, Item>();
     [field: SerializeField] internal SaveManager saveManager { get; private set; }
     [field: SerializeField] internal Button ButtonPrefab { get; private set; }
-    [field: SerializeField] internal Canvas HighLightCanvas { get; private set; }
+    [field: SerializeField] internal UI_Behaviour HUD { get; private set; }
+    [field: SerializeField] internal UI_Behaviour PauseMenu { get; private set; }
 
     internal void Cursor_Needed(CursorLockMode lock_mode)
     {
         if (Cursor.lockState != lock_mode)
             Cursor.lockState = lock_mode;
+    }
+    public void PauseGame()
+    {
+        Cursor_Needed(CursorLockMode.None);
+        is_game_paused = true;
+        HUD.Hide();
+        PauseMenu.Show();
+        Time.timeScale = 0;
+    }
+    public void ResumeGame()
+    {
+        Time.timeScale = 1;
+        is_game_paused = false;
+        PauseMenu.Hide();
+        HUD.Show();
+        Cursor_Needed(CursorLockMode.Locked);
+    }
+
+    public void ExitGame()
+    {
+        saveManager.SaveInventory();
+        SceneManager.LoadScene("MainMenu");
     }
     internal Dictionary<KeybindNames, KeyCode> keybinds { get; private set; } = new Dictionary<KeybindNames, KeyCode>();
     internal bool IsKeybindSaved(KeybindNames keybind)

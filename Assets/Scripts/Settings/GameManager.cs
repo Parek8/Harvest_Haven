@@ -1,3 +1,4 @@
+using Cinemachine;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -37,6 +38,7 @@ internal class GameManager : MonoBehaviour
     [field: SerializeField] internal Button ButtonPrefab { get; private set; }
     [field: SerializeField] internal UI_Behaviour HUD { get; private set; }
     [field: SerializeField] internal UI_Behaviour PauseMenu { get; private set; }
+    [field: SerializeField] internal CinemachineFreeLook FreeCamera { get; private set; }
 
     internal void Cursor_Needed(CursorLockMode lock_mode)
     {

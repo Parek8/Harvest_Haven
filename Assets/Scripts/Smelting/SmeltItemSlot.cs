@@ -1,5 +1,3 @@
-using JetBrains.Annotations;
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -10,6 +8,9 @@ internal class SmeltItemSlot : MonoBehaviour, IPointerClickHandler
     [field: SerializeField] internal int SlotIndex { get; private set; }
     [field: SerializeField] SmeltingItemMenuBehaviour ItemMenu;
     [field: SerializeField] Item item;
+    [field: SerializeField] TMP_Text countLabel;
+    [field: SerializeField] UI_Behaviour FuelSlot;
+
     internal int count { get; private set; }
     Image item_image;
     private void Start()
@@ -27,6 +28,8 @@ internal class SmeltItemSlot : MonoBehaviour, IPointerClickHandler
     {
         if (!ItemMenu.is_visible)
             ItemMenu.Show();
+        if (FuelSlot.is_visible)
+            FuelSlot.Hide();
 
         ItemMenu.AssignSlot(this);
     }
@@ -42,9 +45,15 @@ internal class SmeltItemSlot : MonoBehaviour, IPointerClickHandler
             Clear_Item();
 
         if (this.item != null)
+        {
             item_image.sprite = item.ItemIcon;
+            countLabel.text = $"{count}x";
+        }
         else
-            item_image.sprite = null;
+        {
+            item_image.sprite = GameManager.game_manager.Null_Item.ItemIcon;
+            countLabel.text = "";
+        }
     }
     internal Item Get_Item()
     {

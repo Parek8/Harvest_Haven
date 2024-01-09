@@ -1,14 +1,15 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 internal class GetInventoryItems : MonoBehaviour
 {
     [field: SerializeField] private ItemMenuSlot Slot;
     private void OnEnable() => GetItems();
+    protected HashSet<Item> usedItems = new HashSet<Item>();
 
     internal void DestroyButtons()
     {
+        usedItems.Clear();
         for (int i = 1; i < transform.childCount; i++)
         {
             Destroy(transform.GetChild(i).gameObject);
@@ -24,8 +25,12 @@ internal class GetInventoryItems : MonoBehaviour
     {
         foreach (Item _item in _items)
         {
-            GameObject _obj = Instantiate(Slot.gameObject, transform);
-            _obj.GetComponent<ItemMenuSlot>().Init(_item);
+            if (!usedItems.Contains(_item))
+            {
+                GameObject _obj = Instantiate(Slot.gameObject, transform);
+                _obj.GetComponent<ItemMenuSlot>().Init(_item);
+                usedItems.Add( _item );
+            }
         }
     }
 }

@@ -13,8 +13,11 @@ internal class GetFuelItems : GetInventoryItems
     {
         foreach (Item _item in _items)
         {
-            GameObject _obj = Instantiate(FuelSlot.gameObject, transform);
-            _obj.GetComponent<FuelItemMenuSlot>().Init(_item);
+            if (!usedItems.Contains(_item))
+            {
+                GameObject _obj = Instantiate(FuelSlot.gameObject, transform);
+                _obj.GetComponent<FuelItemMenuSlot>().Init(_item);
+            }
         }
     }
 }

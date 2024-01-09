@@ -13,8 +13,11 @@ internal class GetSmeltingItems : GetInventoryItems
     {
         foreach (Item _item in _items)
         {
-            GameObject _obj = Instantiate(SmeltingSlot.gameObject, transform);
-            _obj.GetComponent<SmeltItemMenuSlot>().Init(_item);
+            if (!usedItems.Contains(_item))
+            {
+                GameObject _obj = Instantiate(SmeltingSlot.gameObject, transform);
+                _obj.GetComponent<SmeltItemMenuSlot>().Init(_item);
+            }
         }
     }
 }

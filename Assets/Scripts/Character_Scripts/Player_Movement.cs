@@ -44,8 +44,8 @@ internal class Player_Movement : MonoBehaviour
             Animate("Idle", true);
             Animate("Moving", false);
         }
-        if (Input_Manager.GetCustomAxisRaw("Attack") != 0)
-            Rotate(direction);
+        //if (Input_Manager.GetCustomAxisRaw("Attack") != 0)
+        //    Rotate(direction);
     }
     private void Move(Vector3 direction)
     {

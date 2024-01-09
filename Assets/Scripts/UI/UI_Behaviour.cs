@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -28,7 +29,7 @@ internal class UI_Behaviour : MonoBehaviour
         GameManager.game_manager.Cursor_Needed((!is_visible) ? CursorLockMode.None : CursorLockMode.Locked);
         gameObject.SetActive(!is_visible);
         is_visible = !is_visible;
-        return is_visible;  
+        return is_visible;
     }
     internal virtual void _Hide()
     {

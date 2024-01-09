@@ -13,6 +13,7 @@ internal class Character_Stats : MonoBehaviour
     [field: SerializeField] internal LayerMask destroyable_layers { get; private set; }
     [field: SerializeField] internal LayerMask highlightable_layers { get; private set; }
     [field: SerializeField] internal LayerMask interactable_layers { get; private set; }
+    [field: SerializeField] internal LayerMask plot_layers { get; private set; }
     [field: SerializeField] internal float attack_damage { get; private set; } = 10f;
 
     [field: Header("Player Health Variables: ")]
@@ -65,12 +66,10 @@ internal class Character_Stats : MonoBehaviour
         Reduce_Health(1.0f);
     }
 
-    internal void Change_State(Item.ToolTypes _type)
+    internal void Change_State(Item item)
     {
-        if (_type == Item.ToolTypes.seeds)
+        if (item.IsPlantable)
             _state = PlayerState.seeding;
-        else if (_type == Item.ToolTypes.watering_can)
-            _state = PlayerState.watering;
         else
             _state = PlayerState.normal;
 

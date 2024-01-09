@@ -98,10 +98,10 @@ internal class Inventory : MonoBehaviour
         if (item != null)
         {
             InstantiateItem();
-            _stats.Change_State(item.ToolType);
+            _stats.Change_State(item);
         }
         else
-            _stats.Change_State(Item.ToolTypes.NULL);
+            _stats.Change_State(GameManager.game_manager.Null_Item);
     }
     private void InstantiateItem()
     {

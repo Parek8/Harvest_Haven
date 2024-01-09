@@ -90,10 +90,14 @@ internal class Character_Behaviour : MonoBehaviour
         if (Physics.Raycast(_aimStart.position, _aimStart.forward * stats.pick_up_distance * 3, out _inteInfo, stats.pick_up_distance * 3, stats.interactable_layers))
         {
             Interactable _object;
-            Plot _plot;
             if (_inteInfo.collider.TryGetComponent(out _object) && Input_Manager.GetCustomAxisRawDown("Interact") && _state == PlayerState.normal)
                 _object.Interact();
-            else if (_inteInfo.collider.TryGetComponent(out _plot))
+        }
+        if (Physics.Raycast(_aimStart.position, _aimStart.forward * stats.pick_up_distance * 3, out _inteInfo, stats.pick_up_distance * 3, stats.plot_layers))
+        {
+            Plot _plot;
+
+            if (_inteInfo.collider.TryGetComponent(out _plot))
                 if (Input_Manager.GetCustomAxisRawDown("Interact"))
                     SeedOrWater(_plot);
         }
@@ -141,8 +145,6 @@ internal class Character_Behaviour : MonoBehaviour
     {
         if (_state == PlayerState.seeding)
             _plot.Plant(inventory.Equipped_Item.PlantableObject);
-        else if (_state == PlayerState.watering)
-            _plot.Water(true);
         else
             Debug.Log("There was an Error!");
     }

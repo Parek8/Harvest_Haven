@@ -1,5 +1,3 @@
-using System;
-
 internal enum Scenes
 {
     Loading,
@@ -33,5 +31,4 @@ internal enum PlayerState
 {
     seeding,
     normal,
-    watering,
 }

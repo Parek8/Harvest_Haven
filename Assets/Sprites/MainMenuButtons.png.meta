@@ -383,7 +383,7 @@ TextureImporter:
         width: 65
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -391,6 +391,90 @@ TextureImporter:
       bones: []
       spriteID: 5899350a4856ff74eb8b16a34f183d1f
       internalID: -1303769785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TutorialButton
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 143
+        width: 164
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14c8fb6de3c7f9e4fa15bb1b8a33acdc
+      internalID: -1830848336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cross
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 389
+        width: 20
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57aca90312a18f24580c6576227a54c0
+      internalID: -557134029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Checkmark
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 389
+        width: 20
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39315cad91618a341aff25fd2a99451b
+      internalID: 1395768425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ControlsButton
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 98
+        width: 164
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0afb1ee1f0815447aa2955733736ae9
+      internalID: 1823916542
       vertices: []
       indices: 
       edges: []
@@ -410,6 +494,9 @@ TextureImporter:
       AudioButton: -296914619
       BackButton: 362305426
       ButtonsBackground: -504667039
+      Checkmark: 1395768425
+      ControlsButton: 1823916542
+      Cross: -557134029
       ExitButton: -797871827
       FOV: 1388502371
       FPS: 2145205584
@@ -418,6 +505,7 @@ TextureImporter:
       RESOLUTION: 669668787
       ResumeButton: -1005562839
       SettingsButton: 1004340605
+      TutorialButton: -1830848336
       VideoButton: -2119835876
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0

@@ -3,6 +3,7 @@ internal enum Scenes
     Loading,
     Overworld,
     Main_Menu,
+    TutorialScene,
 }
 
 internal enum KeybindNames

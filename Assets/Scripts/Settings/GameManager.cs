@@ -116,6 +116,21 @@ internal static class Input_Manager
     {
         keybinds = keybindsDic;
     }
+    internal static bool GetCustomKeyDown(KeybindNames _bind)
+    {
+        try 
+        {
+            if (Input.GetKey(keybinds[_bind]))
+                return true;
+            else
+                return false;
+        }
+        catch (Exception e)
+        {
+            Debug.LogError(e);
+            return false;
+        }
+    }
 
     internal static float GetCustomAxisRaw(string axis)
     {

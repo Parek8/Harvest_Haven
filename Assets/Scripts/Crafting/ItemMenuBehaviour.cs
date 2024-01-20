@@ -16,12 +16,12 @@ internal class ItemMenuBehaviour : UI_Behaviour
         if (_item != null)
             _assignedSlot.AssignItem(_item);
     }
-    internal override void _Hide()
+    public override void _Hide()
     {
         base._Hide();
         ResultScreen.Show();
     }
-    internal override void _Show()
+    public override void _Show()
     {
         base._Show();
         ResultScreen.Hide();

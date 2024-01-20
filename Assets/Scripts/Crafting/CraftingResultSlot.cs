@@ -54,22 +54,18 @@ internal class CraftingResultSlot : MonoBehaviour, IPointerClickHandler
 
         return _materials;
     }
+
     private bool HasSufficientMaterials()
     {
         Dictionary<Item, uint> _materials = GetMaterials();
 
-        bool _isValid = true;
-
         foreach (Item _material in _materials.Keys)
         {
             if (_playerInventory.GetItemCountInInventory(_material) < _materials[_material])
-            {
-                _isValid = false;
                 return false;
-            }
         }
 
-        return _isValid;
+        return true;
     }
 
     private void UseMaterials()

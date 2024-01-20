@@ -1,8 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -23,7 +19,7 @@ internal class Inventory_Slot : MonoBehaviour, IPointerDownHandler, IPointerUpHa
     Vector3 item_image_initial_position;
     Vector3 item_count_initial_position;
     Image background;
-    Inventory player_inventory;
+
     int _itemCount = 0;
     internal int ItemCount => _itemCount;
     internal bool IsAvailable => (this.item == null || this.ItemCount < 10);
@@ -37,8 +33,6 @@ internal class Inventory_Slot : MonoBehaviour, IPointerDownHandler, IPointerUpHa
         background = GetComponent<Image>();
         if (isHotbarSlot)
             GameManager.game_manager.player_inventory.AddToSlotChangedAction(() => { SetBackground(unfocusedColor); });
-
-        player_inventory = GameManager.game_manager.player_inventory;
     }
 
     void FixedUpdate()

@@ -1,7 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
 using Unity.VisualScripting;
 using UnityEngine;
 #if UNITY_EDITOR
@@ -29,6 +26,8 @@ internal sealed class SerializeFieldOnConditionAttribute : PropertyAttribute
         this.comparedValue = comparedValue;
         this.comparisonType = comparisonType;
     }
+
+
     internal bool IsConditionMet(SerializedProperty property)
     {
         bool conditionMet = false;
@@ -58,16 +57,18 @@ internal sealed class SerializeFieldOnConditionAttribute : PropertyAttribute
             var comparedPropertyValue = GetNumericValue(comparedProperty, comparedProperty.numericType);
 
             // Perform the comparison based on the specified ComparisonType
+            double cmpValue = Convert.ToDouble(comparedValue);
+
             switch (comparisonType)
             {
                 case ComparisonType.GreaterThan:
-                    return comparedPropertyValue > (double)comparedValue;
+                    return comparedPropertyValue > cmpValue;
                 case ComparisonType.SmallerThan:
-                    return comparedPropertyValue < (double)comparedValue;
+                    return comparedPropertyValue < cmpValue;
                 case ComparisonType.GreaterOrEqual:
-                    return comparedPropertyValue >= (double)comparedValue;
+                    return comparedPropertyValue >= cmpValue;
                 case ComparisonType.SmallerOrEqual:
-                    return comparedPropertyValue <= (double)comparedValue;
+                    return comparedPropertyValue <= cmpValue;
                 default:
                     Debug.LogError($"ComparisonType '{comparisonType}' is not supported.");
                     return false;
@@ -88,10 +89,6 @@ internal sealed class SerializeFieldOnConditionAttribute : PropertyAttribute
         switch (type)
         {
             // Adjust cases based on propertyType
-            //case SerializedPropertyNumericType.Byte:
-            //    return (byte)property.intValue;
-            //case SerializedPropertyNumericType.SByte:
-            //    return (sbyte)property.intValue;
             case SerializedPropertyNumericType.UInt16:
                 return (ushort)property.intValue;
             case SerializedPropertyNumericType.UInt32:
@@ -104,8 +101,6 @@ internal sealed class SerializeFieldOnConditionAttribute : PropertyAttribute
                 return property.intValue;
             case SerializedPropertyNumericType.Int64:
                 return property.longValue;
-            //case SerializedPropertyNumericType.Decimal:
-            //    return (double)(decimal)property.doubleValue;
             case SerializedPropertyNumericType.Double:
                 return property.doubleValue;
             case SerializedPropertyNumericType.Float:

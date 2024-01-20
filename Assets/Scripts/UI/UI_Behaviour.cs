@@ -31,12 +31,12 @@ internal class UI_Behaviour : MonoBehaviour
         is_visible = !is_visible;
         return is_visible;
     }
-    internal virtual void _Hide()
+    public virtual void _Hide()
     {
         gameObject.SetActive(false);
         is_visible = false;
     }
-    internal virtual void _Show()
+    public virtual void _Show()
     {
         gameObject.SetActive(true);
         is_visible = true;

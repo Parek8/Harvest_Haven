@@ -4,7 +4,7 @@ using UnityEngine;
 
 internal class CraftingManager : MonoBehaviour
 {
-    internal static CraftingManager craftingManager;
+    internal static CraftingManager craftingManager { get; private set; }
     [field: SerializeField] List<CraftingRecipe> _recipes = new();
 
     private void Awake()

@@ -5,7 +5,7 @@ using UnityEngine;
 internal class My_Update : MonoBehaviour
 {
     [field: Tooltip("How often should My_Update() call. Set the delay in seconds.")]
-    [field: SerializeField] float deltaTime = 1f;
+    [field: SerializeField] float deltaTime = 0.1f;
 
     [field: Tooltip("How much In-Game seconds is gonna be each iteration of My_Update().")]
     [field: SerializeField] float in_game_seconds = 600f;
@@ -13,11 +13,10 @@ internal class My_Update : MonoBehaviour
     [field: Tooltip("How fast will the time pass. The smaller the scale, the faster the time. Ex.: 0.5f = 2x the speed.")]
     [field: SerializeField] float time_scale = 1f;
 
-    [field: Tooltip("How long is each tick.")]
-    [field: SerializeField] internal float tick { get; private set; } = 0.5f;
 
     internal static My_Update instance;
     internal static float ingame_seconds { get; private set; }
+
     // Subscribers, for which will the Custom_Update be called
     private List<Custom_Update_Subscriber> subscribers = new List<Custom_Update_Subscriber>();
 

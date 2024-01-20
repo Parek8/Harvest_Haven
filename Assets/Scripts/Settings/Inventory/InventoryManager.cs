@@ -5,7 +5,7 @@ using UnityEngine;
 
 internal class SaveManager : MonoBehaviour
 {
-    [SerializeField] string _inventorySavePath = "/saves/playerInventory.cfg";
+    [SerializeField] string _inventorySavePath = "/Saves/playerInventory.cfg";
     internal void SaveInventory()
     {
         string _savedContent = "";

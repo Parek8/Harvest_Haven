@@ -1,11 +1,6 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Rendering.LookDev;
-using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
 internal class Day_Cycle : Custom_Update_Subscriber
 {
@@ -16,13 +11,16 @@ internal class Day_Cycle : Custom_Update_Subscriber
     [field: SerializeField] Color night_color;
     [field: SerializeField] Light global_light;
     [field: SerializeField] float starting_seconds = 14400f;
+    [field: SerializeField] Material SunriseSkybox;
+    [field: SerializeField] Material DaySkybox;
+    [field: SerializeField] Material SunsetSkybox;
+    [field: SerializeField] Material NightSkybox;
 
     private static float seconds = 0;
     private static float seconds_in_a_day = 24 * 60 * 60; // H * M * S
     private static int days = 1;
 
     private static Action On_New_Day;
-    static float countdown = 24 * 60 * 60;
     static float s_sec = 0;
     private void Start()
     {
@@ -33,13 +31,13 @@ internal class Day_Cycle : Custom_Update_Subscriber
     }
     internal override void Custom_Update()
     {
-        countdown -= My_Update.ingame_seconds;
         seconds += My_Update.ingame_seconds;
 
         if (seconds >= seconds_in_a_day)
+        {
             seconds = 0;
-        if (countdown <= 0)
             Next_Day();
+        }
         Update_Time_HUD();
         Update_Light();
     }
@@ -53,6 +51,15 @@ internal class Day_Cycle : Custom_Update_Subscriber
         float v = time_curve.Evaluate(seconds / 3600);
         Color c = Color.Lerp(day_color, night_color, v);
         global_light.color = c;
+
+        if ((seconds / 3600) > 4 && (seconds / 3600) < 5)
+            RenderSettings.skybox = SunriseSkybox;
+        else if ((seconds / 3600) >= 5 && (seconds / 3600) < 21)
+            RenderSettings.skybox = DaySkybox;
+        else if ((seconds / 3600) >= 21 && (seconds / 3600) < 22)
+            RenderSettings.skybox = SunsetSkybox;
+        else
+            RenderSettings.skybox = NightSkybox;
     }
     internal static int Return_Hours()
     {
@@ -65,7 +72,6 @@ internal class Day_Cycle : Custom_Update_Subscriber
     internal static void Next_Day()
     {
         days++;
-        countdown = seconds_in_a_day;
         On_New_Day?.Invoke();
         Debug.Log("New day " + days);
     }

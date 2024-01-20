@@ -31,6 +31,8 @@ internal class Character_Behaviour : MonoBehaviour
         movement = GetComponent<Player_Movement>();
 
         stats.AddPlayerStateListener(delegate (PlayerState _newState) { this._state = _newState; });
+
+        GameManager.game_manager.ResumeGame();
     }
 
     void Update()
@@ -87,11 +89,17 @@ internal class Character_Behaviour : MonoBehaviour
                 _object.Highlight();
             }
         }
+        else
+            _itemText.text = "";
+
         if (Physics.Raycast(_aimStart.position, _aimStart.forward * stats.pick_up_distance * 3, out _inteInfo, stats.pick_up_distance * 3, stats.interactable_layers))
         {
             Interactable _object;
             if (_inteInfo.collider.TryGetComponent(out _object) && Input_Manager.GetCustomAxisRawDown("Interact") && _state == PlayerState.normal)
+            {
+                Tutorial.TutorialInstance.Interacted();
                 _object.Interact();
+            }
         }
         if (Physics.Raycast(_aimStart.position, _aimStart.forward * stats.pick_up_distance * 3, out _inteInfo, stats.pick_up_distance * 3, stats.plot_layers))
         {
@@ -101,8 +109,6 @@ internal class Character_Behaviour : MonoBehaviour
                 if (Input_Manager.GetCustomAxisRawDown("Interact"))
                     SeedOrWater(_plot);
         }
-        else
-            _itemText.text = "";
     }
     internal void StartAttacking()
     {

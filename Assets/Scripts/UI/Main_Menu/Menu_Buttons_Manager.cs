@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -20,5 +18,10 @@ internal class Menu_Buttons_Manager : MonoBehaviour
         EditorApplication.ExitPlaymode();
         //EditorApplication.Exit(200);
         #endif
+    }
+
+    public void PlayTutorial()
+    {
+        SceneManager.LoadScene("TutorialScene");
     }
 }

@@ -2,6 +2,7 @@ using System;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 internal class Main_Menu_Buttons : UI_Behaviour
@@ -113,6 +114,6 @@ internal class Main_Menu_Buttons : UI_Behaviour
     }
     public void Single_Player()
     {
-        Scene_Loader.scene_loader.Load_Scene(Scenes.Overworld);
+        SceneManager.LoadScene(Scenes.Overworld.ToString());
     }
 }

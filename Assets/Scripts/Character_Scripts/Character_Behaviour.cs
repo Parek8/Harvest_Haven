@@ -23,6 +23,8 @@ internal class Character_Behaviour : MonoBehaviour
     bool _isAttacking = false;
     internal bool IsAttacking => _isAttacking;
 
+    int _equippedIndex = 0;
+
     private void Start()
     {
         stats = GetComponent<Character_Stats>();
@@ -56,9 +58,12 @@ internal class Character_Behaviour : MonoBehaviour
         for (int i = 0; i < hotbar.Count; i++)
         {
             if (Input_Manager.GetCustomAxisRawDown($"Slot_{i+1}"))
+            {
                 hotbar[i].Equip();
+                _equippedIndex = i;
+            }
         }
-
+        inventory.ChangeEquippedItem(_equippedIndex);
         if(!_isAttacking)
         {
             bool att = Input_Manager.GetCustomAxisRawDown("Attack");
@@ -69,7 +74,7 @@ internal class Character_Behaviour : MonoBehaviour
             }
             else if (att && inventory.IsEquippedFood())
             {
-                inventory.Equipped_Item.AssignedSlot.DecreaseCount();
+                inventory.DecreaseItemCount(inventory.Equipped_Item);
                 stats.Saturate(inventory.Equipped_Item);
             }
         }
@@ -143,7 +148,6 @@ internal class Character_Behaviour : MonoBehaviour
             if (_hit.Compare_Tag(_eq_item.ToolType) && _eq_item.IsTool)
             {
                 _hit.Damage(_eq_item.ToolDamage);
-
             }
             else
                 Debug.Log("Wrong type");
@@ -152,7 +156,7 @@ internal class Character_Behaviour : MonoBehaviour
     private void SeedOrWater(Plot _plot)
     {
         if (_state == PlayerState.seeding)
-            _plot.Plant(inventory.Equipped_Item.PlantableObject);
+            _plot.Plant(inventory.Equipped_Item.PlantableObject, inventory.Equipped_Item);
         else
             Debug.Log("There was an Error!");
     }

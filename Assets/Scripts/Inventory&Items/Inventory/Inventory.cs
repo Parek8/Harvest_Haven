@@ -29,6 +29,10 @@ internal class Inventory : MonoBehaviour
         LoadInventory();
         Clear_Item();
     }
+    internal void ChangeEquippedItem(int index)
+    {
+        _equipped_item = slots[index].Get_Item();
+    }
     internal void Add(Item item)
     {
         if (item != null)
@@ -67,6 +71,16 @@ internal class Inventory : MonoBehaviour
 
         if (used_slot == null)
             used_slot = slots.Find(slot => slot.Get_Item() == null && slot.IsAvailable);
+
+        return used_slot;
+    }
+
+    private Inventory_Slot FindFirstUsedSlot(Item item)
+    {
+        Inventory_Slot used_slot = slots.Find(slot => slot.Get_Item() == item);
+
+        if (used_slot == null)
+            return null;
 
         return used_slot;
     }
@@ -193,8 +207,5 @@ internal class Inventory : MonoBehaviour
         return _count;
     }
 
-    internal void DecreaseItemCount(Item _item)
-    {
-        Find_First_Slot(_item).DecreaseCount();
-    }
+    internal void DecreaseItemCount(Item _item) => FindFirstUsedSlot(_item).DecreaseCount();
 }

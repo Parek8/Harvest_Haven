@@ -15,13 +15,14 @@ internal class Plot : Interactable
         Day_Cycle.On_New_Day_Subscribe(OnDayChange);
     }
 
-    internal void Plant(PlantObject plant)
+    internal void Plant(PlantObject plant, Item item)
     {
         if (plant != null)
         {
             plantedPlant = plant;
             times = new List<uint>((List<uint>)plantedPlant.Times);
             stages = new List<GameObject>((List<GameObject>)plantedPlant.Stages);
+            GameManager.game_manager.player_inventory.DecreaseItemCount(item);
             SpawnNewStage();
         }
     }

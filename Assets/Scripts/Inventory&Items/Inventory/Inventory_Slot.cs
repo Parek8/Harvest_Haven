@@ -1,3 +1,4 @@
+using System.Linq.Expressions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -133,15 +134,19 @@ internal class Inventory_Slot : MonoBehaviour, IPointerDownHandler, IPointerUpHa
     {
         _itemCount -= _count;
         if (_itemCount <= 0)
+        {
             Clear_Item();
+        }
     }
     internal void Clear_Item()
     {
         if (item != null)
             item.AssignedSlot = null;
+
         this.item = null;
         _itemCount = 0;
     }
+
     internal void DropItem()
     {
         DecreaseCount();

@@ -937,9 +937,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1063149845}
-        m_TargetAssemblyTypeName: UI_Behaviour, Assembly-CSharp
-        m_MethodName: _Hide
+      - m_Target: {fileID: 449169472}
+        m_TargetAssemblyTypeName: ShopTalkable, Assembly-CSharp
+        m_MethodName: StopTalking
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -961,9 +961,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 449169472}
-        m_TargetAssemblyTypeName: ShopTalkable, Assembly-CSharp
-        m_MethodName: StopTalking
+      - m_Target: {fileID: 1063149845}
+        m_TargetAssemblyTypeName: UI_Behaviour, Assembly-CSharp
+        m_MethodName: _Hide
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1732,12 +1732,14 @@ MonoBehaviour:
   m_text: '
 
 
+    Equip The Axe By Pressing 1-9
+
     Use Left Mouse Button
 
-    While Aiming At Some Object
+    While
+    Aiming At Some Object
 
-    To
-    Damage It.
+    To Damage It.
 
     Loot Is Dropped When Destroyed'
   m_isRightToLeft: 0
@@ -4048,7 +4050,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
-  m_LocalRotation: {x: -0.06721531, y: 0.9006871, z: -0.40194416, w: -0.15061784}
+  m_LocalRotation: {x: -0.067215316, y: 0.9006871, z: -0.4019442, w: -0.15061784}
   m_LocalPosition: {x: 37.94836, y: 140, z: 113.841644}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_ConstrainProportionsScale: 0
@@ -9051,9 +9053,9 @@ RectTransform:
   - {fileID: 301796597}
   - {fileID: 1344458132}
   - {fileID: 1746019031}
-  - {fileID: 1015928671}
   - {fileID: 1090702996}
   - {fileID: 1364760636}
+  - {fileID: 1015928671}
   m_Father: {fileID: 2001693103}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10636,7 +10638,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1078552757}
-  m_LocalRotation: {x: -0.06721532, y: 0.9006871, z: -0.40194416, w: -0.15061787}
+  m_LocalRotation: {x: -0.06721529, y: 0.9006871, z: -0.4019442, w: -0.15061784}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -19542,7 +19544,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2136410477}
-  m_LocalRotation: {x: -0.06446453, y: 0.90784925, z: -0.38549462, w: -0.15181556}
+  m_LocalRotation: {x: -0.06446456, y: 0.90784925, z: -0.38549462, w: -0.15181561}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

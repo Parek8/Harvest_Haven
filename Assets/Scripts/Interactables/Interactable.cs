@@ -2,7 +2,7 @@ using UnityEngine;
 
 internal class Interactable : MonoBehaviour
 {
-    protected float _distance = 1.5f;
+    protected float _distance = 2.5f;
     protected Transform _player;
     protected Character_Behaviour _behaviour;
     protected MeshRenderer _renderer;

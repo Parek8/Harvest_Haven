@@ -4,13 +4,14 @@ internal class ShopTalkable : Interactable
 {
     [field: SerializeField] TestDialog _dialog;
     bool talking = false;
-    bool inDistance => (Vector3.Distance(_player.position, transform.position) <= _distance);
+    //bool inDistance => (Vector3.Distance(_player.position, transform.position) <= _distance);
     internal override void Interact()
     {
         if (_dialog == null)
             _dialog = GetComponent<TestDialog>();
 
-        if (!talking && inDistance)
+        //Debug.Log($"Talking: {talking} | In range: {Vector3.Distance(_player.position, transform.position) <= 2.5f}");
+        if (!talking && Vector3.Distance(_player.position, transform.position) <= 2.5f)
         {
             talking = true;
             DialogManager.DialogManagerInstance.Show();
@@ -19,7 +20,7 @@ internal class ShopTalkable : Interactable
     }
     private void Update()
     {
-        if (!inDistance)
+        if (!(Vector3.Distance(_player.position, transform.position) <= 2.5f))
             OutDistance();
     }
     protected void OutDistance()
@@ -27,8 +28,11 @@ internal class ShopTalkable : Interactable
         if (talking)
         {
             DialogManager.DialogManagerInstance.Hide();
-            talking = false;
+            StopTalking();
         }
     }
-    public void StopTalking() => talking = false;
+    public void StopTalking()
+    {
+        talking = false;
+    }
 }

@@ -14,19 +14,27 @@ internal class EnvironmentInitializer : MonoBehaviour
     [field: SerializeField] GameObject RockPrefab;
     [field: SerializeField] GameObject GrassPrefab;
     [field: SerializeField] LayerMask GroundLayer;
+    [field: SerializeField] Transform EnvironmentParent;
 
     private void Start()
     {
-        TerrainData.heightmapResolution = Width + 1;
-        TerrainData.size = new Vector3(Width, 2, Depth);
-        Terrain.transform.position = new Vector3(-transform.position.x - Width/2, 0, -transform.position.y - Depth /2);
-        SetHeights();
+        if (this.TerrainData != null)
+        {
+            TerrainData.heightmapResolution = Width + 1;
+            TerrainData.size = new Vector3(Width, 2, Depth);
+            Terrain.transform.position = new Vector3(-transform.position.x - Width / 2, 0, -transform.position.y - Depth / 2);
+            SetHeights();
+        }
         FillEnvironment();
     }
 
     private void FillEnvironment()
     {
-        Transform _environmentParent = GameManager.game_manager.environment_parent;
+        Transform _environmentParent;
+        if (EnvironmentParent == null)
+            _environmentParent = GameManager.game_manager.environment_parent;
+        else
+            _environmentParent = EnvironmentParent;
 
         int _trees = Mathf.RoundToInt(Random.Range(5, 25) * 100 * TreeDensity);
         int _rocks = Mathf.RoundToInt(Random.Range(3, 10) * 100 * RockDensity);
@@ -37,8 +45,8 @@ internal class EnvironmentInitializer : MonoBehaviour
         for (int r = 0; r < _rocks; r++)
             Instantiate(RockPrefab, GetRandomPosition(), _convertedAngle, _environmentParent);
 
-        //for (int g = 0; g < _grass; g++)
-        //    Instantiate(GrassPrefab, GetRandomPosition(), _convertedAngle, _environmentParent);
+        for (int g = 0; g < _grass; g++)
+            Instantiate(GrassPrefab, GetRandomPosition(), _convertedAngle, _environmentParent);
     }
 
     private Vector3 GetRandomPosition()

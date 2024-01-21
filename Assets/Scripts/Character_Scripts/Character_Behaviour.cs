@@ -97,7 +97,9 @@ internal class Character_Behaviour : MonoBehaviour
             Interactable _object;
             if (_inteInfo.collider.TryGetComponent(out _object) && Input_Manager.GetCustomAxisRawDown("Interact") && _state == PlayerState.normal)
             {
-                Tutorial.TutorialInstance.Interacted();
+                if (Tutorial.TutorialInstance != null)
+                    Tutorial.TutorialInstance.Interacted();
+
                 _object.Interact();
             }
         }

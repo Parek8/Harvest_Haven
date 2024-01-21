@@ -125,11 +125,15 @@ internal class Inventory : MonoBehaviour
     }
     private void LoadInventory()
     {
-        List<InventoryEntry> _inv = (List<InventoryEntry>)GameManager.game_manager.saveManager.LoadInventory();
-
-        foreach(InventoryEntry _entry in _inv)
+        // Not In Tutorial
+        if (Tutorial.TutorialInstance == null)
         {
-            slots[_entry.SlotID].Assign_Item(_entry.Item, _entry.ItemCount);
+            List<InventoryEntry> _inv = (List<InventoryEntry>)GameManager.game_manager.saveManager.LoadInventory();
+
+            foreach (InventoryEntry _entry in _inv)
+            {
+                slots[_entry.SlotID].Assign_Item(_entry.Item, _entry.ItemCount);
+            }
         }
     }
 

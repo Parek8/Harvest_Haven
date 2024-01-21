@@ -24,6 +24,17 @@ internal class ShopButton : MonoBehaviour
             Debug.Log("Something went wrong while trading!");
     }
 
+    internal void BoughtItem()
+    {
+        if (Tutorial.TutorialInstance != null)
+            Tutorial.TutorialInstance.BoughtItem();
+    }
+
+    internal void SoldItem()
+    {
+        if (Tutorial.TutorialInstance != null)
+            Tutorial.TutorialInstance.SoldItem();
+    }
     internal void SetupButton(ShopButtonAction _buttonAction, Item _item)
     {
         this._item = _item;
@@ -31,6 +42,7 @@ internal class ShopButton : MonoBehaviour
         this.ItemName.text = _item.name;
         ItemAction.transform.GetChild(0).GetComponent<TMP_Text>().text = (_buttonAction == ShopButtonAction.buy) ? "Buy" : "Sell";
         ItemAction.onClick.AddListener((_buttonAction == ShopButtonAction.buy) ? Buy : Sell);
+        ItemAction.onClick.AddListener((_buttonAction == ShopButtonAction.buy) ? BoughtItem : SoldItem);
     }
 
     internal enum ShopButtonAction

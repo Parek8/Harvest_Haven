@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 internal class ShopTalkable : Interactable
@@ -32,4 +30,5 @@ internal class ShopTalkable : Interactable
             talking = false;
         }
     }
+    public void StopTalking() => talking = false;
 }

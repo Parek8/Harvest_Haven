@@ -56,6 +56,9 @@ internal class Destroyable : MonoBehaviour
         if (this.hp <= 0 )
         {
             Destroy(gameObject);
+            if (Tutorial.TutorialInstance != null)
+                Tutorial.TutorialInstance.DestroyedObject();
+
             Drop_Items();
         }
     }

@@ -82,6 +82,8 @@ internal class Inventory_Slot : MonoBehaviour, IPointerDownHandler, IPointerUpHa
         {
             closest_slot.Assign_Item(current_item, _currentCount);
             this.Clear_Item();
+            if (Tutorial.TutorialInstance != null)
+                Tutorial.TutorialInstance.SwappedSlots();
         }
         else if(Is_Current_Slot(closest_slot))
             is_dragging = false;
@@ -90,6 +92,9 @@ internal class Inventory_Slot : MonoBehaviour, IPointerDownHandler, IPointerUpHa
             this.Assign_Item(closest_slot.Get_Item(), closest_slot.ItemCount);
             closest_slot.Assign_Item(current_item, _currentCount);
             is_dragging = false;
+
+            if (Tutorial.TutorialInstance != null)
+                Tutorial.TutorialInstance.SwappedSlots();
         }
     }
     internal void Equip()

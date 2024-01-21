@@ -1,9 +1,4 @@
-using Cinemachine;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(Character_Stats))]
 [RequireComponent(typeof(CharacterController))]

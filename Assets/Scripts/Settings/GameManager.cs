@@ -142,6 +142,8 @@ internal static class Input_Manager
                     return 1;
                 else if (Input.GetKey(keybinds[KeybindNames.backward]))
                     return -1;
+                else
+                    return 0;
             }
             else if (axis == "Horizontal")
             {
@@ -149,6 +151,8 @@ internal static class Input_Manager
                     return -1;
                 else if (Input.GetKey(keybinds[KeybindNames.right_strafe]))
                     return 1;
+                else
+                    return 0;
             }
             else if (axis == "Sprinting")
             {

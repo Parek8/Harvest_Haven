@@ -10,11 +10,16 @@ public sealed class Tutorial : MonoBehaviour
         get
         {
             if (_instance == null)
-                _instance = new Tutorial();
+                return null;
+
             return _instance;
         }
     }
-
+    private void Awake()
+    {
+        if (_instance == null)
+            _instance = this;
+    }
     private static Tutorial _instance;
 
     private TutorialState _tutorialState = TutorialState.Movement;
@@ -43,9 +48,29 @@ public sealed class Tutorial : MonoBehaviour
     [field: Header("INTERACT")]
     [field: SerializeField] UI_Behaviour IntDialog;
     [field: SerializeField] UI_Behaviour ECheck;
-
+    [field: SerializeField] UI_Behaviour ShopHighlighter;
     bool _interacted = false;
 
+    [field: Header("SWAP SLOTS")]
+    [field: SerializeField] UI_Behaviour SwapDialog;
+    Item _assignedItem;
+    bool _swappedSlots = false;
+
+    [field: Header("DESTROY OBJECTS")]
+    [field: SerializeField] UI_Behaviour DesDialog;
+    [field: SerializeField] Item AxeItem;
+    [field: SerializeField] GameObject InstantiatedObject;
+    [field: SerializeField] Transform InstantiatedObjectPosition;
+    bool _destroyedObject = false;
+
+    [field: Header("SHOPPING BUY")]
+    [field: SerializeField] UI_Behaviour BuyDialog;
+    bool _boughtItem = false;
+
+    [field: Header("SHOPPING SELL")]
+    [field: SerializeField] UI_Behaviour SelDialog;
+    [field: SerializeField] Item PotatoItem;
+    bool _soldItem = false;
 
     private void Start()
     {
@@ -58,17 +83,45 @@ public sealed class Tutorial : MonoBehaviour
             case TutorialState.Movement:
                 MovementTutorial();
                 break;
+
             case TutorialState.Inventory:
                 InventoryTutorial();
                 break;
+
+            case TutorialState.DragItems:
+                DragItemsTutorial();
+                break;
+
             case TutorialState.Interact:
                 InteractTutorial();
                 break;
+
+            case TutorialState.ShoppingBuy:
+                BuyTutorial();
+                break;
+
+            case TutorialState.ShoppingSell:
+                SellTutorial();
+                break;
+
+            case TutorialState.Destroy:
+                DestroyTutorial();
+                break;
+
+            case TutorialState.Craft:
+                CraftTutorial();
+                break;
+
+            case TutorialState.Smelt:
+                SmeltTutorial();
+                break;
+
             default:
-                Debug.Log("Tak a je to v pièi!");
+                Debug.Log("Tak a je to v pièi! :)");
                 break;
         }
     }
+    
     #region Init
     private void InitMovement()
     {
@@ -76,7 +129,7 @@ public sealed class Tutorial : MonoBehaviour
     }
     private IEnumerator InitInventory()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
 
         PlayerStats.enabled = true;
         PlayerBehaviour.enabled = true;
@@ -87,9 +140,10 @@ public sealed class Tutorial : MonoBehaviour
     }
     private IEnumerator InitInteract()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
 
-        InvDialog.Hide();
+        SwapDialog.Hide();
+        ShopHighlighter.Show();
         IntDialog.Show();
     }
 
@@ -98,15 +152,65 @@ public sealed class Tutorial : MonoBehaviour
         if (_tutorialState == TutorialState.Interact)
             _interacted = true;
     }
-
+    internal void SwappedSlots()
+    {
+        if (_tutorialState == TutorialState.DragItems)
+            _swappedSlots = true;
+    }
+    internal void DestroyedObject()
+    {
+        if (_tutorialState == TutorialState.Destroy)
+            _destroyedObject = true;
+    }
     private IEnumerator InitDestroy()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
 
-        IntDialog.Hide();
-        //IntDialog.Show();
+        SelDialog.Hide();
+        DesDialog.Show();
+
+        GameManager.game_manager.player_inventory.Add(AxeItem);
+
+        Instantiate(InstantiatedObject, InstantiatedObjectPosition.position, Quaternion.identity);
     }
 
+    private IEnumerator InitDragSlots()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        _assignedItem = GameManager.game_manager.all_items[UnityEngine.Random.Range(1, GameManager.game_manager.all_items.Count - 1)];
+        GameManager.game_manager.player_inventory.Add(_assignedItem);
+
+        InvDialog.Hide();
+        SwapDialog.Show();
+    }
+
+    private IEnumerator InitBuy()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        IntDialog.Hide();
+        BuyDialog.Show();
+    }
+    private IEnumerator InitSell()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        BuyDialog.Hide();
+        SelDialog.Show();
+    }
+
+    internal void BoughtItem()
+    {
+        if (_tutorialState == TutorialState.ShoppingBuy)
+            _boughtItem = true;
+    }
+
+    internal void SoldItem()
+    {
+        if (_tutorialState == TutorialState.ShoppingSell)
+            _soldItem = true;
+    }
     #endregion Init
     #region Tutorials
     private void MovementTutorial()
@@ -152,6 +256,15 @@ public sealed class Tutorial : MonoBehaviour
         }
         else
         {
+            _tutorialState = TutorialState.DragItems;
+            StartCoroutine(InitDragSlots());
+        }
+    }
+
+    private void DragItemsTutorial()
+    {
+        if (_swappedSlots)
+        {
             _tutorialState = TutorialState.Interact;
             StartCoroutine(InitInteract());
         }
@@ -161,20 +274,54 @@ public sealed class Tutorial : MonoBehaviour
         if (_interacted)
         {
             ECheck.Show();
+            _tutorialState = TutorialState.ShoppingBuy;
+            StartCoroutine(InitBuy());
+        }
+    }
+
+    private void BuyTutorial()
+    {
+        if (_boughtItem)
+        {
+            _tutorialState = TutorialState.ShoppingSell;
+            StartCoroutine(InitSell());
+        }
+    }
+    private void SellTutorial()
+    {
+        if (_soldItem)
+        {
             _tutorialState = TutorialState.Destroy;
             StartCoroutine(InitDestroy());
         }
     }
+    private void DestroyTutorial()
+    {
+        if (_destroyedObject)
+        {
+            _tutorialState = TutorialState.Craft;
+            //StartCoroutine(InitInteract());
+        }
+    }
+    private void CraftTutorial()
+    {
 
+    }
+    private void SmeltTutorial()
+    {
+
+    }
     #endregion Tutorials
     private enum TutorialState
     {
         Movement,
         Inventory,
+        DragItems,
         Interact,
+        ShoppingBuy,
+        ShoppingSell,
         Destroy,
         Craft,
         Smelt,
-        Shopping
     }
 }

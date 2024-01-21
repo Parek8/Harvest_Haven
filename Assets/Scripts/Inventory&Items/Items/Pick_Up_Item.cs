@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -24,7 +22,8 @@ internal class Pick_Up_Item : MonoBehaviour
 
         if (current_distance <= needed_distance)
             Move_Towards_Player();
-        if (current_distance <= 0.2f)
+        Debug.Log(current_distance);
+        if (current_distance <= 2f)
         {
             player_inventory.Add(this.item);
             Destroy(gameObject);

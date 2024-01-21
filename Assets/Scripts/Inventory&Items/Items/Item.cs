@@ -12,7 +12,7 @@ internal class Item : ScriptableObject
     [field: SerializeField] public string ItemDescription { get; private set; } = "";
     [field: SerializeField] public List<ItemTags> ItemDescriptionTags { get; private set; } = new();
     [field: SerializeField] public Sprite ItemIcon { get; private set; }
-    [field: Range(0.0f, 1.0f)] public float SpawnRate { get; private set; }
+    [field: Range(0.0f, 1.0f)] public float SpawnRate;
     [field: SerializeField] public GameObject ItemPrefab { get; private set; }
 
     [field: Header("Item Functionalities")]

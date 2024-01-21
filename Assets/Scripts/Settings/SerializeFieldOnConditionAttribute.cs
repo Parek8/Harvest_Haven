@@ -4,7 +4,6 @@ using UnityEngine;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
-
 internal enum ComparisonType
 {
     Equals = 1,
@@ -14,7 +13,7 @@ internal enum ComparisonType
     SmallerOrEqual = 5,
     GreaterOrEqual = 6
 }
-#if UNITY_EDITOR
+
 internal sealed class SerializeFieldOnConditionAttribute : PropertyAttribute
 {
     internal string comparedPropertyName { get; private set; }
@@ -26,8 +25,7 @@ internal sealed class SerializeFieldOnConditionAttribute : PropertyAttribute
         this.comparedValue = comparedValue;
         this.comparisonType = comparisonType;
     }
-
-
+#if UNITY_EDITOR
     internal bool IsConditionMet(SerializedProperty property)
     {
         bool conditionMet = false;
@@ -144,8 +142,9 @@ internal sealed class SerializeFieldOnConditionAttribute : PropertyAttribute
                 return null;
         }
     }
+#endif
 }
-
+#if UNITY_EDITOR
 [CustomPropertyDrawer(typeof(SerializeFieldOnConditionAttribute))]
 internal sealed class SerializeFieldOnConditionPropertyDrawer : PropertyDrawer
 {

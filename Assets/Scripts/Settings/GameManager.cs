@@ -64,7 +64,8 @@ internal class GameManager : MonoBehaviour
 
     public void ExitGame()
     {
-        saveManager.SaveInventory();
+        if (saveManager != null)
+            saveManager.SaveInventory();
         SceneManager.LoadScene("MainMenu");
     }
     internal Dictionary<KeybindNames, KeyCode> keybinds { get; private set; } = new Dictionary<KeybindNames, KeyCode>();

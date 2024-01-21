@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(Character_Stats))]
@@ -21,6 +22,7 @@ internal class Player_Movement : MonoBehaviour
         animator.SetFloat("Speed", stats.movement_speed);
 
         GameManager.game_manager.Cursor_Needed(CursorLockMode.Locked);
+        GameManager.game_manager.ResumeGame();
     }
     void Update()
     {

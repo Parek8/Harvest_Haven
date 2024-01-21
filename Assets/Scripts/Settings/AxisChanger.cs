@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
+#if UNITY_EDITOR
 internal class AxisChanger : MonoBehaviour
 {
     void Start()
@@ -32,3 +31,4 @@ internal class AxisChanger : MonoBehaviour
         Input_Manager.ApplyModifiedProperties();
     }
 }
+#endif

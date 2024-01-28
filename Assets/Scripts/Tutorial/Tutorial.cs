@@ -59,8 +59,6 @@ public sealed class Tutorial : MonoBehaviour
     [field: Header("DESTROY OBJECTS")]
     [field: SerializeField] UI_Behaviour DesDialog;
     [field: SerializeField] Item AxeItem;
-    [field: SerializeField] GameObject InstantiatedObject;
-    [field: SerializeField] Transform InstantiatedObjectPosition;
     bool _destroyedObject = false;
 
     [field: Header("SHOPPING BUY")]
@@ -170,8 +168,6 @@ public sealed class Tutorial : MonoBehaviour
         DesDialog.Show();
 
         GameManager.game_manager.player_inventory.Add(AxeItem);
-
-        Instantiate(InstantiatedObject, InstantiatedObjectPosition.position, Quaternion.identity);
     }
 
     private IEnumerator InitDragSlots()

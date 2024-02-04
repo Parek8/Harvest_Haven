@@ -1,5 +1,8 @@
 using UnityEngine;
 
+[RequireComponent(typeof(MeshRenderer))]
+[RequireComponent(typeof(Collider))]
+[RequireComponent(typeof(MeshFilter))]
 internal class Interactable : MonoBehaviour
 {
     protected float _distance = 2.5f;

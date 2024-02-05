@@ -6,8 +6,6 @@ using UnityEngine.UI;
 internal class ChestInventoryButton : MonoBehaviour, IPointerClickHandler
 {
     [field: SerializeField] Item item;
-    [field: SerializeField] internal int slot_index { get; private set; }
-
     [field: SerializeField] Image item_image;
     [field: SerializeField] TMP_Text item_count;
 
@@ -32,6 +30,6 @@ internal class ChestInventoryButton : MonoBehaviour, IPointerClickHandler
         this._itemCount = count;
 
         this.item_image.sprite = this.item.ItemIcon;
-        this.item_count.text = $"{this.ItemCount}x";
+        this.item_count.text = $"{this.item.ItemName}\n{this.ItemCount}x";
     }
 }

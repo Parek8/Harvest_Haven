@@ -294,7 +294,7 @@ internal static class Input_Manager
     private static void SetPlayerPrefs()
     {
         KeybindNames[] keybinds = (KeybindNames[])Enum.GetValues(typeof(KeybindNames));
-
+     
         for (int i = 0; i < keybinds.Length; i++)
         {
             KeybindNames kb = keybinds[i];

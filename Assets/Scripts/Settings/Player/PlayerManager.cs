@@ -13,9 +13,9 @@ internal class PlayerManager : MonoBehaviour
         string _savedContent = "";
 
         if (_playerSettings != null)
-            _savedContent += $"{_playerSettings.FOV}:{_playerSettings.FPS}:{_playerSettings.RESX}:{_playerSettings.RESY}:{_playerSettings.FULLSCREEN}:";
+            _savedContent += $"{_playerSettings.FOV};{_playerSettings.FPS};{_playerSettings.RESX};{_playerSettings.RESY};{_playerSettings.FULLSCREEN};";
         if (_playerStats != null)
-            _savedContent += $"{_playerStats.movement_speed}:{_playerStats.jump_force}:{_playerStats.pick_up_distance}:{_playerStats.attack_distance}:{_playerStats.attack_damage}:{_playerStats.food_delay}:{_playerStats.on_hunger_hit_delay}:{_playerStats.max_health_points}:{_playerStats.max_food_points}:{_playerStats.current_health_points}:{_playerStats.current_food_points}";
+            _savedContent += $"{_playerStats.movement_speed};{_playerStats.jump_force};{_playerStats.pick_up_distance};{_playerStats.attack_distance};{_playerStats.attack_damage};{_playerStats.food_delay};{_playerStats.on_hunger_hit_delay};{_playerStats.max_health_points};{_playerStats.max_food_points};{_playerStats.current_health_points};{_playerStats.current_food_points}";
 
         string _path = Directory.GetCurrentDirectory() + _playerSavePath;
         if (File.Exists(_path))
@@ -47,7 +47,7 @@ internal class PlayerManager : MonoBehaviour
 
             if (_content != null)
             {
-                string[] _items = _content.Split(':');
+                string[] _items = _content.Split(';');
 
                 _playerSettings.SetValues(Convert.ToInt16(_items[0]), Convert.ToUInt32(_items[1]), Convert.ToInt16(_items[2]), Convert.ToInt16(_items[3]), Convert.ToBoolean(_items[4]));
 

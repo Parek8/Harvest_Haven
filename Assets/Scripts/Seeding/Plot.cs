@@ -3,26 +3,58 @@ using UnityEngine;
 
 internal class Plot : Interactable
 {
+    internal int PlotIndex { get; private set; }
     internal bool isWatered { get; private set; } = true;
     internal PlantObject plantedPlant { get; private set; }
+    internal int Days = 0;
 
     List<uint> times = new List<uint>();
     List<GameObject> stages = new List<GameObject>();
+    private void Awake()
+    {
+        while (GameManager.game_manager == null)
+        {
 
+        }
+
+        GameManager.game_manager.all_crops.Add(this);
+    }
     private new void Start()
     {
         base.Start();
         Day_Cycle.On_New_Day_Subscribe(OnDayChange);
     }
+    internal void SetIndex(int index) => this.PlotIndex = index;
+    internal void LoadPlot(PlantObject plantObject, int days)
+    {
+        Days = days;
+        if (plantObject != null)
+        {
+            this.Plant(plantObject);
 
-    internal void Plant(PlantObject plant, Item item)
+            for (int i = 0; i < days; i++)
+            {
+                for (int j = 0; j < times.Count; j++)
+                {
+                    times[j]--;
+                }
+
+                if ((stages.Count == times.Count) && stages.Count > 0)
+                    if (times[0] <= 0)
+                        SpawnNewStage();
+            }
+        }
+    }
+
+    internal void Plant(PlantObject plant, Item item = null)
     {
         if (plant != null)
         {
             plantedPlant = plant;
             times = new List<uint>((List<uint>)plantedPlant.Times);
             stages = new List<GameObject>((List<GameObject>)plantedPlant.Stages);
-            GameManager.game_manager.player_inventory.DecreaseItemCount(item);
+            if (item != null)
+                GameManager.game_manager.player_inventory.DecreaseItemCount(item);
             SpawnNewStage();
         }
     }
@@ -49,6 +81,8 @@ internal class Plot : Interactable
             if ((stages.Count == times.Count) && stages.Count > 0)
                 if (times[0] <= 0)
                     SpawnNewStage();
+
+            Days++;
         }
         else if (!isWatered && plantedPlant != null)
         {

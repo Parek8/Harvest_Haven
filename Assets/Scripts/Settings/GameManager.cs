@@ -21,6 +21,12 @@ internal class GameManager : MonoBehaviour
             Item _item = all_items[i];
             _allItems[_item.ItemID] = _item;
         }
+
+        for (int i = 0; i < all_crops.Count; i++)
+        {
+            Plot _plot = _allCrops[i];
+            _allCrops[_plot.PlotIndex] = _plot;
+        }
         LoadGraphics();
     }
 
@@ -36,11 +42,15 @@ internal class GameManager : MonoBehaviour
     [field: SerializeField] internal Transform player_transform { get; private set; }
     [field: SerializeField] internal Inventory player_inventory { get; private set; }
     [field: SerializeField] internal List<Item> all_items { get; private set; }
+    [field: SerializeField] internal List<Plot> all_crops { get; private set; }
+    [field: SerializeField] internal List<PlantObject> all_plantable_objects { get; private set; }
     [field: SerializeField] internal Item Null_Item { get; private set; }
     [field: SerializeField] internal Transform environment_parent { get; private set; }
     [field: SerializeField] internal Dictionary<int, Item> _allItems = new Dictionary<int, Item>();
+    [field: SerializeField] internal Dictionary<int, Plot> _allCrops = new Dictionary<int, Plot>();
     [field: SerializeField] internal InventoryManager InventoryManagerInstance { get; private set; }
     [field: SerializeField] internal PlayerManager PlayerManagerInstance { get; private set; }
+    [field: SerializeField] internal CropsManager CropsManagerInstance { get; private set; }
     [field: SerializeField] internal Button ButtonPrefab { get; private set; }
     [field: SerializeField] internal UI_Behaviour HUD { get; private set; }
     [field: SerializeField] internal UI_Behaviour PauseMenu { get; private set; }
@@ -50,6 +60,7 @@ internal class GameManager : MonoBehaviour
     {
         InventoryManagerInstance.SaveInventory();
         PlayerManagerInstance.SavePlayer();
+        CropsManagerInstance.SaveCrops();
     }
 
     internal void Cursor_Needed(CursorLockMode lock_mode)
@@ -79,6 +90,10 @@ internal class GameManager : MonoBehaviour
         if (InventoryManagerInstance != null)
             InventoryManagerInstance.SaveInventory();
         SceneManager.LoadScene("MainMenu");
+    }
+    internal PlantObject FindPlantObject(int index)
+    {
+        return all_plantable_objects.Find(_plant => _plant.PlantObjectIndex == index);
     }
     internal Dictionary<KeybindNames, KeyCode> keybinds { get; private set; } = new Dictionary<KeybindNames, KeyCode>();
     internal bool IsKeybindSaved(KeybindNames keybind)

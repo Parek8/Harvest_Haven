@@ -19,10 +19,13 @@ internal class Grid : MonoBehaviour
     [field: SerializeField] GameObject plot_prefab;
 
     private GameObject[,,] grid;
+
+    int count;
     void Start()
     {
         grid = new GameObject[x_count, y_count, z_count];
         Make_Grid();
+        GameManager.game_manager.CropsManagerInstance.LoadCrops();
     }
 
     private void Make_Grid()
@@ -36,6 +39,7 @@ internal class Grid : MonoBehaviour
                     Vector3 pos = new Vector3((x * x_size) + x_spacing, (y * y_size)+y_spacing, (z*z_size)+z_spacing);
                     GameObject pref = Instantiate(plot_prefab, transform);
                     pref.transform.localPosition = pos;
+                    pref.GetComponent<Plot>().SetIndex(count++);
                     grid[x, y, z] = pref;
                 }
             }

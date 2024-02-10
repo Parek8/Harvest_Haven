@@ -2606,6 +2606,7 @@ GameObject:
   - component: {fileID: 227621727}
   - component: {fileID: 227621726}
   - component: {fileID: 227621728}
+  - component: {fileID: 227621729}
   m_Layer: 0
   m_Name: ___SAVE_MANAGER___
   m_TagString: Untagged
@@ -2654,6 +2655,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerSavePath: /saves/player.cfg
+--- !u!114 &227621729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 227621725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9aee8ed73f2485249b4217f468af34bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cropsSavePath: /saves/crops.cfg
 --- !u!1 &227673194
 GameObject:
   m_ObjectHideFlags: 0
@@ -4283,11 +4297,17 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c80732dc9fb7fcc4e855f179193bd9fa, type: 2}
   - {fileID: 11400000, guid: 1e0638a32c2c4b4428ca7d6fed540247, type: 2}
   - {fileID: 11400000, guid: 409365d834d6f664983a77cf1d051c18, type: 2}
+  <all_crops>k__BackingField: []
+  <all_plantable_objects>k__BackingField:
+  - {fileID: 11400000, guid: f96884cc6f71c514f8624f2c095d2b37, type: 2}
+  - {fileID: 11400000, guid: 947aaae63157c374087c1059c272d2c6, type: 2}
+  - {fileID: 11400000, guid: f1c22734695b8414b87292e25461b6bd, type: 2}
   <Null_Item>k__BackingField: {fileID: 11400000, guid: e573acafcb28ab442a46519d0fce24c1,
     type: 2}
   <environment_parent>k__BackingField: {fileID: 503972168}
   <InventoryManagerInstance>k__BackingField: {fileID: 227621726}
   <PlayerManagerInstance>k__BackingField: {fileID: 227621728}
+  <CropsManagerInstance>k__BackingField: {fileID: 227621729}
   <ButtonPrefab>k__BackingField: {fileID: 7968636937019209647, guid: f3c24ceddfe0a7442b58762a05bd2c2e,
     type: 3}
   <HUD>k__BackingField: {fileID: 46537722}

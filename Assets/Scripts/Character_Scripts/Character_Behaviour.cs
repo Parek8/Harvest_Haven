@@ -39,10 +39,6 @@ internal class Character_Behaviour : MonoBehaviour
 
     void Update()
     {
-        // __DEBUG__
-        if (Input.GetKeyDown(KeyCode.P))
-            GameManager.game_manager.InventoryManagerInstance.SaveInventory();
-
         if (Input.GetKeyDown(KeyCode.Space))
             Day_Cycle.Next_Day();
 

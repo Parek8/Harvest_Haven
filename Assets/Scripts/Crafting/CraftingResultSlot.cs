@@ -109,7 +109,7 @@ internal class CraftingResultSlot : MonoBehaviour, IPointerClickHandler
     private void ClearResult()
     {
         this._result = null;
-        this._resultImage.sprite = null;
+        this._resultImage.sprite = GameManager.game_manager.Null_Item.ItemIcon;
     }
 
 }

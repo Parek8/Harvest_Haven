@@ -8,7 +8,7 @@ using UnityEngine.UI;
 internal class GameManager : MonoBehaviour
 {
     internal static GameManager game_manager { get; private set; }
-    [field: SerializeField] private PlayerSettings PlayerSettings;
+    [field: SerializeField] internal PlayerSettings PlayerSettings { get; private set; }
 
     void Awake()
     {
@@ -21,6 +21,11 @@ internal class GameManager : MonoBehaviour
             Item _item = all_items[i];
             _allItems[_item.ItemID] = _item;
         }
+        LoadGraphics();
+    }
+
+    internal void LoadGraphics()
+    {
         Screen.SetResolution(PlayerSettings.RESX, PlayerSettings.RESY, PlayerSettings.FULLSCREEN);
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = (int)PlayerSettings.FPS;
@@ -34,11 +39,18 @@ internal class GameManager : MonoBehaviour
     [field: SerializeField] internal Item Null_Item { get; private set; }
     [field: SerializeField] internal Transform environment_parent { get; private set; }
     [field: SerializeField] internal Dictionary<int, Item> _allItems = new Dictionary<int, Item>();
-    [field: SerializeField] internal SaveManager saveManager { get; private set; }
+    [field: SerializeField] internal InventoryManager InventoryManagerInstance { get; private set; }
+    [field: SerializeField] internal PlayerManager PlayerManagerInstance { get; private set; }
     [field: SerializeField] internal Button ButtonPrefab { get; private set; }
     [field: SerializeField] internal UI_Behaviour HUD { get; private set; }
     [field: SerializeField] internal UI_Behaviour PauseMenu { get; private set; }
     [field: SerializeField] internal CinemachineFreeLook FreeCamera { get; private set; }
+
+    private void OnApplicationQuit()
+    {
+        InventoryManagerInstance.SaveInventory();
+        PlayerManagerInstance.SavePlayer();
+    }
 
     internal void Cursor_Needed(CursorLockMode lock_mode)
     {
@@ -64,8 +76,8 @@ internal class GameManager : MonoBehaviour
 
     public void ExitGame()
     {
-        if (saveManager != null)
-            saveManager.SaveInventory();
+        if (InventoryManagerInstance != null)
+            InventoryManagerInstance.SaveInventory();
         SceneManager.LoadScene("MainMenu");
     }
     internal Dictionary<KeybindNames, KeyCode> keybinds { get; private set; } = new Dictionary<KeybindNames, KeyCode>();

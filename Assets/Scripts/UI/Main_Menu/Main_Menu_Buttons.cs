@@ -101,7 +101,7 @@ internal class Main_Menu_Buttons : UI_Behaviour
         }
 
         //Debug.Log($"FOV: {fovv} | FPS: {fpsv} | RES: {resXv}x{resYv} | FULLSCREEN: {full}");
-        playerSettings.SetValues(400, fpsv, resXv, resYv, full);
+        playerSettings.SetValues(fovv, fpsv, resXv, resYv, full);
     }
     internal void Exit()
     {

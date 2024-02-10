@@ -16,6 +16,7 @@ public class PlayerSettings : ScriptableObject
         this.RESX = resx;
         this.RESY = resy;
         this.FULLSCREEN = full;
+        GameManager.game_manager.LoadGraphics();
     }
 
     public string GetInfo()

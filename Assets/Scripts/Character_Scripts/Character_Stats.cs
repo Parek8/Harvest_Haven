@@ -31,6 +31,7 @@ internal class Character_Stats : MonoBehaviour
     {
         current_health_points = max_health_points;
         current_food_points = max_food_points;
+        GameManager.game_manager.PlayerManagerInstance.LoadPlayer();
     }
 
     internal void Reduce_Health(float reduce_hp)
@@ -75,6 +76,22 @@ internal class Character_Stats : MonoBehaviour
 
         OnPlayerStateChange?.Invoke(_state);
     }
+
+    internal void LoadPlayer(float movementSpeed, float jumpForce, float pickUpDistance, float attackDistance, float attackDamage, float foodDelay, float onHungerHitDelay, float maxHelthPoints, float maxFoodPoints, float currentHealthPoint, float currentFoodPoints)
+    {
+        this.movement_speed = movementSpeed;
+        this.jump_force = jumpForce;
+        this.pick_up_distance = pickUpDistance;
+        this.attack_distance = attackDistance;
+        this.attack_damage = attackDamage;
+        this.food_delay = foodDelay;
+        this.on_hunger_hit_delay = onHungerHitDelay;
+        this.max_health_points = maxHelthPoints;
+        this.max_food_points = maxFoodPoints;
+        this.current_health_points += currentHealthPoint;
+        this.current_food_points += currentFoodPoints;
+    }
+
     internal void AddPlayerStateListener(Action<PlayerState> _listener) => this.OnPlayerStateChange += _listener;
     internal void RemovePlayerStateListener(Action<PlayerState> _listener) => this.OnPlayerStateChange -= _listener;
 }

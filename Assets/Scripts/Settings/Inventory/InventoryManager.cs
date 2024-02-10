@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-internal class SaveManager : MonoBehaviour
+internal class InventoryManager : MonoBehaviour
 {
     [SerializeField] string _inventorySavePath = "/Saves/playerInventory.cfg";
     internal void SaveInventory()
@@ -64,12 +64,6 @@ internal class SaveManager : MonoBehaviour
         }
 
         return _newItems;
-    }
-    private void OnApplicationQuit()
-    {
-        string _path = Directory.GetCurrentDirectory() + _inventorySavePath;
-
-        SaveInventory();
     }
 }
 internal struct InventoryEntry

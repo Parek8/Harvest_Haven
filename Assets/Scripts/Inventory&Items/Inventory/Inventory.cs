@@ -142,7 +142,7 @@ internal class Inventory : MonoBehaviour
         // Not In Tutorial
         if (Tutorial.TutorialInstance == null)
         {
-            List<InventoryEntry> _inv = (List<InventoryEntry>)GameManager.game_manager.saveManager.LoadInventory();
+            List<InventoryEntry> _inv = (List<InventoryEntry>)GameManager.game_manager.InventoryManagerInstance.LoadInventory();
 
             foreach (InventoryEntry _entry in _inv)
             {

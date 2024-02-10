@@ -22,8 +22,8 @@ internal class Pick_Up_Item : MonoBehaviour
 
         if (current_distance <= needed_distance)
             Move_Towards_Player();
-        Debug.Log(current_distance);
-        if (current_distance <= 2f)
+
+        if (current_distance <= 5f)
         {
             player_inventory.Add(this.item);
             Destroy(gameObject);

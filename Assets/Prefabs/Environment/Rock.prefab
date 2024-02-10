@@ -90,7 +90,6 @@ GameObject:
   - component: {fileID: 1916309521314281738}
   - component: {fileID: 6659340260256723301}
   - component: {fileID: -88932611840362403}
-  - component: {fileID: -8554626617828656357}
   m_Layer: 6
   m_Name: Rock
   m_TagString: Untagged
@@ -177,8 +176,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   max_hp: 20
-  dropped_items: []
-  types: 
+  dropped_items:
+  - {fileID: 11400000, guid: dccd088532b7879419fafcd172838c99, type: 2}
+  - {fileID: 11400000, guid: b26638a91961d6941a0943b8d0729798, type: 2}
+  - {fileID: 11400000, guid: 3c767dd0a71969a46ba83f04b4b74491, type: 2}
+  - {fileID: 11400000, guid: 3c767dd0a71969a46ba83f04b4b74491, type: 2}
+  types: 02000000
   health_colors:
     serializedVersion: 2
     key0: {r: 1, g: 0, b: 0, a: 1}
@@ -250,22 +253,7 @@ MonoBehaviour:
   Interactable: 0
   Destroyable: 1
   Attackable: 0
---- !u!114 &-8554626617828656357
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2871178288967000601}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: efcae32e6808fa348a2a392873efd9db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _itemMessage: Rock
-  Interactable: 0
-  Destroyable: 1
-  Attackable: 0
+  _highlighter: {fileID: 0}
 --- !u!1 &6252819497797295868
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,6 +12,11 @@ internal sealed class StopCameraMovement : MonoBehaviour
 
     CinemachineFreeLook camera;
     private StopCameraMovement() { }
+    private void Awake()
+    {
+        if (_instance == null)
+            _instance = this;
+    }
     private void Start()
     {
         if (_instance == null)

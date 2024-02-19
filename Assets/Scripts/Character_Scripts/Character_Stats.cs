@@ -88,8 +88,8 @@ internal class Character_Stats : MonoBehaviour
         this.on_hunger_hit_delay = onHungerHitDelay;
         this.max_health_points = maxHelthPoints;
         this.max_food_points = maxFoodPoints;
-        this.current_health_points += currentHealthPoint;
-        this.current_food_points += currentFoodPoints;
+        this.current_health_points = currentHealthPoint;
+        this.current_food_points = currentFoodPoints;
     }
 
     internal void AddPlayerStateListener(Action<PlayerState> _listener) => this.OnPlayerStateChange += _listener;

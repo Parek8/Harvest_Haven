@@ -1,14 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
 internal class EnemyBehaviour : MonoBehaviour
 {
-    bool _isAgro = false;
+    [field: SerializeField] internal float MovementSpeed { get; private set; } = 2;
+    [field: SerializeField] internal float MoveRadius { get; private set; } = 10;
+    [field: SerializeField] internal float AttackRadius { get; private set; } = 5;
+    [field: SerializeField] internal float AttackDamage { get; private set; } = 1;
+    [field: SerializeField] internal float AttackCooldown { get; private set; } = 3;
     Transform _playerTransform;
     CharacterController _characterController;
     CharacterStates _state;
+    bool _isAgro = false;
+    float _cooldown = 0;
     private void Start()
     {
         _playerTransform = GameManager.game_manager.player_transform;
@@ -20,21 +24,30 @@ internal class EnemyBehaviour : MonoBehaviour
 
         if (_state == CharacterStates.Moving)
         {
-            transform.LookAt(_playerTransform);
-            _characterController.Move(_playerTransform.position);
+            Vector3 targetPosition = new Vector3(_playerTransform.position.x,
+                                     0,
+                                     _playerTransform.position.z);
+            transform.LookAt(targetPosition);
+
+            transform.rotation = Quaternion.Euler(0, transform.eulerAngles.y, 0);
+            Vector3 movDir = transform.forward;
+            movDir.y = 0;
+
+            _characterController.Move(movDir * Time.deltaTime * MovementSpeed);
         }
         else if (_state == CharacterStates.Attacking)
             Attack();
 
+        _cooldown -= Time.deltaTime;
     }
 
     private void CheckCharacterState()
     {
         float _distanceFromPlayer = Vector2.Distance(transform.position, _playerTransform.position);
-
-        if ((_distanceFromPlayer >= 10))
+        Debug.Log(_distanceFromPlayer);
+        if ((_distanceFromPlayer <= MoveRadius))
         {
-            if (_distanceFromPlayer <= 1f)
+            if (_distanceFromPlayer <= AttackRadius)
                 _state = CharacterStates.Attacking;
             else
                 _state = CharacterStates.Moving;
@@ -45,11 +58,24 @@ internal class EnemyBehaviour : MonoBehaviour
 
     private void Attack()
     {
-        Ray _ray = new Ray(transform.position, transform.forward * 3);
+        Ray _ray = new Ray(transform.position, transform.forward * AttackRadius * 4);
+        RaycastHit _hit;
+        Debug.DrawRay(transform.position, transform.forward * AttackRadius * 4, Color.yellow);
 
-        if (Physics.Raycast(_ray, 5))
+        if (_cooldown <= 0)
         {
-
+            if (Physics.Raycast(_ray, out _hit, AttackRadius * 4))
+            {
+                if (_hit.collider.CompareTag("Player"))
+                {
+                    _hit.collider.GetComponent<Character_Stats>().Reduce_Health(1);
+                    _cooldown = AttackCooldown;
+                }
+                else
+                {
+                    Debug.Log(_hit.collider.name);
+                }
+            }
         }
     }
 }

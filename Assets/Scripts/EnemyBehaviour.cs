@@ -44,7 +44,6 @@ internal class EnemyBehaviour : MonoBehaviour
     private void CheckCharacterState()
     {
         float _distanceFromPlayer = Vector2.Distance(transform.position, _playerTransform.position);
-        Debug.Log(_distanceFromPlayer);
         if ((_distanceFromPlayer <= MoveRadius))
         {
             if (_distanceFromPlayer <= AttackRadius)

@@ -21,6 +21,7 @@ internal class Character_Stats : MonoBehaviour
     [field: SerializeField] internal float on_hunger_hit_delay { get; private set; } = 10f;
     [field: SerializeField] internal float max_health_points { get; private set; } = 10f;
     [field: SerializeField] internal float max_food_points { get; private set; } = 10f;
+    [field: SerializeField] internal OnHit OnHit { get; private set; }
     internal float current_health_points { get; private set; } = 10f;
     internal float current_food_points { get; private set; } = 10f;
 
@@ -41,7 +42,9 @@ internal class Character_Stats : MonoBehaviour
         {
             current_health_points = 0;
             Debug.Log("You've died!");
+            Destroy(gameObject);
         }
+        OnHit.StartAnimation();
     }
 
     internal void Starve(float starve)

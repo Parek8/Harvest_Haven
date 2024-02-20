@@ -12,7 +12,7 @@ internal class Pick_Up_Item : MonoBehaviour
     {
         player = GameManager.game_manager.player_transform;
         player_inventory = GameManager.game_manager.player_inventory;
-        needed_distance = player.GetComponent<Character_Stats>().pick_up_distance;
+        needed_distance = player.GetComponent<PlayerStats>().pick_up_distance;
         rb = GetComponent<Rigidbody>();
     }
 

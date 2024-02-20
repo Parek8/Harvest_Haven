@@ -8,11 +8,11 @@ internal class Player_Health : MonoBehaviour
 {
     [field: SerializeField] List<Image> hp_sprites = new List<Image>();
     [field: SerializeField] List<Image> hunger_sprites = new List<Image>();
-    Character_Stats stats;
+    PlayerStats stats;
     float current_food_delay = 20;
     private void Start()
     {
-        stats = GetComponent<Character_Stats>();
+        stats = GetComponent<PlayerStats>();
         current_food_delay = stats.food_delay;
         StartCoroutine(Hunger());
     }

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
+[RequireComponent(typeof(Character_Stats))]
 internal class EnemyBehaviour : MonoBehaviour
 {
     [field: SerializeField] internal float MovementSpeed { get; private set; } = 2;
@@ -8,17 +9,20 @@ internal class EnemyBehaviour : MonoBehaviour
     [field: SerializeField] internal float AttackRadius { get; private set; } = 5;
     [field: SerializeField] internal float AttackDamage { get; private set; } = 1;
     [field: SerializeField] internal float AttackCooldown { get; private set; } = 3;
-    Transform _playerTransform;
-    CharacterController _characterController;
-    CharacterStates _state;
-    bool _isAgro = false;
-    float _cooldown = 0;
-    private void Start()
+
+    protected Transform _playerTransform;
+    protected CharacterController _characterController;
+    protected CharacterStates _state;
+    protected bool _isAgro = false;
+    protected float _cooldown = 0;
+    protected Character_Stats _stats;
+    protected void Start()
     {
         _playerTransform = GameManager.game_manager.player_transform;
         _characterController = GetComponent<CharacterController>();
+        _stats = GetComponent<Character_Stats>();
     }
-    private void Update()
+    protected void Update()
     {
         CheckCharacterState();
 
@@ -30,7 +34,7 @@ internal class EnemyBehaviour : MonoBehaviour
         _cooldown -= Time.deltaTime;
     }
 
-    private void CheckCharacterState()
+    protected void CheckCharacterState()
     {
         float _distanceFromPlayer = Vector2.Distance(transform.position, _playerTransform.position);
         if ((_distanceFromPlayer <= MoveRadius))
@@ -68,21 +72,11 @@ internal class EnemyBehaviour : MonoBehaviour
             if (Physics.Raycast(_ray, out _hit, AttackRadius * 4))
             {
                 if (_hit.collider.CompareTag("Player"))
-                {
-                    HitPlayer();
                     _hit.collider.GetComponent<Character_Stats>().Reduce_Health(1);
-                    _cooldown = AttackCooldown;
-                }
                 else
-                {
                     Debug.Log(_hit.collider.name);
-                }
             }
+            _cooldown = AttackCooldown;
         }
-    }
-
-    protected virtual void HitPlayer()
-    {
-
     }
 }

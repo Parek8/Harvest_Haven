@@ -12,7 +12,7 @@ internal class Inventory : MonoBehaviour
     Item _equipped_item;
     internal Item Equipped_Item => _equipped_item;
     Action _slotChanged;
-    Character_Stats _stats;
+    PlayerStats _stats;
     void Start()
     {
         Inventory_Slot[] tmp_array = FindObjectsByType<Inventory_Slot>(FindObjectsInactive.Include, FindObjectsSortMode.InstanceID);
@@ -25,7 +25,7 @@ internal class Inventory : MonoBehaviour
 
         slots.Sort((item1, item2) => item1.slot_index.CompareTo(item2.slot_index));
 
-        _stats = GetComponent<Character_Stats>();
+        _stats = GetComponent<PlayerStats>();
         LoadInventory();
         Clear_Item();
     }

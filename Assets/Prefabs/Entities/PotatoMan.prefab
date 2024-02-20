@@ -114,6 +114,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &6875029657209654093
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7613889798725269829}
+  m_Layer: 0
+  m_Name: PotatoSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7613889798725269829
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6875029657209654093}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.476, z: -0.411}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3625224935573038871}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7578327702277720251
 GameObject:
   m_ObjectHideFlags: 0
@@ -208,9 +239,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3625224935573038871}
-  - component: {fileID: 1578042497541770705}
   - component: {fileID: 8599850232448548373}
   - component: {fileID: 4700337335021155225}
+  - component: {fileID: 5926789218216118964}
   m_Layer: 0
   m_Name: PotatoMan
   m_TagString: Untagged
@@ -233,26 +264,10 @@ Transform:
   - {fileID: 5960746444430130639}
   - {fileID: 4298440131501615748}
   - {fileID: 23695128391989065}
+  - {fileID: 7613889798725269829}
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1578042497541770705
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8197814539896579728}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fd059039c70d2746a9034fe086f10e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <MovementSpeed>k__BackingField: 2
-  <MoveRadius>k__BackingField: 10
-  <AttackRadius>k__BackingField: 2
-  <AttackDamage>k__BackingField: 1
-  <AttackCooldown>k__BackingField: 3
 --- !u!64 &8599850232448548373
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -301,3 +316,22 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: -1.58, z: -0.41}
+--- !u!114 &5926789218216118964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8197814539896579728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55630432962d6354cb0e4ea85aeb4404, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <MovementSpeed>k__BackingField: 2
+  <MoveRadius>k__BackingField: 10
+  <AttackRadius>k__BackingField: 5
+  <AttackDamage>k__BackingField: 1
+  <AttackCooldown>k__BackingField: 3
+  Bullet: {fileID: 2531110610814329582, guid: 4abcbe0049aa1b74fa92ced6a26f88dd, type: 3}
+  BulletSpawnPoint: {fileID: 7613889798725269829}

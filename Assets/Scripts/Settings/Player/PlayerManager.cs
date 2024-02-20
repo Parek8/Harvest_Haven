@@ -8,7 +8,7 @@ internal class PlayerManager : MonoBehaviour
     internal void SavePlayer()
     {
         PlayerSettings _playerSettings = GameManager.game_manager.PlayerSettings;
-        Character_Stats _playerStats = GameManager.game_manager.player_transform.GetComponent<Character_Stats>();
+        PlayerStats _playerStats = GameManager.game_manager.player_transform.GetComponent<PlayerStats>();
 
         string _savedContent = "";
 
@@ -35,7 +35,7 @@ internal class PlayerManager : MonoBehaviour
     internal void LoadPlayer()
     {
         PlayerSettings _playerSettings = GameManager.game_manager.PlayerSettings;
-        Character_Stats _playerStats = GameManager.game_manager.player_transform.GetComponent<Character_Stats>();
+        PlayerStats _playerStats = GameManager.game_manager.player_transform.GetComponent<PlayerStats>();
 
         string _path = Directory.GetCurrentDirectory() + _playerSavePath;
 

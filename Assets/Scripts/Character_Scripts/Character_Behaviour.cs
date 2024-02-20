@@ -13,7 +13,7 @@ internal class Character_Behaviour : MonoBehaviour
     [field: SerializeField] Transform _aimStart;
     [field: SerializeField] TMP_Text _itemText;
 
-    Character_Stats stats;
+    PlayerStats stats;
     Inventory inventory;
     Animator animator;
     Player_Movement movement;
@@ -27,7 +27,7 @@ internal class Character_Behaviour : MonoBehaviour
 
     private void Start()
     {
-        stats = GetComponent<Character_Stats>();
+        stats = GetComponent<PlayerStats>();
         inventory = GetComponent<Inventory>();
         animator = GetComponent<Animator>();
         movement = GetComponent<Player_Movement>();

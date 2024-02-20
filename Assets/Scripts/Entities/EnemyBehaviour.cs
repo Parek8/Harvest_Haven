@@ -23,18 +23,7 @@ internal class EnemyBehaviour : MonoBehaviour
         CheckCharacterState();
 
         if (_state == CharacterStates.Moving)
-        {
-            Vector3 targetPosition = new Vector3(_playerTransform.position.x,
-                                     0,
-                                     _playerTransform.position.z);
-            transform.LookAt(targetPosition);
-
-            transform.rotation = Quaternion.Euler(0, transform.eulerAngles.y, 0);
-            Vector3 movDir = transform.forward;
-            movDir.y = 0;
-
-            _characterController.Move(movDir * Time.deltaTime * MovementSpeed);
-        }
+            Move();
         else if (_state == CharacterStates.Attacking)
             Attack();
 
@@ -55,7 +44,20 @@ internal class EnemyBehaviour : MonoBehaviour
             _state = CharacterStates.None;
     }
 
-    private void Attack()
+    protected virtual void Move()
+    {
+        Vector3 targetPosition = new Vector3(_playerTransform.position.x,
+                                     0,
+                                     _playerTransform.position.z);
+        transform.LookAt(targetPosition);
+
+        transform.rotation = Quaternion.Euler(0, transform.eulerAngles.y, 0);
+        Vector3 movDir = transform.forward;
+        movDir.y = 0;
+
+        _characterController.Move(movDir * Time.deltaTime * MovementSpeed);
+    }
+    protected virtual void Attack()
     {
         Ray _ray = new Ray(transform.position, transform.forward * AttackRadius * 4);
         RaycastHit _hit;
@@ -67,6 +69,7 @@ internal class EnemyBehaviour : MonoBehaviour
             {
                 if (_hit.collider.CompareTag("Player"))
                 {
+                    HitPlayer();
                     _hit.collider.GetComponent<Character_Stats>().Reduce_Health(1);
                     _cooldown = AttackCooldown;
                 }
@@ -76,5 +79,10 @@ internal class EnemyBehaviour : MonoBehaviour
                 }
             }
         }
+    }
+
+    protected virtual void HitPlayer()
+    {
+
     }
 }

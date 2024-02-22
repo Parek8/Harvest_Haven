@@ -242,6 +242,7 @@ GameObject:
   - component: {fileID: 8599850232448548373}
   - component: {fileID: 4700337335021155225}
   - component: {fileID: 5926789218216118964}
+  - component: {fileID: 8617601034911890930}
   m_Layer: 0
   m_Name: PotatoMan
   m_TagString: Untagged
@@ -333,5 +334,22 @@ MonoBehaviour:
   <AttackRadius>k__BackingField: 5
   <AttackDamage>k__BackingField: 1
   <AttackCooldown>k__BackingField: 3
-  Bullet: {fileID: 2531110610814329582, guid: 4abcbe0049aa1b74fa92ced6a26f88dd, type: 3}
+  Bullet: {fileID: 1734561122488863854, guid: 4abcbe0049aa1b74fa92ced6a26f88dd, type: 3}
   BulletSpawnPoint: {fileID: 7613889798725269829}
+  DamageRadius: 0
+--- !u!114 &8617601034911890930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8197814539896579728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfcf1f7a997a5b444a4a98abfcc83784, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <movement_speed>k__BackingField: 15
+  <attack_distance>k__BackingField: 1.2
+  <attack_damage>k__BackingField: 10
+  <max_health_points>k__BackingField: 10

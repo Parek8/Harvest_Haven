@@ -17,7 +17,7 @@ internal class PotatoProjectile : MonoBehaviour
 
         if (Target != null)
         {
-            Vector3 initialVelocity = CalculateLaunchVelocity();
+            Vector3 initialVelocity = CalculateLaunchVelocity()*2;
 
             rb.velocity = initialVelocity;
             transform.rotation = Quaternion.LookRotation(initialVelocity);

@@ -102,7 +102,6 @@ internal class Character_Behaviour : MonoBehaviour
             {
                 if (Tutorial.TutorialInstance != null)
                     Tutorial.TutorialInstance.Interacted();
-
                 _object.Interact();
             }
         }

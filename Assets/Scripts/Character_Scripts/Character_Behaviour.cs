@@ -55,11 +55,13 @@ internal class Character_Behaviour : MonoBehaviour
         {
             if (Input_Manager.GetCustomAxisRawDown($"Slot_{i+1}"))
             {
-                hotbar[i].Equip();
+                //hotbar[i].Equip();
                 _equippedIndex = i;
             }
         }
+
         inventory.ChangeEquippedItem(_equippedIndex);
+
         if(!_isAttacking)
         {
             bool att = Input_Manager.GetCustomAxisRawDown("Attack");

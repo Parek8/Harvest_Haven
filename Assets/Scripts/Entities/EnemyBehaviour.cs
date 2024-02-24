@@ -2,7 +2,7 @@
 
 [RequireComponent(typeof(CharacterController))]
 [RequireComponent(typeof(Character_Stats))]
-internal class EnemyBehaviour : MonoBehaviour
+internal class EnemyBehaviour : Destroyable
 {
     [field: SerializeField] internal float MovementSpeed { get; private set; } = 2;
     [field: SerializeField] internal float MoveRadius { get; private set; } = 10;
@@ -16,8 +16,13 @@ internal class EnemyBehaviour : MonoBehaviour
     protected bool _isAgro = false;
     protected float _cooldown = 0;
     protected Character_Stats _stats;
+    private void Awake()
+    {
+        base.Awake();
+    }
     protected void Start()
     {
+        base.Start();
         _playerTransform = GameManager.game_manager.player_transform;
         _characterController = GetComponent<CharacterController>();
         _stats = GetComponent<Character_Stats>();

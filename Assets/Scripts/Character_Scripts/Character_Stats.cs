@@ -10,7 +10,6 @@ internal class Character_Stats : MonoBehaviour
 
     protected void Start()
     {
-        GameManager.game_manager.PlayerManagerInstance.LoadPlayer();
     }
 
     internal virtual void Reduce_Health(float reduce_hp)

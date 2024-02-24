@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 internal class Inventory : MonoBehaviour
 {
@@ -31,7 +32,17 @@ internal class Inventory : MonoBehaviour
     }
     internal void ChangeEquippedItem(int index)
     {
+        _slotChanged?.Invoke();
+
         _equipped_item = slots[index].Get_Item();
+
+        if (_equipped_item != null)
+        {
+            InstantiateItem();
+            _stats.Change_State(_equipped_item);
+        }
+        else
+            _stats.Change_State(GameManager.game_manager.Null_Item);
     }
     internal void Add(Item item)
     {

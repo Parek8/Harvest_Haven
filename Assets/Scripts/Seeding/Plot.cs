@@ -27,22 +27,24 @@ internal class Plot : Interactable
     internal void SetIndex(int index) => this.PlotIndex = index;
     internal void LoadPlot(PlantObject plantObject, int days)
     {
-        Days = days;
+        //Days = days;
         if (plantObject != null)
         {
             this.Plant(plantObject);
 
             for (int i = 0; i < days; i++)
             {
-                for (int j = 0; j < times.Count; j++)
-                {
-                    times[j]--;
-                }
+                //for (int j = 0; j < times.Count; j++)
+                //{
+                //    times[j]--;
+                //}
 
-                if ((stages.Count == times.Count) && stages.Count > 0)
-                    if (times[0] <= 0)
-                        SpawnNewStage();
+                //if ((stages.Count == times.Count) && stages.Count > 0)
+                //    if (times[0] <= 0)
+                //        SpawnNewStage();
+                OnDayChange();
             }
+            DestroyPlant();
         }
     }
 
@@ -81,6 +83,8 @@ internal class Plot : Interactable
             if ((stages.Count == times.Count) && stages.Count > 0)
                 if (times[0] <= 0)
                     SpawnNewStage();
+                else if ((stages.Count != times.Count))
+                    Debug.Log("Nerovna se");
 
             Days++;
         }
@@ -97,12 +101,15 @@ internal class Plot : Interactable
         DestroyPlant();
         Vector3 _spawnPos = transform.position + GetGameObjectOffset();
         GameObject _stage = Instantiate(stages[0], _spawnPos, stages[0].transform.localRotation, transform);
-
+        //Debug.Log(_stage.name);
         times.RemoveAt(0);
         stages.RemoveAt(0);
 
         if (stages.Count <= 0 && times.Count <= 0)
+        {
+            DestroyPlant();
             _stage.AddComponent<Harvestable>().Setup((List<Item>)plantedPlant.DroppedItems);
+        }
     }
 
     private Vector3 GetGameObjectOffset()
@@ -114,8 +121,15 @@ internal class Plot : Interactable
 
     private void DestroyPlant()
     {
-        if (transform.childCount > 0)
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            Debug.Log(transform.GetChild(i).name);
+        }
+        if (transform.childCount != 0)
+        {
             Destroy(transform.GetChild(0).gameObject);
+        }
+        Debug.Log("_______________________________________________");
     }
 
     internal override void Interact()

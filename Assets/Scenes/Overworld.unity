@@ -3809,6 +3809,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c80732dc9fb7fcc4e855f179193bd9fa, type: 2}
   - {fileID: 11400000, guid: 1e0638a32c2c4b4428ca7d6fed540247, type: 2}
   - {fileID: 11400000, guid: 409365d834d6f664983a77cf1d051c18, type: 2}
+  - {fileID: 11400000, guid: da7bd5fd7e788524289bc7f44c19a12d, type: 2}
   <all_crops>k__BackingField: []
   <all_plantable_objects>k__BackingField:
   - {fileID: 11400000, guid: f96884cc6f71c514f8624f2c095d2b37, type: 2}
@@ -10338,6 +10339,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8c440421fbf10eb4997c06840c9aaf9c, type: 2}
   - {fileID: 11400000, guid: c96a6c66457778f4d805811c35e63f9c, type: 2}
   - {fileID: 11400000, guid: 1dbe5f3cdaef95645b3fc8b1163909f4, type: 2}
+  - {fileID: 11400000, guid: 48bdb01155f105749b5476ea2593decc, type: 2}
 --- !u!1001 &1238573939
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19046,6 +19048,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5926789218216118964, guid: 7a0c107593f7ad549a0993b53808fd1e,
+        type: 3}
+      propertyPath: dropped_items.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5926789218216118964, guid: 7a0c107593f7ad549a0993b53808fd1e,
+        type: 3}
+      propertyPath: dropped_items.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 098ba32f8c7cee342a4c12cc89920e1a,
+        type: 2}
     - target: {fileID: 8197814539896579728, guid: 7a0c107593f7ad549a0993b53808fd1e,
         type: 3}
       propertyPath: m_Name

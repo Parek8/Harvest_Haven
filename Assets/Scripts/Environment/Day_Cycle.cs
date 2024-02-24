@@ -73,7 +73,7 @@ internal class Day_Cycle : Custom_Update_Subscriber
     {
         days++;
         On_New_Day?.Invoke();
-        Debug.Log("New day " + days);
+        //Debug.Log("New day " + days);
     }
 
     internal static void On_New_Day_Subscribe(Action action)

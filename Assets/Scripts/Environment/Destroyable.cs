@@ -25,7 +25,7 @@ internal class Destroyable : MonoBehaviour
     static GameObject _canvasPrefab;
     static Gradient _gradient;
     static Image _barPrefab;
-    private void Awake()
+    protected void Awake()
     {
         if (_canvasPrefab == null && CanvasPrefab != null)
             _canvasPrefab = CanvasPrefab;
@@ -42,7 +42,7 @@ internal class Destroyable : MonoBehaviour
         if (_barPrefab == null && filled_health_bar != null)
             _barPrefab = filled_health_bar;
     }
-    private void Start()
+    protected void Start()
     {
         hp = max_hp;
         pl = GameManager.game_manager.player_transform.GetComponent<Player_Movement>();

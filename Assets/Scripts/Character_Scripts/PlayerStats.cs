@@ -29,8 +29,8 @@ internal class PlayerStats : Character_Stats
     }
     internal override void Reduce_Health(float reduce_hp)
     {
-        base.Reduce_Health(reduce_hp);
         OnHit.StartAnimation();
+        base.Reduce_Health(reduce_hp);
     }
 
 

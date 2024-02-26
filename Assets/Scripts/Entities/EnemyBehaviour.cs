@@ -4,10 +4,7 @@
 [RequireComponent(typeof(Character_Stats))]
 internal class EnemyBehaviour : Destroyable
 {
-    [field: SerializeField] internal float MovementSpeed { get; private set; } = 2;
     [field: SerializeField] internal float MoveRadius { get; private set; } = 10;
-    [field: SerializeField] internal float AttackRadius { get; private set; } = 5;
-    [field: SerializeField] internal float AttackDamage { get; private set; } = 1;
     [field: SerializeField] internal float AttackCooldown { get; private set; } = 3;
 
     protected Transform _playerTransform;
@@ -44,7 +41,7 @@ internal class EnemyBehaviour : Destroyable
         float _distanceFromPlayer = Vector2.Distance(transform.position, _playerTransform.position);
         if ((_distanceFromPlayer <= MoveRadius))
         {
-            if (_distanceFromPlayer <= AttackRadius)
+            if (_distanceFromPlayer <= _stats.attack_distance)
                 _state = CharacterStates.Attacking;
             else
                 _state = CharacterStates.Moving;
@@ -64,17 +61,17 @@ internal class EnemyBehaviour : Destroyable
         Vector3 movDir = transform.forward;
         movDir.y = 0;
 
-        _characterController.Move(movDir * Time.deltaTime * MovementSpeed);
+        _characterController.Move(movDir * Time.deltaTime * _stats.movement_speed);
     }
     protected virtual void Attack()
     {
-        Ray _ray = new Ray(transform.position, transform.forward * AttackRadius * 4);
+        Ray _ray = new Ray(transform.position, transform.forward * _stats.attack_distance * 4);
         RaycastHit _hit;
-        Debug.DrawRay(transform.position, transform.forward * AttackRadius * 4, Color.yellow);
+        Debug.DrawRay(transform.position, transform.forward * _stats.attack_distance * 4, Color.yellow);
 
         if (_cooldown <= 0)
         {
-            if (Physics.Raycast(_ray, out _hit, AttackRadius * 4))
+            if (Physics.Raycast(_ray, out _hit, _stats.attack_distance * 4))
             {
                 if (_hit.collider.CompareTag("Player"))
                     _hit.collider.GetComponent<Character_Stats>().Reduce_Health(1);

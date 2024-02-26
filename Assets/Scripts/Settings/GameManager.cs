@@ -59,8 +59,8 @@ internal class GameManager : MonoBehaviour
     private void OnApplicationQuit()
     {
         InventoryManagerInstance.SaveInventory();
-        PlayerManagerInstance.SavePlayer();
         CropsManagerInstance.SaveCrops();
+        PlayerManagerInstance.SavePlayer();
     }
 
     internal void Cursor_Needed(CursorLockMode lock_mode)

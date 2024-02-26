@@ -3830,6 +3830,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1e0638a32c2c4b4428ca7d6fed540247, type: 2}
   - {fileID: 11400000, guid: 409365d834d6f664983a77cf1d051c18, type: 2}
   - {fileID: 11400000, guid: da7bd5fd7e788524289bc7f44c19a12d, type: 2}
+  <AllLootableItems>k__BackingField:
+  - {fileID: 11400000, guid: 311285adbaef5b64798e64515718a47f, type: 2}
+  - {fileID: 11400000, guid: 3c767dd0a71969a46ba83f04b4b74491, type: 2}
+  - {fileID: 11400000, guid: faddd45e906bd3d40935609393245433, type: 2}
+  - {fileID: 11400000, guid: e94564a7e73b07c44ab205a162fb6d21, type: 2}
   <all_crops>k__BackingField: []
   <all_plantable_objects>k__BackingField:
   - {fileID: 11400000, guid: f96884cc6f71c514f8624f2c095d2b37, type: 2}
@@ -4340,7 +4345,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &449169467
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -27399,7 +27404,7 @@ PrefabInstance:
     - target: {fileID: 5850506988267360585, guid: 1c3e567a447307c489f88cf2a32034db,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8487627602832246107, guid: 1c3e567a447307c489f88cf2a32034db,
         type: 3}

@@ -42,6 +42,7 @@ internal class GameManager : MonoBehaviour
     [field: SerializeField] internal Transform player_transform { get; private set; }
     [field: SerializeField] internal Inventory player_inventory { get; private set; }
     [field: SerializeField] internal List<Item> all_items { get; private set; }
+    [field: SerializeField] internal List<Item> AllLootableItems { get; private set; }
     [field: SerializeField] internal List<Plot> all_crops { get; private set; }
     [field: SerializeField] internal List<PlantObject> all_plantable_objects { get; private set; }
     [field: SerializeField] internal Item Null_Item { get; private set; }

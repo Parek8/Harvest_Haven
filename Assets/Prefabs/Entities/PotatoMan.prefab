@@ -368,10 +368,7 @@ MonoBehaviour:
   filled_health_bar: {fileID: 87469839402064186}
   obj_canvas: {fileID: 8944614939537697957}
   CanvasPrefab: {fileID: 5947003367218317020}
-  <MovementSpeed>k__BackingField: 2
   <MoveRadius>k__BackingField: 10
-  <AttackRadius>k__BackingField: 5
-  <AttackDamage>k__BackingField: 1
   <AttackCooldown>k__BackingField: 3
   Bullet: {fileID: 1734561122488863854, guid: 4abcbe0049aa1b74fa92ced6a26f88dd, type: 3}
   BulletSpawnPoint: {fileID: 7613889798725269829}
@@ -388,9 +385,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfcf1f7a997a5b444a4a98abfcc83784, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <movement_speed>k__BackingField: 15
-  <attack_distance>k__BackingField: 1.2
-  <attack_damage>k__BackingField: 10
+  <movement_speed>k__BackingField: 1.2
+  <attack_distance>k__BackingField: 3.5
+  <attack_damage>k__BackingField: 1
   <max_health_points>k__BackingField: 10
 --- !u!23 &531581000069987693
 MeshRenderer:

@@ -4,62 +4,45 @@ using UnityEngine.Rendering.Universal;
 
 public class OnHit : MonoBehaviour
 {
-    [SerializeField] internal UnityEngine.Rendering.VolumeProfile volume;
-    [SerializeField] internal float minimalIntensity = 0f;
-    [SerializeField] internal float maximalIntensity = 1f;
-    [SerializeField] internal float transitionDuration = 1f;
-    private float transitionTimer = 0f;
-    private bool isMaxIntensity = false;
+    [SerializeField] internal UnityEngine.Rendering.VolumeProfile Volume;
+    [SerializeField] internal float MinimalIntensity = 0f;
+    [SerializeField] internal float MaximalIntensity = 1f;
+    [SerializeField] internal float TransitionDuration = 1f;
     private Vignette vignette;
 
     private void Start()
     {
-        volume.TryGet(out vignette);
+        Volume.TryGet(out vignette);
         vignette.intensity.value = 0f;
     }
 
     public void StartAnimation()
     {
-        transitionTimer = 0f;
-
-        isMaxIntensity = !isMaxIntensity;
-
         StartCoroutine(ChangeIntensityOverTime());
     }
 
     private IEnumerator ChangeIntensityOverTime()
     {
         if (vignette == null)
-        {
-            Debug.LogError("Vignette není inicializováno.");
             yield break;
-        }
 
-        float startIntensity = vignette.intensity.value;
-        float targetIntensity = isMaxIntensity ? maximalIntensity : minimalIntensity;
-
-        while (transitionTimer < transitionDuration/2)
+        float _newIntensity = 0;
+        float _delay = Time.deltaTime * TransitionDuration;
+        while (_newIntensity <= MaximalIntensity)
         {
-            transitionTimer += Time.deltaTime;
+            _newIntensity += Time.deltaTime;
+            vignette.intensity.value = _newIntensity;
 
-            float newIntensity = Mathf.Lerp(startIntensity, targetIntensity, transitionTimer / transitionDuration);
-
-            vignette.intensity.value = newIntensity;
-
-            yield return null;
+            yield return new WaitForSeconds(_delay);
         }
 
-        while (transitionTimer < transitionDuration)
+        while (_newIntensity >= MinimalIntensity)
         {
-            transitionTimer += Time.deltaTime;
+            _newIntensity -= Time.deltaTime;
+            vignette.intensity.value = _newIntensity;
 
-            float newIntensity = Mathf.Lerp(targetIntensity, startIntensity, transitionTimer / transitionDuration);
+            yield return new WaitForSeconds(_delay);
 
-            vignette.intensity.value = newIntensity;
-
-            yield return null;
         }
-
-        vignette.intensity.value = targetIntensity;
     }
 }

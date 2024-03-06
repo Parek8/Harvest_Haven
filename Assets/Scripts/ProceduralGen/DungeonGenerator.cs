@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 
-public class DungeonGenerator : MonoBehaviour
+public class DungeonGeneratorN : MonoBehaviour
 {
     [System.Serializable]
     public class Cell

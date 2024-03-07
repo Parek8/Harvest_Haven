@@ -4,6 +4,7 @@ using UnityEngine;
 internal class TestDialog : MonoBehaviour, IDialog
 {
     [field: SerializeField] UI_Behaviour _shop;
+    internal UI_Behaviour Shop => _shop;
     List<DialogLine> _lines = new();
     int index = 0;
 

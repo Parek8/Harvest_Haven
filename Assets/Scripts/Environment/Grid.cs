@@ -23,12 +23,13 @@ internal class Grid : MonoBehaviour
     int count;
     void Start()
     {
+        z_count *= 3;
         grid = new GameObject[x_count, y_count, z_count];
-        Make_Grid();
+        MakeGrid();
         GameManager.game_manager.CropsManagerInstance.LoadCrops();
     }
 
-    private void Make_Grid()
+    private void MakeGrid()
     {
         for (int y = 0; y < y_count; y++)
         {
@@ -36,11 +37,14 @@ internal class Grid : MonoBehaviour
             {
                 for (int z = 0; z < z_count; z++)
                 {
-                    Vector3 pos = new Vector3((x * x_size) + x_spacing, (y * y_size)+y_spacing, (z*z_size)+z_spacing);
-                    GameObject pref = Instantiate(plot_prefab, transform);
-                    pref.transform.localPosition = pos;
-                    pref.GetComponent<Plot>().SetIndex(count++);
-                    grid[x, y, z] = pref;
+                    if ((z < z_count / 3) || (z >= (2 * z_count) / 3))
+                    {
+                        Vector3 pos = new Vector3((x * x_size) + x_spacing, (y * y_size) + y_spacing, (z * z_size) + z_spacing);
+                        GameObject pref = Instantiate(plot_prefab, transform);
+                        pref.transform.localPosition = pos;
+                        pref.GetComponent<Plot>().SetIndex(count++);
+                        grid[x, y, z] = pref;
+                    }
                 }
             }
         }

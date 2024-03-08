@@ -11,6 +11,7 @@ namespace DungeonGenerator.Scripts.Sections
         [field: Tooltip("Tags for sections, that can be connected to this section."), SerializeField] public List<string> NextSectionsTags { get; private set; }
         [field: Tooltip("Array of all exits excluding the entrance."), SerializeField] public List<Transform> Exits { get; private set; }
         [field: Tooltip("Chance to spawn a DeadEnd section at exit."), Range(0, 100)] public float DeadEndChance;
+        [field: Tooltip("Bounds of the section"), SerializeField] public List<Collider> Colliders { get; private set; }
         public float DeadEndPercentage => (DeadEndChance / 100);
 
         int _order = 0;
@@ -18,16 +19,16 @@ namespace DungeonGenerator.Scripts.Sections
         public void Initialize(DungeonManager DungeonManager, int sourceOrder)
         {
             _order = sourceOrder + 1;
-
+            gameObject.name = _order.ToString();
             _dungeonManager = DungeonManager;
-            _dungeonManager.RegisterSection();
+            _dungeonManager.RegisterSection(this);
             GenerateNextSections();
-
         }
         private void GenerateNextSections()
         {
             if (NextSectionsTags.Any())
             {
+                List<DungeonSection> _neighborSections = new();
                 foreach (Transform _exit in Exits)
                 {
                     DungeonSection _spawnedSection;
@@ -38,8 +39,23 @@ namespace DungeonGenerator.Scripts.Sections
                         else
                             _spawnedSection = RandomService.GetRandomSection(_dungeonManager.Sections, _dungeonManager.EndTags);
 
-                        Instantiate(_spawnedSection, _exit.position, Quaternion.Euler(_exit.forward)).GetComponent<DungeonSection>().Initialize(_dungeonManager, _order);
                     }
+                    else
+                        _spawnedSection = RandomService.GetRandomSection(_dungeonManager.Sections, _dungeonManager.EndTags);
+
+                    _neighborSections.Add(Instantiate(_spawnedSection, _exit.position, _exit.rotation).GetComponent<DungeonSection>());
+                }
+
+                _neighborSections.OrderBy(_ => RandomService.GetRandomInt(0, 100));
+
+                List<DungeonSection> _neighborSectionsCopy = new List<DungeonSection>(_neighborSections);
+                int _length = _neighborSectionsCopy.Count;
+
+                for (int i = 0; i < _length; i++)
+                {
+                    int _index = RandomService.GetRandomInt(0, _neighborSectionsCopy.Count - 1);
+                    _neighborSectionsCopy[_index].Initialize(_dungeonManager, _order + i + 1);
+                    _neighborSectionsCopy.RemoveAt(_index);
                 }
             }
         }

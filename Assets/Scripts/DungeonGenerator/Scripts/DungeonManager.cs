@@ -2,6 +2,7 @@ using DungeonGenerator.Scripts.Sections;
 using DungeonGenerator.Scripts.Services;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace DungeonGenerator.Scripts
@@ -32,6 +33,7 @@ namespace DungeonGenerator.Scripts
 
 
 
+        public List<DungeonSection> RegisteredSections { get; private set; } = new List<DungeonSection>();
         /// <summary>
         /// Initializes the seed.
         /// </summary>
@@ -68,10 +70,13 @@ namespace DungeonGenerator.Scripts
         /// <summary>
         /// Register generated section.
         /// </summary>
-        public void RegisterSection()
+        public void RegisterSection(DungeonSection registeredSection)
         {
+            RegisteredSections.Add(registeredSection);
             DungeonSize--;
         }
+
+        public bool IsSectionIntersecting(Bounds newBounds) => ((RegisteredSections.SelectMany(s => s.Colliders)).Any(c => c.bounds.Intersects(newBounds)));
 
         public bool CanSpawn() => (DungeonSize > 0);
     }

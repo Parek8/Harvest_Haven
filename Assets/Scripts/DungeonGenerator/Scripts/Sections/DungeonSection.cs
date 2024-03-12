@@ -11,7 +11,7 @@ namespace DungeonGenerator.Scripts.Sections
         [field: Tooltip("Tags for sections, that can be connected to this section."), SerializeField] public List<string> NextSectionsTags { get; private set; }
         [field: Tooltip("Array of all exits excluding the entrance."), SerializeField] public List<Transform> Exits { get; private set; }
         [field: Tooltip("Chance to spawn a DeadEnd section at exit."), Range(0, 100)] public float DeadEndChance;
-        [field: Tooltip("Bounds of the section"), SerializeField] public List<Collider> Colliders { get; private set; }
+        [field: Tooltip("Bounds of the section"), SerializeField] public List<Collider> Bounds { get; private set; }
         public float DeadEndPercentage => (DeadEndChance / 100);
 
         int _order = 0;
@@ -34,7 +34,7 @@ namespace DungeonGenerator.Scripts.Sections
                     DungeonSection _spawnedSection;
                     if (_dungeonManager.CanSpawn())
                     {
-                        if (!RandomService.ShouldSpawnDeadEnd(DeadEndPercentage))
+                        if (!RandomService.ShouldSpawnDeadEnd(DeadEndPercentage) && !_dungeonManager.IsSectionIntersecting(Bounds))
                             _spawnedSection = RandomService.GetRandomSection(_dungeonManager.Sections, NextSectionsTags);
                         else
                             _spawnedSection = RandomService.GetRandomSection(_dungeonManager.Sections, _dungeonManager.EndTags);

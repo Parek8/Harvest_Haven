@@ -34,6 +34,8 @@ namespace DungeonGenerator.Scripts
 
 
         public List<DungeonSection> RegisteredSections { get; private set; } = new List<DungeonSection>();
+
+        public IEnumerable<Collider> RegisteredColliders => (RegisteredSections.SelectMany(s => s.Bounds));
         /// <summary>
         /// Initializes the seed.
         /// </summary>
@@ -76,7 +78,7 @@ namespace DungeonGenerator.Scripts
             DungeonSize--;
         }
 
-        public bool IsSectionIntersecting(Bounds newBounds) => ((RegisteredSections.SelectMany(s => s.Colliders)).Any(c => c.bounds.Intersects(newBounds)));
+        public bool IsSectionIntersecting(List<Collider> newBounds) => ((RegisteredColliders.Except(newBounds)).Any(c => c.bounds.Intersects(newBounds[0].bounds)));
 
         public bool CanSpawn() => (DungeonSize > 0);
     }

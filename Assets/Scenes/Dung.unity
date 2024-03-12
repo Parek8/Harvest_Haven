@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 1094687884}
   - component: {fileID: 1094687883}
   - component: {fileID: 1094687882}
+  - component: {fileID: 1094687885}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -215,6 +216,50 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1094687885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1094687881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
+  m_TaaSettings:
+    quality: 3
+    frameInfluence: 0.1
+    jitterScale: 1
+    mipBias: 0
+    varianceClampScale: 0.9
+    contrastAdaptiveSharpening: 0
 --- !u!1 &1218432569
 GameObject:
   m_ObjectHideFlags: 0
@@ -377,13 +422,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c250c35f26f012a40a8535e316fcd13d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <DungeonSize>k__BackingField: 25
+  <DungeonSize>k__BackingField: 12
   <DungeonSeed>k__BackingField: 0
   <Sections>k__BackingField:
-  - {fileID: 1365297024346416370, guid: 703898cdedaef144cb405c3b093552cf, type: 3}
-  - {fileID: 8395807604043332152, guid: 836054ea1da703d4e89f7e71e025b6b8, type: 3}
-  - {fileID: 1846448097553669924, guid: 6e90aad7178f0f64ab3745c47cc7fb45, type: 3}
+  - {fileID: 3382307875846375531, guid: a56835c192652c144ba1b7ea37ac133d, type: 3}
+  - {fileID: 8532676716559632611, guid: 3b894a1c3c19ad3428cb5f122bcace31, type: 3}
+  - {fileID: 3312586890384167486, guid: ec22e38af59154a4dbf5dfee207ebe3c, type: 3}
   <StartTags>k__BackingField:
-  - Start
+  - Room
   <EndTags>k__BackingField:
   - End

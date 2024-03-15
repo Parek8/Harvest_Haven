@@ -29,6 +29,7 @@ namespace DungeonGenerator.Scripts
         /// All section tags, that can be used as an ending section.
         /// </summary>
         [field: Tooltip("Tags, that can be spawned as a first section."), SerializeField] public List<string> EndTags { get; private set; }
+        [field: Tooltip("Tags, that have to be spawned."), SerializeField] public List<SpecialSectionTags> SpecialTags { get; private set; }
 
 
 
@@ -54,13 +55,16 @@ namespace DungeonGenerator.Scripts
         /// </summary>
         private void GenerateDungeon()
         {
-            DungeonSection _startSection = PickRandomStartSection();
-            if (_startSection != null)
+            if (AreTagsValid())
             {
-                Instantiate(_startSection.gameObject, Vector3.zero, Quaternion.identity).GetComponent<DungeonSection>().Initialize(this, 0);
+                DungeonSection _startSection = PickRandomStartSection();
+                if (_startSection != null)
+                {
+                    Instantiate(_startSection.gameObject, Vector3.zero, Quaternion.identity).GetComponent<DungeonSection>().Initialize(this, 0);
+                }
+                else
+                    Debug.LogError("Starting section is null!");
             }
-            else
-                Debug.LogError("Starting section is null!");
         }
 
         /// <summary>
@@ -81,5 +85,34 @@ namespace DungeonGenerator.Scripts
         public bool IsSectionIntersecting(List<Collider> newBounds) => ((RegisteredColliders.Except(newBounds)).Any(c => c.bounds.Intersects(newBounds[0].bounds)));
 
         public bool CanSpawn() => (DungeonSize > 0);
+
+        private bool AreTagsValid()
+        {
+            if (SpecialTags.Sum(t => t.MinimalSectionCount) > DungeonSize)
+            {
+                Debug.LogError("Dungeon is not big enough!");
+                return false;
+            }
+            
+            foreach (string tag in SpecialTags.Select(t => t.SectionTag))
+            {
+                if (SpecialTags.Count(t => t.SectionTag == tag) > 1)
+                {
+                    Debug.LogError($"Same tags ({tag}) found multiple times ({SpecialTags.Count(t => t.SectionTag == tag)}x)!");
+                    return false;
+                }
+            }
+
+            foreach (SpecialSectionTags tag in SpecialTags)
+            {
+                if (tag.MinimalSectionCount > tag.MaximalSectionCount)
+                {
+                    Debug.LogError($"The tag {tag.SectionTag} has MinimalSectionCount ({tag.MinimalSectionCount}) set to a bigger value than MaximalSectionValue ({tag.MaximalSectionCount})!");
+                    return false;
+                }
+            }
+
+            return true;
+        }
     }
 }

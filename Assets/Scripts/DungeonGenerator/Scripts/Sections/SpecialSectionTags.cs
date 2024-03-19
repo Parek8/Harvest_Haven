@@ -7,9 +7,8 @@ public class SpecialSectionTags
     [field: Tooltip("How many times it has to spawn."), SerializeField] public uint MinimalSectionCount { get; private set; } = 1;
     [field: Tooltip("How many times it can spawn."), SerializeField] public uint MaximalSectionCount { get; private set; } = 1;
 
-    public uint RemainingToSpawn { get; private set; } = uint.MaxValue;
+    public uint RemainingToSpawn { get; private set; } = 0;
     public float SpawnChance { get; private set; } = 0.0f;
-
     public void SpawnedSpecialSection()
     {
         if (RemainingToSpawn == uint.MaxValue)

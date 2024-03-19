@@ -33,10 +33,10 @@ namespace DungeonGenerator.Scripts
 
 
 
-
         public List<DungeonSection> RegisteredSections { get; private set; } = new List<DungeonSection>();
 
         public IEnumerable<Collider> RegisteredColliders => (RegisteredSections.SelectMany(s => s.Bounds));
+        public Dictionary<int, string> SpecialSectionDictionary = new Dictionary<int, string>();
         /// <summary>
         /// Initializes the seed.
         /// </summary>
@@ -112,6 +112,32 @@ namespace DungeonGenerator.Scripts
                 }
             }
 
+            Dictionary<int, string> _specialTags = new();
+
+
+            foreach (SpecialSectionTags tag in SpecialTags)
+            {
+                int _randCount = Random.Range(1, (int)tag.MaximalSectionCount);
+                for (int i = 0; i < _randCount; i++)
+                {
+                    int _randPos = Random.Range(1, DungeonSize /* - ((int)(DungeonSize/10))*/);
+                    int _max = 50;
+                    while (_specialTags.ContainsKey(_randPos) && _max > 0)
+                    {
+                        _randPos = Random.Range(1, DungeonSize /* - ((int)(DungeonSize/10))*/);
+                        _max--;
+                    }
+
+                    _specialTags.Add(_randPos, tag.SectionTag);
+                }
+            }
+
+            SpecialSectionDictionary = _specialTags;
+
+            foreach (string tag in SpecialSectionDictionary.Values)
+            {
+                Debug.Log(tag);
+            }
             return true;
         }
     }

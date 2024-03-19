@@ -18,7 +18,8 @@ namespace DungeonGenerator.Scripts.Sections
         DungeonManager _dungeonManager;
         public void Initialize(DungeonManager DungeonManager, int sourceOrder)
         {
-            _order = sourceOrder + 1;
+            //_order = sourceOrder + 1;
+            _order = DungeonManager.RegisteredSections.Count;
             gameObject.name = _order.ToString();
             _dungeonManager = DungeonManager;
             _dungeonManager.RegisterSection(this);
@@ -34,7 +35,9 @@ namespace DungeonGenerator.Scripts.Sections
                     DungeonSection _spawnedSection;
                     if (_dungeonManager.CanSpawn())
                     {
-                        if (!RandomService.ShouldSpawnDeadEnd(DeadEndPercentage) && !_dungeonManager.IsSectionIntersecting(Bounds))
+                        if (_dungeonManager.SpecialSectionDictionary.ContainsKey(_order) && !_dungeonManager.IsSectionIntersecting(Bounds))
+                            _spawnedSection = RandomService.GetRandomSection(_dungeonManager.Sections, new List<string> { _dungeonManager.SpecialSectionDictionary[_order] });
+                        else if (!RandomService.ShouldSpawnDeadEnd(DeadEndPercentage) && !_dungeonManager.IsSectionIntersecting(Bounds))
                             _spawnedSection = RandomService.GetRandomSection(_dungeonManager.Sections, NextSectionsTags);
                         else
                             _spawnedSection = RandomService.GetRandomSection(_dungeonManager.Sections, _dungeonManager.EndTags);
@@ -54,7 +57,7 @@ namespace DungeonGenerator.Scripts.Sections
                 for (int i = 0; i < _length; i++)
                 {
                     int _index = RandomService.GetRandomInt(0, _neighborSectionsCopy.Count - 1);
-                    _neighborSectionsCopy[_index].Initialize(_dungeonManager, _order + i + 1);
+                    _neighborSectionsCopy[_index].Initialize(_dungeonManager, _order + i);
                     _neighborSectionsCopy.RemoveAt(_index);
                 }
             }

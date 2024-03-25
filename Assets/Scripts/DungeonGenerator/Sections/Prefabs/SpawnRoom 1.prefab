@@ -62,7 +62,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5744924442823349022}
-  - component: {fileID: 1213507208336664215}
   m_Layer: 11
   m_Name: Bounds
   m_TagString: Untagged
@@ -86,18 +85,6 @@ Transform:
   m_Father: {fileID: 6324030493043515455}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1213507208336664215
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1136334230726540343}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4cf8f74dac63e3468e42385f6c59d9b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2477002825802761236
 GameObject:
   m_ObjectHideFlags: 0
@@ -221,7 +208,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5136871873607009316}
-  - component: {fileID: 2813634955293397055}
   m_Layer: 11
   m_Name: Exits
   m_TagString: Untagged
@@ -247,18 +233,6 @@ Transform:
   m_Father: {fileID: 6324030493043515455}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2813634955293397055
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4824563755922951875}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2766fdc05dd54584d840bb9a9909d899, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6361238545594368343
 GameObject:
   m_ObjectHideFlags: 0
@@ -330,7 +304,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6324030493043515455}
-  - component: {fileID: 1431594780588024795}
   m_Layer: 11
   m_Name: SpawnRoom 1
   m_TagString: Untagged
@@ -357,25 +330,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1431594780588024795
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8946044768044139524}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93ed874b023a43dbaf8a4a73ced13dc9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Tags:
-  - spawn
-  CreatesTags:
-  - corridor
-  Exits: {fileID: 2813634955293397055}
-  Bounds: {fileID: 1213507208336664215}
-  DeadEndChance: 0
 --- !u!1001 &4468883133858977144
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -438,6 +392,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1118522577982749909, guid: 3fe74ca67d2daae40961897e644c4b1c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1167614702799821852, guid: 3fe74ca67d2daae40961897e644c4b1c,
         type: 3}

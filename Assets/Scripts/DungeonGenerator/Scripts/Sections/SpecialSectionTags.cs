@@ -15,9 +15,6 @@ public class SpecialSectionTags
     }
     public void SpawnedSpecialSection()
     {
-        if (RemainingToSpawn == uint.MaxValue)
-            RemainingToSpawn = MaximalSectionCount-1;
-
         RemainingToSpawn--;
         
         if (RemainingToSpawn < 1)

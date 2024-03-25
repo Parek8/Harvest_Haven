@@ -40,8 +40,12 @@ namespace DungeonGenerator.Scripts.Sections
                             foreach (SpecialSectionTags _specialTag in _dungeonManager.SpecialTags)
                             {
                                 if (RandomService.ShouldSpawnSpecialSection(_specialTag.RemainingToSpawn, _specialTag.MinimalSectionCount, _specialTag.MaximalSectionCount) && !_dungeonManager.IsSectionIntersecting(Bounds))
+                                {
                                     _spawnedSection = RandomService.GetRandomSection(_dungeonManager.Sections, new List<string> { _dungeonManager.SpecialSectionDictionary[_order - 1] });
-                                Debug.Log(RandomService.ShouldSpawnSpecialSectionVerbal(_specialTag.RemainingToSpawn, _specialTag.MinimalSectionCount, _specialTag.MaximalSectionCount));
+                                    _specialTag.SpawnedSpecialSection();
+                                }
+                                Debug.Log(_specialTag.RemainingToSpawn);
+                                //Debug.Log(RandomService.ShouldSpawnSpecialSectionVerbal(_specialTag.RemainingToSpawn, _specialTag.MinimalSectionCount, _specialTag.MaximalSectionCount));
                             }
 
                             if (_spawnedSection == null)

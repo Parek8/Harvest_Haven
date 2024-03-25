@@ -9,17 +9,8 @@ public class SpecialSectionTags
 
     public uint RemainingToSpawn { get; private set; }
     public float SpawnChance { get; private set; } = 0.0f;
-    public void Init()
-    {
-        RemainingToSpawn = MaximalSectionCount;
-    }
     public void SpawnedSpecialSection()
     {
-        RemainingToSpawn--;
-        
-        if (RemainingToSpawn < 1)
-        {
-            SpawnChance = 0.0f;
-        }
+        RemainingToSpawn++;
     }
 }

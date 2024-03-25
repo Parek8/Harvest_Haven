@@ -35,17 +35,34 @@ namespace DungeonGenerator.Scripts.Sections
                     DungeonSection _spawnedSection = null;
                     if (_dungeonManager.CanSpawn())
                     {
-                        if (_dungeonManager.SpecialSectionDictionary.ContainsKey(_order - 1) && !_dungeonManager.IsSectionIntersecting(Bounds))
+                        if (_dungeonManager.SpecialSectionDictionary.ContainsKey(_order) && !_dungeonManager.IsSectionIntersecting(Bounds))
                         {
+                            _dungeonManager.SpecialTags.OrderBy(_ => RandomService.GetRandomInt(0, 100));
+
                             foreach (SpecialSectionTags _specialTag in _dungeonManager.SpecialTags)
                             {
                                 if (RandomService.ShouldSpawnSpecialSection(_specialTag.RemainingToSpawn, _specialTag.MinimalSectionCount, _specialTag.MaximalSectionCount) && !_dungeonManager.IsSectionIntersecting(Bounds))
                                 {
-                                    _spawnedSection = RandomService.GetRandomSection(_dungeonManager.Sections, new List<string> { _dungeonManager.SpecialSectionDictionary[_order - 1] });
                                     _specialTag.SpawnedSpecialSection();
+                                    _spawnedSection = RandomService.GetRandomSection(_dungeonManager.Sections, new List<string> { _dungeonManager.SpecialSectionDictionary[_order] });
+                                    //Debug.Log(_specialTag.RemainingToSpawn);
                                 }
-                                Debug.Log(_specialTag.RemainingToSpawn);
-                                //Debug.Log(RandomService.ShouldSpawnSpecialSectionVerbal(_specialTag.RemainingToSpawn, _specialTag.MinimalSectionCount, _specialTag.MaximalSectionCount));
+                                else
+                                {
+                                    int _randCount = Random.Range(1, (int)_specialTag.MaximalSectionCount);
+                                    for (int i = 0; i < _randCount; i++)
+                                    {
+                                        int _randPos = Random.Range((int)_order+1, _dungeonManager.DungeonSize + _order - 1/* - ((int)(DungeonSize/10))*/);
+                                        int _max = 50;
+                                        while (_dungeonManager.SpecialSectionDictionary.ContainsKey(_randPos) && _max > 0)
+                                        {
+                                            _randPos = Random.Range((int)_order+1, _dungeonManager.DungeonSize + _order - 1/* - ((int)(DungeonSize/10))*/);
+                                            _max--;
+                                        }
+
+                                        _dungeonManager.SpecialSectionDictionary.Add(_randPos, _specialTag.SectionTag);
+                                    }
+                                }
                             }
 
                             if (_spawnedSection == null)

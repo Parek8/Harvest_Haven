@@ -274,7 +274,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8802591573136132739}
-  - component: {fileID: 9177906350716248734}
   m_Layer: 11
   m_Name: Exits
   m_TagString: Untagged
@@ -298,18 +297,6 @@ Transform:
   m_Father: {fileID: 4872704824192591231}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9177906350716248734
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1065404699262866352}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2766fdc05dd54584d840bb9a9909d899, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2931481766529108330
 GameObject:
   m_ObjectHideFlags: 0
@@ -1321,7 +1308,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5937661963930575845}
-  - component: {fileID: 210925404537961202}
   m_Layer: 11
   m_Name: Bounds
   m_TagString: Untagged
@@ -1345,18 +1331,6 @@ Transform:
   m_Father: {fileID: 4872704824192591231}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &210925404537961202
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5632147294893545680}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4cf8f74dac63e3468e42385f6c59d9b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5895003640564100942
 GameObject:
   m_ObjectHideFlags: 0
@@ -1969,6 +1943,7 @@ MonoBehaviour:
   - Room
   <NextSectionsTags>k__BackingField:
   - Corridor
+  - Treasure
   <Exits>k__BackingField:
   - {fileID: 3724631957158514762}
   DeadEndChance: 0

@@ -32,16 +32,28 @@ namespace DungeonGenerator.Scripts.Sections
                 List<DungeonSection> _neighborSections = new();
                 foreach (Transform _exit in Exits)
                 {
-                    DungeonSection _spawnedSection;
+                    DungeonSection _spawnedSection = null;
                     if (_dungeonManager.CanSpawn())
                     {
-                        if (_dungeonManager.SpecialSectionDictionary.ContainsKey(_order) && !_dungeonManager.IsSectionIntersecting(Bounds))
-                            _spawnedSection = RandomService.GetRandomSection(_dungeonManager.Sections, new List<string> { _dungeonManager.SpecialSectionDictionary[_order] });
-                        else if (!RandomService.ShouldSpawnDeadEnd(DeadEndPercentage) && !_dungeonManager.IsSectionIntersecting(Bounds))
-                            _spawnedSection = RandomService.GetRandomSection(_dungeonManager.Sections, NextSectionsTags);
-                        else
-                            _spawnedSection = RandomService.GetRandomSection(_dungeonManager.Sections, _dungeonManager.EndTags);
+                        if (_dungeonManager.SpecialSectionDictionary.ContainsKey(_order - 1) && !_dungeonManager.IsSectionIntersecting(Bounds))
+                        {
+                            foreach (SpecialSectionTags _specialTag in _dungeonManager.SpecialTags)
+                            {
+                                if (RandomService.ShouldSpawnSpecialSection(_specialTag.RemainingToSpawn, _specialTag.MinimalSectionCount, _specialTag.MaximalSectionCount) && !_dungeonManager.IsSectionIntersecting(Bounds))
+                                    _spawnedSection = RandomService.GetRandomSection(_dungeonManager.Sections, new List<string> { _dungeonManager.SpecialSectionDictionary[_order - 1] });
+                                Debug.Log(RandomService.ShouldSpawnSpecialSectionVerbal(_specialTag.RemainingToSpawn, _specialTag.MinimalSectionCount, _specialTag.MaximalSectionCount));
+                            }
 
+                            if (_spawnedSection == null)
+                                _spawnedSection = RandomService.GetRandomSection(_dungeonManager.Sections, _dungeonManager.EndTags);
+                        }
+                        else
+                        {
+                            if (!RandomService.ShouldSpawnDeadEnd(DeadEndPercentage) && !_dungeonManager.IsSectionIntersecting(Bounds))
+                                _spawnedSection = RandomService.GetRandomSection(_dungeonManager.Sections, NextSectionsTags);
+                            else
+                                _spawnedSection = RandomService.GetRandomSection(_dungeonManager.Sections, _dungeonManager.EndTags);
+                        }
                     }
                     else
                         _spawnedSection = RandomService.GetRandomSection(_dungeonManager.Sections, _dungeonManager.EndTags);

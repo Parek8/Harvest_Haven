@@ -2,6 +2,7 @@ using DungeonGenerator.Scripts.Sections;
 using System;
 using System.Linq;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace DungeonGenerator.Scripts.Services
 {
@@ -68,5 +69,34 @@ namespace DungeonGenerator.Scripts.Services
                                                                                                                                  .Any())
                                                                                                                                  .OrderBy(_ => Seed)
                                                                                                                                  .FirstOrDefault();
+
+        public static bool ShouldSpawnSpecialSection(uint remainingSpecialSections, uint minSectionsToSpawn, uint maxSectionsToSpawn)
+        {
+            if (remainingSpecialSections == 0)
+                return false;
+
+            if (remainingSpecialSections >= maxSectionsToSpawn)
+                return false;
+
+            if (remainingSpecialSections > minSectionsToSpawn)
+                return true;
+
+            float spawnProbability = (float)(remainingSpecialSections - minSectionsToSpawn) / (maxSectionsToSpawn - minSectionsToSpawn);
+            return _random.NextDouble() < spawnProbability;
+        }
+        public static string ShouldSpawnSpecialSectionVerbal(uint remainingSpecialSections, uint minSectionsToSpawn, uint maxSectionsToSpawn)
+        {
+            if (remainingSpecialSections == 0)
+                return "Remaining = 0";
+
+            if (remainingSpecialSections >= maxSectionsToSpawn)
+                return "Remaining >= Max";
+
+            if (remainingSpecialSections > minSectionsToSpawn)
+                return "Remaining > min";
+
+            float spawnProbability = (float)(remainingSpecialSections - minSectionsToSpawn) / (maxSectionsToSpawn - minSectionsToSpawn);
+            return (_random.NextDouble() < spawnProbability) ? "Percentage true" : "Percentage false";
+        }
     }
 }

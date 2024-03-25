@@ -134,9 +134,13 @@ namespace DungeonGenerator.Scripts
 
             SpecialSectionDictionary = _specialTags;
 
-            foreach (string tag in SpecialSectionDictionary.Values)
+            //foreach (KeyValuePair<int, string> tag in SpecialSectionDictionary)
+            //{
+            //    Debug.Log($"{tag.Value}: {tag.Key}");
+            //}
+            foreach (SpecialSectionTags _specialTag in SpecialTags)
             {
-                Debug.Log(tag);
+                _specialTag.Init();
             }
             return true;
         }

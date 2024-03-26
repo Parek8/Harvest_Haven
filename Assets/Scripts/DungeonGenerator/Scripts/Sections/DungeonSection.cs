@@ -42,6 +42,18 @@ namespace DungeonGenerator.Scripts.Sections
                                 _spawnedSection = RandomService.GetRandomSection(_dungeonManager.Sections, NextSectionsTags);
                         }
                     }
+                    else
+                    {
+                        foreach (SpecialSectionTags _specialTag in _dungeonManager.SpecialTags)
+                        {
+                            if (/*_dungeonManager.IsSectionIntersecting(Bounds) */ RandomService.ShouldSpawnSpecialSection(_specialTag.RemainingToSpawn, _specialTag.MinimalSectionCount, _specialTag.MaximalSectionCount))
+                            {
+                                _specialTag.SpawnedSpecialSection();
+                                _spawnedSection = RandomService.GetRandomSection(_dungeonManager.Sections, new List<string> { _specialTag.SectionTag });
+                                _dungeonManager.SpecialSectionDictionary.Remove(_order);
+                            }
+                        }
+                    }
 
                     if (_spawnedSection == null)
                             _spawnedSection = RandomService.GetRandomSection(_dungeonManager.Sections, _dungeonManager.EndTags);

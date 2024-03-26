@@ -252,7 +252,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1608103568516766428}
-  - component: {fileID: 8508705395908464327}
   m_Layer: 11
   m_Name: Exits
   m_TagString: Untagged
@@ -276,18 +275,6 @@ Transform:
   m_Father: {fileID: 494142887117242055}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8508705395908464327
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1435732667058573371}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2766fdc05dd54584d840bb9a9909d899, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2319378427593626857
 GameObject:
   m_ObjectHideFlags: 0
@@ -615,7 +602,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 494142887117242055}
-  - component: {fileID: 4811814393726696739}
+  - component: {fileID: 247491604416799499}
   m_Layer: 11
   m_Name: Room1
   m_TagString: Untagged
@@ -641,7 +628,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4811814393726696739
+--- !u!114 &247491604416799499
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -650,17 +637,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 3260122610724444924}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93ed874b023a43dbaf8a4a73ced13dc9, type: 3}
+  m_Script: {fileID: 11500000, guid: 664b02d20b30e9e479d9fd2668179407, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Tags:
-  - room
-  - central
-  CreatesTags:
-  - corridor
-  Exits: {fileID: 8508705395908464327}
-  Bounds: {fileID: 4742231086559934575}
-  DeadEndChance: 10
+  <SectionTags>k__BackingField:
+  - Room
+  <NextSectionsTags>k__BackingField:
+  - Corridor
+  <Exits>k__BackingField:
+  - {fileID: 7162084527315722108}
+  DeadEndChance: 50
+  <Bounds>k__BackingField:
+  - {fileID: 3816426299493878897}
 --- !u!1 &3612471640419628805
 GameObject:
   m_ObjectHideFlags: 0
@@ -1094,7 +1082,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2207579911051382246}
-  - component: {fileID: 4742231086559934575}
   m_Layer: 11
   m_Name: Bounds
   m_TagString: Untagged
@@ -1118,18 +1105,6 @@ Transform:
   m_Father: {fileID: 494142887117242055}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4742231086559934575
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6835872259020825295}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4cf8f74dac63e3468e42385f6c59d9b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6893888396553817753
 GameObject:
   m_ObjectHideFlags: 0
@@ -2090,7 +2065,7 @@ PrefabInstance:
     - target: {fileID: 8197814539896579728, guid: 7a0c107593f7ad549a0993b53808fd1e,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

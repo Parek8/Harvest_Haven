@@ -84,13 +84,13 @@ namespace DungeonGenerator.Scripts.Services
         public static string ShouldSpawnSpecialSectionVerbal(uint remainingSpecialSections, uint minSectionsToSpawn, uint maxSectionsToSpawn)
         {
             if (remainingSpecialSections > maxSectionsToSpawn)
-                return "False";
+                return $"False + {maxSectionsToSpawn}";
 
             if (remainingSpecialSections < minSectionsToSpawn)
                 return "True";
 
             float spawnProbability = (float)(remainingSpecialSections - minSectionsToSpawn) / (maxSectionsToSpawn - minSectionsToSpawn);
-            return $"Percentage: {_random.NextDouble() < spawnProbability}";
+            return $"Percentage: {_random.NextDouble() < spawnProbability} | {spawnProbability}";
         }
     }
 }

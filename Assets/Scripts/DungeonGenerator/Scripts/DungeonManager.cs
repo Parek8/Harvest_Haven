@@ -29,7 +29,7 @@ namespace DungeonGenerator.Scripts
         /// All section tags, that can be used as an ending section.
         /// </summary>
         [field: Tooltip("Tags, that can be spawned as a first section."), SerializeField] public List<string> EndTags { get; private set; }
-        [field: Tooltip("Tags, that have to be spawned."), SerializeField] public List<SpecialSectionTags> SpecialTags { get; private set; }
+        [field: Tooltip("Tags, that have to be spawned."), SerializeField] public List<SpecialSectionTags> SpecialTags { get; set; }
 
 
 
@@ -117,14 +117,14 @@ namespace DungeonGenerator.Scripts
 
             foreach (SpecialSectionTags tag in SpecialTags)
             {
-                int _randCount = Random.Range(1, (int)tag.MaximalSectionCount);
+                int _randCount = Random.Range((int)tag.MinimalSectionCount, (int)tag.MaximalSectionCount);
                 for (int i = 0; i < _randCount; i++)
                 {
-                    int _randPos = Random.Range(1, DungeonSize /* - ((int)(DungeonSize/10))*/);
+                    int _randPos = Random.Range(1, DungeonSize);
                     int _max = 50;
                     while (_specialTags.ContainsKey(_randPos) && _max > 0)
                     {
-                        _randPos = Random.Range(1, DungeonSize /* - ((int)(DungeonSize/10))*/);
+                        _randPos = Random.Range(1, DungeonSize);
                         _max--;
                     }
 
@@ -132,7 +132,27 @@ namespace DungeonGenerator.Scripts
                 }
             }
 
+            Dictionary<string, int> _specialTagsCount = new Dictionary<string, int>();
+
+            // Spoèítání poètu prvkù v dictionary
+            foreach (string _specialTag in _specialTags.Values)
+            {
+                if (_specialTagsCount.ContainsKey(_specialTag))
+                    _specialTagsCount[_specialTag]++;
+                else
+                    _specialTagsCount[_specialTag] = 1;
+            }
+            // Pro každý prvek v dictionary zavolání metody Init() s odpovídajícím poètem
+            foreach (KeyValuePair<string, int> _tag in _specialTagsCount)
+            {
+                SpecialSectionTags x = SpecialTags.Where(t => t.SectionTag == _tag.Key).First();
+                x.Init(_tag.Value);
+            }
+
+
             SpecialSectionDictionary = _specialTags;
+
+
 
             foreach (KeyValuePair<int, string> tag in SpecialSectionDictionary)
             {

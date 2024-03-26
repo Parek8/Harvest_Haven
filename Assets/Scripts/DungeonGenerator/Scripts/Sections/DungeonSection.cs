@@ -1,4 +1,5 @@
 using DungeonGenerator.Scripts.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -35,21 +36,15 @@ namespace DungeonGenerator.Scripts.Sections
                     DungeonSection _spawnedSection = null;
                     if (_dungeonManager.CanSpawn())
                     {
-                        if (_dungeonManager.SpecialSectionDictionary.ContainsKey(_order) && !_dungeonManager.IsSectionIntersecting(Bounds))
-                        {
-                            CheckSpecialRooms(ref _spawnedSection);
-                        }
-                        else
+                        if (!CheckSpecialRooms(ref _spawnedSection))
                         {
                             if (!RandomService.ShouldSpawnDeadEnd(DeadEndPercentage) && !_dungeonManager.IsSectionIntersecting(Bounds))
                                 _spawnedSection = RandomService.GetRandomSection(_dungeonManager.Sections, NextSectionsTags);
-                            else
-                                _spawnedSection = RandomService.GetRandomSection(_dungeonManager.Sections, _dungeonManager.EndTags);
                         }
                     }
-                    else
-                        CheckSpecialRooms(ref _spawnedSection);
 
+                    if (_spawnedSection == null)
+                            _spawnedSection = RandomService.GetRandomSection(_dungeonManager.Sections, _dungeonManager.EndTags);
                     _neighborSections.Add(Instantiate(_spawnedSection, _exit.position, _exit.rotation).GetComponent<DungeonSection>());
                 }
 
@@ -67,37 +62,42 @@ namespace DungeonGenerator.Scripts.Sections
             }
         }
 
-        private void CheckSpecialRooms(ref DungeonSection _spawnedSection)
+        private bool CheckSpecialRooms(ref DungeonSection _spawnedSection)
         {
-            _dungeonManager.SpecialTags.OrderBy(_ => RandomService.GetRandomInt(0, 100));
+            _dungeonManager.SpecialTags = _dungeonManager.SpecialTags.OrderBy(_ => RandomService.GetRandomInt(0, 100)).ToList();
 
             foreach (SpecialSectionTags _specialTag in _dungeonManager.SpecialTags)
             {
-                Debug.Log(RandomService.ShouldSpawnSpecialSectionVerbal(_specialTag.RemainingToSpawn, _specialTag.MinimalSectionCount, _specialTag.MaximalSectionCount));
+                //Debug.Log(RandomService.ShouldSpawnSpecialSectionVerbal(_specialTag.RemainingToSpawn, _specialTag.MinimalSectionCount, _specialTag.MaximalSectionCount));
 
-                if (RandomService.ShouldSpawnSpecialSection(_specialTag.RemainingToSpawn, _specialTag.MinimalSectionCount, _specialTag.MaximalSectionCount) && !_dungeonManager.IsSectionIntersecting(Bounds))
-                {
-                    _specialTag.SpawnedSpecialSection();
-                    _spawnedSection = RandomService.GetRandomSection(_dungeonManager.Sections, new List<string> { _dungeonManager.SpecialSectionDictionary[_order] });
-                    _dungeonManager.SpecialSectionDictionary.Remove(_order);
-                }
+                if (_dungeonManager.IsSectionIntersecting(Bounds))
+                    return false;
                 else
                 {
-                    int _randPos = Random.Range((int)_order + 1, _dungeonManager.DungeonSize + _order - 1);
-                    int _max = 500;
-                    while (_dungeonManager.SpecialSectionDictionary.ContainsKey(_randPos) && _max > 0)
+                    if (RandomService.ShouldSpawnSpecialSection(_specialTag.RemainingToSpawn, _specialTag.MinimalSectionCount, _specialTag.MaximalSectionCount) && _dungeonManager.SpecialSectionDictionary.ContainsKey(_order))
                     {
-                        _randPos = Random.Range((int)_order + 1, _dungeonManager.DungeonSize + _order - 1);
-                        _max--;
+                        _specialTag.SpawnedSpecialSection();
+                        _spawnedSection = RandomService.GetRandomSection(_dungeonManager.Sections, new List<string> { _dungeonManager.SpecialSectionDictionary[_order] });
+                        _dungeonManager.SpecialSectionDictionary.Remove(_order);
+                        return true;
                     }
-
-                    _dungeonManager.SpecialSectionDictionary.Add(_randPos, _specialTag.SectionTag);
+                    //else
+                    //{
+                    //    int _randPos = Random.Range((int)_order + 1, _dungeonManager.DungeonSize + _order - 1);
+                    //    int _max = 500;
+                    //    while (_dungeonManager.SpecialSectionDictionary.ContainsKey(_randPos) && _max > 0)
+                    //    {
+                    //        _randPos = Random.Range((int)_order + 1, _dungeonManager.DungeonSize + _order - 1);
+                    //        Debug.Log(_randPos);
+                    //        _max--;
+                    //    }
+                    //    if (_max > 0)
+                    //        _dungeonManager.SpecialSectionDictionary.Add(_randPos, _specialTag.SectionTag);
+                    //}
                 }
             }
-
-            if (_spawnedSection == null)
-                _spawnedSection = RandomService.GetRandomSection(_dungeonManager.Sections, _dungeonManager.EndTags);
-
+            _spawnedSection = RandomService.GetRandomSection(_dungeonManager.Sections, NextSectionsTags);
+            return false;
         }
     }
 }

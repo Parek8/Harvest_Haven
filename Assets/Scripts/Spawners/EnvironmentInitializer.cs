@@ -20,10 +20,10 @@ internal class EnvironmentInitializer : MonoBehaviour
     {
         if (this.TerrainData != null)
         {
-            TerrainData.heightmapResolution = Width + 1;
-            TerrainData.size = new Vector3(Width, 2, Depth);
-            Terrain.transform.position = new Vector3(-transform.position.x - Width / 2, 0, -transform.position.y - Depth / 2);
-            SetHeights();
+            //TerrainData.heightmapResolution = Width + 1;
+            //TerrainData.size = new Vector3(Width, 2, Depth);
+            //Terrain.transform.position = new Vector3(-transform.position.x - Width / 2, 0, -transform.position.y - Depth / 2);
+            //SetHeights();
         }
         FillEnvironment();
     }

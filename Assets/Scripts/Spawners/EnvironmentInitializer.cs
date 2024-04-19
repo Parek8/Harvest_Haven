@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 internal class EnvironmentInitializer : MonoBehaviour
@@ -10,7 +11,7 @@ internal class EnvironmentInitializer : MonoBehaviour
     [field: SerializeField] float Scale = 0.5f;
     [field: SerializeField] TerrainData TerrainData;
     [field: SerializeField] Terrain Terrain;
-    [field: SerializeField] GameObject TreePrefab;
+    [field: SerializeField] List<GameObject> TreePrefabs;
     [field: SerializeField] GameObject RockPrefab;
     [field: SerializeField] GameObject GrassPrefab;
     [field: SerializeField] LayerMask GroundLayer;
@@ -40,8 +41,12 @@ internal class EnvironmentInitializer : MonoBehaviour
         int _rocks = Mathf.RoundToInt(Random.Range(3, 10) * 100 * RockDensity);
         int _grass = Mathf.RoundToInt(Random.Range(10, 30) * 100 * GrassDensity);
         Quaternion _convertedAngle = Quaternion.Euler(90, 0, 0);
+
         for (int t = 0; t < _trees; t++)
-            Instantiate(TreePrefab, GetRandomPosition(), _convertedAngle, _environmentParent);
+        {
+            GameObject _rndTree = TreePrefabs[Random.Range(0, TreePrefabs.Count)];
+            Instantiate(_rndTree, GetRandomPosition(), _rndTree.transform.rotation, _environmentParent);
+        }
         for (int r = 0; r < _rocks; r++)
             Instantiate(RockPrefab, GetRandomPosition(), _convertedAngle, _environmentParent);
 

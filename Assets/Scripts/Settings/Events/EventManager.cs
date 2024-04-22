@@ -14,7 +14,7 @@ public sealed class EventManager : MonoBehaviour
         if (_eventManagerInstance == null)
             _eventManagerInstance = this;
 
-        Events.Add(new BloodyMoon(10, Enemy));
+        Events.Add(new BloodyMoon(500, Enemy));
     }
     private void Start()
     {

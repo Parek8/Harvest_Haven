@@ -154,7 +154,6 @@ internal class Character_Behaviour : MonoBehaviour
     }
     private void SeedOrWater(Plot _plot)
     {
-        Debug.Log(_plot.name);
         if (_state == PlayerState.seeding)
             _plot.Plant(inventory.Equipped_Item.PlantableObject, inventory.Equipped_Item);
         else

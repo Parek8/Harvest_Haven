@@ -12,15 +12,15 @@ internal class Plot : Interactable
     List<GameObject> stages = new List<GameObject>();
     private void Awake()
     {
-        while (GameManager.game_manager == null)
-        {
+        //while (GameManager.game_manager == null)
+        //{
 
-        }
+        //}
 
-        GameManager.game_manager.all_crops.Add(this);
     }
     private new void Start()
     {
+        GameManager.game_manager.all_crops.Add(this);
         base.Start();
         Day_Cycle.On_New_Day_Subscribe(OnDayChange);
     }

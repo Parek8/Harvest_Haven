@@ -14,6 +14,7 @@ internal class GameManager : MonoBehaviour
     {
         if (game_manager == null)
             game_manager = this;
+
         LoadSettings();
 
         for (int i = 0;  i < all_items.Count; i++)
@@ -27,6 +28,7 @@ internal class GameManager : MonoBehaviour
             Plot _plot = _allCrops[i];
             _allCrops[_plot.PlotIndex] = _plot;
         }
+
         LoadGraphics();
     }
 

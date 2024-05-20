@@ -30,6 +30,8 @@ internal sealed class StopCameraMovement : MonoBehaviour
     {
         if (screens.Find(screen => screen.is_visible))
         {
+            Debug.Log("Something is open!");
+            _player.StopAllAnimations();
             camera.enabled = false;
             _player.enabled = false;
         }

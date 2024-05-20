@@ -1,11 +1,9 @@
-using Cinemachine;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 internal class UI_Behaviour : MonoBehaviour
 {
-    [field: SerializeField] float TimeToPopup = 1f;
+    float TimeToPopup = 0.1f;
     internal bool is_visible { get; private set; } = false;
     private void Start()
     {
@@ -14,10 +12,7 @@ internal class UI_Behaviour : MonoBehaviour
     internal virtual bool Show()
     {
         if (!gameObject.activeInHierarchy)
-        {
-            transform.LeanScale(Vector3.one, TimeToPopup);
-            _Show();
-        }
+            StartCoroutine("__Show");
 
         return is_visible;
     }
@@ -25,18 +20,33 @@ internal class UI_Behaviour : MonoBehaviour
     internal virtual bool Hide()
     {
         if (gameObject.activeInHierarchy)
-        {
-            transform.LeanScale(Vector3.zero, TimeToPopup);
-            _Hide();
-        }
+            StartCoroutine("__Hide");
 
         return is_visible;
+    }
+
+    IEnumerator __Hide()
+    {
+        transform.LeanScale(Vector3.zero, TimeToPopup);
+        yield return new WaitForSeconds(TimeToPopup);
+        _Hide();
+    }
+    IEnumerator __Show()
+    {
+        _Show();
+        transform.LeanScale(Vector3.one, TimeToPopup);
+        yield return new WaitForSeconds(TimeToPopup);
     }
     internal bool Change_State()
     {
         GameManager.game_manager.Cursor_Needed((!is_visible) ? CursorLockMode.None : CursorLockMode.Locked);
-        gameObject.SetActive(!is_visible);
         is_visible = !is_visible;
+
+        if (!is_visible)
+            Hide();
+        else
+            Show();
+
         return is_visible;
     }
     public virtual void _Hide()

@@ -63,6 +63,12 @@ internal class Player_Movement : MonoBehaviour
         animator.SetBool(variable, animate);
     }
 
+    internal void StopAllAnimations()
+    {
+        Animate("Idle", false);
+        Animate("Moving", false);
+    }
+
     internal float Get_Distance(Transform dis)
     {
         return (Vector3.Distance(transform.position, dis.position));

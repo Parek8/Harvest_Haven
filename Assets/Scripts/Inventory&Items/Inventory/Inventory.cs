@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 internal class Inventory : MonoBehaviour
 {
@@ -16,17 +15,19 @@ internal class Inventory : MonoBehaviour
     PlayerStats _stats;
     void Start()
     {
+        _stats = GetComponent<PlayerStats>();
         Inventory_Slot[] tmp_array = FindObjectsByType<Inventory_Slot>(FindObjectsInactive.Include, FindObjectsSortMode.InstanceID);
 
         foreach (Inventory_Slot slot in tmp_array)
         {
             slots.Add(slot);
-            slot_ids.Add(slot.slot_index, slot);
+
+            if (!slot_ids.ContainsKey(slot.slot_index))
+                slot_ids.Add(slot.slot_index, slot);
         }
 
         slots.Sort((item1, item2) => item1.slot_index.CompareTo(item2.slot_index));
 
-        _stats = GetComponent<PlayerStats>();
         LoadInventory();
         Clear_Item();
     }

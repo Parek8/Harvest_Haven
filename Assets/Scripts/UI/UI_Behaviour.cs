@@ -1,13 +1,11 @@
 using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading.Tasks;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
 
 internal class UI_Behaviour : MonoBehaviour
 {
+    [field: SerializeField] float TimeToPopup = 1f;
     internal bool is_visible { get; private set; } = false;
     private void Start()
     {
@@ -15,13 +13,23 @@ internal class UI_Behaviour : MonoBehaviour
     }
     internal virtual bool Show()
     {
-        _Show();
+        if (!gameObject.activeInHierarchy)
+        {
+            transform.LeanScale(Vector3.one, TimeToPopup);
+            _Show();
+        }
+
         return is_visible;
     }
 
     internal virtual bool Hide()
     {
-        _Hide();
+        if (gameObject.activeInHierarchy)
+        {
+            transform.LeanScale(Vector3.zero, TimeToPopup);
+            _Hide();
+        }
+
         return is_visible;
     }
     internal bool Change_State()

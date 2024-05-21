@@ -23,7 +23,7 @@ public sealed class Tutorial : MonoBehaviour
     private static Tutorial _instance;
 
     private TutorialState _tutorialState = TutorialState.Movement;
-
+    [field: SerializeField] float TransitionDelay = 1.5f;
     // Movement stage
     [field: Header("MOVEMENT")]
     [field: SerializeField] UI_Behaviour MoveDialog;
@@ -72,6 +72,14 @@ public sealed class Tutorial : MonoBehaviour
 
     private void Start()
     {
+        MoveDialog.Hide();
+        InvDialog.Hide();
+        IntDialog.Hide();
+        SwapDialog.Hide();
+        DesDialog.Hide();
+        BuyDialog.Hide();
+        SelDialog.Hide();
+
         InitMovement();
     }
     private void FixedUpdate()
@@ -127,7 +135,7 @@ public sealed class Tutorial : MonoBehaviour
     }
     private IEnumerator InitInventory()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(TransitionDelay);
 
         PlayerStats.enabled = true;
         PlayerBehaviour.enabled = true;
@@ -138,7 +146,7 @@ public sealed class Tutorial : MonoBehaviour
     }
     private IEnumerator InitInteract()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(TransitionDelay);
 
         SwapDialog.Hide();
         ShopHighlighter.Show();
@@ -162,7 +170,7 @@ public sealed class Tutorial : MonoBehaviour
     }
     private IEnumerator InitDestroy()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(TransitionDelay);
 
         SelDialog.Hide();
         DesDialog.Show();
@@ -172,7 +180,7 @@ public sealed class Tutorial : MonoBehaviour
 
     private IEnumerator InitDragSlots()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(TransitionDelay);
 
         _assignedItem = GameManager.game_manager.all_items[UnityEngine.Random.Range(1, GameManager.game_manager.all_items.Count - 1)];
         GameManager.game_manager.player_inventory.Add(_assignedItem);
@@ -183,14 +191,14 @@ public sealed class Tutorial : MonoBehaviour
 
     private IEnumerator InitBuy()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(TransitionDelay);
 
         IntDialog.Hide();
         BuyDialog.Show();
     }
     private IEnumerator InitSell()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(TransitionDelay);
 
         BuyDialog.Hide();
         SelDialog.Show();
@@ -215,22 +223,22 @@ public sealed class Tutorial : MonoBehaviour
         {
             if (Input_Manager.GetCustomKeyDown(KeybindNames.forward))
             {
-                WCheck.Show();
+                //WCheck.Show();
                 _forward = true;
             }
             if (Input_Manager.GetCustomKeyDown(KeybindNames.backward))
             {
-                SCheck.Show();
+                //SCheck.Show();
                 _backward = true;
             }
             if (Input_Manager.GetCustomKeyDown(KeybindNames.left_strafe))
             {
-                ACheck.Show();
+                //ACheck.Show();
                 _left = true;
             }
             if (Input_Manager.GetCustomKeyDown(KeybindNames.right_strafe))
             {
-                DCheck.Show();
+                //DCheck.Show();
                 _right = true;
             }
         }
@@ -246,7 +254,7 @@ public sealed class Tutorial : MonoBehaviour
         {
             if (Input_Manager.GetCustomKeyDown(KeybindNames.inventory))
             {
-                TABCheck.Show();
+                //TABCheck.Show();
                 _tab = true;
             }
         }
@@ -269,7 +277,7 @@ public sealed class Tutorial : MonoBehaviour
     {
         if (_interacted)
         {
-            ECheck.Show();
+            //ECheck.Show();
             _tutorialState = TutorialState.ShoppingBuy;
             StartCoroutine(InitBuy());
         }

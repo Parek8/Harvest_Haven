@@ -57,7 +57,7 @@ internal class GameManager : MonoBehaviour
     [field: SerializeField] internal Button ButtonPrefab { get; private set; }
     [field: SerializeField] internal UI_Behaviour HUD { get; private set; }
     [field: SerializeField] internal UI_Behaviour PauseMenu { get; private set; }
-    [field: SerializeField] internal CinemachineFreeLook FreeCamera { get; private set; }
+    [field: SerializeField] internal CinemachineVirtualCamera FreeCamera { get; private set; }
 
     private void OnApplicationQuit()
     {

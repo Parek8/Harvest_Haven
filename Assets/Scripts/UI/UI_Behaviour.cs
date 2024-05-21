@@ -3,7 +3,7 @@ using UnityEngine;
 
 internal class UI_Behaviour : MonoBehaviour
 {
-    float TimeToPopup = 0.1f;
+    protected float TimeToPopup = 0.1f;
     internal bool is_visible { get; private set; } = false;
     private void Start()
     {
@@ -12,7 +12,11 @@ internal class UI_Behaviour : MonoBehaviour
     internal virtual bool Show()
     {
         if (!gameObject.activeInHierarchy)
+        {
+            gameObject.SetActive(true);
+            is_visible = true;
             StartCoroutine("__Show");
+        }
 
         return is_visible;
     }
@@ -25,16 +29,16 @@ internal class UI_Behaviour : MonoBehaviour
         return is_visible;
     }
 
-    IEnumerator __Hide()
+    protected virtual IEnumerator __Hide()
     {
-        transform.LeanScale(Vector3.zero, TimeToPopup);
+        transform.LeanScale(Vector3.zero, TimeToPopup).setEaseOutQuart();
         yield return new WaitForSeconds(TimeToPopup);
         _Hide();
     }
-    IEnumerator __Show()
+    protected virtual IEnumerator __Show()
     {
         _Show();
-        transform.LeanScale(Vector3.one, TimeToPopup);
+        transform.LeanScale(Vector3.one, TimeToPopup).setEaseOutQuart();
         yield return new WaitForSeconds(TimeToPopup);
     }
     internal bool Change_State()

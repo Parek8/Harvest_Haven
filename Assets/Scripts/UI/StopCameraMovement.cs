@@ -10,7 +10,7 @@ internal sealed class StopCameraMovement : MonoBehaviour
     [field: SerializeField] List<UI_Behaviour> screens;
     Player_Movement _player;
 
-    CinemachineFreeLook camera;
+    CinemachineVirtualCamera camera;
     private StopCameraMovement() { }
     private void Awake()
     {
@@ -30,7 +30,6 @@ internal sealed class StopCameraMovement : MonoBehaviour
     {
         if (screens.Find(screen => screen.is_visible))
         {
-            Debug.Log("Something is open!");
             _player.StopAllAnimations();
             camera.enabled = false;
             _player.enabled = false;

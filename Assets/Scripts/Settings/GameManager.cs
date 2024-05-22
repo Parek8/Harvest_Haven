@@ -1,5 +1,6 @@
 using Cinemachine;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -82,14 +83,22 @@ internal class GameManager : MonoBehaviour
         is_game_paused = true;
         HUD.Hide();
         PauseMenu.Show();
+        StartCoroutine("Pause");
+    }
+
+    private IEnumerator Pause()
+    {
+        yield return new WaitForSeconds(1.5f);
+
         Time.timeScale = 0;
+
     }
     public void ResumeGame()
     {
         Time.timeScale = 1;
         is_game_paused = false;
-        PauseMenu.Hide();
         HUD.Show();
+        PauseMenu.Hide();
         Cursor_Needed(CursorLockMode.Locked);
     }
 

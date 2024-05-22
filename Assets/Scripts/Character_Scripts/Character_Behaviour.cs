@@ -41,8 +41,6 @@ internal class Character_Behaviour : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
             Day_Cycle.Next_Day();
-        if (Input.GetKeyDown(KeyCode.Backspace))
-            GameManager.game_manager.AddItems();
 
         // __NON_DEBUG__
         if (Input_Manager.GetCustomAxisRawDown("Inventory"))
@@ -50,8 +48,8 @@ internal class Character_Behaviour : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape) && !GameManager.game_manager.is_game_paused)
             GameManager.game_manager.PauseGame();
-        else if (Input.GetKeyDown(KeyCode.Escape) && GameManager.game_manager.is_game_paused)
-            GameManager.game_manager.ResumeGame();
+        //else if (Input.GetKeyDown(KeyCode.Escape) && GameManager.game_manager.is_game_paused)
+        //    GameManager.game_manager.ResumeGame();
 
         for (int i = 0; i < hotbar.Count; i++)
         {

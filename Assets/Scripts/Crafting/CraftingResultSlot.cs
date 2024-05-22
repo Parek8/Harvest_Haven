@@ -31,7 +31,8 @@ internal class CraftingResultSlot : MonoBehaviour, IPointerClickHandler
         {
             UseMaterials();
             _playerInventory.Add(_result);
-
+            if (Tutorial.TutorialInstance != null)
+                Tutorial.TutorialInstance.Crafted();
         }
     }
 

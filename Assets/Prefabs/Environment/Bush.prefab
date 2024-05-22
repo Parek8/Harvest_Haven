@@ -105,7 +105,7 @@ RectTransform:
   m_GameObject: {fileID: 3343355270512414383}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0.01971}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5452206991450331218}
@@ -219,7 +219,7 @@ RectTransform:
   m_GameObject: {fileID: 3898721402548527995}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6405655256899585000}
@@ -304,7 +304,7 @@ Transform:
   m_Children:
   - {fileID: 2828661282497987878}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2771827165194697883
 MeshFilter:
@@ -446,3 +446,4 @@ MonoBehaviour:
   Interactable: 0
   Destroyable: 1
   Attackable: 0
+  _highlighter: {fileID: 0}

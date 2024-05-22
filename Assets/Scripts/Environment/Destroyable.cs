@@ -100,7 +100,8 @@ internal class Destroyable : MonoBehaviour
         {
             if (Random.Range(0.0f, 1.0f) <= it.SpawnRate)
             {
-                Pick_Up_Item drop_rb = Instantiate(it.ItemPrefab, Get_Drop_Range(), Quaternion.identity,environment_parent).GetComponent<Pick_Up_Item>();
+                GameObject drop_rb = Instantiate(it.DropPrefab, Get_Drop_Range(), Quaternion.identity,environment_parent);
+                //drop_rb.transform.localScale = Vector3.one / 10;
                 //drop_rb.Push_Item_Upwards();
             }
         }

@@ -61,6 +61,12 @@ public sealed class Tutorial : MonoBehaviour
     [field: SerializeField] Item AxeItem;
     bool _destroyedObject = false;
 
+    [field: Header("CRAFT")]
+    [field: SerializeField] UI_Behaviour CraftDialog;
+    [field: SerializeField] Item Wood;
+    [field: SerializeField] Item Rock;
+    bool _crafted = false;
+
     [field: Header("SHOPPING BUY")]
     [field: SerializeField] UI_Behaviour BuyDialog;
     bool _boughtItem = false;
@@ -72,13 +78,14 @@ public sealed class Tutorial : MonoBehaviour
 
     private void Start()
     {
-        MoveDialog.Hide();
+        //MoveDialog.Hide();
         InvDialog.Hide();
         IntDialog.Hide();
         SwapDialog.Hide();
         DesDialog.Hide();
         BuyDialog.Hide();
         SelDialog.Hide();
+        CraftDialog.Hide();
 
         InitMovement();
     }
@@ -172,7 +179,7 @@ public sealed class Tutorial : MonoBehaviour
     {
         yield return new WaitForSeconds(TransitionDelay);
 
-        SelDialog.Hide();
+        SwapDialog.Hide();
         DesDialog.Show();
 
         GameManager.game_manager.player_inventory.Add(AxeItem);
@@ -202,6 +209,18 @@ public sealed class Tutorial : MonoBehaviour
 
         BuyDialog.Hide();
         SelDialog.Show();
+    }
+
+    private IEnumerator InitCraft()
+    {
+        yield return new WaitForSeconds(TransitionDelay);
+
+
+    }
+
+    internal void Crafted()
+    {
+        _crafted = true;
     }
 
     internal void BoughtItem()
@@ -269,6 +288,14 @@ public sealed class Tutorial : MonoBehaviour
     {
         if (_swappedSlots)
         {
+            _tutorialState = TutorialState.Destroy;
+            StartCoroutine(InitDestroy());
+        }
+    }
+    private void DestroyTutorial()
+    {
+        if (_destroyedObject)
+        {
             _tutorialState = TutorialState.Interact;
             StartCoroutine(InitInteract());
         }
@@ -278,8 +305,8 @@ public sealed class Tutorial : MonoBehaviour
         if (_interacted)
         {
             //ECheck.Show();
-            _tutorialState = TutorialState.ShoppingBuy;
-            StartCoroutine(InitBuy());
+            _tutorialState = TutorialState.Craft;
+            StartCoroutine(InitCraft());
         }
     }
 
@@ -299,17 +326,14 @@ public sealed class Tutorial : MonoBehaviour
             StartCoroutine(InitDestroy());
         }
     }
-    private void DestroyTutorial()
-    {
-        if (_destroyedObject)
-        {
-            _tutorialState = TutorialState.Craft;
-            //StartCoroutine(InitInteract());
-        }
-    }
     private void CraftTutorial()
     {
-
+        if (_crafted)
+        {
+            //_tutorialState = TutorialState.Destroy;
+            //StartCoroutine(InitDestroy());
+            Debug.Log("Farm");
+        }
     }
     private void SmeltTutorial()
     {

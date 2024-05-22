@@ -14,6 +14,7 @@ internal class Item : ScriptableObject
     [field: SerializeField] public Sprite ItemIcon { get; private set; }
     [field: Range(0.0f, 1.0f)] public float SpawnRate;
     [field: SerializeField] public GameObject ItemPrefab { get; private set; }
+    [field: SerializeField] public GameObject DropPrefab { get; private set; }
 
     [field: Header("Item Functionalities")]
     public bool IsEatable = false;

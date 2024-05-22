@@ -70,11 +70,12 @@ internal class Character_Behaviour : MonoBehaviour
                 animator.SetTrigger("Attack");
                 Hit_Destroyable();
             }
-            else if (att && inventory.IsEquippedFood())
-            {
-                inventory.DecreaseItemCount(inventory.Equipped_Item);
-                stats.Saturate(inventory.Equipped_Item);
-            }
+        }
+
+        if (Input_Manager.GetCustomAxisRawDown("Interact") && inventory.IsEquippedFood())
+        {
+            inventory.DecreaseItemCount(inventory.Equipped_Item);
+            stats.Saturate(inventory.Equipped_Item);
         }
 
         RaycastHit _highInfo;

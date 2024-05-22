@@ -155,8 +155,8 @@ public sealed class Tutorial : MonoBehaviour
     {
         yield return new WaitForSeconds(TransitionDelay);
 
-        SwapDialog.Hide();
-        ShopHighlighter.Show();
+        DesDialog.Hide();
+        //ShopHighlighter.Show();
         IntDialog.Show();
     }
 

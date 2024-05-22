@@ -66,6 +66,11 @@ internal class GameManager : MonoBehaviour
         PlayerManagerInstance.SavePlayer();
     }
 
+    internal void AddItems()
+    {
+        foreach (Item item in all_items)
+            player_inventory.Add(item);
+    }
     internal void Cursor_Needed(CursorLockMode lock_mode)
     {
         if (Cursor.lockState != lock_mode)

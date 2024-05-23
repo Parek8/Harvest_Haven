@@ -2796,6 +2796,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Global Volume
       objectReference: {fileID: 0}
+    - target: {fileID: 5542023921047298564, guid: b421eedfec896d9439d494c11f69c503,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8158557706844808489, guid: b421eedfec896d9439d494c11f69c503,
         type: 3}
       propertyPath: m_RootOrder
@@ -3975,7 +3980,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &330585544
 AudioListener:
   m_ObjectHideFlags: 0
@@ -4017,7 +4022,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 5000
-  field of view: 40
+  field of view: 60
   orthographic: 0
   orthographic size: 10
   m_Depth: -1
@@ -4042,14 +4047,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
-  m_LocalRotation: {x: -0.11607559, y: 0.8755402, z: -0.38988507, w: -0.26066366}
-  m_LocalPosition: {x: 64.000534, y: 140, z: 101.50829}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 21.07, y: 7.45, z: 26.43}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 230611751}
-  m_Father: {fileID: 7615995470661252056}
-  m_RootOrder: -1
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 47.869, y: -61.369, z: 14.038}
 --- !u!114 &330585547
 MonoBehaviour:
@@ -21414,7 +21419,7 @@ MonoBehaviour:
       colorBlindnessType: 0
       colorBlindnessStrength: 1
   m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
-  m_ShowToolkit: 0
+  m_ShowToolkit: 1
   m_ShowCustomSorter: 0
   breakBeforeColorGrading: 0
   m_BeforeTransparentBundles: []
@@ -21977,7 +21982,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 1
-  m_AdditionalShaderChannelsFlag: 25
+  m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -27368,7 +27373,7 @@ PrefabInstance:
     - target: {fileID: 1496434707824769149, guid: 5c6e5de84d7fc5a4db1f6a2ec59ecc59,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.723882
+      value: 7.723881
       objectReference: {fileID: 0}
     - target: {fileID: 1496434707824769149, guid: 5c6e5de84d7fc5a4db1f6a2ec59ecc59,
         type: 3}
@@ -27419,6 +27424,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: OnHitPostProcessing
+      objectReference: {fileID: 0}
+    - target: {fileID: 1655065034757163018, guid: 5c6e5de84d7fc5a4db1f6a2ec59ecc59,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -28593,6 +28603,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: NormalPostProcessing
       objectReference: {fileID: 0}
+    - target: {fileID: 5542023921047298564, guid: b421eedfec896d9439d494c11f69c503,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5542023921047298564, guid: b421eedfec896d9439d494c11f69c503,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8158557706844808489, guid: b421eedfec896d9439d494c11f69c503,
         type: 3}
       propertyPath: m_RootOrder
@@ -28601,7 +28621,7 @@ PrefabInstance:
     - target: {fileID: 8158557706844808489, guid: b421eedfec896d9439d494c11f69c503,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.723882
+      value: 7.723881
       objectReference: {fileID: 0}
     - target: {fileID: 8158557706844808489, guid: b421eedfec896d9439d494c11f69c503,
         type: 3}
@@ -34443,7 +34463,6 @@ Transform:
   - {fileID: 6731903846957504811}
   - {fileID: 7631286345578740071}
   - {fileID: 8596095723257310170}
-  - {fileID: 330585546}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -43,7 +43,10 @@ internal class Inventory : MonoBehaviour
             _stats.Change_State(_equipped_item);
         }
         else
+        {
+            InstantiateItem();
             _stats.Change_State(GameManager.game_manager.Null_Item);
+        }
     }
     internal void Add(Item item)
     {

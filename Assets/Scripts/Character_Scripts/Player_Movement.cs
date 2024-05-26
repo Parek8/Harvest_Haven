@@ -11,7 +11,7 @@ internal class Player_Movement : MonoBehaviour
 
     Character_Stats stats;
     CharacterController controller;
-    Animator animator;
+    [field: SerializeField] Animator animator;
 
     private float turn_smooth_velocity;
     private void Start()
@@ -33,13 +33,13 @@ internal class Player_Movement : MonoBehaviour
         if (direction.magnitude >= 0.1f)
         {
             Move(direction);
-            Animate("Idle", false);
-            Animate("Moving", true);
+            //Animate("Idle", false);
+            Animate("Running", true);
         }
         else
         {
-            Animate("Idle", true);
-            Animate("Moving", false);
+            //Animate("Idle", true);
+            Animate("Running", false);
         }
         //if (Input_Manager.GetCustomAxisRaw("Attack") != 0)
         //    Rotate(direction);

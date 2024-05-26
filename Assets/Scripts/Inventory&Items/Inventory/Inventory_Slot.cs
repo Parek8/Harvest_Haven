@@ -20,6 +20,7 @@ internal class Inventory_Slot : MonoBehaviour, IPointerDownHandler, IPointerUpHa
     Vector3 item_image_initial_position;
     Vector3 item_count_initial_position;
     Image background;
+    Transform visibleParent;
 
     int _itemCount = 0;
     internal int ItemCount => _itemCount;
@@ -29,6 +30,8 @@ internal class Inventory_Slot : MonoBehaviour, IPointerDownHandler, IPointerUpHa
     {
         //Transform childTransform = transform.GetChild(0);
         //item_image = childTransform.GetComponentInChildren<Image>();
+        visibleParent = GameManager.game_manager.UIVisibleParent;
+
         item_image_initial_position = item_image.transform.localPosition;
         item_count_initial_position = item_count.transform.localPosition;
         background = GetComponent<Image>();
@@ -40,20 +43,26 @@ internal class Inventory_Slot : MonoBehaviour, IPointerDownHandler, IPointerUpHa
     {
         if (is_dragging)
         {
-            item_image.transform.position = Input.mousePosition;
+            item_image.transform.position = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 50);
             item_count.transform.position = Input.mousePosition + new Vector3(-19, 2.2f, 0);
         }
 
         if (item != null)
             if (_itemCount <= 0)
                 Clear_Item();
+
         Update_UI();
     }
     public void OnPointerDown(PointerEventData eventData)
     {
         if (eventData.button == PointerEventData.InputButton.Left)
             if (!this.Is_Empty())
+            {
                 is_dragging = true;
+                item_image.transform.SetParent(visibleParent);
+                item_count.transform.SetParent(visibleParent);
+            }
+
         if (eventData.button == PointerEventData.InputButton.Right && isHotbarSlot)
             Equip();
     }
@@ -69,6 +78,8 @@ internal class Inventory_Slot : MonoBehaviour, IPointerDownHandler, IPointerUpHa
             is_dragging = false;
             item_image.transform.localPosition = item_image_initial_position;
             item_count.transform.localPosition = item_count_initial_position;
+            item_image.transform.SetParent(transform);
+            item_count.transform.SetParent(transform);
             Swap_Slots();
         }
     }

@@ -57,6 +57,7 @@ internal class GameManager : MonoBehaviour
     [field: SerializeField] internal CropsManager CropsManagerInstance { get; private set; }
     [field: SerializeField] internal Button ButtonPrefab { get; private set; }
     [field: SerializeField] internal UI_Behaviour HUD { get; private set; }
+    [field: SerializeField] internal Transform UIVisibleParent { get; private set; }
     [field: SerializeField] internal UI_Behaviour PauseMenu { get; private set; }
     [field: SerializeField] internal CinemachineVirtualCamera FreeCamera { get; private set; }
 

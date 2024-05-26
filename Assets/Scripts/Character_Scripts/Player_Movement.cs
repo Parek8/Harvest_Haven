@@ -13,7 +13,7 @@ internal class Player_Movement : MonoBehaviour
     CharacterController controller;
     [field: SerializeField] Animator animator;
 
-    private float turn_smooth_velocity;
+    private float turn_smooth_velocity; 
     private void Start()
     {
         stats = GetComponent<Character_Stats>();

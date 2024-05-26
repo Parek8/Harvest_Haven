@@ -12,10 +12,10 @@ internal class Character_Behaviour : MonoBehaviour
     [field: SerializeField] Camera _normalCam;
     [field: SerializeField] Transform _aimStart;
     [field: SerializeField] TMP_Text _itemText;
+    [field: SerializeField] Animator animator;
 
     PlayerStats stats;
     Inventory inventory;
-    Animator animator;
     Player_Movement movement;
     PlayerState _state = PlayerState.normal;
     Highlightable _lastHighlighted;
@@ -29,7 +29,6 @@ internal class Character_Behaviour : MonoBehaviour
     {
         stats = GetComponent<PlayerStats>();
         inventory = GetComponent<Inventory>();
-        animator = GetComponent<Animator>();
         movement = GetComponent<Player_Movement>();
 
         stats.AddPlayerStateListener(delegate (PlayerState _newState) { this._state = _newState; });
@@ -67,7 +66,7 @@ internal class Character_Behaviour : MonoBehaviour
             bool att = Input_Manager.GetCustomAxisRawDown("Attack");
             if (att && inventory.IsEquippedItemTool())
             {
-                animator.SetTrigger("Attack");
+                //animator.SetTrigger("Attack");
                 Hit_Destroyable();
             }
         }

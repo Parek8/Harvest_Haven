@@ -80,6 +80,8 @@ internal class Inventory_Slot : MonoBehaviour, IPointerDownHandler, IPointerUpHa
             item_count.transform.localPosition = item_count_initial_position;
             item_image.transform.SetParent(transform);
             item_count.transform.SetParent(transform);
+            item_image.transform.localPosition = Vector3.zero;
+            item_count.transform.localPosition = Vector3.zero;
             Swap_Slots();
         }
     }

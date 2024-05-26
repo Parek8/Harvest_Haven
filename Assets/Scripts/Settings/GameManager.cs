@@ -33,6 +33,11 @@ internal class GameManager : MonoBehaviour
         LoadGraphics();
     }
 
+    private void Start()
+    {
+        CropsManagerInstance.LoadCrops();
+    }
+
     internal void LoadGraphics()
     {
         Screen.SetResolution(PlayerSettings.RESX, PlayerSettings.RESY, PlayerSettings.FULLSCREEN);

@@ -38,7 +38,6 @@ internal class CropsManager : MonoBehaviour
         Dictionary<int, Plot> _allPlots = GameManager.game_manager._allCrops;
         List<Plot> _crops = GameManager.game_manager.all_crops;
 
-
         if (File.Exists(_path))
         {
             StreamReader _r = new StreamReader(_path);
@@ -57,11 +56,15 @@ internal class CropsManager : MonoBehaviour
                     int _plotIndex = Convert.ToInt32(_cropItems[0]);
                     int _cropIndex = Convert.ToInt32(_cropItems[1]);
                     int _cropDays = Convert.ToInt32(_cropItems[2]);
-                    //Debug.Log(_crops.Count);
+                    Debug.Log(_crops.Count);
                     _crops.Find(_plot => _plot.PlotIndex == _plotIndex).LoadPlot(GameManager.game_manager.FindPlantObject(_cropIndex), _cropDays);
                 }
             }
+            else
+                Debug.Log("Empty");
             _r.Close();
         }
+        else
+            Debug.Log("Path doesn't exist!");
     }
 }

@@ -26,7 +26,6 @@ internal class Grid : MonoBehaviour
         //z_count *= 3;
         grid = new GameObject[x_count, y_count, z_count];
         MakeGrid();
-        GameManager.game_manager.CropsManagerInstance.LoadCrops();
     }
 
     private void MakeGrid()

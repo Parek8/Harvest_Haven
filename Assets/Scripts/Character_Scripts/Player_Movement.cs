@@ -3,7 +3,6 @@ using UnityEngine;
 
 [RequireComponent(typeof(Character_Stats))]
 [RequireComponent(typeof(CharacterController))]
-[RequireComponent(typeof(Animator))]
 internal class Player_Movement : MonoBehaviour
 {
     [field: SerializeField] Transform cam;
@@ -18,8 +17,7 @@ internal class Player_Movement : MonoBehaviour
     {
         stats = GetComponent<Character_Stats>();
         controller = GetComponent<CharacterController>();
-        animator = GetComponent<Animator>();
-        animator.SetFloat("Speed", stats.movement_speed);
+        //animator.SetFloat("Speed", stats.movement_speed);
 
         GameManager.game_manager.Cursor_Needed(CursorLockMode.Locked);
         GameManager.game_manager.ResumeGame();
@@ -65,8 +63,8 @@ internal class Player_Movement : MonoBehaviour
 
     internal void StopAllAnimations()
     {
-        Animate("Idle", false);
-        Animate("Moving", false);
+        //Animate("Idle", false);
+        //Animate("Running", false);
     }
 
     internal float Get_Distance(Transform dis)

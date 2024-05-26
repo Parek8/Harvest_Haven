@@ -136,7 +136,8 @@ internal class Inventory : MonoBehaviour
             Destroy(weaponPoint.GetChild(i).gameObject);
         }
         if(_equipped_item != null)
-            Instantiate(_equipped_item.ItemPrefab, weaponPoint);
+            if (_equipped_item.ItemPrefab != null)
+                Instantiate(_equipped_item.ItemPrefab, weaponPoint);
     }
 
     internal void Clear_Item()

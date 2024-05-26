@@ -10,13 +10,10 @@ internal class Plot : Interactable
 
     List<uint> times = new List<uint>();
     List<GameObject> stages = new List<GameObject>();
-    private void Awake()
-    {
-        GameManager.game_manager.all_crops.Add(this);
-    }
     private new void Start()
     {
         base.Start();
+        GameManager.game_manager.all_crops.Add(this);
         Day_Cycle.On_New_Day_Subscribe(OnDayChange);
     }
     internal void SetIndex(int index) => this.PlotIndex = index;
@@ -95,7 +92,7 @@ internal class Plot : Interactable
     {
         DestroyPlant();
         Vector3 _spawnPos = transform.position + GetGameObjectOffset();
-        GameObject _stage = Instantiate(stages[0], _spawnPos, stages[0].transform.localRotation, transform);
+        GameObject _stage = Instantiate(stages[0], _spawnPos, Quaternion.identity, transform);
         //Debug.Log(_stage.name);
         times.RemoveAt(0);
         stages.RemoveAt(0);

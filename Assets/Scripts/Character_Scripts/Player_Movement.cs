@@ -7,12 +7,14 @@ internal class Player_Movement : MonoBehaviour
 {
     [field: SerializeField] Transform cam;
     [field: SerializeField] float turn_smooth_speed;
+    [field: SerializeField] float GravityForce;
 
     Character_Stats stats;
     CharacterController controller;
     [field: SerializeField] Animator animator;
 
-    private float turn_smooth_velocity; 
+    private float turn_smooth_velocity;
+    private float verticalVelocity;
     private void Start()
     {
         stats = GetComponent<Character_Stats>();
@@ -39,6 +41,13 @@ internal class Player_Movement : MonoBehaviour
             //Animate("Idle", true);
             Animate("Running", false);
         }
+
+        if (controller.isGrounded && verticalVelocity < 0)
+            verticalVelocity = 0f;
+
+        verticalVelocity -= GravityForce * Time.deltaTime;
+
+        controller.Move(new Vector3(0, -1, 0) * verticalVelocity * Time.deltaTime);
         //if (Input_Manager.GetCustomAxisRaw("Attack") != 0)
         //    Rotate(direction);
     }

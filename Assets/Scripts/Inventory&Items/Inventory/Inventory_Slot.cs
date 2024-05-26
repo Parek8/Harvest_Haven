@@ -43,8 +43,7 @@ internal class Inventory_Slot : MonoBehaviour, IPointerDownHandler, IPointerUpHa
     {
         if (is_dragging)
         {
-            item_image.transform.position = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 50);
-            item_count.transform.position = Input.mousePosition + new Vector3(-19, 2.2f, 0);
+            item_image.transform.position = Input.mousePosition;
         }
 
         if (item != null)
@@ -60,7 +59,6 @@ internal class Inventory_Slot : MonoBehaviour, IPointerDownHandler, IPointerUpHa
             {
                 is_dragging = true;
                 item_image.transform.SetParent(visibleParent);
-                item_count.transform.SetParent(visibleParent);
             }
 
         if (eventData.button == PointerEventData.InputButton.Right && isHotbarSlot)
@@ -81,7 +79,7 @@ internal class Inventory_Slot : MonoBehaviour, IPointerDownHandler, IPointerUpHa
             item_image.transform.SetParent(transform);
             item_count.transform.SetParent(transform);
             item_image.transform.localPosition = Vector3.zero;
-            item_count.transform.localPosition = Vector3.zero;
+            item_count.transform.localPosition = new Vector3(-60, 60, 0);
             Swap_Slots();
         }
     }

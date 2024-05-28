@@ -9,7 +9,7 @@ internal class PotatoManBehaviour : EnemyBehaviour
     {
         if (_cooldown <= 0)
         {
-            Instantiate(Bullet, BulletSpawnPoint.position, Quaternion.identity).Setup(DamageRadius, _stats.attack_damage);
+            Instantiate(Bullet, BulletSpawnPoint.position, Quaternion.identity).Setup(DamageRadius, _stats.AttackDamage);
             _cooldown = AttackCooldown;
         }
     }

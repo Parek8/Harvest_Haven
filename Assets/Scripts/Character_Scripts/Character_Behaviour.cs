@@ -24,7 +24,7 @@ internal class Character_Behaviour : MonoBehaviour
     internal bool IsAttacking => _isAttacking;
 
     int _equippedIndex = 0;
-
+    private float _attackCooldown = 0;
     private void Start()
     {
         stats = GetComponent<PlayerStats>();
@@ -50,6 +50,8 @@ internal class Character_Behaviour : MonoBehaviour
 
         if (!StopCameraMovement.StopCameraMovementInstance.IsAnyScreenActive)
         {
+            _attackCooldown += Time.deltaTime;
+
             //else if (Input.GetKeyDown(KeyCode.Escape) && GameManager.game_manager.is_game_paused)
             //    GameManager.game_manager.ResumeGame();
 
@@ -64,13 +66,14 @@ internal class Character_Behaviour : MonoBehaviour
 
             inventory.ChangeEquippedItem(_equippedIndex);
 
-            if (!_isAttacking)
+            if (!_isAttacking && _attackCooldown >= stats.AttackDelay)
             {
                 bool att = Input_Manager.GetCustomAxisRawDown("Attack");
                 if (att && inventory.IsEquippedItemTool())
                 {
                     //animator.SetTrigger("Attack");
                     Hit_Destroyable();
+                    _attackCooldown = 0;
                 }
             }
 
@@ -86,7 +89,7 @@ internal class Character_Behaviour : MonoBehaviour
             if (_lastHighlighted != null)
                 _lastHighlighted.Lowlight();
 
-            if (Physics.Raycast(_aimStart.position, _aimStart.forward * stats.pick_up_distance * 3, out _highInfo, stats.pick_up_distance * 3, stats.highlightable_layers))
+            if (Physics.Raycast(_aimStart.position, _aimStart.forward * stats.PickUpDistance * 3, out _highInfo, stats.PickUpDistance * 3, stats.HighlightableLayers))
             {
                 Highlightable _object;
                 if (_highInfo.collider.TryGetComponent(out _object))
@@ -99,7 +102,7 @@ internal class Character_Behaviour : MonoBehaviour
             else
                 _itemText.text = "";
 
-            if (Physics.Raycast(_aimStart.position, _aimStart.forward * stats.pick_up_distance * 3, out _inteInfo, stats.pick_up_distance * 3, stats.interactable_layers))
+            if (Physics.Raycast(_aimStart.position, _aimStart.forward * stats.PickUpDistance * 3, out _inteInfo, stats.PickUpDistance * 3, stats.InteractableLayers))
             {
                 Interactable _object;
                 if (_inteInfo.collider.TryGetComponent(out _object) && Input_Manager.GetCustomAxisRawDown("Interact") /*&& _state == PlayerState.normal*/)
@@ -110,7 +113,7 @@ internal class Character_Behaviour : MonoBehaviour
                     _object.Interact();
                 }
             }
-            if (Physics.Raycast(_aimStart.position, _aimStart.forward * stats.pick_up_distance * 3, out _inteInfo, stats.pick_up_distance * 3, stats.plot_layers))
+            if (Physics.Raycast(_aimStart.position, _aimStart.forward * stats.PickUpDistance * 3, out _inteInfo, stats.PickUpDistance * 3, stats.PlotLayers))
             {
                 Plot _plot;
 
@@ -142,9 +145,9 @@ internal class Character_Behaviour : MonoBehaviour
     private void Hit_Destroyable()
     {
         RaycastHit info;
-        Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward * stats.attack_distance);
+        Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward * stats.AttackDistance);
 
-        if (Physics.Raycast(ray, out info, stats.attack_distance, stats.destroyable_layers))
+        if (Physics.Raycast(ray, out info, stats.AttackDistance, stats.DestroyableLayers))
         {
             Destroyable _hit = info.collider.GetComponent<Destroyable>();
             Item _eq_item = inventory.Equipped_Item;

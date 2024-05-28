@@ -15,7 +15,7 @@ internal class PlayerManager : MonoBehaviour
         if (_playerSettings != null)
             _savedContent += $"{_playerSettings.FOV};{_playerSettings.FPS};{_playerSettings.RESX};{_playerSettings.RESY};{_playerSettings.FULLSCREEN};";
         if (_playerStats != null)
-            _savedContent += $"{_playerStats.movement_speed};{_playerStats.jump_force};{_playerStats.pick_up_distance};{_playerStats.attack_distance};{_playerStats.attack_damage};{_playerStats.food_delay};{_playerStats.on_hunger_hit_delay};{_playerStats.max_health_points};{_playerStats.max_food_points};{_playerStats.current_health_points};{_playerStats.current_food_points}";
+            _savedContent += $"{_playerStats.MovementSpeed};{_playerStats.JumpForce};{_playerStats.PickUpDistance};{_playerStats.AttackDistance};{_playerStats.AttackDamage};{_playerStats.FoodDelay};{_playerStats.OnHungerHitDelay};{_playerStats.MaxHealthPoints};{_playerStats.MaxFoodPoints};{_playerStats.CurrentHealthPoints};{_playerStats.CurrentFoodPoints}";
 
         string _path = Directory.GetCurrentDirectory() + _playerSavePath;
         if (File.Exists(_path))

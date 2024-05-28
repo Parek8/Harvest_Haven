@@ -23,7 +23,7 @@ internal class Player_Movement : MonoBehaviour
     {
         stats = GetComponent<Character_Stats>();
         controller = GetComponent<CharacterController>();
-        //animator.SetFloat("Speed", stats.movement_speed);
+        //animator.SetFloat("Speed", stats.MovementSpeed);
 
         GameManager.game_manager.Cursor_Needed(CursorLockMode.Locked);
         GameManager.game_manager.ResumeGame();
@@ -77,7 +77,7 @@ internal class Player_Movement : MonoBehaviour
     private void Move(Vector3 direction)
     {
         Vector3 move_dir = Quaternion.Euler(0, Rotate(direction), 0) * Vector3.forward;
-        controller.Move(move_dir.normalized * stats.movement_speed * Time.deltaTime);
+        controller.Move(move_dir.normalized * stats.MovementSpeed * Time.deltaTime);
     }
 
     private float Rotate(Vector3 direction)

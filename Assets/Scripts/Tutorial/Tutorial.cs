@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -249,6 +248,9 @@ public sealed class Tutorial : MonoBehaviour
 
         CraftDialog.Hide();
         SeedDialog.Show();
+        //PlayerInventory.Add(Seeds[Random.Range(0, Seeds.Count)]);
+        //PlayerInventory.Add(Seeds[Random.Range(0, Seeds.Count)]);
+        //PlayerInventory.Add(Seeds[Random.Range(0, Seeds.Count)]);
     }
 
     internal void Seeded()

@@ -10,7 +10,10 @@ internal sealed class StopCameraMovement : MonoBehaviour
     [field: SerializeField] List<UI_Behaviour> screens;
     Player_Movement _player;
 
-    CinemachineVirtualCamera camera;
+    new CinemachineVirtualCamera camera;
+
+    internal bool IsAnyScreenActive => m_IsActive;
+    private bool m_IsActive;
     private StopCameraMovement() { }
     private void Awake()
     {
@@ -33,11 +36,13 @@ internal sealed class StopCameraMovement : MonoBehaviour
             _player.StopAllAnimations();
             camera.enabled = false;
             _player.enabled = false;
+            m_IsActive = true;
         }
         else if (!camera.enabled)
         {
             camera.enabled = true;
             _player.enabled = true;
+            m_IsActive = false;
         }
     }
     internal void AddScreen(UI_Behaviour screen)

@@ -47,73 +47,77 @@ internal class Character_Behaviour : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape) && !GameManager.game_manager.is_game_paused)
             GameManager.game_manager.PauseGame();
-        //else if (Input.GetKeyDown(KeyCode.Escape) && GameManager.game_manager.is_game_paused)
-        //    GameManager.game_manager.ResumeGame();
 
-        for (int i = 0; i < hotbar.Count; i++)
+        if (!StopCameraMovement.StopCameraMovementInstance.IsAnyScreenActive)
         {
-            if (Input_Manager.GetCustomAxisRawDown($"Slot_{i+1}"))
+            //else if (Input.GetKeyDown(KeyCode.Escape) && GameManager.game_manager.is_game_paused)
+            //    GameManager.game_manager.ResumeGame();
+
+            for (int i = 0; i < hotbar.Count; i++)
             {
-                //hotbar[i].Equip();
-                _equippedIndex = i;
+                if (Input_Manager.GetCustomAxisRawDown($"Slot_{i + 1}"))
+                {
+                    //hotbar[i].Equip();
+                    _equippedIndex = i;
+                }
             }
-        }
 
-        inventory.ChangeEquippedItem(_equippedIndex);
+            inventory.ChangeEquippedItem(_equippedIndex);
 
-        if(!_isAttacking)
-        {
-            bool att = Input_Manager.GetCustomAxisRawDown("Attack");
-            if (att && inventory.IsEquippedItemTool())
+            if (!_isAttacking)
             {
-                //animator.SetTrigger("Attack");
-                Hit_Destroyable();
+                bool att = Input_Manager.GetCustomAxisRawDown("Attack");
+                if (att && inventory.IsEquippedItemTool())
+                {
+                    //animator.SetTrigger("Attack");
+                    Hit_Destroyable();
+                }
             }
-        }
 
-        if (Input_Manager.GetCustomAxisRawDown("Interact") && inventory.IsEquippedFood())
-        {
-            inventory.DecreaseItemCount(inventory.Equipped_Item);
-            stats.Saturate(inventory.Equipped_Item);
-        }
-
-        RaycastHit _highInfo;
-        RaycastHit _inteInfo;
-        _aimStart.rotation = _normalCam.transform.rotation;
-        if (_lastHighlighted != null)
-            _lastHighlighted.Lowlight();
-
-        if (Physics.Raycast(_aimStart.position, _aimStart.forward * stats.pick_up_distance * 3, out _highInfo, stats.pick_up_distance*3, stats.highlightable_layers))
-        {
-            Highlightable _object;
-            if (_highInfo.collider.TryGetComponent(out _object))
+            if (Input_Manager.GetCustomAxisRawDown("Interact") && inventory.IsEquippedFood())
             {
-                _itemText.text = _object.GetMessage();
-                _lastHighlighted = _object;
-                _object.Highlight();
+                inventory.DecreaseItemCount(inventory.Equipped_Item);
+                stats.Saturate(inventory.Equipped_Item);
             }
-        }
-        else
-            _itemText.text = "";
 
-        if (Physics.Raycast(_aimStart.position, _aimStart.forward * stats.pick_up_distance * 3, out _inteInfo, stats.pick_up_distance * 3, stats.interactable_layers))
-        {
-            Interactable _object;
-            if (_inteInfo.collider.TryGetComponent(out _object) && Input_Manager.GetCustomAxisRawDown("Interact") /*&& _state == PlayerState.normal*/)
+            RaycastHit _highInfo;
+            RaycastHit _inteInfo;
+            _aimStart.rotation = _normalCam.transform.rotation;
+            if (_lastHighlighted != null)
+                _lastHighlighted.Lowlight();
+
+            if (Physics.Raycast(_aimStart.position, _aimStart.forward * stats.pick_up_distance * 3, out _highInfo, stats.pick_up_distance * 3, stats.highlightable_layers))
             {
-                if (Tutorial.TutorialInstance != null)
-                    Tutorial.TutorialInstance.Interacted();
-
-                _object.Interact();
+                Highlightable _object;
+                if (_highInfo.collider.TryGetComponent(out _object))
+                {
+                    _itemText.text = _object.GetMessage();
+                    _lastHighlighted = _object;
+                    _object.Highlight();
+                }
             }
-        }
-        if (Physics.Raycast(_aimStart.position, _aimStart.forward * stats.pick_up_distance * 3, out _inteInfo, stats.pick_up_distance * 3, stats.plot_layers))
-        {
-            Plot _plot;
+            else
+                _itemText.text = "";
 
-            if (_inteInfo.collider.TryGetComponent(out _plot))
-                if (Input_Manager.GetCustomAxisRawDown("Interact"))
-                    SeedOrWater(_plot);
+            if (Physics.Raycast(_aimStart.position, _aimStart.forward * stats.pick_up_distance * 3, out _inteInfo, stats.pick_up_distance * 3, stats.interactable_layers))
+            {
+                Interactable _object;
+                if (_inteInfo.collider.TryGetComponent(out _object) && Input_Manager.GetCustomAxisRawDown("Interact") /*&& _state == PlayerState.normal*/)
+                {
+                    if (Tutorial.TutorialInstance != null)
+                        Tutorial.TutorialInstance.Interacted();
+
+                    _object.Interact();
+                }
+            }
+            if (Physics.Raycast(_aimStart.position, _aimStart.forward * stats.pick_up_distance * 3, out _inteInfo, stats.pick_up_distance * 3, stats.plot_layers))
+            {
+                Plot _plot;
+
+                if (_inteInfo.collider.TryGetComponent(out _plot))
+                    if (Input_Manager.GetCustomAxisRawDown("Interact"))
+                        SeedOrWater(_plot);
+            }
         }
     }
     internal void StartAttacking()

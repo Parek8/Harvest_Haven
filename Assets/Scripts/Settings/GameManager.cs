@@ -87,6 +87,7 @@ internal class GameManager : MonoBehaviour
         if (Cursor.lockState != lock_mode)
             Cursor.lockState = lock_mode;
     }
+    public void CursorLocked(bool locked) => Cursor_Needed((locked) ? CursorLockMode.Locked : CursorLockMode.None);
     public void PauseGame()
     {
         Cursor_Needed(CursorLockMode.None);

@@ -1,7 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using System.Threading;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,11 +10,13 @@ internal class Destroyable : MonoBehaviour
     [SerializeField] float max_hp = 20;
     [SerializeField] List<Item> dropped_items;
     [SerializeField] List<Item.ToolTypes> types;
+    [SerializeField] ObjectType ObjectType;
 
     [SerializeField] Gradient health_colors;
     [SerializeField] Image filled_health_bar;
     [SerializeField] UI_Behaviour obj_canvas;
     [field: SerializeField] GameObject CanvasPrefab;
+    List<AudioSource> HitSounds;
 
     float hp = 20;
     Player_Movement pl;
@@ -48,11 +48,17 @@ internal class Destroyable : MonoBehaviour
         pl = GameManager.game_manager.player_transform.GetComponent<Player_Movement>();
         StartCoroutine("Cycle");        
         environment_parent = GameManager.game_manager.environment_parent;
+
+        HitSounds = GameManager.game_manager.AudioManagerInstance.Sounds[ObjectType];
     }
 
     internal void Damage(float damage)
     {
         this.hp -= damage;
+
+        if (HitSounds.Count > 0)
+            GameManager.game_manager.AudioManagerInstance.PlaySound(HitSounds[Random.Range(0, HitSounds.Count)]);
+
         if (this.hp <= 0 )
         {
             Destroy(gameObject);
@@ -154,4 +160,11 @@ internal class Destroyable : MonoBehaviour
 
         return null;
     }
+}
+
+internal enum ObjectType
+{
+    Tree,
+    Rock,
+
 }

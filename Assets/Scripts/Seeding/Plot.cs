@@ -1,19 +1,31 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 internal class Plot : Interactable
 {
-    internal int PlotIndex { get; private set; }
+    [field: SerializeField] internal int PlotIndex;
     internal bool isWatered { get; private set; } = true;
     internal PlantObject plantedPlant { get; private set; }
     internal int Days = 0;
 
     List<uint> times = new List<uint>();
     List<GameObject> stages = new List<GameObject>();
+    private void Awake()
+    {
+        StartCoroutine("Register");
+    }
+    IEnumerator Register()
+    {
+        //while (GameManager.game_manager == null)
+            yield return null;
+
+        GameManager.game_manager.all_crops.Add(this);
+    }
+
     private new void Start()
     {
         base.Start();
-        GameManager.game_manager.all_crops.Add(this);
         Day_Cycle.On_New_Day_Subscribe(OnDayChange);
     }
     internal void SetIndex(int index) => this.PlotIndex = index;
@@ -92,7 +104,7 @@ internal class Plot : Interactable
     {
         DestroyPlant();
         Vector3 _spawnPos = transform.position + GetGameObjectOffset();
-        GameObject _stage = Instantiate(stages[0], _spawnPos, Quaternion.identity, transform);
+        GameObject _stage = Instantiate(stages[0], _spawnPos, Quaternion.Euler(0, 0, 90), transform);
         //Debug.Log(_stage.name);
         times.RemoveAt(0);
         stages.RemoveAt(0);

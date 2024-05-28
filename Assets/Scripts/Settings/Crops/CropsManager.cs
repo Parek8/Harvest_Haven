@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEngine;
 
 internal class CropsManager : MonoBehaviour
@@ -48,15 +49,24 @@ internal class CropsManager : MonoBehaviour
             {
                 string[] _items = _content.Split(';');
 
-                for (int i = 0; i < _items.Length - 1; i++)
+                for (int i = 0; i < _items.Length; i++)
                 {
                     string _item = _items[i];
-                    string[] _cropItems = _item.Split(':');
+                    if (_item != String.Empty)
+                    {
+                        string[] _cropItems = _item.Split(':');
 
-                    int _plotIndex = Convert.ToInt32(_cropItems[0]);
-                    int _cropIndex = Convert.ToInt32(_cropItems[1]);
-                    int _cropDays = Convert.ToInt32(_cropItems[2]);
-                    _crops.Find(_plot => _plot.PlotIndex == _plotIndex).LoadPlot(GameManager.game_manager.FindPlantObject(_cropIndex), _cropDays);
+                        int _plotIndex = Convert.ToInt32(_cropItems[0]);
+                        int _cropIndex = Convert.ToInt32(_cropItems[1]);
+                        int _cropDays = Convert.ToInt32(_cropItems[2]);
+
+                        Plot _crop = _crops.Find(_plot => _plot.PlotIndex == _plotIndex);
+
+                        if (_crop != null)
+                            _crop.LoadPlot(GameManager.game_manager.FindPlantObject(_cropIndex), _cropDays);
+                        else
+                            Debug.Log(GameManager.game_manager.all_crops.Count);
+                    }
                 }
             }
             else

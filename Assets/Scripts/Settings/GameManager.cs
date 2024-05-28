@@ -32,6 +32,15 @@ internal class GameManager : MonoBehaviour
 
         LoadGraphics();
     }
+    private void Start()
+    {
+        StartCoroutine("Register");
+    }
+    IEnumerator Register()
+    {
+        yield return new WaitForSeconds(0.1f);
+        CropsManagerInstance.LoadCrops();
+    }
     internal void LoadGraphics()
     {
         Screen.SetResolution(PlayerSettings.RESX, PlayerSettings.RESY, PlayerSettings.FULLSCREEN);
@@ -59,6 +68,7 @@ internal class GameManager : MonoBehaviour
     [field: SerializeField] internal Transform UIVisibleParent { get; private set; }
     [field: SerializeField] internal UI_Behaviour PauseMenu { get; private set; }
     [field: SerializeField] internal CinemachineVirtualCamera FreeCamera { get; private set; }
+    [field: SerializeField] internal AudioManager AudioManagerInstance { get; private set; }
 
     private void OnApplicationQuit()
     {

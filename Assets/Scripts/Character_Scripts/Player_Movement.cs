@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -8,6 +10,7 @@ internal class Player_Movement : MonoBehaviour
     [field: SerializeField] Transform cam;
     [field: SerializeField] float turn_smooth_speed;
     [field: SerializeField] float GravityForce;
+    [field: SerializeField] List<AudioSource> FootSteps;
 
     Character_Stats stats;
     CharacterController controller;
@@ -15,6 +18,7 @@ internal class Player_Movement : MonoBehaviour
 
     private float turn_smooth_velocity;
     private float verticalVelocity;
+    private Vector3 lastPosition;
     private void Start()
     {
         stats = GetComponent<Character_Stats>();
@@ -23,9 +27,12 @@ internal class Player_Movement : MonoBehaviour
 
         GameManager.game_manager.Cursor_Needed(CursorLockMode.Locked);
         GameManager.game_manager.ResumeGame();
+        StartCoroutine("WalkSound");
     }
     void Update()
     {
+        lastPosition = transform.position;
+
         float x = Input_Manager.GetCustomAxisRaw("Horizontal");
         float y = Input_Manager.GetCustomAxisRaw("Vertical");
         Vector3 direction = new Vector3(x, 0, y).normalized;
@@ -50,6 +57,22 @@ internal class Player_Movement : MonoBehaviour
         controller.Move(new Vector3(0, -1, 0) * verticalVelocity * Time.deltaTime);
         //if (Input_Manager.GetCustomAxisRaw("Attack") != 0)
         //    Rotate(direction);
+    }
+
+    IEnumerator WalkSound()
+    {
+        AudioManager _audioManager = GameManager.game_manager.AudioManagerInstance;
+        while (true)
+        {
+            if (controller.isGrounded && lastPosition != transform.position)
+            {
+                if (FootSteps.Count > 0)
+                    _audioManager.PlaySound(FootSteps[Random.Range(0, FootSteps.Count)]);
+                yield return new WaitForSeconds(.3f);
+            }
+            else
+                yield return new WaitForEndOfFrame();
+        }
     }
     private void Move(Vector3 direction)
     {

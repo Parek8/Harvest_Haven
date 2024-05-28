@@ -64,7 +64,7 @@ internal class Player_Movement : MonoBehaviour
         AudioManager _audioManager = GameManager.game_manager.AudioManagerInstance;
         while (true)
         {
-            if (controller.isGrounded && lastPosition != transform.position)
+            if (controller.isGrounded && lastPosition != transform.position && this.enabled)
             {
                 if (FootSteps.Count > 0)
                     _audioManager.PlaySound(FootSteps[Random.Range(0, FootSteps.Count)]);
@@ -96,7 +96,7 @@ internal class Player_Movement : MonoBehaviour
     internal void StopAllAnimations()
     {
         //Animate("Idle", false);
-        //Animate("Running", false);
+        Animate("Running", false);
     }
 
     internal float Get_Distance(Transform dis)

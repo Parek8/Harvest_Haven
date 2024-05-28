@@ -104,7 +104,6 @@ internal class Character_Behaviour : MonoBehaviour
                 if (Tutorial.TutorialInstance != null)
                     Tutorial.TutorialInstance.Interacted();
 
-                Debug.Log(_object.name);
                 _object.Interact();
             }
         }

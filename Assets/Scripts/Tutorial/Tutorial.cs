@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -67,6 +68,19 @@ public sealed class Tutorial : MonoBehaviour
     [field: SerializeField] Item Rock;
     bool _crafted = false;
 
+    [field: Header("SEEDING")]
+    [field: SerializeField] UI_Behaviour SeedDialog;
+    [field: SerializeField] List<Item> Seeds;
+    bool _seeded = false;
+
+    /* -----------------------------------------------
+       |                                             |
+       |             NOT IN USE!!!                   |
+       |             NOT IN USE!!!                   |
+       |             NOT IN USE!!!                   |
+       |                                             |
+       ----------------------------------------------- */
+
     [field: Header("SHOPPING BUY")]
     [field: SerializeField] UI_Behaviour BuyDialog;
     bool _boughtItem = false;
@@ -86,6 +100,7 @@ public sealed class Tutorial : MonoBehaviour
         BuyDialog.Hide();
         SelDialog.Hide();
         CraftDialog.Hide();
+        SeedDialog.Hide();
 
         InitMovement();
     }
@@ -127,6 +142,10 @@ public sealed class Tutorial : MonoBehaviour
 
             case TutorialState.Smelt:
                 SmeltTutorial();
+                break;
+
+            case TutorialState.Seeding:
+                SeedingTutorial();
                 break;
 
             default:
@@ -215,12 +234,26 @@ public sealed class Tutorial : MonoBehaviour
     {
         yield return new WaitForSeconds(TransitionDelay);
 
-
+        IntDialog.Hide();
+        CraftDialog.Show();
     }
 
     internal void Crafted()
     {
         _crafted = true;
+    }
+
+    private IEnumerator InitSeeding()
+    {
+        yield return new WaitForSeconds(TransitionDelay);
+
+        CraftDialog.Hide();
+        SeedDialog.Show();
+    }
+
+    internal void Seeded()
+    {
+        _seeded = true;
     }
 
     internal void BoughtItem()
@@ -330,12 +363,16 @@ public sealed class Tutorial : MonoBehaviour
     {
         if (_crafted)
         {
-            //_tutorialState = TutorialState.Destroy;
-            //StartCoroutine(InitDestroy());
-            Debug.Log("Farm");
+            _tutorialState = TutorialState.Seeding;
+            StartCoroutine(InitSeeding());
         }
     }
     private void SmeltTutorial()
+    {
+
+    }
+
+    private void SeedingTutorial()
     {
 
     }
@@ -346,10 +383,12 @@ public sealed class Tutorial : MonoBehaviour
         Inventory,
         DragItems,
         Interact,
-        ShoppingBuy,
-        ShoppingSell,
         Destroy,
         Craft,
         Smelt,
+        Seeding,
+        // NOT IN USE
+        ShoppingBuy,
+        ShoppingSell,
     }
 }

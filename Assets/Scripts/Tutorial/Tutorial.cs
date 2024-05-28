@@ -248,9 +248,10 @@ public sealed class Tutorial : MonoBehaviour
 
         CraftDialog.Hide();
         SeedDialog.Show();
-        //PlayerInventory.Add(Seeds[Random.Range(0, Seeds.Count)]);
-        //PlayerInventory.Add(Seeds[Random.Range(0, Seeds.Count)]);
-        //PlayerInventory.Add(Seeds[Random.Range(0, Seeds.Count)]);
+
+        GameManager.game_manager.player_inventory.Add(Seeds[Random.Range(0, Seeds.Count)]);
+        GameManager.game_manager.player_inventory.Add(Seeds[Random.Range(0, Seeds.Count)]);
+        GameManager.game_manager.player_inventory.Add(Seeds[Random.Range(0, Seeds.Count)]);
     }
 
     internal void Seeded()

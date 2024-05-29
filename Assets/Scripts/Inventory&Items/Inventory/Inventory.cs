@@ -11,7 +11,7 @@ internal class Inventory : MonoBehaviour
 
     Item _equipped_item;
     internal Item Equipped_Item => _equipped_item;
-    Action _slotChanged;
+    Action<int> _slotChanged;
     PlayerStats _stats;
     void Start()
     {
@@ -29,11 +29,11 @@ internal class Inventory : MonoBehaviour
         slots.Sort((item1, item2) => item1.slot_index.CompareTo(item2.slot_index));
 
         LoadInventory();
-        Clear_Item();
+        Clear_Item(0);
     }
     internal void ChangeEquippedItem(int index)
     {
-        _slotChanged?.Invoke();
+        _slotChanged?.Invoke(index);
 
         _equipped_item = slots[index].Get_Item();
 
@@ -119,7 +119,8 @@ internal class Inventory : MonoBehaviour
     internal void Equip(Item item)
     {
         _equipped_item = item;
-        _slotChanged?.Invoke();
+        _slotChanged?.Invoke(0);
+
         if (item != null)
         {
             InstantiateItem();
@@ -140,12 +141,12 @@ internal class Inventory : MonoBehaviour
                 Instantiate(_equipped_item.ItemPrefab, weaponPoint);
     }
 
-    internal void Clear_Item()
+    internal void Clear_Item(int index)
     {
         _equipped_item = GameManager.game_manager.Null_Item;
     }    
 
-    internal void AddToSlotChangedAction(Action action)
+    internal void AddToSlotChangedAction(Action<int> action)
     {
         _slotChanged += action;
     }

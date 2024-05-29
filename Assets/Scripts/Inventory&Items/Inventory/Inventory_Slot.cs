@@ -35,8 +35,9 @@ internal class Inventory_Slot : MonoBehaviour, IPointerDownHandler, IPointerUpHa
         item_image_initial_position = item_image.transform.localPosition;
         item_count_initial_position = item_count.transform.localPosition;
         background = GetComponent<Image>();
+
         if (isHotbarSlot)
-            GameManager.game_manager.player_inventory.AddToSlotChangedAction(() => { SetBackground(unfocusedColor); });
+            GameManager.game_manager.player_inventory.AddToSlotChangedAction((int index) => { SetBackground((index == slot_index) ? focusedColor : unfocusedColor); });
     }
 
     void FixedUpdate()

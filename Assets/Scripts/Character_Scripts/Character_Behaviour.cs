@@ -71,7 +71,7 @@ internal class Character_Behaviour : MonoBehaviour
                 bool att = Input_Manager.GetCustomAxisRawDown("Attack");
                 if (att && inventory.IsEquippedItemTool())
                 {
-                    //animator.SetTrigger("Attack");
+                    animator.SetTrigger("Attack");
                     Hit_Destroyable();
                     _attackCooldown = 0;
                 }
@@ -162,7 +162,7 @@ internal class Character_Behaviour : MonoBehaviour
     private void SeedOrWater(Plot _plot)
     {
         if (_state == PlayerState.seeding)
-            _plot.Plant(inventory.Equipped_Item.PlantableObject, inventory.Equipped_Item);
+            _plot.Plant(inventory.Equipped_Item.PlantableObject, inventory.Equipped_Item, true);
         else
             Debug.Log("There was an Error!");
     }

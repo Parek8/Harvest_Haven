@@ -72,6 +72,10 @@ public sealed class Tutorial : MonoBehaviour
     [field: SerializeField] List<Item> Seeds;
     bool _seeded = false;
 
+    [field: Header("HARVESTING")]
+    [field: SerializeField] UI_Behaviour HarvestDialog;
+    bool _harvested = false;
+
     /* -----------------------------------------------
        |                                             |
        |             NOT IN USE!!!                   |
@@ -100,6 +104,7 @@ public sealed class Tutorial : MonoBehaviour
         SelDialog.Hide();
         CraftDialog.Hide();
         SeedDialog.Hide();
+        HarvestDialog.Hide();
 
         InitMovement();
     }
@@ -147,12 +152,16 @@ public sealed class Tutorial : MonoBehaviour
                 SeedingTutorial();
                 break;
 
+            case TutorialState.Harvesting:
+                HarvestingTutorial();
+                break;
+
             default:
                 Debug.Log("Tak a je to v pièi! :)");
                 break;
         }
     }
-    
+
     #region Init
     private void InitMovement()
     {
@@ -199,9 +208,7 @@ public sealed class Tutorial : MonoBehaviour
 
         SwapDialog.Hide();
         DesDialog.Show();
-        GameManager.game_manager.player_inventory.Add(Seeds[0]);
-        GameManager.game_manager.player_inventory.Add(Seeds[1]);
-        GameManager.game_manager.player_inventory.Add(Seeds[2]);
+
         GameManager.game_manager.player_inventory.Add(AxeItem);
     }
 
@@ -243,7 +250,7 @@ public sealed class Tutorial : MonoBehaviour
     {
         _crafted = true;
     }
-
+   
     private IEnumerator InitSeeding()
     {
         yield return new WaitForSeconds(TransitionDelay);
@@ -255,12 +262,23 @@ public sealed class Tutorial : MonoBehaviour
         GameManager.game_manager.player_inventory.Add(Seeds[Random.Range(0, Seeds.Count)]);
         GameManager.game_manager.player_inventory.Add(Seeds[Random.Range(0, Seeds.Count)]);
     }
-
     internal void Seeded()
     {
         _seeded = true;
     }
 
+    private IEnumerator InitHarvesting()
+    {
+        yield return new WaitForSeconds(TransitionDelay);
+
+        SeedDialog.Hide();
+        HarvestDialog.Show();
+    }
+
+    internal void Harvested()
+    {
+        _harvested = true;
+    }
     internal void BoughtItem()
     {
         if (_tutorialState == TutorialState.ShoppingBuy)
@@ -379,7 +397,18 @@ public sealed class Tutorial : MonoBehaviour
 
     private void SeedingTutorial()
     {
+        if (_seeded)
+        {
+            _tutorialState = TutorialState.Harvesting;
+            StartCoroutine(InitHarvesting());
+        }
+    }
+    private void HarvestingTutorial()
+    {
+        if (_harvested)
+        {
 
+        }
     }
     #endregion Tutorials
     private enum TutorialState
@@ -392,6 +421,7 @@ public sealed class Tutorial : MonoBehaviour
         Craft,
         Smelt,
         Seeding,
+        Harvesting,
         // NOT IN USE
         ShoppingBuy,
         ShoppingSell,

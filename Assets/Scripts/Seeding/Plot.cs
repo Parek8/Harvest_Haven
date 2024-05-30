@@ -11,6 +11,8 @@ internal class Plot : Interactable
 
     List<uint> times = new List<uint>();
     List<GameObject> stages = new List<GameObject>();
+
+    internal bool IsOccupied { get; private set; } = false;
     private void Awake()
     {
         StartCoroutine("Register");
@@ -52,16 +54,21 @@ internal class Plot : Interactable
         }
     }
 
-    internal void Plant(PlantObject plant, Item item = null)
+    internal void Plant(PlantObject plant, Item item = null, bool byPlayer = false)
     {
-        if (plant != null)
+        if (plant != null && !IsOccupied)
         {
+            if (Tutorial.TutorialInstance != null && byPlayer)
+                Tutorial.TutorialInstance.Seeded();
+
             plantedPlant = plant;
             times = new List<uint>((List<uint>)plantedPlant.Times);
             stages = new List<GameObject>((List<GameObject>)plantedPlant.Stages);
             if (item != null)
                 GameManager.game_manager.player_inventory.DecreaseItemCount(item);
+
             SpawnNewStage();
+            IsOccupied = true;
         }
     }
 
@@ -105,14 +112,14 @@ internal class Plot : Interactable
         DestroyPlant();
         Vector3 _spawnPos = transform.position + GetGameObjectOffset();
         GameObject _stage = Instantiate(stages[0], _spawnPos, Quaternion.Euler(270, 0, 0), transform);
-        //Debug.Log(_stage.name);
+
         times.RemoveAt(0);
         stages.RemoveAt(0);
 
         if (stages.Count <= 0 && times.Count <= 0)
         {
             DestroyPlant();
-            _stage.AddComponent<Harvestable>().Setup((List<Item>)plantedPlant.DroppedItems);
+            _stage.AddComponent<Harvestable>().Setup((List<Item>)plantedPlant.DroppedItems, () => { this.IsOccupied = false; });
         }
     }
 

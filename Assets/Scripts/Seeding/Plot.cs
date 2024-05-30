@@ -48,11 +48,12 @@ internal class Plot : Interactable
                 //if ((stages.Count == times.Count) && stages.Count > 0)
                 //    if (times[0] <= 0)
                 //        SpawnNewStage();
+                //if (stages.Count > 0) // Check if there are remaining stages
                 OnDayChange();
             }
-            DestroyPlant();
         }
     }
+
 
     internal void Plant(PlantObject plant, Item item = null, bool byPlayer = false)
     {
@@ -118,7 +119,6 @@ internal class Plot : Interactable
 
         if (stages.Count <= 0 && times.Count <= 0)
         {
-            DestroyPlant();
             _stage.AddComponent<Harvestable>().Setup((List<Item>)plantedPlant.DroppedItems, () => { this.IsOccupied = false; });
         }
     }
@@ -132,15 +132,11 @@ internal class Plot : Interactable
 
     private void DestroyPlant()
     {
-        for (int i = 0; i < transform.childCount; i++)
+        for (int i = transform.childCount; i > 0; i--)
         {
-            //Debug.Log(transform.GetChild(i).name);
+            Destroy(transform.GetChild(i-1).gameObject);
         }
-        if (transform.childCount != 0)
-        {
-            Destroy(transform.GetChild(0).gameObject);
-        }
-        //Debug.Log("_______________________________________________");
+        Debug.Log("_______________________________________________");
     }
 
     internal override void Interact()

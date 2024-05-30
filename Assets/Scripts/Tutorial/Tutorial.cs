@@ -199,7 +199,9 @@ public sealed class Tutorial : MonoBehaviour
 
         SwapDialog.Hide();
         DesDialog.Show();
-
+        GameManager.game_manager.player_inventory.Add(Seeds[0]);
+        GameManager.game_manager.player_inventory.Add(Seeds[1]);
+        GameManager.game_manager.player_inventory.Add(Seeds[2]);
         GameManager.game_manager.player_inventory.Add(AxeItem);
     }
 

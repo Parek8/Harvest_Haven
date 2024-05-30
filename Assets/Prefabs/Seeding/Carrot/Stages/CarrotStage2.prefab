@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7644314335863337526
+--- !u!1 &1919837016495154098
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,11 +8,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8518685896318142210}
-  - component: {fileID: 1533319639432892649}
-  - component: {fileID: 6204615654150487090}
-  - component: {fileID: -4140379401460521397}
-  - component: {fileID: -6384748929806602561}
+  - component: {fileID: 3866396836976895733}
+  - component: {fileID: 6712343220870574132}
+  - component: {fileID: 6073851513505686883}
+  - component: {fileID: 3210492559330878045}
+  - component: {fileID: 5258370127524755141}
   m_Layer: 0
   m_Name: CarrotStage2
   m_TagString: Untagged
@@ -20,36 +20,36 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8518685896318142210
+--- !u!4 &3866396836976895733
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7644314335863337526}
+  m_GameObject: {fileID: 1919837016495154098}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.4482924, y: 0.7464363, z: 1.510091}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_Father: {fileID: 7512555151895479972}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
---- !u!33 &1533319639432892649
+--- !u!33 &6712343220870574132
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7644314335863337526}
+  m_GameObject: {fileID: 1919837016495154098}
   m_Mesh: {fileID: -219130813288042301, guid: f77b02eb710eb1b4da68240bc63521e1, type: 3}
---- !u!23 &6204615654150487090
+--- !u!23 &6073851513505686883
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7644314335863337526}
+  m_GameObject: {fileID: 1919837016495154098}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -86,13 +86,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &-4140379401460521397
+--- !u!114 &3210492559330878045
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7644314335863337526}
+  m_GameObject: {fileID: 1919837016495154098}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: efcae32e6808fa348a2a392873efd9db, type: 3}
@@ -103,13 +103,13 @@ MonoBehaviour:
   Destroyable: 0
   Attackable: 0
   _highlighter: {fileID: 0}
---- !u!64 &-6384748929806602561
+--- !u!64 &5258370127524755141
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7644314335863337526}
+  m_GameObject: {fileID: 1919837016495154098}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -125,3 +125,35 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -219130813288042301, guid: f77b02eb710eb1b4da68240bc63521e1, type: 3}
+--- !u!1 &8257122589201448146
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7512555151895479972}
+  m_Layer: 9
+  m_Name: CarrotStage2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7512555151895479972
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8257122589201448146}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3866396836976895733}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

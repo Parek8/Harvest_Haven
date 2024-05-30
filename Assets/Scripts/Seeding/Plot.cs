@@ -104,7 +104,7 @@ internal class Plot : Interactable
     {
         DestroyPlant();
         Vector3 _spawnPos = transform.position + GetGameObjectOffset();
-        GameObject _stage = Instantiate(stages[0], _spawnPos, Quaternion.Euler(0, 0, 90), transform);
+        GameObject _stage = Instantiate(stages[0], _spawnPos, Quaternion.Euler(270, 0, 0), transform);
         //Debug.Log(_stage.name);
         times.RemoveAt(0);
         stages.RemoveAt(0);

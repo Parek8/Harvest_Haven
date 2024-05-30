@@ -101,7 +101,7 @@ internal class Character_Behaviour : MonoBehaviour
             }
             else
                 _itemText.text = "";
-
+            Debug.DrawRay(_aimStart.position, _aimStart.forward * stats.PickUpDistance * 3, Color.red, stats.PickUpDistance * 3);
             if (Physics.Raycast(_aimStart.position, _aimStart.forward * stats.PickUpDistance * 3, out _inteInfo, stats.PickUpDistance * 3, stats.InteractableLayers))
             {
                 Interactable _object;

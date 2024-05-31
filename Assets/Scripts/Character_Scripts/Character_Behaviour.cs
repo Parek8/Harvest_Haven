@@ -13,6 +13,7 @@ internal class Character_Behaviour : MonoBehaviour
     [field: SerializeField] Transform _aimStart;
     [field: SerializeField] TMP_Text _itemText;
     [field: SerializeField] Animator animator;
+    [field: SerializeField] CinemachineVirtualCamera playerCamera;
 
     PlayerStats stats;
     Inventory inventory;
@@ -25,6 +26,7 @@ internal class Character_Behaviour : MonoBehaviour
 
     int _equippedIndex = 0;
     private float _attackCooldown = 0;
+
     private void Start()
     {
         stats = GetComponent<PlayerStats>();
@@ -41,7 +43,6 @@ internal class Character_Behaviour : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
             Day_Cycle.Next_Day();
 
-        // __NON_DEBUG__
         if (Input_Manager.GetCustomAxisRawDown("Inventory"))
             inventory_screen.Change_State();
 
@@ -52,14 +53,10 @@ internal class Character_Behaviour : MonoBehaviour
         {
             _attackCooldown += Time.deltaTime;
 
-            //else if (Input.GetKeyDown(KeyCode.Escape) && GameManager.game_manager.is_game_paused)
-            //    GameManager.game_manager.ResumeGame();
-
             for (int i = 0; i < hotbar.Count; i++)
             {
                 if (Input_Manager.GetCustomAxisRawDown($"Slot_{i + 1}"))
                 {
-                    //hotbar[i].Equip();
                     _equippedIndex = i;
                 }
             }
@@ -71,7 +68,11 @@ internal class Character_Behaviour : MonoBehaviour
                 bool att = Input_Manager.GetCustomAxisRawDown("Attack");
                 if (att && inventory.IsEquippedItemTool())
                 {
+                    StopMovement();
+                    Invoke("StartMovement", stats.AttackDelay);
                     animator.SetTrigger("Attack");
+                    animator.SetFloat("AttackSpeed", 1 / stats.AttackDelay);
+                    RotateTowardsCamera();
                     Hit_Destroyable();
                     _attackCooldown = 0;
                 }
@@ -105,7 +106,7 @@ internal class Character_Behaviour : MonoBehaviour
             if (Physics.Raycast(_aimStart.position, _aimStart.forward * stats.PickUpDistance * 3, out _inteInfo, stats.PickUpDistance * 3, stats.InteractableLayers))
             {
                 Interactable _object;
-                if (_inteInfo.collider.TryGetComponent(out _object) && Input_Manager.GetCustomAxisRawDown("Interact") /*&& _state == PlayerState.normal*/)
+                if (_inteInfo.collider.TryGetComponent(out _object) && Input_Manager.GetCustomAxisRawDown("Interact"))
                 {
                     if (Tutorial.TutorialInstance != null)
                         Tutorial.TutorialInstance.Interacted();
@@ -116,13 +117,22 @@ internal class Character_Behaviour : MonoBehaviour
             if (Physics.Raycast(_aimStart.position, _aimStart.forward * stats.PickUpDistance * 3, out _inteInfo, stats.PickUpDistance * 3, stats.PlotLayers))
             {
                 Plot _plot;
-
                 if (_inteInfo.collider.TryGetComponent(out _plot))
                     if (Input_Manager.GetCustomAxisRawDown("Interact"))
                         SeedOrWater(_plot);
             }
         }
     }
+
+    private void RotateTowardsCamera()
+    {
+        Vector3 cameraForward = playerCamera.transform.forward;
+        cameraForward.y = 0; // Keep only the horizontal direction
+        transform.rotation = Quaternion.LookRotation(cameraForward);
+    }
+
+    private void StopMovement() => this.movement.enabled = false;
+    private void StartMovement() => this.movement.enabled = true;
     internal void StartAttacking()
     {
         _isAttacking = true;

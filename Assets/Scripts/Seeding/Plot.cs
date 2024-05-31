@@ -136,7 +136,7 @@ internal class Plot : Interactable
         {
             Destroy(transform.GetChild(i-1).gameObject);
         }
-        Debug.Log("_______________________________________________");
+        //Debug.Log("_______________________________________________");
     }
 
     internal override void Interact()

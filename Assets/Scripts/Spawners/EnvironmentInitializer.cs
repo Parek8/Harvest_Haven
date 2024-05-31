@@ -64,16 +64,23 @@ internal class EnvironmentInitializer : MonoBehaviour
         RaycastHit hitInfo;
         int i = 0;
 
-        while (!Physics.Raycast(new Vector3(_x, 100, _z), Vector3.down*1000, out hitInfo, 1000, GroundLayer) && i < 50)
+        while (i < 100)
         {
+            if (Physics.Raycast(new Vector3(_x, 100, _z), Vector3.down, out hitInfo, 1000))//, GroundLayer))
+            {
+                if (hitInfo.collider.gameObject.layer == LayerMask.NameToLayer("Ground"))
+                {
+                    _randomPos = hitInfo.point + _currentPos;
+                    _randomPos += new Vector3(Terrain.transform.position.x, 0.7f, Terrain.transform.position.z);
+                    return _randomPos;
+                }
+            }
             _x = Random.Range(0.00f, 1.00f) * Width;
             _z = Random.Range(0.00f, 1.00f) * Depth;
             i++;
         }
 
-        _randomPos = hitInfo.point + _currentPos;
-        _randomPos += new Vector3(Terrain.transform.position.x, 0.7f, Terrain.transform.position.z);
-        return _randomPos;
+        return Vector3.zero; // Return the last random position if no valid ground hit is found
     }
 
     private void SetHeights()

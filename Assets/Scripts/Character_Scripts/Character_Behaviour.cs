@@ -70,7 +70,7 @@ internal class Character_Behaviour : MonoBehaviour
 
             if (!_isAttacking && _attackCooldown >= stats.AttackDelay)
             {
-                bool att = Input_Manager.GetCustomAxisRawDown("Attack");
+                bool att = Input_Manager.GetCustomAxisRaw("Attack") == 1;//Input_Manager.GetCustomAxisRawDown("Attack");
                 if (att && inventory.IsEquippedItemTool())
                 {
                     StopMovement();

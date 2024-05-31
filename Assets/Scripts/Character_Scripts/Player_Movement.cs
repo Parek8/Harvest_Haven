@@ -57,6 +57,9 @@ internal class Player_Movement : MonoBehaviour
         controller.Move(new Vector3(0, -1, 0) * verticalVelocity * Time.deltaTime);
         //if (Input_Manager.GetCustomAxisRaw("Attack") != 0)
         //    Rotate(direction);
+
+        if (transform.position.x < -20 || transform.position.x > 140 || transform.position.z < -20 || transform.position.z > 120 || transform.position.y < -10 || transform.position.y > 20)
+            transform.position = new Vector3(30, 5, 30);
     }
 
     IEnumerator WalkSound()

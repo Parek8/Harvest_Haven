@@ -11,6 +11,7 @@ public class SmeltResultSlot : MonoBehaviour, IPointerClickHandler
     [field: SerializeField] Image itemIcon;
     [field: SerializeField] SmeltItemSlot smeltItem;
     [field: SerializeField] FuelItemSlot  fuelItem;
+    [field: SerializeField] GameObject FireVFX;
 
     Item item;
     int currentCapacity = 0;
@@ -22,6 +23,9 @@ public class SmeltResultSlot : MonoBehaviour, IPointerClickHandler
     {
         if (smeltItem.Get_Item() != null && fuelItem.Get_Item() != null)
         {
+            if (!FireVFX.activeInHierarchy)
+                FireVFX.SetActive(true);
+
             // smelting
             if (currCD <= 0)
             {
@@ -39,6 +43,8 @@ public class SmeltResultSlot : MonoBehaviour, IPointerClickHandler
                 currCD = maxCD;
             }
         }
+        else if (FireVFX.activeInHierarchy)
+            FireVFX.SetActive(false);
         currCD -= Time.deltaTime;
     }
     void UpdateUI()

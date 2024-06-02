@@ -7,7 +7,7 @@ internal class GetFuelItems : GetInventoryItems
     internal override void GetItems()
     {
         DestroyButtons();
-        CreateButtons((List<Item>)GameManager.game_manager.player_inventory.GetAllSmeltingFuel());
+        CreateButtons((List<Item>)GameManager.GameManagerInstance.PlayerInventory.GetAllSmeltingFuel());
     }
     internal override void CreateButtons(List<Item> _items)
     {

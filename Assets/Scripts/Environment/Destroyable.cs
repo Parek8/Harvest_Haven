@@ -20,7 +20,7 @@ internal class Destroyable : MonoBehaviour
 
     float hp = 20;
     Player_Movement pl;
-    Transform environment_parent;
+    Transform EnvironmentParent;
 
     static GameObject _canvasPrefab;
     static Gradient _gradient;
@@ -45,11 +45,11 @@ internal class Destroyable : MonoBehaviour
     protected void Start()
     {
         hp = max_hp;
-        pl = GameManager.game_manager.player_transform.GetComponent<Player_Movement>();
+        pl = GameManager.GameManagerInstance.PlayerTransform.GetComponent<Player_Movement>();
         StartCoroutine("Cycle");        
-        environment_parent = GameManager.game_manager.environment_parent;
+        EnvironmentParent = GameManager.GameManagerInstance.EnvironmentParent;
 
-        HitSounds = GameManager.game_manager.AudioManagerInstance.Sounds[ObjectType];
+        HitSounds = GameManager.GameManagerInstance.AudioManagerInstance.Sounds[ObjectType];
     }
 
     internal void Damage(float damage)
@@ -57,7 +57,7 @@ internal class Destroyable : MonoBehaviour
         this.hp -= damage;
 
         if (HitSounds.Count > 0)
-            GameManager.game_manager.AudioManagerInstance.PlaySound(HitSounds[Random.Range(0, HitSounds.Count)]);
+            GameManager.GameManagerInstance.AudioManagerInstance.PlaySound(HitSounds[Random.Range(0, HitSounds.Count)]);
 
         if (this.hp <= 0 )
         {
@@ -106,7 +106,7 @@ internal class Destroyable : MonoBehaviour
         {
             if (Random.Range(0.0f, 1.0f) <= it.SpawnRate)
             {
-                GameObject drop_rb = Instantiate(it.DropPrefab, Get_Drop_Range(), Quaternion.identity,environment_parent);
+                GameObject drop_rb = Instantiate(it.DropPrefab, Get_Drop_Range(), Quaternion.identity,EnvironmentParent);
                 //drop_rb.transform.localScale = Vector3.one / 10;
                 //drop_rb.Push_Item_Upwards();
             }

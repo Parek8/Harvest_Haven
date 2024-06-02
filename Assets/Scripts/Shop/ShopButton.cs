@@ -12,11 +12,11 @@ internal class ShopButton : MonoBehaviour
     Item _item;
     internal void Buy()
     {
-        GameManager.game_manager.player_inventory.Add(_item);
+        GameManager.GameManagerInstance.PlayerInventory.Add(_item);
     }
     internal void Sell()
     {
-        if (GameManager.game_manager.player_inventory.Remove(_item))
+        if (GameManager.GameManagerInstance.PlayerInventory.Remove(_item))
         {
 
         }

@@ -51,7 +51,7 @@ internal class SmeltItemSlot : MonoBehaviour, IPointerClickHandler
         }
         else
         {
-            item_image.sprite = GameManager.game_manager.Null_Item.ItemIcon;
+            item_image.sprite = GameManager.GameManagerInstance.NullItem.ItemIcon;
             countLabel.text = "";
         }
     }
@@ -65,11 +65,11 @@ internal class SmeltItemSlot : MonoBehaviour, IPointerClickHandler
     {
         if (this.item != null)
             for (int i = 0; i < count; i++)
-                GameManager.game_manager.player_inventory.Add(this.item);
+                GameManager.GameManagerInstance.PlayerInventory.Add(this.item);
 
         this.item = _item;
-        this.count = GameManager.game_manager.player_inventory.GetItemCountInInventory(this.item);
+        this.count = GameManager.GameManagerInstance.PlayerInventory.GetItemCountInInventory(this.item);
         for (int i = 0; i < count; i++)
-            GameManager.game_manager.player_inventory.DecreaseItemCount(this.item);
+            GameManager.GameManagerInstance.PlayerInventory.DecreaseItemCount(this.item);
     }
 }

@@ -21,8 +21,8 @@ internal class Settings_Button : MonoBehaviour
     }
     private void DecideKeycode()
     {
-        if (GameManager.game_manager.keybinds.ContainsKey(keybind_name))
-            keycode = GameManager.game_manager.keybinds[keybind_name];
+        if (GameManager.GameManagerInstance.keybinds.ContainsKey(keybind_name))
+            keycode = GameManager.GameManagerInstance.keybinds[keybind_name];
 
         else if (keycode == KeyCode.None)
                 RevertToDefault();
@@ -31,7 +31,7 @@ internal class Settings_Button : MonoBehaviour
     {
         DecideKeycode();
         RenderKeyCode();
-        if (!GameManager.game_manager.IsKeybindSaved(keybind_name))
+        if (!GameManager.GameManagerInstance.IsKeybindSaved(keybind_name))
             SetValue();
 
     }
@@ -75,6 +75,6 @@ internal class Settings_Button : MonoBehaviour
     }
     private void SetValue()
     {
-        GameManager.game_manager.SetKeybind(keybind_name, keycode);
+        GameManager.GameManagerInstance.SetKeybind(keybind_name, keycode);
     }
 }

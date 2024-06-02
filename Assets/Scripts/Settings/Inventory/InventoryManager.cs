@@ -9,7 +9,7 @@ internal class InventoryManager : MonoBehaviour
     internal void SaveInventory()
     {
         string _savedContent = "";
-        List<Inventory_Slot> _slots = GameManager.game_manager.player_inventory.slots;
+        List<Inventory_Slot> _slots = GameManager.GameManagerInstance.PlayerInventory.slots;
 
         for (int i = 0; i < _slots.Count; i++)
         {
@@ -35,7 +35,7 @@ internal class InventoryManager : MonoBehaviour
 
     internal IReadOnlyCollection<InventoryEntry> LoadInventory()
     {
-        Dictionary<int, Item> _allItems = GameManager.game_manager._allItems;
+        Dictionary<int, Item> AllItemsDictionary = GameManager.GameManagerInstance.AllItemsDictionary;
         List<InventoryEntry> _newItems = new();
 
         string _path = Directory.GetCurrentDirectory() + _inventorySavePath;
@@ -57,7 +57,7 @@ internal class InventoryManager : MonoBehaviour
                     int _itemId = Convert.ToInt32(_slotPair[1]);
                     int _itemCount = Convert.ToInt32(_slotPair[2]);
 
-                    _newItems.Add(new InventoryEntry(_itemCount, _slotId, _allItems[_itemId]));
+                    _newItems.Add(new InventoryEntry(_itemCount, _slotId, AllItemsDictionary[_itemId]));
                 }
             }
             _r.Close();

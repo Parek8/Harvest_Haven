@@ -7,9 +7,9 @@ internal class PlayerManager : MonoBehaviour
     [SerializeField] string _playerSavePath = "/saves/player.cfg";
     internal void SavePlayer()
     {
-        PlayerSettings _playerSettings = GameManager.game_manager.PlayerSettings;
-        PlayerStats _playerStats = GameManager.game_manager.player_transform.GetComponent<PlayerStats>();
-        Transform _player = GameManager.game_manager.player_transform;
+        PlayerSettings _playerSettings = GameManager.GameManagerInstance.PlayerSettings;
+        PlayerStats _playerStats = GameManager.GameManagerInstance.PlayerTransform.GetComponent<PlayerStats>();
+        Transform _player = GameManager.GameManagerInstance.PlayerTransform;
 
         string _savedContent = "";
 
@@ -35,9 +35,9 @@ internal class PlayerManager : MonoBehaviour
 
     internal void LoadPlayer()
     {
-        PlayerSettings _playerSettings = GameManager.game_manager.PlayerSettings;
-        PlayerStats _playerStats = GameManager.game_manager.player_transform.GetComponent<PlayerStats>();
-        Transform _player = GameManager.game_manager.player_transform;
+        PlayerSettings _playerSettings = GameManager.GameManagerInstance.PlayerSettings;
+        PlayerStats _playerStats = GameManager.GameManagerInstance.PlayerTransform.GetComponent<PlayerStats>();
+        Transform _player = GameManager.GameManagerInstance.PlayerTransform;
 
         string _path = Directory.GetCurrentDirectory() + _playerSavePath;
 

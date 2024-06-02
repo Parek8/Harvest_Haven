@@ -25,7 +25,7 @@ internal class PlayerStats : Character_Stats
         base.Start();
         CurrentHealthPoints = MaxHealthPoints;
         CurrentFoodPoints = MaxFoodPoints;
-        GameManager.game_manager.PlayerManagerInstance.LoadPlayer();
+        GameManager.GameManagerInstance.PlayerManagerInstance.LoadPlayer();
     }
     internal override void Reduce_Health(float reduce_hp)
     {

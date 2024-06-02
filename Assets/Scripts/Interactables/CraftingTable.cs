@@ -8,6 +8,6 @@ internal class CraftingTable : Interactable
     internal override void Interact()
     {
         _craftingScreen.Show();
-        GameManager.game_manager.Cursor_Needed(CursorLockMode.None);
+        GameManager.GameManagerInstance.Cursor_Needed(CursorLockMode.None);
     }
 }

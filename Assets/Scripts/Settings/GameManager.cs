@@ -8,26 +8,26 @@ using UnityEngine.UI;
 
 internal class GameManager : MonoBehaviour
 {
-    internal static GameManager game_manager { get; private set; }
+    internal static GameManager GameManagerInstance { get; private set; }
     [field: SerializeField] internal PlayerSettings PlayerSettings { get; private set; }
 
     void Awake()
     {
-        if (game_manager == null)
-            game_manager = this;
+        if (GameManagerInstance == null)
+            GameManagerInstance = this;
 
         LoadSettings();
 
-        for (int i = 0;  i < all_items.Count; i++)
+        for (int i = 0;  i < AllItems.Count; i++)
         {
-            Item _item = all_items[i];
-            _allItems[_item.ItemID] = _item;
+            Item _item = AllItems[i];
+            AllItemsDictionary[_item.ItemID] = _item;
         }
 
-        for (int i = 0; i < all_crops.Count; i++)
+        for (int i = 0; i < AllCrops.Count; i++)
         {
-            Plot _plot = _allCrops[i];
-            _allCrops[_plot.PlotIndex] = _plot;
+            Plot _plot = AllCropsDictionary[i];
+            AllCropsDictionary[_plot.PlotIndex] = _plot;
         }
 
         LoadGraphics();
@@ -49,25 +49,40 @@ internal class GameManager : MonoBehaviour
         Camera.main.fieldOfView = PlayerSettings.FOV;
     }
 
-    internal bool is_game_paused { get; private set; }
-    [field: SerializeField] internal Transform player_transform { get; private set; }
-    [field: SerializeField] internal Inventory player_inventory { get; private set; }
-    [field: SerializeField] internal List<Item> all_items { get; private set; }
+    internal bool IsGamePaused { get; private set; }
+
+
+    [field: Header("PLAYER")]
+    [field: SerializeField] internal Transform PlayerTransform { get; private set; }
+    [field: SerializeField] internal Inventory PlayerInventory { get; private set; }
+
+
+    [field: Header("ITEMS")]
+    [field: SerializeField] internal List<Item> AllItems { get; private set; }
     [field: SerializeField] internal List<Item> AllLootableItems { get; private set; }
-    [field: SerializeField] internal List<Plot> all_crops { get; private set; }
-    [field: SerializeField] internal List<PlantObject> all_plantable_objects { get; private set; }
-    [field: SerializeField] internal Item Null_Item { get; private set; }
-    [field: SerializeField] internal Transform environment_parent { get; private set; }
-    [field: SerializeField] internal Dictionary<int, Item> _allItems = new Dictionary<int, Item>();
-    [field: SerializeField] internal Dictionary<int, Plot> _allCrops = new Dictionary<int, Plot>();
-    [field: SerializeField] internal InventoryManager InventoryManagerInstance { get; private set; }
-    [field: SerializeField] internal PlayerManager PlayerManagerInstance { get; private set; }
-    [field: SerializeField] internal CropsManager CropsManagerInstance { get; private set; }
+    internal Dictionary<int, Item> AllItemsDictionary { get; private set; } = new Dictionary<int, Item>();
+
+
+    [field: Header("CROPS")]
+    [field: SerializeField] internal List<Plot> AllCrops { get; private set; }
+    [field: SerializeField] internal List<PlantObject> AllPlantableObjects { get; private set; }
+    [field: SerializeField] internal Item NullItem { get; private set; }
+    [field: SerializeField] internal Transform EnvironmentParent { get; private set; }
+    internal Dictionary<int, Plot> AllCropsDictionary { get; private set; } = new Dictionary<int, Plot>();
+
+
+    [field: Header("UI")]
     [field: SerializeField] internal Button ButtonPrefab { get; private set; }
     [field: SerializeField] internal UI_Behaviour HUD { get; private set; }
     [field: SerializeField] internal Transform UIVisibleParent { get; private set; }
     [field: SerializeField] internal UI_Behaviour PauseMenu { get; private set; }
     [field: SerializeField] internal CinemachineVirtualCamera FreeCamera { get; private set; }
+
+
+    [field: Header("MANAGERS")]
+    [field: SerializeField] internal InventoryManager InventoryManagerInstance { get; private set; }
+    [field: SerializeField] internal PlayerManager PlayerManagerInstance { get; private set; }
+    [field: SerializeField] internal CropsManager CropsManagerInstance { get; private set; }
     [field: SerializeField] internal AudioManager AudioManagerInstance { get; private set; }
 
     private void OnApplicationQuit()
@@ -79,8 +94,8 @@ internal class GameManager : MonoBehaviour
 
     internal void AddItems()
     {
-        foreach (Item item in all_items)
-            player_inventory.Add(item);
+        foreach (Item item in AllItems)
+            PlayerInventory.Add(item);
     }
     internal void Cursor_Needed(CursorLockMode lock_mode)
     {
@@ -91,7 +106,7 @@ internal class GameManager : MonoBehaviour
     public void PauseGame()
     {
         Cursor_Needed(CursorLockMode.None);
-        is_game_paused = true;
+        IsGamePaused = true;
         HUD.Hide();
         PauseMenu.Show();
         StartCoroutine("Pause");
@@ -107,7 +122,7 @@ internal class GameManager : MonoBehaviour
     public void ResumeGame()
     {
         Time.timeScale = 1;
-        is_game_paused = false;
+        IsGamePaused = false;
         HUD.Show();
         PauseMenu.Hide();
         Cursor_Needed(CursorLockMode.Locked);
@@ -120,7 +135,7 @@ internal class GameManager : MonoBehaviour
     }
     internal PlantObject FindPlantObject(int index)
     {
-        return all_plantable_objects.Find(_plant => _plant.PlantObjectIndex == index);
+        return AllPlantableObjects.Find(_plant => _plant.PlantObjectIndex == index);
     }
     internal Dictionary<KeybindNames, KeyCode> keybinds { get; private set; } = new Dictionary<KeybindNames, KeyCode>();
     internal bool IsKeybindSaved(KeybindNames keybind)

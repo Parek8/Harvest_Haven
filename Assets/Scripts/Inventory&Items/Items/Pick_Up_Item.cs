@@ -6,12 +6,12 @@ internal class Pick_Up_Item : MonoBehaviour
     [field: SerializeField] Item item;
     Transform player;
     float needed_distance;
-    Inventory player_inventory;
+    Inventory PlayerInventory;
     Rigidbody rb;
     void Start()
     {
-        player = GameManager.game_manager.player_transform;
-        player_inventory = GameManager.game_manager.player_inventory;
+        player = GameManager.GameManagerInstance.PlayerTransform;
+        PlayerInventory = GameManager.GameManagerInstance.PlayerInventory;
         needed_distance = player.GetComponent<PlayerStats>().PickUpDistance;
         rb = GetComponent<Rigidbody>();
     }
@@ -25,7 +25,7 @@ internal class Pick_Up_Item : MonoBehaviour
 
         if (current_distance <= 5f)
         {
-            player_inventory.Add(this.item);
+            PlayerInventory.Add(this.item);
             Destroy(gameObject);
         }
     }

@@ -45,7 +45,7 @@ internal class Inventory : MonoBehaviour
         else
         {
             InstantiateItem();
-            _stats.Change_State(GameManager.game_manager.Null_Item);
+            _stats.Change_State(GameManager.GameManagerInstance.NullItem);
         }
     }
     internal void Add(Item item)
@@ -127,7 +127,7 @@ internal class Inventory : MonoBehaviour
             _stats.Change_State(item);
         }
         else
-            _stats.Change_State(GameManager.game_manager.Null_Item);
+            _stats.Change_State(GameManager.GameManagerInstance.NullItem);
     }
     private void InstantiateItem()
     {
@@ -143,7 +143,7 @@ internal class Inventory : MonoBehaviour
 
     internal void Clear_Item(int index)
     {
-        _equipped_item = GameManager.game_manager.Null_Item;
+        _equipped_item = GameManager.GameManagerInstance.NullItem;
     }    
 
     internal void AddToSlotChangedAction(Action<int> action)
@@ -159,7 +159,7 @@ internal class Inventory : MonoBehaviour
         // Not In Tutorial
         if (Tutorial.TutorialInstance == null)
         {
-            List<InventoryEntry> _inv = (List<InventoryEntry>)GameManager.game_manager.InventoryManagerInstance.LoadInventory();
+            List<InventoryEntry> _inv = (List<InventoryEntry>)GameManager.GameManagerInstance.InventoryManagerInstance.LoadInventory();
 
             foreach (InventoryEntry _entry in _inv)
             {

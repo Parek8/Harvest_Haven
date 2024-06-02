@@ -19,10 +19,10 @@ internal class Plot : Interactable
     }
     IEnumerator Register()
     {
-        //while (GameManager.game_manager == null)
+        //while (GameManager.GameManagerInstance == null)
             yield return null;
 
-        GameManager.game_manager.all_crops.Add(this);
+        GameManager.GameManagerInstance.AllCrops.Add(this);
     }
 
     private new void Start()
@@ -66,7 +66,7 @@ internal class Plot : Interactable
             times = new List<uint>((List<uint>)plantedPlant.Times);
             stages = new List<GameObject>((List<GameObject>)plantedPlant.Stages);
             if (item != null)
-                GameManager.game_manager.player_inventory.DecreaseItemCount(item);
+                GameManager.GameManagerInstance.PlayerInventory.DecreaseItemCount(item);
 
             SpawnNewStage();
             IsOccupied = true;

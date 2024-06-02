@@ -25,8 +25,8 @@ internal sealed class StopCameraMovement : MonoBehaviour
         if (_instance == null)
             _instance = this;
 
-        camera = GameManager.game_manager.FreeCamera;
-        _player = GameManager.game_manager.player_transform.GetComponent<Player_Movement>();
+        camera = GameManager.GameManagerInstance.FreeCamera;
+        _player = GameManager.GameManagerInstance.PlayerTransform.GetComponent<Player_Movement>();
     }
 
     private void Update()

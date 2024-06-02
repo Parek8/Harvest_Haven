@@ -33,7 +33,7 @@ internal class EnvironmentInitializer : MonoBehaviour
     {
         Transform _environmentParent;
         if (EnvironmentParent == null)
-            _environmentParent = GameManager.game_manager.environment_parent;
+            _environmentParent = GameManager.GameManagerInstance.EnvironmentParent;
         else
             _environmentParent = EnvironmentParent;
 

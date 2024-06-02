@@ -13,7 +13,7 @@ internal class PotatoProjectile : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        Target = GameManager.game_manager.player_transform;
+        Target = GameManager.GameManagerInstance.PlayerTransform;
 
         if (Target != null)
         {

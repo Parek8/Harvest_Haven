@@ -13,9 +13,9 @@ internal class Interactable : MonoBehaviour
 
     protected void Start()
     {
-        _distance = GameManager.game_manager.player_transform.GetComponent<PlayerStats>().PickUpDistance;
-        _behaviour = GameManager.game_manager.player_transform.GetComponent<Character_Behaviour>();
-        _player = GameManager.game_manager.player_transform;
+        _distance = GameManager.GameManagerInstance.PlayerTransform.GetComponent<PlayerStats>().PickUpDistance;
+        _behaviour = GameManager.GameManagerInstance.PlayerTransform.GetComponent<Character_Behaviour>();
+        _player = GameManager.GameManagerInstance.PlayerTransform;
         _renderer = _player.GetComponent<MeshRenderer>();
     }
 

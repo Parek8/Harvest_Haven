@@ -26,7 +26,7 @@ internal class ItemMenuSlot : MonoBehaviour, IPointerClickHandler
         {
             AssignedItem = _item;
             _itemImage.sprite = _item.ItemIcon;
-            _itemCount.text = $"x{GameManager.game_manager.player_inventory.GetItemCountInInventory(AssignedItem)}";
+            _itemCount.text = $"x{GameManager.GameManagerInstance.PlayerInventory.GetItemCountInInventory(AssignedItem)}";
         }
     }
 }

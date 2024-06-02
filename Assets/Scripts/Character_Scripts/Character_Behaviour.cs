@@ -37,7 +37,7 @@ internal class Character_Behaviour : MonoBehaviour
 
         stats.AddPlayerStateListener(delegate (PlayerState _newState) { this._state = _newState; });
 
-        GameManager.game_manager.ResumeGame();
+        GameManager.GameManagerInstance.ResumeGame();
     }
 
     void Update()
@@ -47,12 +47,12 @@ internal class Character_Behaviour : MonoBehaviour
 
         if (Input_Manager.GetCustomAxisRawDown("Inventory"))
         {
-            GameManager.game_manager.AudioManagerInstance.PlaySound((inventory_screen.is_visible) ? InventoryClose : InventoryOpen);
+            GameManager.GameManagerInstance.AudioManagerInstance.PlaySound((inventory_screen.is_visible) ? InventoryClose : InventoryOpen);
             inventory_screen.Change_State();
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape) && !GameManager.game_manager.is_game_paused)
-            GameManager.game_manager.PauseGame();
+        if (Input.GetKeyDown(KeyCode.Escape) && !GameManager.GameManagerInstance.IsGamePaused)
+            GameManager.GameManagerInstance.PauseGame();
 
         if (!StopCameraMovement.StopCameraMovementInstance.IsAnyScreenActive)
         {

@@ -9,7 +9,7 @@ internal class Harvestable : Interactable
     internal override void Interact()
     {
         foreach (Item item in items)
-            GameManager.game_manager.player_inventory.Add(item);
+            GameManager.GameManagerInstance.PlayerInventory.Add(item);
         OnHarvest?.Invoke();
 
         if (Tutorial.TutorialInstance != null)

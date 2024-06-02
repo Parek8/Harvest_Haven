@@ -33,7 +33,7 @@ internal class TestDialog : MonoBehaviour, IDialog
         _lines.Add(new DialogLine("This is a test dialog! Please, don't hate me!", new List<DialogButton>() {
             new DialogButton(() => {
                 DialogManager.DialogManagerInstance.Hide();
-                GameManager.game_manager.Cursor_Needed(CursorLockMode.None);
+                GameManager.GameManagerInstance.Cursor_Needed(CursorLockMode.None);
                 _shop.Show();
             }, "Go to shop!"),
         }));

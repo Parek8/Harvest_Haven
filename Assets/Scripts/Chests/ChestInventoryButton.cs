@@ -18,7 +18,7 @@ internal class ChestInventoryButton : MonoBehaviour, IPointerClickHandler
         if (eventData.button == PointerEventData.InputButton.Left)
         {
             for (int i = 0; i < _itemCount; _itemCount--)
-                GameManager.game_manager.player_inventory.Add(this.item);
+                GameManager.GameManagerInstance.PlayerInventory.Add(this.item);
 
             Destroy(gameObject);
         }

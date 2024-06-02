@@ -11,7 +11,7 @@ internal class CropsManager : MonoBehaviour
     internal void SaveCrops()
     {
         string _savedContent = "";
-        List<Plot> _crops = GameManager.game_manager.all_crops;
+        List<Plot> _crops = GameManager.GameManagerInstance.AllCrops;
 
         foreach (Plot _crop in _crops)
             if (_crop.plantedPlant != null)
@@ -36,8 +36,8 @@ internal class CropsManager : MonoBehaviour
     {
         string _path = Directory.GetCurrentDirectory() + _cropsSavePath;
 
-        Dictionary<int, Plot> _allPlots = GameManager.game_manager._allCrops;
-        List<Plot> _crops = GameManager.game_manager.all_crops;
+        Dictionary<int, Plot> _allPlots = GameManager.GameManagerInstance.AllCropsDictionary;
+        List<Plot> _crops = GameManager.GameManagerInstance.AllCrops;
 
         if (File.Exists(_path))
         {
@@ -63,9 +63,9 @@ internal class CropsManager : MonoBehaviour
                         Plot _crop = _crops.Find(_plot => _plot.PlotIndex == _plotIndex);
 
                         if (_crop != null)
-                            _crop.LoadPlot(GameManager.game_manager.FindPlantObject(_cropIndex), _cropDays);
+                            _crop.LoadPlot(GameManager.GameManagerInstance.FindPlantObject(_cropIndex), _cropDays);
                         else
-                            Debug.Log(GameManager.game_manager.all_crops.Count);
+                            Debug.Log(GameManager.GameManagerInstance.AllCrops.Count);
                     }
                 }
             }

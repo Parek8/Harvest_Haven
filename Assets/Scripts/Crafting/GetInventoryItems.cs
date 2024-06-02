@@ -18,7 +18,7 @@ internal class GetInventoryItems : MonoBehaviour
     internal virtual void GetItems()
     {
         DestroyButtons();
-        CreateButtons((List<Item>)GameManager.game_manager.player_inventory.GetAllItems());
+        CreateButtons((List<Item>)GameManager.GameManagerInstance.PlayerInventory.GetAllItems());
     }
 
     internal virtual void CreateButtons(List<Item> _items)

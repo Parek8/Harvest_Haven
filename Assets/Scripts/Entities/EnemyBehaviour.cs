@@ -20,7 +20,7 @@ internal class EnemyBehaviour : Destroyable
     protected void Start()
     {
         base.Start();
-        _playerTransform = GameManager.game_manager.player_transform;
+        _playerTransform = GameManager.GameManagerInstance.PlayerTransform;
         _characterController = GetComponent<CharacterController>();
         _stats = GetComponent<Character_Stats>();
     }

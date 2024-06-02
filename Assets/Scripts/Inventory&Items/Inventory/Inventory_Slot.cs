@@ -30,14 +30,14 @@ internal class Inventory_Slot : MonoBehaviour, IPointerDownHandler, IPointerUpHa
     {
         //Transform childTransform = transform.GetChild(0);
         //item_image = childTransform.GetComponentInChildren<Image>();
-        visibleParent = GameManager.game_manager.UIVisibleParent;
+        visibleParent = GameManager.GameManagerInstance.UIVisibleParent;
 
         item_image_initial_position = item_image.transform.localPosition;
         item_count_initial_position = item_count.transform.localPosition;
         background = GetComponent<Image>();
 
         if (isHotbarSlot)
-            GameManager.game_manager.player_inventory.AddToSlotChangedAction((int index) => { SetBackground((index == slot_index) ? focusedColor : unfocusedColor); });
+            GameManager.GameManagerInstance.PlayerInventory.AddToSlotChangedAction((int index) => { SetBackground((index == slot_index) ? focusedColor : unfocusedColor); });
     }
 
     void FixedUpdate()
@@ -87,7 +87,7 @@ internal class Inventory_Slot : MonoBehaviour, IPointerDownHandler, IPointerUpHa
 
     private void Swap_Slots()
     {
-        Inventory_Slot closest_slot = GameManager.game_manager.player_inventory.Return_Closest_Slot();
+        Inventory_Slot closest_slot = GameManager.GameManagerInstance.PlayerInventory.Return_Closest_Slot();
         Item current_item = this.item;
         int _currentCount = this._itemCount;
 
@@ -112,7 +112,7 @@ internal class Inventory_Slot : MonoBehaviour, IPointerDownHandler, IPointerUpHa
     }
     internal void Equip()
     {
-        GameManager.game_manager.player_inventory.Equip(item);
+        GameManager.GameManagerInstance.PlayerInventory.Equip(item);
         SetBackground(focusedColor);
     }
     private void SetBackground(Color c)

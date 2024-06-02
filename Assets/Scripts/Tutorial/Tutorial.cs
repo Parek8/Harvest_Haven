@@ -209,15 +209,15 @@ public sealed class Tutorial : MonoBehaviour
         SwapDialog.Hide();
         DesDialog.Show();
 
-        GameManager.game_manager.player_inventory.Add(AxeItem);
+        GameManager.GameManagerInstance.PlayerInventory.Add(AxeItem);
     }
 
     private IEnumerator InitDragSlots()
     {
         yield return new WaitForSeconds(TransitionDelay);
 
-        _assignedItem = GameManager.game_manager.all_items[UnityEngine.Random.Range(1, GameManager.game_manager.all_items.Count - 1)];
-        GameManager.game_manager.player_inventory.Add(_assignedItem);
+        _assignedItem = GameManager.GameManagerInstance.AllItems[UnityEngine.Random.Range(1, GameManager.GameManagerInstance.AllItems.Count - 1)];
+        GameManager.GameManagerInstance.PlayerInventory.Add(_assignedItem);
 
         InvDialog.Hide();
         SwapDialog.Show();
@@ -258,9 +258,9 @@ public sealed class Tutorial : MonoBehaviour
         CraftDialog.Hide();
         SeedDialog.Show();
 
-        GameManager.game_manager.player_inventory.Add(Seeds[Random.Range(0, Seeds.Count)]);
-        GameManager.game_manager.player_inventory.Add(Seeds[Random.Range(0, Seeds.Count)]);
-        GameManager.game_manager.player_inventory.Add(Seeds[Random.Range(0, Seeds.Count)]);
+        GameManager.GameManagerInstance.PlayerInventory.Add(Seeds[Random.Range(0, Seeds.Count)]);
+        GameManager.GameManagerInstance.PlayerInventory.Add(Seeds[Random.Range(0, Seeds.Count)]);
+        GameManager.GameManagerInstance.PlayerInventory.Add(Seeds[Random.Range(0, Seeds.Count)]);
     }
     internal void Seeded()
     {

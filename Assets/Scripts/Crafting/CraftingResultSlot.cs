@@ -10,9 +10,11 @@ internal class CraftingResultSlot : MonoBehaviour, IPointerClickHandler
 
     Item _result;
     Inventory _playerInventory;
+    AudioSource _craftedItemSound;
     private void Start()
     {
-        _playerInventory = GameManager.game_manager.player_inventory;
+        _playerInventory = GameManager.GameManagerInstance.PlayerInventory;
+        _craftedItemSound = GameManager.GameManagerInstance.AudioManagerInstance.CraftedItemSound;
     }
     void FixedUpdate()
     {
@@ -31,6 +33,7 @@ internal class CraftingResultSlot : MonoBehaviour, IPointerClickHandler
         {
             UseMaterials();
             _playerInventory.Add(_result);
+            GameManager.GameManagerInstance.AudioManagerInstance.PlaySound(_craftedItemSound);
             if (Tutorial.TutorialInstance != null)
                 Tutorial.TutorialInstance.Crafted();
         }
@@ -44,7 +47,7 @@ internal class CraftingResultSlot : MonoBehaviour, IPointerClickHandler
 
         foreach (Item _item in _items)
         {
-            if (_item != GameManager.game_manager.Null_Item)
+            if (_item != GameManager.GameManagerInstance.NullItem)
             {
                 if (_materials.ContainsKey(_item))
                     _materials[_item]++;
@@ -110,7 +113,7 @@ internal class CraftingResultSlot : MonoBehaviour, IPointerClickHandler
     private void ClearResult()
     {
         this._result = null;
-        this._resultImage.sprite = GameManager.game_manager.Null_Item.ItemIcon;
+        this._resultImage.sprite = GameManager.GameManagerInstance.NullItem.ItemIcon;
     }
 
 }

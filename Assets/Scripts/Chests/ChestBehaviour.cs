@@ -40,12 +40,12 @@ internal class ChestBehaviour : Interactable
             if (_isOpened)
             {
                 LootChestScreen.Show();
-                GameManager.game_manager.Cursor_Needed(CursorLockMode.None);
+                GameManager.GameManagerInstance.Cursor_Needed(CursorLockMode.None);
             }
             else
             {
                 LootChestScreen.Hide();
-                GameManager.game_manager.Cursor_Needed(CursorLockMode.Locked);
+                GameManager.GameManagerInstance.Cursor_Needed(CursorLockMode.Locked);
             }
         }
     }

@@ -8,6 +8,6 @@ internal class Smelter : Interactable
     internal override void Interact()
     {
         _smeltingScreen.Show();
-        GameManager.game_manager.Cursor_Needed(CursorLockMode.None);
+        GameManager.GameManagerInstance.Cursor_Needed(CursorLockMode.None);
     }
 }

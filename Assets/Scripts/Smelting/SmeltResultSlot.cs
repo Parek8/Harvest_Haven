@@ -50,7 +50,7 @@ public class SmeltResultSlot : MonoBehaviour, IPointerClickHandler
         }
         else
         {
-            this.itemIcon.sprite = GameManager.game_manager.Null_Item.ItemIcon;
+            this.itemIcon.sprite = GameManager.GameManagerInstance.NullItem.ItemIcon;
             this.countLabel.text = $"";
         }
     }
@@ -60,7 +60,7 @@ public class SmeltResultSlot : MonoBehaviour, IPointerClickHandler
         if (eventData.button == PointerEventData.InputButton.Left)
         {
             for (int i = 0; i < count; i++) 
-                GameManager.game_manager.player_inventory.Add(this.item);
+                GameManager.GameManagerInstance.PlayerInventory.Add(this.item);
             count = 0;
             UpdateUI();
         }

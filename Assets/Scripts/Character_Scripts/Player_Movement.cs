@@ -25,8 +25,8 @@ internal class Player_Movement : MonoBehaviour
         controller = GetComponent<CharacterController>();
         //animator.SetFloat("Speed", stats.MovementSpeed);
 
-        GameManager.game_manager.Cursor_Needed(CursorLockMode.Locked);
-        GameManager.game_manager.ResumeGame();
+        GameManager.GameManagerInstance.Cursor_Needed(CursorLockMode.Locked);
+        GameManager.GameManagerInstance.ResumeGame();
         StartCoroutine("WalkSound");
     }
     void Update()
@@ -64,7 +64,7 @@ internal class Player_Movement : MonoBehaviour
 
     IEnumerator WalkSound()
     {
-        AudioManager _audioManager = GameManager.game_manager.AudioManagerInstance;
+        AudioManager _audioManager = GameManager.GameManagerInstance.AudioManagerInstance;
         while (true)
         {
             if (controller.isGrounded && lastPosition != transform.position && this.enabled)

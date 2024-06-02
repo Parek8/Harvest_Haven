@@ -43,7 +43,7 @@ internal class UI_Behaviour : MonoBehaviour
     }
     internal bool Change_State()
     {
-        GameManager.game_manager.Cursor_Needed((!is_visible) ? CursorLockMode.None : CursorLockMode.Locked);
+        GameManager.GameManagerInstance.Cursor_Needed((!is_visible) ? CursorLockMode.None : CursorLockMode.Locked);
         is_visible = !is_visible;
 
         if (!is_visible)
@@ -64,7 +64,7 @@ internal class UI_Behaviour : MonoBehaviour
         is_visible = true;
     }
 
-    internal void CursorNone() => GameManager.game_manager.Cursor_Needed(CursorLockMode.None);
+    internal void CursorNone() => GameManager.GameManagerInstance.Cursor_Needed(CursorLockMode.None);
 
-    internal void CursorLocked() => GameManager.game_manager.Cursor_Needed(CursorLockMode.Locked);
+    internal void CursorLocked() => GameManager.GameManagerInstance.Cursor_Needed(CursorLockMode.Locked);
 }

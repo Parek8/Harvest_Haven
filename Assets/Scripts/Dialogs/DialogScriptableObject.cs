@@ -39,7 +39,7 @@ internal class DialogButton
     internal Button GetButton(Transform _parent)
     {
 
-        Button btn = MonoBehaviour.Instantiate(GameManager.game_manager.ButtonPrefab, _parent);
+        Button btn = MonoBehaviour.Instantiate(GameManager.GameManagerInstance.ButtonPrefab, _parent);
         btn.transform.GetChild(0).GetComponent<TMPro.TMP_Text>().text = _name;
         btn.onClick.AddListener(_event);
         return btn;

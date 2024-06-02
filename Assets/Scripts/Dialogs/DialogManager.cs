@@ -18,12 +18,12 @@ internal class DialogManager : MonoBehaviour
 
     internal void Show()
     {
-        GameManager.game_manager.Cursor_Needed(CursorLockMode.None);
+        GameManager.GameManagerInstance.Cursor_Needed(CursorLockMode.None);
         Dialog.Show();
     }
     internal void Hide()
     {
-        GameManager.game_manager.Cursor_Needed(CursorLockMode.Locked);
+        GameManager.GameManagerInstance.Cursor_Needed(CursorLockMode.Locked);
         Dialog.Hide();
     }
     internal void ChangeState()

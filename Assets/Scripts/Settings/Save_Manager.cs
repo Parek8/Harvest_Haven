@@ -13,7 +13,7 @@ internal class Save_Manager : MonoBehaviour
     //Dictionary<int, Inventory_Slot> slot_ids = new();
     //void OnEnable()
     //{
-    //    GameManager.game_manager.Subscribe(() => { Load_Inventory(); });
+    //    GameManager.GameManagerInstance.Subscribe(() => { Load_Inventory(); });
     //    Main_Menu_Buttons.Subscribe_To_On_Exit(() => { Save_Inventory(); });
     //}
     
@@ -33,7 +33,7 @@ internal class Save_Manager : MonoBehaviour
     //internal void Save_Inventory()
     //{
     //    Get_Slots();
-    //    if (GameManager.game_manager.Check_Items_Ids())
+    //    if (GameManager.GameManagerInstance.Check_Items_Ids())
     //    {
     //        if (File.Exists(inventory_path))
     //        {
@@ -74,7 +74,7 @@ internal class Save_Manager : MonoBehaviour
     //        {
     //            string slot = s_slots[i];
     //            int slot_id = Convert.ToInt32(slot.Split(':')[0]);
-    //            Item item = GameManager.game_manager.Get_Item_By_Id(Convert.ToInt32(slot.Split(':')[1]));
+    //            Item item = GameManager.GameManagerInstance.Get_Item_By_Id(Convert.ToInt32(slot.Split(':')[1]));
     //            slot_ids[slot_id].Assign_Item_To_Slot(item);
     //        }
     //    }

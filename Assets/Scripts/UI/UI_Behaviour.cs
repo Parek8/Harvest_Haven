@@ -9,10 +9,11 @@ internal class UI_Behaviour : MonoBehaviour
     {
         is_visible = gameObject.activeInHierarchy;
     }
-    internal virtual bool Show()
+    internal virtual bool Show(float timeToPopup = 1.5f)
     {
         if (!gameObject.activeInHierarchy)
         {
+            TimeToPopup = timeToPopup;
             gameObject.SetActive(true);
             is_visible = true;
             StartCoroutine("__Show");
@@ -21,10 +22,14 @@ internal class UI_Behaviour : MonoBehaviour
         return is_visible;
     }
 
-    internal virtual bool Hide()
+    internal virtual bool Hide(float timeToPopup = 1.5f)
     {
         if (gameObject.activeInHierarchy)
+        {
+            TimeToPopup = timeToPopup;
             StartCoroutine("__Hide");
+        }
+
 
         return is_visible;
     }

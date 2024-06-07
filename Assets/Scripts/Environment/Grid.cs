@@ -41,7 +41,7 @@ internal class Grid : MonoBehaviour
                         Vector3 pos = new Vector3((x * x_size) + x_spacing, (y * y_size) + y_spacing, (z * z_size) + z_spacing);
                         GameObject pref = Instantiate(plot_prefab, transform);
                         pref.transform.localPosition = pos;
-                        pref.GetComponent<Plot>().SetIndex(count++);
+                        //pref.GetComponent<Plot>().SetIndex(count++);
                         grid[x, y, z] = pref;
                     //}
                 }

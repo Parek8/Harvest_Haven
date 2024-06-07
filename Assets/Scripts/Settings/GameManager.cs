@@ -110,15 +110,6 @@ internal class GameManager : MonoBehaviour
         HUD.Hide(0);
         PauseMenu.Show(0);
         Time.timeScale = 0;
-        //StartCoroutine("Pause");
-    }
-
-    private IEnumerator Pause()
-    {
-        yield return new WaitForSeconds(1.5f);
-
-        //yield return new WaitForEndOfFrame();
-        Time.timeScale = 0;
     }
     public void ResumeGame()
     {

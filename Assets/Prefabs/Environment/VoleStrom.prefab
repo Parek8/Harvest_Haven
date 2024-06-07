@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1987217805629191185}
   - component: {fileID: 8438613676495857917}
   - component: {fileID: 4935405275637293607}
+  - component: {fileID: 8736941173350502048}
   m_Layer: 6
   m_Name: TreeNew
   m_TagString: Untagged
@@ -139,6 +140,7 @@ MonoBehaviour:
   filled_health_bar: {fileID: 849091922534888271}
   obj_canvas: {fileID: 4763395979757884513}
   CanvasPrefab: {fileID: 0}
+  dmgTransisionTag: Chop
 --- !u!64 &8438613676495857917
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -178,6 +180,27 @@ MonoBehaviour:
   Destroyable: 1
   Attackable: 0
   _highlighter: {fileID: 0}
+--- !u!95 &8736941173350502048
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4299580280085218674}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e451b11e746ed9745aa390b9b3fa3b37, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4927730222598022810
 GameObject:
   m_ObjectHideFlags: 0
@@ -208,7 +231,7 @@ Transform:
   m_Children:
   - {fileID: 6788946854988732783}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5205105553297070473
 GameObject:

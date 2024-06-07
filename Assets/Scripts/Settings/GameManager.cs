@@ -125,7 +125,7 @@ internal class GameManager : MonoBehaviour
         Time.timeScale = 1;
         IsGamePaused = false;
         HUD.Show(0);
-        PauseMenu.Hide();
+        PauseMenu.Hide(0);
         Cursor_Needed(CursorLockMode.Locked);
     }
 

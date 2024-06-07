@@ -9,7 +9,7 @@ internal class UI_Behaviour : MonoBehaviour
     {
         is_visible = gameObject.activeInHierarchy;
     }
-    internal virtual bool Show(float timeToPopup = 1.5f)
+    internal virtual bool Show(float timeToPopup = .5f)
     {
         if (!gameObject.activeInHierarchy)
         {
@@ -22,7 +22,7 @@ internal class UI_Behaviour : MonoBehaviour
         return is_visible;
     }
 
-    internal virtual bool Hide(float timeToPopup = 1.5f)
+    internal virtual bool Hide(float timeToPopup = .5f)
     {
         if (gameObject.activeInHierarchy)
         {

@@ -24,6 +24,7 @@ internal class Menu_Buttons_Manager : MonoBehaviour
 
             yield return new WaitForEndOfFrame();
         }
+        Curtain.gameObject.SetActive(false);
     }
     public void Play()
     {

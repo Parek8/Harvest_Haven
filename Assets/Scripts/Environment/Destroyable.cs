@@ -25,6 +25,9 @@ internal class Destroyable : MonoBehaviour
     static GameObject _canvasPrefab;
     static Gradient _gradient;
     static Image _barPrefab;
+
+    private Animator anim;
+    [SerializeField] string dmgTransisionTag;
     protected void Awake()
     {
         if (_canvasPrefab == null && CanvasPrefab != null)
@@ -45,6 +48,7 @@ internal class Destroyable : MonoBehaviour
     protected void Start()
     {
         hp = max_hp;
+        anim = GetComponent<Animator>();
         pl = GameManager.GameManagerInstance.PlayerTransform.GetComponent<Player_Movement>();
         StartCoroutine("Cycle");        
         EnvironmentParent = GameManager.GameManagerInstance.EnvironmentParent;
@@ -55,7 +59,8 @@ internal class Destroyable : MonoBehaviour
     internal void Damage(float damage)
     {
         this.hp -= damage;
-
+        if(anim!= null)
+        anim.SetTrigger(dmgTransisionTag);
         if (HitSounds.Count > 0)
             GameManager.GameManagerInstance.AudioManagerInstance.PlaySound(HitSounds[Random.Range(0, HitSounds.Count)]);
 

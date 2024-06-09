@@ -107,24 +107,16 @@ internal class GameManager : MonoBehaviour
     {
         Cursor_Needed(CursorLockMode.None);
         IsGamePaused = true;
-        HUD.Hide();
-        PauseMenu.Show();
-        StartCoroutine("Pause");
-    }
-
-    private IEnumerator Pause()
-    {
-        yield return new WaitForSeconds(1.5f);
-
+        HUD.Hide(0);
+        PauseMenu.Show(0);
         Time.timeScale = 0;
-
     }
     public void ResumeGame()
     {
         Time.timeScale = 1;
         IsGamePaused = false;
-        HUD.Show();
-        PauseMenu.Hide();
+        HUD.Show(0);
+        PauseMenu.Hide(0);
         Cursor_Needed(CursorLockMode.Locked);
     }
 
@@ -359,7 +351,7 @@ internal static class Input_Manager
             SetPlayerPrefs();
             return false;
         }
-    }
+    }   
     private static void SetPlayerPrefs()
     {
         KeybindNames[] keybinds = (KeybindNames[])Enum.GetValues(typeof(KeybindNames));

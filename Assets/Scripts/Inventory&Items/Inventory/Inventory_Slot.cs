@@ -140,7 +140,7 @@ internal class Inventory_Slot : MonoBehaviour, IPointerDownHandler, IPointerUpHa
                 Debug.Log($"{this.item.name} | {item.name}");
         }
         else
-            Debug.LogError("Item is null!");
+            Debug.LogWarning("Item is null!");
     }
     internal void DecreaseCount(int _count = 1)
     {

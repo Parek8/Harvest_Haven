@@ -166,12 +166,15 @@ internal class Character_Behaviour : MonoBehaviour
         {
             Destroyable _hit = info.collider.GetComponent<Destroyable>();
             Item _eq_item = inventory.Equipped_Item;
-            if (_hit.Compare_Tag(_eq_item.ToolType) && _eq_item.IsTool)
+            if (_eq_item != null)
             {
-                _hit.Damage(_eq_item.ToolDamage);
+                if (_hit.Compare_Tag(_eq_item.ToolType) && _eq_item.IsTool)
+                {
+                    _hit.Damage(_eq_item.ToolDamage);
+                }
+                else
+                    Debug.Log("Wrong type");
             }
-            else
-                Debug.Log("Wrong type");
         }
     }
     private void SeedOrWater(Plot _plot)

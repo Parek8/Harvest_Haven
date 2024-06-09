@@ -122,6 +122,7 @@ internal class GameManager : MonoBehaviour
 
     public void ExitGame()
     {
+        Time.timeScale = 1;
         OnApplicationQuit();
         SceneManager.LoadScene("MainMenu");
     }

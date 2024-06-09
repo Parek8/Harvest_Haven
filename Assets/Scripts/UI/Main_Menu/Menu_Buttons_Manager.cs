@@ -10,13 +10,16 @@ internal class Menu_Buttons_Manager : MonoBehaviour
     [field: SerializeField] float OpeningTime;
 
     private float m_CurrentTime = 0;
-    private void Start()
+    private void OnEnable()
     {
         StartCoroutine(OpenCurtain());
     }
 
     IEnumerator OpenCurtain()
     {
+        Curtain.gameObject.SetActive(true);
+        Curtain.color = Color.black;
+
         while (m_CurrentTime < OpeningTime)
         {
             m_CurrentTime += Time.deltaTime;

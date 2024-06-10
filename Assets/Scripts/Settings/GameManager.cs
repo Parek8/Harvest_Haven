@@ -32,11 +32,6 @@ internal class GameManager : MonoBehaviour
 
         LoadGraphics();
     }
-
-    private void Update()
-    {
-        Debug.Log(Input_Manager.GetCustomKeyDown(KeybindNames.left_attack));
-    }
     private void Start()
     {
         StartCoroutine("Register");

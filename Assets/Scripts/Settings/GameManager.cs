@@ -32,6 +32,11 @@ internal class GameManager : MonoBehaviour
 
         LoadGraphics();
     }
+
+    private void Update()
+    {
+        Debug.Log(Input_Manager.GetCustomKeyDown(KeybindNames.left_attack));
+    }
     private void Start()
     {
         StartCoroutine("Register");
@@ -97,10 +102,6 @@ internal class GameManager : MonoBehaviour
         foreach (Item item in AllItems)
             PlayerInventory.Add(item);
     }
-    public void DebugMsg(string message)
-    {
-        Debug.Log(message);
-    }
     internal void Cursor_Needed(CursorLockMode lock_mode)
     {
         if (Cursor.lockState != lock_mode)
@@ -113,7 +114,7 @@ internal class GameManager : MonoBehaviour
         IsGamePaused = true;
         HUD.Hide(0);
         PauseMenu.Show(0);
-        //Time.timeScale = 0;
+        Time.timeScale = 0;
     }
     public void ResumeGame()
     {
@@ -179,10 +180,7 @@ internal class GameManager : MonoBehaviour
 internal static class Input_Manager
 {
     static Dictionary<KeybindNames, KeyCode> keybinds = new Dictionary<KeybindNames, KeyCode>();
-    internal static void SetKeybindsList(Dictionary<KeybindNames, KeyCode> keybindsDic)
-    {
-        keybinds = keybindsDic;
-    }
+    internal static void SetKeybindsList(Dictionary<KeybindNames, KeyCode> keybindsDic) => keybinds = keybindsDic;
     internal static bool GetCustomKeyDown(KeybindNames _bind)
     {
         try 

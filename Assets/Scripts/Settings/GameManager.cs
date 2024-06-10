@@ -97,6 +97,10 @@ internal class GameManager : MonoBehaviour
         foreach (Item item in AllItems)
             PlayerInventory.Add(item);
     }
+    public void DebugMsg(string message)
+    {
+        Debug.Log(message);
+    }
     internal void Cursor_Needed(CursorLockMode lock_mode)
     {
         if (Cursor.lockState != lock_mode)
@@ -109,7 +113,7 @@ internal class GameManager : MonoBehaviour
         IsGamePaused = true;
         HUD.Hide(0);
         PauseMenu.Show(0);
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
     }
     public void ResumeGame()
     {

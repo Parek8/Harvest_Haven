@@ -21,6 +21,8 @@ internal class Inventory_Slot : MonoBehaviour, IPointerDownHandler, IPointerUpHa
     Image background;
     Transform visibleParent;
     Camera mainCamera;
+    RectTransform canvasRectTransform;
+    RectTransform item_image_rectTransform;
 
     int _itemCount = 0;
     internal int ItemCount => _itemCount;
@@ -32,6 +34,8 @@ internal class Inventory_Slot : MonoBehaviour, IPointerDownHandler, IPointerUpHa
         //item_image = childTransform.GetComponentInChildren<Image>();
         visibleParent = GameManager.GameManagerInstance.UIVisibleParent;
         mainCamera = Camera.main;
+        canvasRectTransform = GetComponentInParent<Canvas>().GetComponent<RectTransform>();
+        item_image_rectTransform = item_image.GetComponent<RectTransform>();
 
         item_image_initial_position = item_image.transform.localPosition;
         item_count_initial_position = item_count.transform.localPosition;
@@ -46,9 +50,8 @@ internal class Inventory_Slot : MonoBehaviour, IPointerDownHandler, IPointerUpHa
         if (is_dragging)
         {
             Vector3 screenPos = Input.mousePosition;
-            screenPos.z = mainCamera.nearClipPlane;
-            screenPos.z = 50;
-            item_image.transform.position = mainCamera.ScreenToWorldPoint(screenPos);
+            RectTransformUtility.ScreenPointToWorldPointInRectangle(canvasRectTransform, screenPos, mainCamera, out var worldPos);
+            item_image_rectTransform.position = worldPos;
         }
 
         if (item != null)
@@ -73,7 +76,9 @@ internal class Inventory_Slot : MonoBehaviour, IPointerDownHandler, IPointerUpHa
 
     internal float Return_Distance_From_Mouse()
     {
-        return (Vector2.Distance(transform.position, Input.mousePosition));
+        Vector3 screenPos = Input.mousePosition;
+        RectTransformUtility.ScreenPointToWorldPointInRectangle(canvasRectTransform, screenPos, mainCamera, out var worldPos);
+        return Vector3.Distance(transform.position, worldPos);
     }
 
     public void OnPointerUp(PointerEventData eventData)
@@ -81,12 +86,11 @@ internal class Inventory_Slot : MonoBehaviour, IPointerDownHandler, IPointerUpHa
         if (eventData.button == PointerEventData.InputButton.Left)
         {
             is_dragging = false;
-            item_image.transform.localPosition = item_image_initial_position;
-            item_count.transform.localPosition = item_count_initial_position;
             item_image.transform.SetParent(transform);
+            item_image.transform.localPosition = item_image_initial_position;
             item_count.transform.SetParent(transform);
-            item_image.transform.localPosition = Vector3.zero;
-            item_count.transform.localPosition = new Vector3(-60, 60, 0);
+            item_count.transform.localPosition = item_count_initial_position;
+
             Swap_Slots();
         }
     }
@@ -94,26 +98,29 @@ internal class Inventory_Slot : MonoBehaviour, IPointerDownHandler, IPointerUpHa
     private void Swap_Slots()
     {
         Inventory_Slot closest_slot = GameManager.GameManagerInstance.PlayerInventory.Return_Closest_Slot();
-        Item current_item = this.item;
-        int _currentCount = this._itemCount;
-
-        if (closest_slot.Is_Empty())
+        if (closest_slot != null && closest_slot != this)
         {
-            closest_slot.Assign_Item(current_item, _currentCount);
-            this.Clear_Item();
-            if (Tutorial.TutorialInstance != null)
-                Tutorial.TutorialInstance.SwappedSlots();
-        }
-        else if (Is_Current_Slot(closest_slot))
-            is_dragging = false;
-        else
-        {
-            this.Assign_Item(closest_slot.Get_Item(), closest_slot.ItemCount);
-            closest_slot.Assign_Item(current_item, _currentCount);
-            is_dragging = false;
+            Item current_item = this.item;
+            int _currentCount = this._itemCount;
 
-            if (Tutorial.TutorialInstance != null)
-                Tutorial.TutorialInstance.SwappedSlots();
+            if (closest_slot.Is_Empty())
+            {
+                closest_slot.Assign_Item(current_item, _currentCount);
+                this.Clear_Item();
+                if (Tutorial.TutorialInstance != null)
+                    Tutorial.TutorialInstance.SwappedSlots();
+            }
+            else
+            {
+                Item temp_item = closest_slot.item;
+                int temp_count = closest_slot.ItemCount;
+
+                closest_slot.Assign_Item(current_item, _currentCount);
+                this.Assign_Item(temp_item, temp_count);
+
+                if (Tutorial.TutorialInstance != null)
+                    Tutorial.TutorialInstance.SwappedSlots();
+            }
         }
     }
 

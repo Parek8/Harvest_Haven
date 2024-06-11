@@ -74,6 +74,9 @@ internal class GameManager : MonoBehaviour
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = (int)PlayerSettings.FPS;
         Camera.main.fieldOfView = PlayerSettings.FOV;
+
+
+        AudioListener.volume = PlayerSettings.VOLUME;
     }
 
     internal bool IsGamePaused { get; private set; }

@@ -64,7 +64,7 @@ public sealed class Tutorial : MonoBehaviour
     [field: Header("CRAFT")]
     [field: SerializeField] UI_Behaviour CraftDialog;
     [field: SerializeField] Item Wood;
-    [field: SerializeField] Item Rock;
+    [field: SerializeField] Item IronOre;
     bool _crafted = false;
 
     [field: Header("SEEDING")]
@@ -258,6 +258,9 @@ public sealed class Tutorial : MonoBehaviour
     {
         yield return new WaitForSeconds(TransitionDelay);
 
+        for (int i = 0; i < 5; i++)
+            GameManager.GameManagerInstance.PlayerInventory.Add(IronOre);
+
         IntDialog.Hide();
         CraftDialog.Show();
     }
@@ -431,8 +434,9 @@ public sealed class Tutorial : MonoBehaviour
     {
         if (_harvested)
         {
-            _tutorialState = TutorialState.FindShop;
-            StartCoroutine(InitShop());
+            //_tutorialState = TutorialState.FindShop;
+            //StartCoroutine(InitShop());
+            HarvestDialog.Hide();
         }
     }
     #endregion Tutorials

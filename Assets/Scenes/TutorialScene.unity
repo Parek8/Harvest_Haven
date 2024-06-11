@@ -3942,7 +3942,7 @@ MonoBehaviour:
   AxeItem: {fileID: 11400000, guid: fa4741d9b4472e84ebbcd11b4ec5c844, type: 2}
   CraftDialog: {fileID: 1260887799605583135}
   Wood: {fileID: 11400000, guid: e94564a7e73b07c44ab205a162fb6d21, type: 2}
-  Rock: {fileID: 11400000, guid: 3c767dd0a71969a46ba83f04b4b74491, type: 2}
+  IronOre: {fileID: 11400000, guid: dccd088532b7879419fafcd172838c99, type: 2}
   SeedDialog: {fileID: 176139919298150913}
   Seeds:
   - {fileID: 11400000, guid: f1d90d1260947584e862766c214ee2df, type: 2}
@@ -17581,8 +17581,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _recipes:
-  - {fileID: 11400000, guid: 2a9f351a43ce62340829bacde63ca6be, type: 2}
   - {fileID: 11400000, guid: f76e29d9c8dae874da54ce16dc1c759b, type: 2}
+  - {fileID: 11400000, guid: 8c440421fbf10eb4997c06840c9aaf9c, type: 2}
+  - {fileID: 11400000, guid: c96a6c66457778f4d805811c35e63f9c, type: 2}
+  - {fileID: 11400000, guid: 1dbe5f3cdaef95645b3fc8b1163909f4, type: 2}
+  - {fileID: 11400000, guid: 48bdb01155f105749b5476ea2593decc, type: 2}
 --- !u!1 &1237612513
 GameObject:
   m_ObjectHideFlags: 0
@@ -41106,6 +41109,7 @@ MonoBehaviour:
   _dialog: {fileID: 4494610103028004611}
   BuyableItems:
   - {fileID: 11400000, guid: faddd45e906bd3d40935609393245433, type: 2}
+  - {fileID: 11400000, guid: 0b036f61d08115d4a9207bad68625937, type: 2}
   SoldableItems:
   - {fileID: 11400000, guid: e94564a7e73b07c44ab205a162fb6d21, type: 2}
   BuyWindow: {fileID: 3813136300822021726}

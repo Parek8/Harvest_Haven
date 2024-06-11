@@ -56,7 +56,7 @@ internal class Inventory : MonoBehaviour
             slot.Assign_Item(item);
         }
         else
-            Debug.LogError("Picked up null!");
+            Debug.Log("Picked up null!");
     }
 
     internal bool Remove(Item item)

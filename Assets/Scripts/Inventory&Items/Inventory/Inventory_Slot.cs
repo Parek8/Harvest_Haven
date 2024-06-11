@@ -9,18 +9,18 @@ internal class Inventory_Slot : MonoBehaviour, IPointerDownHandler, IPointerUpHa
     [field: SerializeField] Item item;
     [field: SerializeField] internal int slot_index { get; private set; }
 
-    [field: SerializeField] Image item_image; // I was way too lazy to fix teh thing commented in the Start() method
+    [field: SerializeField] Image item_image; // I was way too lazy to fix the thing commented in the Start() method
     [field: SerializeField] TMP_Text item_count;
     [field: SerializeField] bool isHotbarSlot = false;
     [field: SerializeField] Color focusedColor = Color.blue;
     [field: SerializeField] Color unfocusedColor = Color.black;
-
 
     bool is_dragging = false;
     Vector3 item_image_initial_position;
     Vector3 item_count_initial_position;
     Image background;
     Transform visibleParent;
+    Camera mainCamera;
 
     int _itemCount = 0;
     internal int ItemCount => _itemCount;
@@ -31,6 +31,7 @@ internal class Inventory_Slot : MonoBehaviour, IPointerDownHandler, IPointerUpHa
         //Transform childTransform = transform.GetChild(0);
         //item_image = childTransform.GetComponentInChildren<Image>();
         visibleParent = GameManager.GameManagerInstance.UIVisibleParent;
+        mainCamera = Camera.main;
 
         item_image_initial_position = item_image.transform.localPosition;
         item_count_initial_position = item_count.transform.localPosition;
@@ -44,7 +45,10 @@ internal class Inventory_Slot : MonoBehaviour, IPointerDownHandler, IPointerUpHa
     {
         if (is_dragging)
         {
-            item_image.transform.position = Input.mousePosition;
+            Vector3 screenPos = Input.mousePosition;
+            screenPos.z = mainCamera.nearClipPlane;
+            screenPos.z = 50;
+            item_image.transform.position = mainCamera.ScreenToWorldPoint(screenPos);
         }
 
         if (item != null)
@@ -53,6 +57,7 @@ internal class Inventory_Slot : MonoBehaviour, IPointerDownHandler, IPointerUpHa
 
         Update_UI();
     }
+
     public void OnPointerDown(PointerEventData eventData)
     {
         if (eventData.button == PointerEventData.InputButton.Left)
@@ -65,6 +70,7 @@ internal class Inventory_Slot : MonoBehaviour, IPointerDownHandler, IPointerUpHa
         if (eventData.button == PointerEventData.InputButton.Right && isHotbarSlot)
             Equip();
     }
+
     internal float Return_Distance_From_Mouse()
     {
         return (Vector2.Distance(transform.position, Input.mousePosition));
@@ -91,14 +97,14 @@ internal class Inventory_Slot : MonoBehaviour, IPointerDownHandler, IPointerUpHa
         Item current_item = this.item;
         int _currentCount = this._itemCount;
 
-        if(closest_slot.Is_Empty())
+        if (closest_slot.Is_Empty())
         {
             closest_slot.Assign_Item(current_item, _currentCount);
             this.Clear_Item();
             if (Tutorial.TutorialInstance != null)
                 Tutorial.TutorialInstance.SwappedSlots();
         }
-        else if(Is_Current_Slot(closest_slot))
+        else if (Is_Current_Slot(closest_slot))
             is_dragging = false;
         else
         {
@@ -110,20 +116,23 @@ internal class Inventory_Slot : MonoBehaviour, IPointerDownHandler, IPointerUpHa
                 Tutorial.TutorialInstance.SwappedSlots();
         }
     }
+
     internal void Equip()
     {
         GameManager.GameManagerInstance.PlayerInventory.Equip(item);
         SetBackground(focusedColor);
     }
+
     private void SetBackground(Color c)
     {
         background.color = c;
     }
+
     internal bool Is_Empty()
     {
         return (this.item == null);
     }
-    
+
     internal void Assign_Item(Item item, int count = 1)
     {
         if (item != null)
@@ -142,6 +151,7 @@ internal class Inventory_Slot : MonoBehaviour, IPointerDownHandler, IPointerUpHa
         else
             Debug.LogWarning("Item is null!");
     }
+
     internal void DecreaseCount(int _count = 1)
     {
         _itemCount -= _count;
@@ -150,6 +160,7 @@ internal class Inventory_Slot : MonoBehaviour, IPointerDownHandler, IPointerUpHa
             Clear_Item();
         }
     }
+
     internal void Clear_Item()
     {
         if (item != null)
@@ -162,11 +173,11 @@ internal class Inventory_Slot : MonoBehaviour, IPointerDownHandler, IPointerUpHa
     internal void DropItem()
     {
         DecreaseCount();
-       
     }
+
     internal void Update_UI()
     {
-        if(this.item != null)
+        if (this.item != null)
         {
             if (!item_count.gameObject.activeInHierarchy && item.IsStackable)
                 item_count.gameObject.SetActive(true);
@@ -184,12 +195,14 @@ internal class Inventory_Slot : MonoBehaviour, IPointerDownHandler, IPointerUpHa
             item_image.color = new Color(0, 0, 0, 0);
         }
     }
+
     internal Item Get_Item()
     {
         if (this.item == null)
             return null;
         return (this.item);
     }
+
     internal bool Is_Current_Slot(Inventory_Slot compared_slot)
     {
         return (compared_slot == this);

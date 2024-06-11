@@ -7,57 +7,16 @@ using UnityEngine.UI;
 
 internal class Main_Menu_Buttons : UI_Behaviour
 {
-    [field: SerializeField] private UI_Behaviour settings;
-    [field: SerializeField] private UI_Behaviour mainMenu;
-    [field: SerializeField] private UI_Behaviour audio;
-    [field: SerializeField] private UI_Behaviour video;
+    [field: Header("VIDEO")]
     [field: SerializeField] private TMP_InputField fov;
     [field: SerializeField] private TMP_InputField fps;
     [field: SerializeField] private TMP_Dropdown res;
     [field: SerializeField] private Toggle fullscreen;
     [field: SerializeField] private PlayerSettings playerSettings;
 
-    public void Show_Settings(bool show)
-    {
-        if (show)
-        {
-            settings.Show();
-            mainMenu.Hide();
-        }
-        else
-        {
-            mainMenu.Show();
-            settings.Hide();
-        }
-    }
+    [field: Header("AUDIO")]
+    [field: SerializeField] private Slider MasterVolume;
 
-    public void ShowAudio(bool show)
-    {
-        if (show)
-        {
-            audio.Show();
-            settings.Hide();
-        }
-        else
-        {
-            settings.Show();
-            audio.Hide();
-        }
-    }
-
-    public void ShowVideo(bool show)
-    {
-        if (show)
-        {
-            video.Show();
-            settings.Hide();
-        }
-        else
-        {
-            settings.Show();
-            video.Hide();
-        }
-    }
     public void ApplySettings()
     {
         // fps (30-240)
@@ -103,6 +62,8 @@ internal class Main_Menu_Buttons : UI_Behaviour
         //Debug.Log($"FOV: {fovv} | FPS: {fpsv} | RES: {resXv}x{resYv} | FULLSCREEN: {full}");
         playerSettings.SetValues(fovv, fpsv, resXv, resYv, full);
     }
+
+    public void ApplyAudio() => playerSettings.SetAudio(MasterVolume.value);
     internal void Exit()
     {
         Application.Quit();

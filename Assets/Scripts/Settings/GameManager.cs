@@ -8,10 +8,12 @@ using UnityEngine.UI;
 
 internal class GameManager : MonoBehaviour
 {
+    [field: Header("CURTAIN")]
     internal static GameManager GameManagerInstance { get; private set; }
     [field: SerializeField] internal PlayerSettings PlayerSettings { get; private set; }
     [field: SerializeField] internal Image Curtain { get; private set; }
     [field: SerializeField] internal float OpeningTime { get; private set; } = 1f;
+    [field: SerializeField] internal float OpeningDelay { get; private set; } = 1f;
 
     private float m_CurrentTime = 0;
 
@@ -44,6 +46,8 @@ internal class GameManager : MonoBehaviour
     IEnumerator OpenCurtain()
     {
         Curtain.gameObject.SetActive(true);
+        Curtain.material.SetFloat("_CurtainTransitionProgress", 0);
+        //yield return new WaitForSeconds(OpeningDelay);
 
         while (m_CurrentTime < OpeningTime)
         {

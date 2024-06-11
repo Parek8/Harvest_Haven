@@ -7,6 +7,7 @@ public class PlayerSettings : ScriptableObject
     public uint FPS { get; private set; } = 60;
     public short RESX { get; private set; } = 1920;
     public short RESY { get; private set; } = 1080;
+    public float VOLUME { get; private set; } = .5f;
     public bool FULLSCREEN { get; private set; } = true;
 
     internal void SetValues(short fov, uint fps, short resx, short resy, bool full)
@@ -19,8 +20,13 @@ public class PlayerSettings : ScriptableObject
         GameManager.GameManagerInstance.LoadGraphics();
     }
 
+    public void SetAudio(float volume)
+    {
+        this.VOLUME = volume;
+    }
+
     public string GetInfo()
     {
-        return $"FOV: {FOV} | FPS: {FPS} | RES: {RESX}x{RESY} | FULLSCREEN: {FULLSCREEN}";
+        return $"FOV: {FOV} | FPS: {FPS} | RES: {RESX}x{RESY} | VOLUME: {VOLUME} | FULLSCREEN: {FULLSCREEN}";
     }
 }

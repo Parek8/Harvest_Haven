@@ -191,8 +191,7 @@ public sealed class Tutorial : MonoBehaviour
     {
         yield return new WaitForSeconds(TransitionDelay);
 
-        DesDialog.Hide();
-        //ShopHighlighter.Show();
+        SelDialog.Hide();
         IntDialog.Show();
     }
 
@@ -236,7 +235,7 @@ public sealed class Tutorial : MonoBehaviour
     {
         yield return new WaitForSeconds(TransitionDelay);
 
-        HarvestDialog.Hide();
+        DesDialog.Hide();
         ShopDialog.Show();
     }
     internal void OpenedShop() => _openedShop = true;
@@ -369,8 +368,8 @@ public sealed class Tutorial : MonoBehaviour
     {
         if (_destroyedObject)
         {
-            _tutorialState = TutorialState.Interact;
-            StartCoroutine(InitInteract());
+            _tutorialState = TutorialState.FindShop;
+            StartCoroutine(InitShop());
         }
     }
     private void InteractTutorial()
@@ -395,8 +394,8 @@ public sealed class Tutorial : MonoBehaviour
     {
         if (_soldItem)
         {
-            //_tutorialState = TutorialState.Destroy;
-            //StartCoroutine(InitDestroy());
+            _tutorialState = TutorialState.Interact;
+            StartCoroutine(InitInteract());
         }
     }
     private void CraftTutorial()

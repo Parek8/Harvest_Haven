@@ -13,11 +13,11 @@ internal class EnemyBehaviour : Destroyable
     protected bool _isAgro = false;
     protected float _cooldown = 0;
     protected Character_Stats _stats;
-    private void Awake()
+    new private void Awake()
     {
         base.Awake();
     }
-    protected void Start()
+    new protected void Start()
     {
         base.Start();
         _playerTransform = GameManager.GameManagerInstance.PlayerTransform;

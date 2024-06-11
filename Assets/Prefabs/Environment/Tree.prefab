@@ -207,6 +207,7 @@ GameObject:
   - component: {fileID: 2317577454377771413}
   - component: {fileID: 5313731813023485668}
   - component: {fileID: -3997249526742932353}
+  - component: {fileID: 1097112761225095142}
   m_Layer: 6
   m_Name: Tree
   m_TagString: Untagged
@@ -223,7 +224,7 @@ Transform:
   m_GameObject: {fileID: 4027417541842324890}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -36.66, y: 30.64, z: 4.58}
-  m_LocalScale: {x: 15.771749, y: 15.771749, z: 15.771749}
+  m_LocalScale: {x: 15, y: 15, z: 15}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4491820705173111130}
@@ -331,6 +332,7 @@ MonoBehaviour:
   filled_health_bar: {fileID: 7622587497013238047}
   obj_canvas: {fileID: 5573994704480647998}
   CanvasPrefab: {fileID: 0}
+  dmgTransisionTag: 
 --- !u!64 &5313731813023485668
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -370,6 +372,27 @@ MonoBehaviour:
   Destroyable: 1
   Attackable: 0
   _highlighter: {fileID: 0}
+--- !u!95 &1097112761225095142
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4027417541842324890}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e451b11e746ed9745aa390b9b3fa3b37, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6649329381143791002
 GameObject:
   m_ObjectHideFlags: 0

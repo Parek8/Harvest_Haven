@@ -73,11 +73,6 @@ internal class Plot : Interactable
         }
     }
 
-    internal void Harvest()
-    {
-        plantedPlant = null;
-    }
-
     internal void Water(bool watered)
     {
         isWatered = watered;
@@ -119,7 +114,7 @@ internal class Plot : Interactable
 
         if (stages.Count <= 0 && times.Count <= 0)
         {
-            _stage.AddComponent<Harvestable>().Setup((List<Item>)plantedPlant.DroppedItems, () => { this.IsOccupied = false; });
+            _stage.AddComponent<Harvestable>().Setup((List<Item>)plantedPlant.DroppedItems, () => { this.IsOccupied = false; plantedPlant = null; this.Days = 0; });
         }
     }
 
@@ -141,6 +136,6 @@ internal class Plot : Interactable
 
     internal override void Interact()
     {
-        
+
     }
 }

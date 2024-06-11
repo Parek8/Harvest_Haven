@@ -122,6 +122,7 @@ internal class GameManager : MonoBehaviour
 
     public void ExitGame()
     {
+        Time.timeScale = 1;
         OnApplicationQuit();
         SceneManager.LoadScene("MainMenu");
     }
@@ -174,10 +175,7 @@ internal class GameManager : MonoBehaviour
 internal static class Input_Manager
 {
     static Dictionary<KeybindNames, KeyCode> keybinds = new Dictionary<KeybindNames, KeyCode>();
-    internal static void SetKeybindsList(Dictionary<KeybindNames, KeyCode> keybindsDic)
-    {
-        keybinds = keybindsDic;
-    }
+    internal static void SetKeybindsList(Dictionary<KeybindNames, KeyCode> keybindsDic) => keybinds = keybindsDic;
     internal static bool GetCustomKeyDown(KeybindNames _bind)
     {
         try 

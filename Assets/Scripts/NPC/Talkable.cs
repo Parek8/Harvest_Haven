@@ -15,6 +15,9 @@ internal class ShopTalkable : Interactable
             talking = true;
             DialogManager.DialogManagerInstance.Show();
             DialogManager.DialogManagerInstance.UpdateDialog(_dialog.NextIndex());
+
+            if (Tutorial.TutorialInstance != null)
+                Tutorial.TutorialInstance.OpenedShop();
         }
         else
             StopTalking();

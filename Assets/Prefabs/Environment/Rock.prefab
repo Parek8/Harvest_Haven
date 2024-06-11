@@ -90,6 +90,7 @@ GameObject:
   - component: {fileID: 1916309521314281738}
   - component: {fileID: 6659340260256723301}
   - component: {fileID: -88932611840362403}
+  - component: {fileID: 5798706030807596733}
   m_Layer: 6
   m_Name: Rock
   m_TagString: Untagged
@@ -216,6 +217,7 @@ MonoBehaviour:
   filled_health_bar: {fileID: 9112611253549544570}
   obj_canvas: {fileID: 1659777826797598201}
   CanvasPrefab: {fileID: 0}
+  dmgTransisionTag: 
 --- !u!64 &6659340260256723301
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -255,6 +257,27 @@ MonoBehaviour:
   Destroyable: 1
   Attackable: 0
   _highlighter: {fileID: 0}
+--- !u!95 &5798706030807596733
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2871178288967000601}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e451b11e746ed9745aa390b9b3fa3b37, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6252819497797295868
 GameObject:
   m_ObjectHideFlags: 0

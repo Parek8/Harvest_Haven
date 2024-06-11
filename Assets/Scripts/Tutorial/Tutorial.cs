@@ -84,6 +84,10 @@ public sealed class Tutorial : MonoBehaviour
        |                                             |
        ----------------------------------------------- */
 
+    [field: Header("SHOP")]
+    [field: SerializeField] UI_Behaviour ShopDialog;
+    bool _openedShop = false;
+
     [field: Header("SHOPPING BUY")]
     [field: SerializeField] UI_Behaviour BuyDialog;
     bool _boughtItem = false;
@@ -100,11 +104,12 @@ public sealed class Tutorial : MonoBehaviour
         IntDialog.Hide();
         SwapDialog.Hide();
         DesDialog.Hide();
-        BuyDialog.Hide();
-        SelDialog.Hide();
         CraftDialog.Hide();
         SeedDialog.Hide();
         HarvestDialog.Hide();
+        ShopDialog.Hide();
+        BuyDialog.Hide();
+        SelDialog.Hide();
 
         InitMovement();
     }
@@ -124,20 +129,12 @@ public sealed class Tutorial : MonoBehaviour
                 DragItemsTutorial();
                 break;
 
-            case TutorialState.Interact:
-                InteractTutorial();
-                break;
-
-            case TutorialState.ShoppingBuy:
-                BuyTutorial();
-                break;
-
-            case TutorialState.ShoppingSell:
-                SellTutorial();
-                break;
-
             case TutorialState.Destroy:
                 DestroyTutorial();
+                break;
+
+            case TutorialState.Interact:
+                InteractTutorial();
                 break;
 
             case TutorialState.Craft:
@@ -154,6 +151,18 @@ public sealed class Tutorial : MonoBehaviour
 
             case TutorialState.Harvesting:
                 HarvestingTutorial();
+                break;
+
+            case TutorialState.FindShop:
+                ShopTutorial();
+                break;
+
+            case TutorialState.ShoppingBuy:
+                BuyTutorial();
+                break;
+
+            case TutorialState.ShoppingSell:
+                SellTutorial();
                 break;
 
             default:
@@ -223,11 +232,19 @@ public sealed class Tutorial : MonoBehaviour
         SwapDialog.Show();
     }
 
+    private IEnumerator InitShop()
+    {
+        yield return new WaitForSeconds(TransitionDelay);
+
+        HarvestDialog.Hide();
+        ShopDialog.Show();
+    }
+    internal void OpenedShop() => _openedShop = true;
     private IEnumerator InitBuy()
     {
         yield return new WaitForSeconds(TransitionDelay);
 
-        IntDialog.Hide();
+        ShopDialog.Hide();
         BuyDialog.Show();
     }
     private IEnumerator InitSell()
@@ -378,8 +395,8 @@ public sealed class Tutorial : MonoBehaviour
     {
         if (_soldItem)
         {
-            _tutorialState = TutorialState.Destroy;
-            StartCoroutine(InitDestroy());
+            //_tutorialState = TutorialState.Destroy;
+            //StartCoroutine(InitDestroy());
         }
     }
     private void CraftTutorial()
@@ -395,6 +412,14 @@ public sealed class Tutorial : MonoBehaviour
 
     }
 
+    private void ShopTutorial()
+    {
+        if (_openedShop)
+        {
+            _tutorialState = TutorialState.ShoppingBuy;
+            StartCoroutine(InitBuy());
+        }
+    }
     private void SeedingTutorial()
     {
         if (_seeded)
@@ -407,7 +432,8 @@ public sealed class Tutorial : MonoBehaviour
     {
         if (_harvested)
         {
-
+            _tutorialState = TutorialState.FindShop;
+            StartCoroutine(InitShop());
         }
     }
     #endregion Tutorials
@@ -422,8 +448,9 @@ public sealed class Tutorial : MonoBehaviour
         Smelt,
         Seeding,
         Harvesting,
-        // NOT IN USE
+        FindShop,
         ShoppingBuy,
         ShoppingSell,
+        // NOT IN USE
     }
 }

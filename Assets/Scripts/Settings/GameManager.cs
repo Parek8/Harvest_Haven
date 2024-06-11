@@ -10,6 +10,10 @@ internal class GameManager : MonoBehaviour
 {
     internal static GameManager GameManagerInstance { get; private set; }
     [field: SerializeField] internal PlayerSettings PlayerSettings { get; private set; }
+    [field: SerializeField] internal Image Curtain { get; private set; }
+    [field: SerializeField] internal float OpeningTime { get; private set; } = 1f;
+
+    private float m_CurrentTime = 0;
 
     void Awake()
     {
@@ -31,6 +35,25 @@ internal class GameManager : MonoBehaviour
         }
 
         LoadGraphics();
+    }
+    private void OnEnable()
+    {
+        StartCoroutine(OpenCurtain());
+    }
+
+    IEnumerator OpenCurtain()
+    {
+        Curtain.gameObject.SetActive(true);
+
+        while (m_CurrentTime < OpeningTime)
+        {
+            m_CurrentTime += Time.deltaTime;
+            Curtain.material.SetFloat("_CurtainTransitionProgress", (m_CurrentTime / OpeningTime)*2);
+
+            yield return new WaitForEndOfFrame();
+        }
+        Debug.Log(Curtain.material.GetFloat("_CurtainTransitionProgress"));
+        Curtain.gameObject.SetActive(false);
     }
     private void Start()
     {

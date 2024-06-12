@@ -166,7 +166,7 @@ internal class Character_Behaviour : MonoBehaviour
         {
             Destroyable _hit = info.collider.GetComponent<Destroyable>();
             Item _eq_item = inventory.Equipped_Item;
-            if (_eq_item != null)
+            if (_hit != null && _eq_item != null)
             {
                 if (_hit.Compare_Tag(_eq_item.ToolType) && _eq_item.IsTool)
                 {

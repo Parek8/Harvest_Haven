@@ -65,7 +65,7 @@
 ---
 
 ## 🧰 Vývojové prostředí
-- 🖥️ Visual Studio Code
+- 🖥️ Visual Studio
 
 ---
 

@@ -14,6 +14,14 @@
 
 ---
 
+## 🎯 Motivace
+
+> Tento projekt vznikl jako má ročníková práce v rámci studia oboru Informační technologie. Jeho úspěšné dokončení bylo klíčové pro postup do dalšího ročníku.
+
+> Na vývoji jsem pracoval několik měsíců a pravidelně jsem jej konzultoval s vedoucím projektu – během těchto konzultací jsem získal cennou zpětnou vazbu a průběžně upravoval návrh i implementaci. Projekt byl zakončen obhajobou před odbornou komisí a byl hodnocen nejen podle funkčnosti, ale i podle dokumentace, prezentace a technické úrovně.
+
+---
+
 ## ✨ Funkce a mechaniky
 - 🔁 Systém stavů (State Machine)
 - 🪓 Nástroje a zničitelné objekty

@@ -64,6 +64,11 @@
 
 ---
 
+## 🧰 Vývojové prostředí
+- 🖥️ Visual Studio Code
+
+---
+
 ## 🖼️ Ukázky
 ![Gameplay Screenshot](./images/gameplay.png)
 
